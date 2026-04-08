@@ -1,0 +1,113 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "halloween_latest_page_8PaQLy": {
+      "type": "halloween-latest-page",
+      "blocks": {
+        "halloween_products_AWQ3V3": {
+          "type": "halloween-products",
+          "settings": {
+            "background_image": "shopify://shop_images/Group_4101_9a5d8b7b-d1c7-481e-aa82-8289d85e47a0.svg",
+            "product_image": "shopify://shop_images/Mask_Group_11.png",
+            "halloween_text": "White chocolate Skull on a bed of oreo crumble, sits upon a swirl of bloody vanilla buttercream and crushed cookie and cream cake."
+          }
+        },
+        "halloween_products_PNDT8z": {
+          "type": "halloween-products",
+          "settings": {
+            "background_image": "shopify://shop_images/Mask_Group_9.svg",
+            "product_image": "shopify://shop_images/Mask_Group_12.png",
+            "halloween_text": "Bloody Red Velvet cake, topped with a dollop of ghostly vanilla buttercream and white chocolate all seeing eye."
+          }
+        },
+        "halloween_products_9VnzfK": {
+          "type": "halloween-products",
+          "settings": {
+            "background_image": "shopify://shop_images/Mask_Group_5.svg",
+            "product_image": "shopify://shop_images/Mask_Group_13.png",
+            "halloween_text": "White chocolate ghost haunts it's tombstone, appearing from a dollop of ghostly vanilla buttercream and Rich chocolate cake."
+          }
+        },
+        "halloween_products_b4JDLx": {
+          "type": "halloween-products",
+          "settings": {
+            "background_image": "shopify://shop_images/Mask_Group_8.png",
+            "product_image": "shopify://shop_images/Mask_Group_14_9fc03fc9-cae6-4f54-b6a0-8c135353a671.png",
+            "halloween_text": "A friendly purple vanilla buttercream Alien, with chocolate eyes and sugar rod antennas sits upon a Fiery vanilla cake.  "
+          }
+        },
+        "halloween_products_r9Vhat": {
+          "type": "halloween-products",
+          "settings": {
+            "background_image": "shopify://shop_images/Group_4076_c556f0c6-b477-4322-95f5-09c818d7b2cd.svg",
+            "product_image": "shopify://shop_images/Mask_Group_15_1.png",
+            "halloween_text": "Rich Chocolate cake, topped with a dollop of vanilla buttercream"
+          }
+        },
+        "halloween_products_J4eLJK": {
+          "type": "halloween-products",
+          "settings": {
+            "background_image": "shopify://shop_images/Group_4146.png",
+            "product_image": "shopify://shop_images/Mask_Group_16.png",
+            "halloween_text": "Double serving of chocolate cake and buttercream nests the web of white choc, where a chocolate spider lays waiting."
+          }
+        }
+      },
+      "block_order": [
+        "halloween_products_AWQ3V3",
+        "halloween_products_PNDT8z",
+        "halloween_products_9VnzfK",
+        "halloween_products_b4JDLx",
+        "halloween_products_r9Vhat",
+        "halloween_products_J4eLJK"
+      ],
+      "settings": {
+        "banner-header1": "SWEETS THAT GO BUMP IN THE NIGHT",
+        "banner-subheader1": "Our SPOOK-tacular Halloween Cupcakes are here! Get ready for a frightfully delicious treat.",
+        "collection-header": "Cupcakes from The Crypt",
+        "collection-subheader": "",
+        "promo_header": "UNBOX THE UNDEATH",
+        "promo_subheader": "Available to order now! For delivery and instore until Sunday 2 November.",
+        "promo_collection": "https-cupcakecentral-com-au-pages-halloween-2025"
+      }
+    },
+    "product_promo_d6R8Ei": {
+      "type": "product-promo",
+      "disabled": true,
+      "name": "Product Promo",
+      "settings": {
+        "heading": "Halloween Treats",
+        "subheading": "",
+        "products_to_show": [
+          "30-halloween-mini-cupcake-gift-box-1",
+          "15-halloween-mini-cupcake-gift-box-1",
+          "12-halloween-cupcake-gift-box-3"
+        ],
+        "background_color": "#000000",
+        "heading_color": "#f4812a",
+        "subheading_color": "#f4812a"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "halloween_latest_page_8PaQLy",
+    "product_promo_d6R8Ei"
+  ]
+}

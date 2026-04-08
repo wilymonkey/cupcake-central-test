@@ -1,0 +1,51 @@
+{{ 'section-scrolling-text.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* Applying the animation to the items */
+  .topbar .animation-translate {
+    animation: scroll {{section.settings.animation_duration}}s linear infinite;
+  }
+</style>
+
+<div class="infinite-scroll-section topbar js-sticky-topbar">
+  <div class="infinite-scroll-background relative py-2 lg:py-3 bg-pink">
+    <div class="infinite-scroll-container relative flex mx-auto overflow-hidden flex-nowrap">
+      <!-- Repeated Group -->
+      {% for i in (1..3) %}
+      <div class="infinite-scroll-content relative flex animation-translate">
+        <!-- Repeated Text -->
+        {% for j in (1..3) %}
+        <p class="infinite-scroll-text mx-4 whitespace-nowrap text-scroll-bar font-bold flex-items-center h-fit text-black custom-webkit-stroke">
+          MELB BEST CUPCAKE STORE SINCE 2010
+        </p>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Infinitely Scrolling Text",
+  "settings": [
+    {
+      "type": "number",
+      "id": "animation_duration",
+      "default": 120,
+      "label": "Animation Duration (0 - 1000)",
+      "info": "The speed increases the smaller the number you input."
+    }
+  ],
+  "presets": [
+      {
+        "name": "Infinitely Scrolling Text"
+      }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

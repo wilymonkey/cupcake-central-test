@@ -1,0 +1,172 @@
+ :root {
+  --star-size: 30px;
+  --star-color: #fff;
+  --star-background: #fc0;
+}
+
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  
+  display: inline-block !important;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+  
+  &::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.single-star {  
+  --percent: calc(var(--rating) / 5 * 100%);
+  
+  display: inline-block !important;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+  
+  &::before {
+    content: '★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+// Just to make a preview more beautifull
+
+body {
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+#review-container {
+  max-width: var(--page-width);
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 2rem auto;
+  padding: 5rem;
+}
+
+@media screen and (max-width: 750px) {
+ .review-header {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 749px) {
+ .review-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.review-title {
+  font-size: 2rem;
+  color: #686868;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.review-item {
+  border-top: 1px solid #686868;
+  padding-top: 3rem;
+}
+
+.virtical-center {
+  display: flex;
+  align-items: center;
+}
+
+.virtical-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+.horizontal-center {
+  display: flex;
+  justify-content: center;
+}
+
+.horizontal-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.progress {
+  margin:10px 5px;
+  padding:0;
+  width:90%;
+  height:10px;
+  overflow:hidden;
+  background:#e5e5e5;
+  border-radius:6px;
+  border: 1px solid #444;
+}
+
+.bar {
+  position:relative;
+  float:left;
+  min-width:1%;
+  height:100%;
+  background: #ffcc00;
+}
+
+@media screen and (min-width: 750px) {
+  #progress-container {
+    width: 50%;
+    padding-left: 5rem;
+    border-left: 2px solid #444;
+    margin-bottom: 3rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  #progress-container {
+    width: 100%;
+    padding-top: 3rem;
+    border-top: 2px solid #444;
+    margin-bottom: 3rem;
+  }
+}
+  
+.percent {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  margin:0;
+  font-family:tahoma,arial,helvetica;
+  font-size:12px;
+  color:white;
+}
+
+.progress-item {
+  width: 100%;
+  display: flex;
+}
+
+.review.btn {
+  width: 240px;
+  aspect-ratio: 3/1;
+  text-transform: uppercase;
+  background-color: #444;
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: bold;
+  border-radius: 15px;
+}

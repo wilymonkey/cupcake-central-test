@@ -1,0 +1,777 @@
+{{ 'cake-frenzy-landing.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<div class="cake-frenzy-heading">
+  <h2 class="cake-frenzy-heading-text">OFFER HAS ENDED</h2>
+</div>
+
+<div class="countdown-timer">
+    <div class="time-box">
+        <span id="days" class="time">00</span>
+        <span class="label">DAYS</span>
+    </div>
+    <span class="colon">:</span>
+    <div class="time-box">
+        <span id="hours" class="time">00</span>
+        <span class="label">HOURS</span>
+    </div>
+    <span class="colon">:</span>
+    <div class="time-box">
+        <span id="minutes" class="time">00</span>
+        <span class="label">MINUTES</span>
+    </div>
+    <span class="colon">:</span>
+    <div class="time-box">
+        <span id="seconds" class="time">00</span>
+        <span class="label">SECONDS</span>
+    </div>
+</div>
+
+<div class="cake-frenzy-description">
+  <p class="desc-text">{{ section.settings.cake_frenzy_description | default: 'No description provided'}}</p>
+</div>
+
+<div class="category-container">
+    <h2>BROWSE BY CATEGORY</h2>
+    <div class="categories">
+        <!-- Category item for Cupcakes -->
+        <div class="category-item" data-tags="gift-box" style="background-image: url('https://cdn.shopify.com/s/files/1/1848/3097/files/12_Cupcake_Gift_Box-Black_Friday_23-Product_Image.webp?v=1700093710); cursor: pointer;">
+          <div class="vegan-product-overlay"></div>
+          <div class="vegan-product-title">CUPCAKES</div>
+        </div>
+
+        <!-- Category item for Mini Cupcakes -->
+        <div class="category-item" data-tags="mini-cupcakes" style="background-image: url('https://cdn.shopify.com/s/files/1/1848/3097/files/Smores_Babycake_Mini_14.jpg?v=1614755074); cursor: pointer;">
+          <div class="vegan-product-overlay"></div>
+          <div class="vegan-product-title">MINI CUPCAKES</div>
+        </div>
+
+        <!-- Category item for Celebration Cakes -->
+        <div class="category-item" data-tags="cake-range" style="background-image: url('https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_BLUEBERRYCAKE-1.webp?v=1716877969); cursor: pointer;">
+          <div class="vegan-product-overlay"></div>
+          <div class="vegan-product-title">CELEBRATION CAKES</div>
+        </div>
+
+        <!-- Category item for Naked Cakes -->
+        <div class="category-item" data-tags="naked-cake" style="background-image: url('https://cdn.shopify.com/s/files/1/1848/3097/products/CAKE-CNC-NAKED.jpg?v=1681950996); cursor: pointer;">
+          <div class="vegan-product-overlay"></div>
+          <div class="vegan-product-title">NAKED CAKES</div>
+          </div>
+
+      <div class="category-item" data-tags="cookies" style="background-image: url('https://cdn.shopify.com/s/files/1/1848/3097/files/NYC_Cookies-Mobile.webp?v=1708484974); cursor: pointer;">
+          <div class="vegan-product-overlay"></div>
+          <div class="vegan-product-title">COOKIES</div>
+          </div>
+
+      <div class="category-item" data-tags="brownies" style="background-image: url('https://cdn.shopify.com/s/files/1/1848/3097/files/Brownie___Slices-Mobile.jpg?v=1701343708); cursor: pointer;">
+          <div class="vegan-product-overlay"></div>
+          <div class="vegan-product-title">BROWNIES</div>
+          </div>
+    </div>
+</div>
+
+
+
+<div class="vegan-products-collection-container">
+    <div class="product-list-list" data-tag="gift-box" style="display:none;">
+        {% assign collection_handle = 'black-friday' %}
+        {% assign collection = collections[collection_handle] %}
+        {% if collection and collection.products.size > 0 %}
+            {% paginate collection.products by 151%} <!-- Adjust the number as needed, max is 100 -->
+            {% for product in collection.products %}
+                {% if product.tags contains 'Gift Boxes' or product.tags contains 'preset-giftbox' or product.tags contains 'vegan-cupcake-giftbox'%}
+                  {% unless product.title contains 'Mini Cupcake' %}
+                     <a href="{{ product.url }}">
+                          <div class="vegan1-product-item">
+                            <div class="vegan1-product">
+                              <div class="vegan1-product-image">
+                               <img id="productImage" class="main-image" src="{{ product.featured_image | img_url: '350x350' }}" alt="{{ product.featured_image.alt }}">
+                                {% if product.images.size > 1 %}
+                                  <img class="hover-image" src="{{ product.images[1] | img_url: '350x350' }}" alt="{{ product.images[1].alt }}">
+                                {% else %}
+                                   <img id="productImage" class="main-image" src="{{ product.featured_image | img_url: '350x350' }}" alt="{{ product.featured_image.alt }}">
+                                {% endif %}
+                              </div>
+                              <div class="vegan1-title">{{ product.title }}</div>
+                        
+                              <div class="priceandbutton">
+                                <div class="vegan1-price">{{ product.price | money }}</div>
+                                <div class="quick-add no-js-hidden">
+                                  {%- liquid 
+                                    assign section_id = section.id   
+                                  %}
+                                  {%- liquid
+                                    assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                                    assign qty_rules = false
+                                    if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                                      assign qty_rules = true
+                                    endif
+                                  -%}
+                                  {%- if product.variants.size > 1 or qty_rules -%}
+                                    <a style="text-decoration: none;" href="{{ product.url }}">
+                                      <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                    </a>
+                                  {%- else -%}
+                                    {%- if product.tags contains 'Custom' -%}
+                                      <a style="text-decoration: none;" href="{{ product.url }}">
+                                        <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                      </a>
+                                    {%- else -%}
+                                      <product-form data-section-id="{{ section.id }}">
+                                        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                                          <input
+                                            type="hidden"
+                                            name="id"
+                                            value="{{ product.selected_or_first_available_variant.id }}"
+                                            class="product-variant-id"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                          <button
+                                            id="{{ product_form_id }}-submit"
+                                            type="submit"
+                                            name="add"
+                                            class="quick-add__submit button button--full-width button--secondary"
+                                            aria-haspopup="dialog"
+                                            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                            aria-live="polite"
+                                            data-sold-out-message="true"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                            <span>
+                                              {%- if product.selected_or_first_available_variant.available -%}
+                                                {{ 'products.product.add_to_cart' | t }}
+                                              {%- else -%}
+                                                {{ 'products.product.sold_out' | t }}
+                                              {%- endif -%}
+                                            </span>
+                                            <span class="sold-out-message hidden">
+                                              {{ 'products.product.sold_out' | t }}
+                                            </span>
+                                            {%- render 'loading-spinner' -%}
+                                          </button>
+                                        {%- endform -%}
+                                      </product-form>
+                                    {%- endif -%}
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                        
+                              <!-- Discount Banner at the Bottom -->
+                              {% if product.tags contains 'black-friday1' %}
+                                <div class="discount-text-container1">
+                                  <div class="discount-text1">BUY 1 GET 1 50% OFF</div>
+                                </div>
+                              {% endif %}
+                              
+                            </div> 
+                          </div>
+                        </a>
+                    {% endunless %}
+                {% endif %}
+            {% endfor %}
+            {% endpaginate%}
+        {% endif %}
+    </div>
+    <div class="product-list-list" data-tag="mini-cupcakes" style="display:none;">
+        {% assign collection_handle = 'black-friday' %}
+        {% assign collection = collections[collection_handle] %}
+        {% if collection and collection.products.size > 0 %}
+            {% paginate collection.products by 151%} <!-- Adjust the number as needed, max is 100 -->
+            {% for product in collection.products %}
+                {% if product.tags contains 'Gift Boxes' %}
+                  {% if product.title contains 'Mini Cupcake' %}
+                        <a href="{{ product.url }}">
+                          <div class="vegan1-product-item">
+                            <div class="vegan1-product">
+                              <div class="vegan1-product-image">
+                                {{ product.featured_image | img_url: '350x350' | img_tag: product.featured_image.alt }}
+                              </div>
+                              <div class="vegan1-title">{{ product.title }}</div>
+                        
+                              <div class="priceandbutton">
+                                <div class="vegan1-price">{{ product.price | money }}</div>
+                                <div class="quick-add no-js-hidden">
+                                  {%- liquid 
+                                    assign section_id = section.id   
+                                  %}
+                                  {%- liquid
+                                    assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                                    assign qty_rules = false
+                                    if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                                      assign qty_rules = true
+                                    endif
+                                  -%}
+                                  {%- if product.variants.size > 1 or qty_rules -%}
+                                    <a style="text-decoration: none;" href="{{ product.url }}">
+                                      <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                    </a>
+                                  {%- else -%}
+                                    {%- if product.tags contains 'Custom' -%}
+                                      <a style="text-decoration: none;" href="{{ product.url }}">
+                                        <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                      </a>
+                                    {%- else -%}
+                                      <product-form data-section-id="{{ section.id }}">
+                                        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                                          <input
+                                            type="hidden"
+                                            name="id"
+                                            value="{{ product.selected_or_first_available_variant.id }}"
+                                            class="product-variant-id"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                          <button
+                                            id="{{ product_form_id }}-submit"
+                                            type="submit"
+                                            name="add"
+                                            class="quick-add__submit button button--full-width button--secondary"
+                                            aria-haspopup="dialog"
+                                            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                            aria-live="polite"
+                                            data-sold-out-message="true"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                            <span>
+                                              {%- if product.selected_or_first_available_variant.available -%}
+                                                {{ 'products.product.add_to_cart' | t }}
+                                              {%- else -%}
+                                                {{ 'products.product.sold_out' | t }}
+                                              {%- endif -%}
+                                            </span>
+                                            <span class="sold-out-message hidden">
+                                              {{ 'products.product.sold_out' | t }}
+                                            </span>
+                                            {%- render 'loading-spinner' -%}
+                                          </button>
+                                        {%- endform -%}
+                                      </product-form>
+                                    {%- endif -%}
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                        
+                              <!-- Discount Banner at the Bottom -->
+                              {% if product.tags contains 'black-friday1' %}
+                                <div class="discount-text-container1">
+                                  <div class="discount-text1">BUY 1 GET 1 50% OFF</div>
+                                </div>
+                              {% endif %}
+                              
+                            </div> 
+                          </div>
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+              {% endpaginate %}
+        {% endif %}
+    </div>
+    <div class="product-list-list" data-tag="cake-range" style="display:none;">
+        {% assign collection_handle = 'black-friday' %}
+        {% assign collection = collections[collection_handle] %}
+        {% if collection and collection.products.size > 0 %}
+            {% paginate collection.products by 151%} <!-- Adjust the number as needed, max is 100 -->
+            {% for product in collection.products %}
+                {% if product.tags contains 'cake-range' %}
+                    <a href="{{ product.url }}">
+                          <div class="vegan1-product-item">
+                            <div class="vegan1-product">
+                              <div class="vegan1-product-image">
+                                {{ product.featured_image | img_url: '350x350' | img_tag: product.featured_image.alt }}
+                              </div>
+                              <div class="vegan1-title">{{ product.title }}</div>
+                        
+                              <div class="priceandbutton">
+                                <div class="vegan1-price">{{ product.price | money }}</div>
+                                <div class="quick-add no-js-hidden">
+                                  {%- liquid 
+                                    assign section_id = section.id   
+                                  %}
+                                  {%- liquid
+                                    assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                                    assign qty_rules = false
+                                    if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                                      assign qty_rules = true
+                                    endif
+                                  -%}
+                                  {%- if product.variants.size > 1 or qty_rules -%}
+                                    <a style="text-decoration: none;" href="{{ product.url }}">
+                                      <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                    </a>
+                                  {%- else -%}
+                                    {%- if product.tags contains 'Custom' -%}
+                                      <a style="text-decoration: none;" href="{{ product.url }}">
+                                        <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                      </a>
+                                    {%- else -%}
+                                      <product-form data-section-id="{{ section.id }}">
+                                        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                                          <input
+                                            type="hidden"
+                                            name="id"
+                                            value="{{ product.selected_or_first_available_variant.id }}"
+                                            class="product-variant-id"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                          <button
+                                            id="{{ product_form_id }}-submit"
+                                            type="submit"
+                                            name="add"
+                                            class="quick-add__submit button button--full-width button--secondary"
+                                            aria-haspopup="dialog"
+                                            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                            aria-live="polite"
+                                            data-sold-out-message="true"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                            <span>
+                                              {%- if product.selected_or_first_available_variant.available -%}
+                                                {{ 'products.product.add_to_cart' | t }}
+                                              {%- else -%}
+                                                {{ 'products.product.sold_out' | t }}
+                                              {%- endif -%}
+                                            </span>
+                                            <span class="sold-out-message hidden">
+                                              {{ 'products.product.sold_out' | t }}
+                                            </span>
+                                            {%- render 'loading-spinner' -%}
+                                          </button>
+                                        {%- endform -%}
+                                      </product-form>
+                                    {%- endif -%}
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                        
+                              <!-- Discount Banner at the Bottom -->
+                              {% if product.tags contains 'black-friday1' %}
+                                <div class="discount-text-container1">
+                                  <div class="discount-text1">BUY 1 GET 1 50% OFF</div>
+                                </div>
+                              {% endif %}
+                              
+                            </div> 
+                          </div>
+                        </a>
+                {% endif %}
+            {% endfor %}
+              {% endpaginate %}
+        {% endif %}
+    </div>
+    <div class="product-list-list" data-tag="naked-cake" style="display:none;">
+        {% assign collection_handle = 'black-friday' %}
+        {% assign collection = collections[collection_handle] %}
+        {% if collection and collection.products.size > 0 %}
+            {% paginate collection.products by 151%} <!-- Adjust the number as needed, max is 100 -->
+            {% for product in collection.products %}
+                {% if product.tags contains 'naked-cake' %}
+                     <a href="{{ product.url }}">
+                          <div class="vegan1-product-item">
+                            <div class="vegan1-product">
+                              <div class="vegan1-product-image">
+                                {{ product.featured_image | img_url: '350x350' | img_tag: product.featured_image.alt }}
+                              </div>
+                              <div class="vegan1-title">{{ product.title }}</div>
+                        
+                              <div class="priceandbutton">
+                                <div class="vegan1-price">{{ product.price | money }}</div>
+                                <div class="quick-add no-js-hidden">
+                                  {%- liquid 
+                                    assign section_id = section.id   
+                                  %}
+                                  {%- liquid
+                                    assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                                    assign qty_rules = false
+                                    if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                                      assign qty_rules = true
+                                    endif
+                                  -%}
+                                  {%- if product.variants.size > 1 or qty_rules -%}
+                                    <a style="text-decoration: none;" href="{{ product.url }}">
+                                      <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                    </a>
+                                  {%- else -%}
+                                    {%- if product.tags contains 'Custom' -%}
+                                      <a style="text-decoration: none;" href="{{ product.url }}">
+                                        <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                      </a>
+                                    {%- else -%}
+                                      <product-form data-section-id="{{ section.id }}">
+                                        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                                          <input
+                                            type="hidden"
+                                            name="id"
+                                            value="{{ product.selected_or_first_available_variant.id }}"
+                                            class="product-variant-id"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                          <button
+                                            id="{{ product_form_id }}-submit"
+                                            type="submit"
+                                            name="add"
+                                            class="quick-add__submit button button--full-width button--secondary"
+                                            aria-haspopup="dialog"
+                                            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                            aria-live="polite"
+                                            data-sold-out-message="true"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                            <span>
+                                              {%- if product.selected_or_first_available_variant.available -%}
+                                                {{ 'products.product.add_to_cart' | t }}
+                                              {%- else -%}
+                                                {{ 'products.product.sold_out' | t }}
+                                              {%- endif -%}
+                                            </span>
+                                            <span class="sold-out-message hidden">
+                                              {{ 'products.product.sold_out' | t }}
+                                            </span>
+                                            {%- render 'loading-spinner' -%}
+                                          </button>
+                                        {%- endform -%}
+                                      </product-form>
+                                    {%- endif -%}
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                        
+                              <!-- Discount Banner at the Bottom -->
+                              {% if product.tags contains 'black-friday1' %}
+                                <div class="discount-text-container1">
+                                  <div class="discount-text1">BUY 1 GET 1 50% OFF</div>
+                                </div>
+                              {% endif %}
+                              
+                            </div> 
+                          </div>
+                        </a>
+                {% endif %}
+            {% endfor %}
+              {% endpaginate %}
+        {% endif %}
+    </div>
+    <div class="product-list-list" data-tag="cookies" style="display:none;">
+        {% assign collection_handle = 'black-friday' %}
+        {% assign collection = collections[collection_handle] %}
+        {% if collection and collection.products.size > 0 %}
+            {% paginate collection.products by 151%} <!-- Adjust the number as needed, max is 100 -->
+            {% for product in collection.products %}
+                {% if product.tags contains 'Cookies' %}
+                     <a href="{{ product.url }}">
+                          <div class="vegan1-product-item">
+                            <div class="vegan1-product">
+                              <div class="vegan1-product-image">
+                                {{ product.featured_image | img_url: '350x350' | img_tag: product.featured_image.alt }}
+                              </div>
+                              <div class="vegan1-title">{{ product.title }}</div>
+                        
+                              <div class="priceandbutton">
+                                <div class="vegan1-price">{{ product.price | money }}</div>
+                                <div class="quick-add no-js-hidden">
+                                  {%- liquid 
+                                    assign section_id = section.id   
+                                  %}
+                                  {%- liquid
+                                    assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                                    assign qty_rules = false
+                                    if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                                      assign qty_rules = true
+                                    endif
+                                  -%}
+                                  {%- if product.variants.size > 1 or qty_rules -%}
+                                    <a style="text-decoration: none;" href="{{ product.url }}">
+                                      <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                    </a>
+                                  {%- else -%}
+                                    {%- if product.tags contains 'Custom' -%}
+                                      <a style="text-decoration: none;" href="{{ product.url }}">
+                                        <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                      </a>
+                                    {%- else -%}
+                                      <product-form data-section-id="{{ section.id }}">
+                                        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                                          <input
+                                            type="hidden"
+                                            name="id"
+                                            value="{{ product.selected_or_first_available_variant.id }}"
+                                            class="product-variant-id"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                          <button
+                                            id="{{ product_form_id }}-submit"
+                                            type="submit"
+                                            name="add"
+                                            class="quick-add__submit button button--full-width button--secondary"
+                                            aria-haspopup="dialog"
+                                            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                            aria-live="polite"
+                                            data-sold-out-message="true"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                            <span>
+                                              {%- if product.selected_or_first_available_variant.available -%}
+                                                {{ 'products.product.add_to_cart' | t }}
+                                              {%- else -%}
+                                                {{ 'products.product.sold_out' | t }}
+                                              {%- endif -%}
+                                            </span>
+                                            <span class="sold-out-message hidden">
+                                              {{ 'products.product.sold_out' | t }}
+                                            </span>
+                                            {%- render 'loading-spinner' -%}
+                                          </button>
+                                        {%- endform -%}
+                                      </product-form>
+                                    {%- endif -%}
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                        
+                              <!-- Discount Banner at the Bottom -->
+                              {% if product.tags contains 'black-friday1' %}
+                                <div class="discount-text-container1">
+                                  <div class="discount-text1">BUY 1 GET 1 50% OFF</div>
+                                </div>
+                              {% endif %}
+                              
+                            </div> 
+                          </div>
+                        </a>
+                {% endif %}
+            {% endfor %}
+              {% endpaginate %}
+        {% endif %}
+    </div>
+    <div class="product-list-list" data-tag="brownies" style="display:none;">
+        {% assign collection_handle = 'black-friday' %}
+        {% assign collection = collections[collection_handle] %}
+        {% if collection and collection.products.size > 0 %}
+           {% paginate collection.products by 151%} <!-- Adjust the number as needed, max is 100 -->
+            {% for product in collection.products %}
+                {% if product.tags contains 'brownie-slices' %}
+                     <a href="{{ product.url }}">
+                          <div class="vegan1-product-item">
+                            <div class="vegan1-product">
+                              <div class="vegan1-product-image">
+                                {{ product.featured_image | img_url: '350x350' | img_tag: product.featured_image.alt }}
+                              </div>
+                              <div class="vegan1-title">{{ product.title }}</div>
+                        
+                              <div class="priceandbutton">
+                                <div class="vegan1-price">{{ product.price | money }}</div>
+                                <div class="quick-add no-js-hidden">
+                                  {%- liquid 
+                                    assign section_id = section.id   
+                                  %}
+                                  {%- liquid
+                                    assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                                    assign qty_rules = false
+                                    if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                                      assign qty_rules = true
+                                    endif
+                                  -%}
+                                  {%- if product.variants.size > 1 or qty_rules -%}
+                                    <a style="text-decoration: none;" href="{{ product.url }}">
+                                      <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                    </a>
+                                  {%- else -%}
+                                    {%- if product.tags contains 'Custom' -%}
+                                      <a style="text-decoration: none;" href="{{ product.url }}">
+                                        <button class="quick-add__submit button button--full-width button--secondary">ORDER NOW</button>
+                                      </a>
+                                    {%- else -%}
+                                      <product-form data-section-id="{{ section.id }}">
+                                        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                                          <input
+                                            type="hidden"
+                                            name="id"
+                                            value="{{ product.selected_or_first_available_variant.id }}"
+                                            class="product-variant-id"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                          <button
+                                            id="{{ product_form_id }}-submit"
+                                            type="submit"
+                                            name="add"
+                                            class="quick-add__submit button button--full-width button--secondary"
+                                            aria-haspopup="dialog"
+                                            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                            aria-live="polite"
+                                            data-sold-out-message="true"
+                                            {% if product.selected_or_first_available_variant.available == false %} disabled {% endif %}
+                                          >
+                                            <span>
+                                              {%- if product.selected_or_first_available_variant.available -%}
+                                                {{ 'products.product.add_to_cart' | t }}
+                                              {%- else -%}
+                                                {{ 'products.product.sold_out' | t }}
+                                              {%- endif -%}
+                                            </span>
+                                            <span class="sold-out-message hidden">
+                                              {{ 'products.product.sold_out' | t }}
+                                            </span>
+                                            {%- render 'loading-spinner' -%}
+                                          </button>
+                                        {%- endform -%}
+                                      </product-form>
+                                    {%- endif -%}
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                        
+                              <!-- Discount Banner at the Bottom -->
+                              {% if product.tags contains 'black-friday1' %}
+                                <div class="discount-text-container1">
+                                  <div class="discount-text1">BUY 1 GET 1 50% OFF</div>
+                                </div>
+                              {% endif %}
+                              
+                            </div> 
+                          </div>
+                        </a>
+                {% endif %}
+            {% endfor %}
+             {% endpaginate %}
+        {% endif %}
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const categoryItems = document.querySelectorAll('.category-item');
+  const productLists = document.querySelectorAll('.product-list-list');
+
+  function showProductsByTags(tags) {
+    productLists.forEach(list => {
+      list.style.display = 'none';
+    });
+
+    tags.forEach(tag => {
+      const productList = document.querySelector(`.product-list-list[data-tag="${tag.trim()}"]`);
+      if (productList) {
+        productList.style.display = 'flex';
+      }
+    });
+  }
+
+  // Add event listeners to category items
+  categoryItems.forEach(item => {
+    item.addEventListener('click', function () {
+      // Remove active class from all items
+      categoryItems.forEach(category => category.classList.remove('active-item'));
+
+      // Add active class to the clicked item
+      this.classList.add('active-item');
+
+      // Get tags for the clicked category and show corresponding products
+      const tags = this.getAttribute('data-tags').split(',');
+      showProductsByTags(tags);
+    });
+  });
+
+  // On load, set the "gift-box" category as active and show products
+  const defaultCategory = document.querySelector('.category-item[data-tags~="gift-box"]');
+  if (defaultCategory) {
+    defaultCategory.classList.add('active-item');
+    showProductsByTags(['gift-box']);
+  }
+
+ const endDateStr = '2024-12-08T23:59:00+11:00'; // 8th December 2024, 11:59 PM AEDT
+  const endDate = new Date(endDateStr); // Parse the date as AEDT time
+
+function updateCountdown() {
+  const now = new Date().getTime(); // Get the current local time in milliseconds
+  const distance = endDate.getTime() - now; // Calculate the time difference
+
+  if (distance < 0) {
+    document.querySelector('.countdown-timer').innerHTML = "<span>Countdown Ended</span>";
+    clearInterval(interval);
+    return;
+  }
+
+  // Calculate remaining time components
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Update the countdown display
+  document.getElementById('days').innerText = days.toString().padStart(2, '0');
+  document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+  document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+  document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+}
+
+// Start the countdown
+const interval = setInterval(updateCountdown, 1000);
+updateCountdown();
+
+
+});
+
+</script>
+
+
+{% schema %}
+{
+  "name": "Cake Frenzy Landing Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "countdown_end_date",
+      "label": "Countdown End Date (YYYY-MM-DDTHH:MM:SS)",
+      "default": "2024-12-01T00:00:00"
+    },
+    {
+      "type": "text",
+      "id": "cake_frenzy_description",
+      "label": "Enter description",
+      "default": "Enter something"
+    }
+  ],
+  "blocks": [
+   {
+      "type": "cake_frenzy_options",
+      "name": "Cake Frenzy Options",
+      "limit": 10,
+      "settings": [
+      {
+      "type": "text",
+      "id": "cake_frenzy_option_text",
+      "label": "Cake Option"
+      }
+      ]
+    },
+   {
+     "type": "image",
+     "name": "Vegan Types",
+     "settings": [
+       {
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image",
+         "info":"Size : 50px X 50px"
+       },
+       {
+         "type": "text",
+         "id": "title",
+         "label": "Title",
+         "default": "item title"
+       },
+       {
+         "type": "url",
+         "id": "link",
+         "label": "Link"
+       }
+     ]
+   }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

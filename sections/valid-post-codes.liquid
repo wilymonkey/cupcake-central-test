@@ -1,0 +1,404 @@
+<style>
+  .postcode-container {
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid #686868;
+    color: #686868;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding: 3rem;
+    height: 400px;
+    overflow-y: hidden;
+    width: 90%;
+  }
+
+  .postcode-container-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 70%, rgba(255,255,255,1) 90%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(90%,rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 70%,rgba(255,255,255,1) 90%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,0) 70%,rgba(255,255,255,1) 90%);
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0) 70%,rgba(255,255,255,1) 90%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 70%,rgba(255,255,255,1) 90%);
+  }
+
+  .postcode-title {
+    display: block;
+    position: relative;
+    padding: 1.5rem 0;
+    padding-left: 4.5rem;
+    cursor: pointer;
+    font-size: 3rem;
+    font-weight: bold;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+    line-height: 100%;
+     display: flex;
+  }
+
+  .postcode-title svg {
+    width: 15px;
+    position: absolute;
+    top: 3rem;
+    right: 1.5rem;
+  }
+
+  .postcode-title1 svg {
+    width: 15px;
+    position: absolute;
+    bottom: 3rem;
+    right: 1.5rem;
+  }
+
+  .icon-rotate {
+    transform: rotate(180deg);
+  }
+
+  .postcode-title input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  #main-postcodes-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  #postcodes-container-1, #postcodes-container-2, #postcodes-container-3 {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #postcodes-container-1 {
+    border-right: 2px solid #D7D7D7;
+  }
+
+  #postcodes-container-2 {
+    border-right: 2px solid #D7D7D7;
+  }
+
+  .postcode-content-list {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    height: 100%;
+  }
+
+  .postcode-content-item {
+    display: flex;
+    justify-content: center;
+    margin-right: 0 !important;
+    line-height: 100%;
+    margin-top: 2rem;
+  }
+
+  .postcode-content-item span {
+    width: 50%;
+    align-items: flex-start;
+  }
+
+  .postcode-content-item-col-2-attached-to-1, .postcode-content-item-col-2-attached-to-3 {
+    display: none;
+  }
+
+  .postcode-content-item-full-attach-to-1 {
+    display: none;
+  }
+
+  .search-bar{
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 20px; 
+    height: 50px;
+  }
+
+  .search-bar-input{
+    width: 30%; 
+    padding: 10px; 
+    border-radius: 10px; 
+    border: 1px solid #686868;
+  }
+
+  @media (max-width: 990px) {
+
+    #postcodes-container-2 {
+      display: none;
+    }
+
+    #postcodes-container-1, #postcodes-container-3 {
+    width: 50%;
+  }
+
+    .postcode-content-item-col-2-attached-to-1, .postcode-content-item-col-2-attached-to-3 {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .postcode-container {
+      background-color: #fff;
+      border-radius: 15px;
+      border: 1px solid #686868;
+      color: #686868;
+      margin-top: 5rem;
+      margin-bottom: 0rem;
+      padding: 3rem;
+      height: 425px;
+      overflow-y: hidden;
+      width: 100%;
+  }
+    .postcode-content-item-full-attach-to-1 {
+      display: flex;
+    }
+
+    #postcodes-container-2, #postcodes-container-3 {
+      display: none;
+    }
+
+    #postcodes-container-1 {
+      width: 100%;
+      border:none;
+    }
+
+    .postcode-title svg {
+      width: 15px;
+      position: absolute;
+      top: 5.5rem;
+      right: 1.5rem;
+  }
+    
+    .postcode-title {
+      display: block;
+      position: relative;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      font-size: 2.7rem;
+      font-weight: bold;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      text-transform: uppercase;
+      line-height: 100%;
+      display: flex;
+  }
+    .postcode-content-list {
+      width: 100%;
+      padding-left: 0%;
+      padding-right: 0%;
+      height: 100%;
+  }
+    .search-bar-input{
+      width: 70%; 
+      padding: 10px; 
+      border-radius: 10px; 
+      border: 1px solid #686868;
+  }
+  }
+</style>
+
+<div class="postcode-container page-width">
+  <div class="search-bar">
+  <input type="text" id="postcode-search" class="search-bar-input" placeholder="Search postcode or suburb...">
+</div>
+  <div id="postcode-list-title" class="postcode-title">
+    <div class="postcode-title1">
+    Click here to see all valid post codes
+    </div>
+    <div class="postcode-title2">
+      <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 10 6"
+      id="postcode-dropdown-arrow"
+    >
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+    </svg>
+    </div>
+  </div>
+
+  {% assign postcodes_column_1 = section.settings.postcodes_col_1 | split: ', ' %}
+  {% assign postcodes_column_2 = section.settings.postcodes_col_2 | split: ', ' %}
+  {% assign postcodes_column_3 = section.settings.postcodes_col_3 | split: ', ' %}
+
+  <div id="main-postcodes-container">
+    <div id="postcodes-container-1">
+      <ul class="postcode-content-list footer-block__details-content list-unstyled">
+        <li id="postcode-content-item-title-1" class="postcode-content-item postcode-content-item-title">
+          <span><b>POST CODE</b></span
+          ><span><b>SUBURB</b></span>
+        </li>
+        {% for each_postcode in postcodes_column_1 %}
+          {% assign postcode_content = each_postcode | split: ';' %}
+          <li class="postcode-content-item">
+            <span>{{ postcode_content.first }}</span>
+            <span>{{ postcode_content.last }}</span>
+          </li>
+        {% endfor %}
+        {% assign index_count = 0 %}
+        {% assign half_arr_size = postcodes_column_2.size | divided_by: 2 %}
+        {% for each_postcode in postcodes_column_2 %}
+          {% if index_count < half_arr_size %}
+            {% assign postcode_content = each_postcode | split: ';' %}
+            <li class="postcode-content-item postcode-content-item-col-2-attached-to-1">
+              <span>{{ postcode_content.first }}</span>
+              <span>{{ postcode_content.last }}</span>
+            </li>
+          {% endif %}
+          {% assign index_count = index_count | plus: 1 %}
+        {% endfor %}
+        {% for each_postcode in postcodes_column_2 %}
+          {% assign postcode_content = each_postcode | split: ';' %}
+          <li class="postcode-content-item postcode-content-item-full-attach-to-1">
+            <span>{{ postcode_content.first }}</span>
+            <span>{{ postcode_content.last }}</span>
+          </li>
+        {% endfor %}
+        {% for each_postcode in postcodes_column_3 %}
+          {% assign postcode_content = each_postcode | split: ';' %}
+          <li class="postcode-content-item postcode-content-item-full-attach-to-1">
+            <span>{{ postcode_content.first }}</span>
+            <span>{{ postcode_content.last }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id="postcodes-container-2">
+      <ul class="postcode-content-list footer-block__details-content list-unstyled">
+        <li id="postcode-content-item-title-2" class="postcode-content-item postcode-content-item-title">
+          <span><b>POST CODE</b></span
+          ><span><b>SUBURB</b></span>
+        </li>
+        {% for each_postcode in postcodes_column_2 %}
+          {% assign postcode_content = each_postcode | split: ';' %}
+          <li class="postcode-content-item">
+            <span>{{ postcode_content.first }}</span>
+            <span>{{ postcode_content.last }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id="postcodes-container-3">
+      <ul class="postcode-content-list footer-block__details-content list-unstyled">
+        <li id="postcode-content-item-title-3" class="postcode-content-item postcode-content-item-title">
+          <span><b>POST CODE</b></span
+          ><span><b>SUBURB</b></span>
+        </li>
+        {% assign index_count = 0 %}
+        {% assign half_arr_size = postcodes_column_2.size | divided_by: 2 %}
+        {% for each_postcode in postcodes_column_2 %}
+          {% unless index_count < half_arr_size %}
+            {% assign postcode_content = each_postcode | split: ';' %}
+            <li class="postcode-content-item postcode-content-item-col-2-attached-to-3">
+              <span>{{ postcode_content.first }}</span>
+              <span>{{ postcode_content.last }}</span>
+            </li>
+          {% endunless %}
+          {% assign index_count = index_count | plus: 1 %}
+        {% endfor %}
+        {% for each_postcode in postcodes_column_3 %}
+          {% assign postcode_content = each_postcode | split: ';' %}
+          <li class="postcode-content-item">
+            <span>{{ postcode_content.first }}</span>
+            <span>{{ postcode_content.last }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; margin: 10px;">
+      <button id="postcode-close" class="button">CLOSE</button>
+  </div>
+</div>
+
+<script>
+
+  $("#postcode-search").on("input", function() {
+  var searchQuery = $(this).val().toLowerCase();
+
+  $(".postcode-content-item").each(function() {
+    var postcode = $(this).find("span:first").text().toLowerCase();
+    var suburb = $(this).find("span:last").text().toLowerCase();
+
+    if (postcode.includes(searchQuery) || suburb.includes(searchQuery)) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+});
+
+  
+ $("#postcode-list-title").click(function(){
+    const container = $('.postcode-container');
+    const gradient = $('.postcode-container-gradient');
+    const arrow = $('#postcode-dropdown-arrow');
+    
+    if (container.css("height") === "400px") {
+        container.css("height", "fit-content");
+        gradient.hide();
+        arrow.css('transform', 'rotate(180deg)');
+    } else {
+        container.css("height", "400px");
+        gradient.show();
+        arrow.css('transform', 'rotate(0deg)');
+    }
+});
+  $("#postcode-close").click(function() {
+    const container = $('.postcode-container');
+    const gradient = $('.postcode-container-gradient');
+    const arrow = $('#postcode-dropdown-arrow');
+
+    container.css("height", "400px");
+    gradient.show();
+    arrow.css('transform', 'rotate(0deg)');
+});
+
+  
+</script>
+
+{% schema %}
+{
+  "name": "Valid Post Code",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "postcodes_col_1",
+      "label": "Post Codes Column 1",
+      "default": "CODE;NAME, CODE;NAME"
+    },
+    {
+      "type": "textarea",
+      "id": "postcodes_col_2",
+      "label": "Post Codes Column 2",
+      "default": "CODE;NAME, CODE;NAME"
+    },
+    {
+      "type": "textarea",
+      "id": "postcodes_col_3",
+      "label": "Post Codes Column 3",
+      "default": "CODE;NAME, CODE;NAME"
+    }
+  ],
+   "presets": [
+        {
+          "name": "Valid Post Code"
+        }
+      ]
+}
+{% endschema %}

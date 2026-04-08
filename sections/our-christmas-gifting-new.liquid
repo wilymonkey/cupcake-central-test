@@ -1,0 +1,179 @@
+<div
+  class="py-[25px] md:pb-[0px] m-xs:py-[30px] d-sm:py-6"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="px-[6px] py-5 md:pb-2 d-sm:pt-12 border-none! md:pl">
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+      <div class="mb-3 text-center">
+        {% if section.settings.heading != blank %}
+          <div class="text-[24px] d-sm:text-[36px] d-sm:leading-[33px]! font-black leading-[22px]! tracking-normal! text-dark-shade-brown">{{ section.settings.heading }}</div>
+        {% endif %}
+        <div class="max-w-[352px] md:max-w-[490px] d-sm:max-w-[600px] mx-auto py-5 text-center px-[24px] d-sm:px-0 text-[14px]! font-[500] leading-[18px]! d-sm:py-5 md:pt-3 md:pb-1 d-lg:pt-4 d-lg:pb-1 d-sm:text-[24px] d-sm:leading-[34px]">
+        {% if section.settings.subheading != blank %}
+          <div class="text-[14px]! d-sm:text-[16px]! font-[500] leading-[18px]! d-sm:leading-[23px]! tracking-[0.3px] text-espresso">
+            {{ section.settings.subheading }}
+          </div>
+        {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% comment %}
+      Christmas Gifting Grid Layout
+    {% endcomment %}
+     {% comment %} Previous Working Code {% endcomment %}
+    {% comment %} <div class="-mb-4 md:mb-8 d-sm:mb-0 d-sm:pb-0 md:overflow-x-auto custom-scrollbar md:flex md:justify-center pt-[36px]">
+      <div class="md:grid md:ml-3 md:flex-767 pb-[35px] d-sm:grid-cols-4 md:grid-cols-4 md:gap-20 md:gap-[24px] d-sm:gap-[32px] d-lg:gap-[32px] md:w-full d-lg:max-w-[1905px] md:h-full! d-sm:mx-[10%] d-lg:justify-center">
+        {% for block in section.blocks %}
+          {% render 'our-christmas-gifting-collection-new', card_block: block %}
+        {% endfor %}
+      </div>
+    </div> {% endcomment %}
+    <div class="-mb-4 md:mb-8 d-sm:mb-0 d-sm:pb-0 md:overflow-x-auto md:flex md:justify-center pt-[36px]">
+      <div
+  class="
+    grid grid-cols-2 
+    pl-[2rem]! m-xs:pl-[0rem]! m-sm:pl-[3rem]! d-sm:pl-0!
+    gap-x-5! gap-y-5! d-sm:gap-y-8! d-sm:gap-x-8!
+    w-[392px] m-sm:w-[1000px] d-sm:w-[1000px]
+    
+    pb-[35px]
+    md:ml-3 md:flex-767 md:grid md:grid-cols-4
+    md:gap-20 md:gap-[24px]
+    md:w-full md:h-full!
+    d-sm:grid-cols-4 d-sm:mx-[10%]
+    d-lg:gap-[32px] d-lg:max-w-[1905px] d-lg:justify-center
+  "
+>
+  {% for block in section.blocks %}
+    {% render 'our-christmas-gifting-collection-new', card_block: block %}
+  {% endfor %}
+</div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our Christmas Gifting",
+  "tag": "section",
+  "class": "christmas-gifting-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Christmas Gifting"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Discover the perfect festive gifts for your loved ones</p>"
+    },
+    {
+      "type": "header",
+      "content": "Style Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "christmas_card",
+      "name": "Christmas Gift Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Gift Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Gift Title",
+          "default": "Christmas Gift Collection"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Gift Description",
+          "default": "Perfect festive gifts for your loved ones this holiday season."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "color",
+          "id": "card_background",
+          "label": "Card Background Color",
+          "default": "#FFFFFF"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Christmas Gifting",
+      "category": "Seasonal",
+      "blocks": [
+        { 
+          "type": "christmas_card",
+          "settings": {
+            "title": "Stocking Fillers",
+            "description": "Small but meaningful gifts for stockings",
+            "button_text": "Explore"
+          }
+        },
+        { 
+          "type": "christmas_card",
+          "settings": {
+            "title": "Festive Bundles",
+            "description": "Curated gift sets for the holiday season",
+            "button_text": "View Bundles"
+          }
+        },
+        { 
+          "type": "christmas_card",
+          "settings": {
+            "title": "Premium Gifts",
+            "description": "Luxury gifts for special someone",
+            "button_text": "Discover"
+          }
+        },
+        { 
+          "type": "christmas_card",
+          "settings": {
+            "title": "Last Minute Gifts",
+            "description": "Quick shipping options available",
+            "button_text": "Shop Fast"
+          }
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["header"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,88 @@
+@config "./tailwind.config.js";
+@import "tailwindcss";
+@theme { --font-roboto: "Roboto", 'sans-serif'; --font-poppins: "Poppins", "sans-serif"; }
+@font-face {
+  font-family: "CCMonsterMash";
+  src: url("https://cdn.shopify.com/s/files/1/1848/3097/files/CC_Monster_Mash_Medium.ttf?v=1759456356") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* poppins-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://cdn.shopify.com/s/files/1/1848/3097/files/poppins-v23-latin-regular.woff2?v=1754891737') format('woff2');
+}
+/* poppins-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://cdn.shopify.com/s/files/1/1848/3097/files/poppins-v23-latin-500.woff2?v=1757464729') format('woff2');
+}
+/* poppins-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: url('https://cdn.shopify.com/s/files/1/1848/3097/files/poppins-v23-latin-600.woff2?v=1757464729') format('woff2');
+}
+/* poppins-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://cdn.shopify.com/s/files/1/1848/3097/files/poppins-v23-latin-700.woff2?v=1754891738') format('woff2');
+}
+/* poppins-800 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  src: url('https://cdn.shopify.com/s/files/1/1848/3097/files/poppins-v23-latin-800.woff2?v=1757464729') format('woff2');
+}
+/* poppins-900 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 900;
+  src: url('https://cdn.shopify.com/s/files/1/1848/3097/files/poppins-v23-latin-900.woff2?v=1754891737') format('woff2');
+}
+
+/* --- Complete Custom Scrollbar CSS --- */
+
+/* For Chrome, Safari, Edge, etc. */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 30px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #ffafcc;
+  border-radius: 10px;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: #ffafcc transparent;
+}
+
+/* No Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

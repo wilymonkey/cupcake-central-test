@@ -1,0 +1,105 @@
+<div
+  class="py-[25px] md:pb-[0px] m-xs:py-[30px] d-sm:py-6"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="px-[6px] py-5 md:pb-2 d-sm:pt-12 border-none!">
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+      <div class="mb-3 text-center">
+        {% if section.settings.heading != blank %}
+          <div class="text-[24px] d-sm:text-[36px] d-sm:leading-[33px]! font-black leading-[22px]! tracking-normal! text-espresso">{{ section.settings.heading }}</div>
+        {% endif %}
+        <div class="max-w-[352px] md:max-w-[880px] d-sm:max-w-[976px] mx-auto py-5 text-center px-[24px] d-sm:px-0 text-[14px]! font-[500] leading-[18px]! d-sm:py-5 md:pt-3 md:pb-1 d-lg:pt-4 d-lg:pb-1 d-sm:text-[24px] d-sm:leading-[34px]">
+        {% if section.settings.subheading != blank %}
+          <div class="text-[14px]! d-sm:text-[16px]! font-[500] leading-[18px]! d-sm:leading-[23px]! tracking-[0.3px] text-espresso">
+            {{ section.settings.subheading }}
+          </div>
+        {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% comment %}
+      This container handles the horizontal scrolling. The 'custom-scrollbar'
+      class is for custom styling .
+    {% endcomment %}
+<div class="pb-8 -mb-4 md:mb-8 d-sm:mb-0 d-sm:pb-0 overflow-x-auto custom-scrollbar md:flex md:justify-center md:h-[459px] d-lg:h-[513px] ">
+  <div class="inline-flex gap-[12px] md:gap-[24px] d-sm:gap-[32px] d-lg:gap-[32px] md:w-full d-lg:max-w-[1905px] md:h-full! d-sm:mx-[10%] d-lg:justify-center">
+    {% for block in section.blocks %}
+      {% render 'featured-grid-card', card_block: block %}
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Header / Title"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Hello</p>"
+    },
+    {
+      "type": "header",
+      "content": "Style Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Card Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Button SML"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Grid",
+      "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }, { "type": "card" }]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,169 @@
+{%- comment -%}
+  This section file contains the settings and passes them to the snippet.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- render 'store-locations-snippet',
+  heading: section.settings.heading,
+  subheading: section.settings.subheading,
+  default_image: section.settings.default_image,
+  locations: section.blocks,
+  section_id: section.id
+-%}
+
+{% schema %}
+{
+  "name": "Store Locations",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Header / Title"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>In rhoncus felis sed sodales fermentum. Pellentesque eget odio vitae turpis malesuada feugiat at in risus.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "default_image",
+      "label": "Default Image",
+      "info": "Shows when no location is selected."
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Store Location",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Store Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Store Name",
+          "default": "Highpoint Shopping Centre"
+        },
+        {
+          "type": "richtext",
+          "id": "address",
+          "label": "Address",
+          "default": "<p>Shop 2561, Level 2 Fresh Food Hall<br>Highpoint Shopping Centre<br>Maribyrnong, 3032</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Button XSML"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "header",
+          "content": "Opening Hours"
+        },
+        {
+          "type": "text",
+          "id": "hours_monday",
+          "label": "Monday",
+          "default": "9:00am - 5:30pm"
+        },
+        {
+          "type": "text",
+          "id": "hours_tuesday",
+          "label": "Tuesday",
+          "default": "9:00am - 5:30pm"
+        },
+        {
+          "type": "text",
+          "id": "hours_wednesday",
+          "label": "Wednesday",
+          "default": "9:00am - 5:30pm"
+        },
+        {
+          "type": "text",
+          "id": "hours_thursday",
+          "label": "Thursday",
+          "default": "9:00am - 6:00pm"
+        },
+        {
+          "type": "text",
+          "id": "hours_friday",
+          "label": "Friday",
+          "default": "9:00am - 6:00pm"
+        },
+        {
+          "type": "text",
+          "id": "hours_saturday",
+          "label": "Saturday",
+          "default": "9:00am - 6:00pm"
+        },
+        {
+          "type": "text",
+          "id": "hours_sunday",
+          "label": "Sunday",
+          "default": "9:00am - 6:00pm"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Locations",
+      "blocks": [
+        { "type": "location" },
+        { "type": "location" },
+        { "type": "location" }
+      ]
+    }
+  ]
+}
+{% endschema %}

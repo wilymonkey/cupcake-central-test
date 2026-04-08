@@ -1,0 +1,75 @@
+.ishiservices-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.services {
+  flex: 0 0 12%; /* Adjust for spacing */
+  margin: 7px;
+  /* overflow: hidden; */
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.service-img img {
+  width: 17rem; /* Size increased */
+  height: auto;
+  display: block;
+  border-radius: 50%; /* Makes the image circular */
+  margin: 0 auto;
+  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+  margin-top: 0px;
+}
+.service-img img:hover {
+  transform: scale(1.1); /* Scales up the image by 10% */
+}
+
+.service-title {
+  margin: 5px 0;
+  text-decoration: none;
+}
+.bubble-link {
+  text-decoration: none;
+  color: #444444;
+  font: normal normal bold 17px/25px Poppins;
+}
+/* .service-block .title {
+  margin-top: 6px !important;
+} */
+@media (max-width: 900px) {
+  .ishiservices-content {
+    max-width: 100%;
+  }
+
+  .services {
+    flex: 0 0 25%; /* Adjust the width for 3 columns */
+  }
+  .service-img img {
+    width: 9rem;
+  }
+  .service-title {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 908px) and (max-width: 1300px) {
+  .ishiservices-content {
+    max-width: 95%;
+  }
+
+  .services {
+    flex: 0 0 13%; /* Adjust the width for 3 columns */
+  }
+  .service-img img {
+    width: 10rem;
+  }
+  .service-title {
+    font-size: 14px;
+  }
+}

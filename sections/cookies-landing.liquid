@@ -1,0 +1,355 @@
+{{ 'cookies-landing.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<h2 class="cookies-heading">OUR FLAVOURS</h2>
+<div class="cookies-flavour-container">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div class="cookies-flavour-item">
+        {% if block.settings.image != blank %}
+          <div class="cookie-image">
+            <img
+              class="lazyload"
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="service Image"
+              width="100%"
+              height="100%"
+            >
+          </div>
+        {% endif %}
+        <div class="cookie-title-block">
+          <div class="cookie-title">{{ block.settings.title | escape }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+<div class="gift-boxes-container">
+  <div class="twelve-cookie-gift-box-container">
+    <h2 class="cookies-heading1">12 GIFT BOXES</h2>
+    <div class="cookies-products-container1">
+      {% for product in collections.Cookies.products %}
+        {% if product.title contains '12' %}
+          <div class="cookies-product-item1">
+            <a href="{{ product.url }}">
+              <div class="cookies-product">
+                <div class="cookie-product-image">
+                  {{ product.featured_image | img_url: '350x350' | img_tag: product.featured_image.alt }}
+                </div>
+                <div>
+                </div>
+                <div class="cookie-title">{{ product.title }}</div>
+                <div class="priceandbutton">
+                  <div class="cookie-price">{{ product.price | money }}</div>
+                  <div class="quick-add no-js-hidden">
+                          {%-liquid 
+                            assign section_id = section.id   
+                          %}
+                          {%- liquid
+                            assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                            assign qty_rules = false
+                            if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                              assign qty_rules = true
+                            endif
+                          -%}
+                          {%- if product.variants.size > 1 or qty_rules -%}
+                            <a style="text-decoration: none;" href="{{ product.url }}"
+                              ><button class="quick-add__submit button button--full-width button--secondary">
+                                ORDER NOW
+                              </button></a
+                            >
+                          {%- else -%}
+                            {%- if product.tags contains 'Custom' -%}
+                              <a style="text-decoration: none;" href="{{ product.url }}"
+                                ><button class="quick-add__submit button button--full-width button--secondary">
+                                  ORDER NOW
+                                </button></a
+                              >
+                            {%- else -%}
+                              <product-form data-section-id="{{ section.id }}">
+                                {%- form 'product',
+                                  product,
+                                  id: product_form_id,
+                                  class: 'form',
+                                  novalidate: 'novalidate',
+                                  data-type: 'add-to-cart-form'
+                                -%}
+                                  <input
+                                    type="hidden"
+                                    name="id"
+                                    value="{{ product.selected_or_first_available_variant.id }}"
+                                    class="product-variant-id"
+                                    {% if product.selected_or_first_available_variant.available == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                  <button
+                                    id="{{ product_form_id }}-submit"
+                                    type="submit"
+                                    name="add"
+                                    class="quick-add__submit button button--full-width button--secondary"
+                                    aria-haspopup="dialog"
+                                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                    aria-live="polite"
+                                    data-sold-out-message="true"
+                                    {% if product.selected_or_first_available_variant.available == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                    <span>
+                                      {%- if product.selected_or_first_available_variant.available -%}
+                                        {{ 'products.product.add_to_cart' | t }}
+                                      {%- else -%}
+                                        {{ 'products.product.sold_out' | t }}
+                                      {%- endif -%}
+                                    </span>
+                                    <span class="sold-out-message hidden">
+                                      {{ 'products.product.sold_out' | t }}
+                                    </span>
+                                    {%- render 'loading-spinner' -%}
+                                  </button>
+                                {%- endform -%}
+                              </product-form>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="six-cookie-gift-box-container">
+    <h2 class="cookies-heading2">6 GIFT BOXES</h2>
+    <div class="cookies-products-container2">
+      {% for product1 in collections.Cookies.products %}
+        {% if product1.title contains '6' %}
+          <div class="cookies-product-item2">
+            <a href="{{ product1.url }}">
+              <div class="cookies-product">
+                <div class="cookie-product-image">
+                  {{ product1.featured_image | img_url: '350x350' | img_tag: product.featured_image.alt }}
+                </div>
+                <div class="cookie-title">{{ product1.title }}</div>
+                <div class="priceandbutton">
+                <div class="cookie-price">{{ product1.price | money }}</div>
+                <div class="quick-add no-js-hidden">
+                          {%-liquid 
+                            assign section_id = section.id   
+                          %}
+                          {%- liquid
+                            assign product_form_id = 'quick-add-' | append: section_id | append: product1.id
+                            assign qty_rules = false
+                            if product1.selected_or_first_available_variant.quantity_rule.min > 1 or product1.selected_or_first_available_variant.quantity_rule.max != null or product1.selected_or_first_available_variant.quantity_rule.increment > 1
+                              assign qty_rules = true
+                            endif
+                          -%}
+                          {%- if product1.variants.size > 1 or qty_rules -%}
+                            <a style="text-decoration: none;" href="{{ product1.url }}"
+                              ><button class="quick-add__submit button button--full-width button--secondary">
+                                ORDER NOW
+                              </button></a
+                            >
+                          {%- else -%}
+                            {%- if product1.tags contains 'Custom' -%}
+                              <a style="text-decoration: none;" href="{{ product1.url }}"
+                                ><button class="quick-add__submit button button--full-width button--secondary">
+                                  ORDER NOW
+                                </button></a
+                              >
+                            {%- else -%}
+                              <product-form data-section-id="{{ section.id }}">
+                                {%- form 'product',
+                                  product1,
+                                  id: product_form_id,
+                                  class: 'form',
+                                  novalidate: 'novalidate',
+                                  data-type: 'add-to-cart-form'
+                                -%}
+                                  <input
+                                    type="hidden"
+                                    name="id"
+                                    value="{{ product1.selected_or_first_available_variant.id }}"
+                                    class="product-variant-id"
+                                    {% if product1.selected_or_first_available_variant.available == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                  <button
+                                    id="{{ product_form_id }}-submit"
+                                    type="submit"
+                                    name="add"
+                                    class="quick-add__submit button button--full-width button--secondary"
+                                    aria-haspopup="dialog"
+                                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product1.id }}"
+                                    aria-live="polite"
+                                    data-sold-out-message="true"
+                                    {% if product1.selected_or_first_available_variant.available == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                    <span>
+                                      {%- if product1.selected_or_first_available_variant.available -%}
+                                        {{ 'products.product.add_to_cart' | t }}
+                                      {%- else -%}
+                                        {{ 'products.product.sold_out' | t }}
+                                      {%- endif -%}
+                                    </span>
+                                    <span class="sold-out-message hidden">
+                                      {{ 'products.product.sold_out' | t }}
+                                    </span>
+                                    {%- render 'loading-spinner' -%}
+                                  </button>
+                                {%- endform -%}
+                              </product-form>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </div>
+              </div>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="view-more">
+  <button id="view-more-button" class="view-more-button">SHOW MORE</button>
+</div>
+<div class="how-to-heat-container">
+  <h2 class="cookies-heading">HOW TO HEAT</h2>
+  <div class="how-to-heat-steps-container">
+    <div class="heat-step1">
+      <div class="heat-step1-text">
+        <div class="heat-step1-text1">1</div>
+        <div class="heat-step1-text2">TAKE OUT THE COOKIE <span style="font-weight: bold">FROM IT’S PACKAGE</span></div>
+      </div>
+      <div class="heat-step1-image">
+        <img
+              class="lazyload"
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_580.svg?v=1724649573"
+              alt="service Image"
+              width="120"
+              height="150"
+            >
+      </div>
+    </div>
+    <div class="arrow-image">
+    <img
+      src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_549.svg?v=1724652411"
+      alt="Arrow"
+      width="50"
+      height="50"
+    >
+  </div>
+    <div class="heat-step2">
+      <div class="heat-step2-text">
+        <div class="heat-step2-text1">2</div>
+        <div class="heat-step2-text2">PLACE IN THE MICROWAVE <span style="font-weight: bold">HEAT FOR 15 SECONDS</span></div>
+      </div>
+      <div class="heat-step2-image">
+        <img
+              class="lazyload"
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_579.svg?v=1724649573"
+              alt="service Image"
+              width="120"
+              height="150"
+            >
+      </div>
+    </div>
+    <div class="arrow-image">
+    <img
+      src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_549.svg?v=1724652411"
+      alt="Arrow"
+      width="50"
+      height="50"
+    >
+  </div>
+    <div class="heat-step3">
+      <div class="heat-step3-text">
+        <div class="heat-step3-text1">3</div>
+        <div class="heat-step3-text2">ENJOY YOUR <span style="font-weight: bold">OOEY GOOEY COOKIE</span></div>
+      </div>
+      <div class="heat-step3-image">
+        <img
+              class="lazyload"
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_578.svg?v=1724649573"
+              alt="service Image"
+              width="120"
+              height="150"
+            >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Initially hide all items after the first 4 in each section
+    const productItems1 = document.querySelectorAll('.cookies-product-item1');
+    const productItems2 = document.querySelectorAll('.cookies-product-item2');
+
+    productItems1.forEach((item, index) => {
+      if (index >= 4) {
+        item.classList.add('hidden');
+      }
+    });
+
+    productItems2.forEach((item, index) => {
+      if (index >= 4) {
+        item.classList.add('hidden');
+      }
+    });
+
+    // Show all items on button click
+    document.getElementById('view-more-button').addEventListener('click', function () {
+      productItems1.forEach(item => item.classList.remove('hidden'));
+      productItems2.forEach(item => item.classList.remove('hidden'));
+
+      // Optionally hide the button after clicking
+      this.style.display = 'none';
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "Cookies Landing Page",
+  "settings": [],
+  "blocks": [
+   {
+     "type": "image",
+     "name": "Collection",
+     "settings": [
+       {
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image",
+         "info":"Size : 50px X 50px"
+       },
+       {
+         "type": "text",
+         "id": "title",
+         "label": "Title",
+         "default": "item title"
+       },
+       {
+         "type": "url",
+         "id": "link",
+         "label": "Link"
+       }
+     ]
+   }
+ ],
+  "presets": [
+  {
+    "name": "Cookies Landing"
+    }
+  ]
+}
+{% endschema %}

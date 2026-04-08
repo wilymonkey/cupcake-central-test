@@ -1,0 +1,147 @@
+{%- comment -%}
+  This section has been updated to support a carousel.
+  It now passes the section blocks to the snippet.
+{%- endcomment -%}
+{%- render 'custom-hero-banner-2025',
+  blocks: section.blocks,
+  autoplay: section.settings.autoplay,
+  slide_interval: section.settings.slide_interval
+-%}
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Carousel Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slide_interval",
+      "label": "Slide Interval (in seconds)",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Background Settings"
+        },
+        {
+          "type": "select",
+          "id": "background_type",
+          "label": "Background Type",
+          "options": [
+            { "value": "image", "label": "Image" },
+            { "value": "video", "label": "Video" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image (Desktop)"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_mobile",
+          "label": "Background Image (Mobile)"
+        },
+        {
+          "type": "video",
+          "id": "background_video",
+          "label": "Background Video (Desktop)"
+        },
+        {
+          "type": "video",
+          "id": "background_video_mobile",
+          "label": "Background Video (Mobile)"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_image",
+          "label": "Video Poster Image"
+        },
+        {
+          "type": "header",
+          "content": "Content Settings"
+        },
+        {
+          "type": "select",
+          "id": "mobile_text_alignment",
+          "label": "Mobile Text Alignment (Vertical)",
+          "options": [
+            { "value": "justify-start", "label": "Top" },
+            { "value": "justify-center", "label": "Center" },
+            { "value": "justify-end", "label": "Bottom" }
+          ],
+          "default": "justify-start"
+        },
+        {
+          "type": "select",
+          "id": "desktop_text_alignment",
+          "label": "Desktop Text Alignment",
+          "options": [
+            { "value": "md:items-start md:text-left", "label": "Left" },
+            { "value": "md:items-center md:text-center", "label": "Center" },
+            { "value": "md:items-end md:text-right", "label": "Right" }
+          ],
+          "default": "md:items-start md:text-left"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "GET FREE DELIVERY ANY DAY OF THE WEEK!"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "With orders over $40"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "header",
+          "content": "Color Settings"
+        },
+        { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#FFFFFF" },
+        { "type": "color", "id": "subheading_color", "label": "Subheading Color", "default": "#FFFFFF" },
+        { "type": "color", "id": "button_background", "label": "Button Background", "default": "#FF6B6B" },
+        { "type": "color", "id": "button_text_color", "label": "Button Text Color", "default": "#FFFFFF" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

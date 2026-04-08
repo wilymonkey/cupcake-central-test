@@ -1,0 +1,272 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-contact-tailwind",
+      "settings": {
+        "background_color": "#fff2df",
+        "heading": "Get in touch with the team",
+        "subheading": "<p>Fill in the form below and we'll get back to you as soon as we can. Alternatively, you can call us on 9077 4542 from 9am to 4pm Melbourne time on weekdays, or from 9am to 2pm on Saturdays.</p>",
+        "button_text": "Contact Us",
+        "image": "shopify://shop_images/Catering-Calling.webp",
+        "hours_heading": "Office Hours",
+        "hours_content": "<p>Monday - Friday: 9:00am - 4:00pm<br/>Saturday: 9:00am - 2:00pm<br/>Sunday: Closed</p>",
+        "email": "service@cupcakecentral.com.au",
+        "phone": "(03) 9077 4542",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "multicolumn_PRFyHd": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_tCTBEz": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Cupcake-Central_06_Bakery-Cafe-Design-Melbourne.webp",
+            "title": "HIGHPOINT",
+            "text": "<p><strong>ADDRESS:</strong></p><p>HIGHPOINT SHOPPING CENTRE</p><p>MARIBYRNONG VIC 3032</p><p><strong>CALL US:</strong></p><p>03 9077 4542</p><p><strong>OPENING HOURS:</strong></p><p>MON: 10AM - 5PM</p><p>TUE: 10AM - 5PM</p><p>WED: 10AM - 5PM</p><p>THU: 10AM - 6PM</p><p>FRI: 10AM - 6PM</p><p>SAT: 10AM - 5PM</p><p>SUN: 10AM - 5PM</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_TRTyJJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Cupcake-Central_Feat-2_Bakery-Cafe-Design-Melbourne.png",
+            "title": "WEST FOOTSCRAY (OFFICE)",
+            "text": "<p><strong>ADDRESS:</strong></p><p>79 SUNSHINE RD</p><p>WEST FOOTSCRAY VIC 3012</p><p><strong>CALL US:</strong></p><p>03 9077 4542</p><p><strong>OPENING HOURS:</strong></p><p>MON: 9AM - 4PM</p><p>TUE: 9AM - 4PM</p><p>WED: 9AM - 4PM</p><p>THU: 9AM - 4PM</p><p>FRI: 9AM - 4PM</p><p>SAT: 9AM - 1PM</p><p>SUN: CLOSED</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_tCTBEz",
+        "column_TRTyJJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "half",
+        "image_ratio": "square",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "delivery_locations_KFdUQt": {
+      "type": "delivery_locations",
+      "blocks": {
+        "text_WUyCAW": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/Cupcake-Central_06_Bakery-Cafe-Design-Melbourne_ec418fb4-d48c-44a3-9adc-4b663b155f0e.png",
+            "store_name": "HIGHPOINT STORE",
+            "store_address": "Shop 2561, Level 2 Fresh Food Hall Highpoint Shopping Centre Maribyrnong, 3032",
+            "store_open_day1": "Mon - Wed:",
+            "store_open_time1": "9am -5:30pm",
+            "store_open_day2": "Thu - Fri:",
+            "store_open_time2": "9am - 6pm",
+            "store_open_day3": "Sat -Sun:",
+            "store_open_time3": "9am - 6pm",
+            "store_open_day4": "",
+            "store_open_time4": "",
+            "link": "https://www.google.com/maps/place/Cupcake+Central+Highpoint/@-37.7730343,144.8877711,17z/data=!3m2!4b1!5s0x6ad65dcea5a12003:0x55f0c588414ead55!4m6!3m5!1s0x6ad65dcbee2f514b:0x9941edba52406158!8m2!3d-37.7730343!4d144.890346!16s%2Fg%2F1260pksk9?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D"
+          }
+        },
+        "text_TgiPnQ": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/DSC09408.png",
+            "store_name": "WEST FOOTSCRAY OFFICE",
+            "store_address": "79 Sunshine Road, West Footscray VIC 3012",
+            "store_open_day1": "Mon - Fri:",
+            "store_open_time1": "9am - 4pm",
+            "store_open_day2": "Sat:",
+            "store_open_time2": "9am - 1pm",
+            "store_open_day3": "Sun:",
+            "store_open_time3": "Closed",
+            "store_open_day4": "",
+            "store_open_time4": "",
+            "link": "https://www.google.com/maps/place/79+Sunshine+Rd,+West+Footscray+VIC+3012/@-37.8009407,144.8664402,17z/data=!3m1!4b1!4m6!3m5!1s0x6ad660aa39fb233d:0x2b1fe4046f6786aa!8m2!3d-37.800945!4d144.8690151!16s%2Fg%2F11c2dfgq1r?entry=ttu"
+          }
+        },
+        "text_agRzYQ": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/700x700_1.jpg",
+            "store_name": "Little Bourke Street",
+            "store_address": "353 Little Bourke Street, Melbourne VIC 3000",
+            "store_open_day1": "Mon - Wed:",
+            "store_open_time1": "8:30am - 5pm",
+            "store_open_day2": "Thu - Fri:",
+            "store_open_time2": "8:30am - 6pm",
+            "store_open_day3": "Sat:",
+            "store_open_time3": "10am - 5pm",
+            "store_open_day4": "Sun:",
+            "store_open_time4": "Closed",
+            "link": "https://maps.app.goo.gl/rToKmQ54kv3YCqej6"
+          }
+        }
+      },
+      "block_order": [
+        "text_WUyCAW",
+        "text_TgiPnQ",
+        "text_agRzYQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "STORE LOCATIONS"
+      }
+    },
+    "store_locations_iaR9kY": {
+      "type": "store-locations",
+      "blocks": {
+        "location_dERgEN": {
+          "type": "location",
+          "settings": {
+            "image": "shopify://shop_images/Store_Location_01_-_Highpoint-100_jpg.webp",
+            "title": "Highpoint Shopping Centre",
+            "address": "<p>Shop 2561, Level 2 Fresh Food Hall,</p><p>Highpoint Shopping Centre,<br/>Maribyrnong, VIC 3032</p>",
+            "button_text": "GET DIRECTIONS",
+            "button_link": "https://maps.app.goo.gl/MECcfj1xngc8wKT8A",
+            "hours_monday": "9:00am - 5:00pm",
+            "hours_tuesday": "9:00am - 5:00pm",
+            "hours_wednesday": "9:00am - 5:00pm",
+            "hours_thursday": "9:00am - 7:00pm",
+            "hours_friday": "9:00am - 7:00pm",
+            "hours_saturday": "9:00am - 6:00pm",
+            "hours_sunday": "9:00am - 5:00pm"
+          }
+        },
+        "location_c7xAyV": {
+          "type": "location",
+          "settings": {
+            "image": "shopify://shop_images/Store_Location_02_-_West_Footscray-100_jpg.webp",
+            "title": "West Footscray",
+            "address": "<p>79 Sunshine Road,<br/>West Footscray VIC 3012</p>",
+            "button_text": "GET DIRECTIONS",
+            "button_link": "https://maps.app.goo.gl/pTXkLQ3kkmZfkJHe8",
+            "hours_monday": "9:00am - 4:00pm",
+            "hours_tuesday": "9:00am - 4:00pm",
+            "hours_wednesday": "9:00am - 4:00pm",
+            "hours_thursday": "9:00am - 4:00pm",
+            "hours_friday": "9:00am - 4:00pm",
+            "hours_saturday": "9:00am - 2:00pm",
+            "hours_sunday": "Closed"
+          }
+        },
+        "location_CzYBJ7": {
+          "type": "location",
+          "settings": {
+            "image": "shopify://shop_images/Store_Location_03_-_Little_Bourke_St-100_jpg.webp",
+            "title": "Little Bourke Street",
+            "address": "<p>353 Little Bourke Street,<br/>Melbourne VIC 3000</p>",
+            "button_text": "GET DIRECTIONS",
+            "button_link": "https://maps.app.goo.gl/YTtR3GWvV8uq7ZhBA",
+            "hours_monday": "8:30am - 5:00pm",
+            "hours_tuesday": "8:30am - 5:00pm",
+            "hours_wednesday": "8:30am - 5:00pm",
+            "hours_thursday": "8:30am - 6:00pm",
+            "hours_friday": "8:30am - 6:00pm",
+            "hours_saturday": "10:00am - 5:00pm",
+            "hours_sunday": "Closed"
+          }
+        }
+      },
+      "block_order": [
+        "location_dERgEN",
+        "location_c7xAyV",
+        "location_CzYBJ7"
+      ],
+      "name": "Store Locations",
+      "settings": {
+        "heading": "Store Locations",
+        "subheading": "<p>Our stores are located in and around Melbourne. Drop by and say hi today! Our friendly staff are ready to serve fresh cupcakes, great coffee, and a spot to sit back, relax and enjoy.</p>",
+        "default_image": "shopify://shop_images/Store-Location---Main-Photo.webp",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "1736462285417644d5": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "trustmarker_section_kcfqGn": {
+      "type": "trustmarker-section",
+      "blocks": {
+        "trust_marker_nfitrH": {
+          "type": "trust_marker",
+          "settings": {
+            "icon": "heart",
+            "title": "BAKED FRESH",
+            "subtitle": "Daily from our kitchen"
+          }
+        },
+        "trust_marker_8d9pRT": {
+          "type": "trust_marker",
+          "settings": {
+            "icon": "smile",
+            "title": "200K+ ORDERS",
+            "subtitle": "Cupcakes baked each year"
+          }
+        },
+        "trust_marker_famAHW": {
+          "type": "trust_marker",
+          "settings": {
+            "icon": "cake",
+            "title": "1 MILLION+",
+            "subtitle": "Cupcakes baked each year"
+          }
+        },
+        "trust_marker_p3BNWi": {
+          "type": "trust_marker",
+          "settings": {
+            "icon": "star",
+            "title": "4.9 STAR",
+            "subtitle": "Google rating by the public"
+          }
+        }
+      },
+      "block_order": [
+        "trust_marker_nfitrH",
+        "trust_marker_8d9pRT",
+        "trust_marker_famAHW",
+        "trust_marker_p3BNWi"
+      ],
+      "name": "Trustmarker Section",
+      "settings": {
+        "background_color": "#26A69A",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multicolumn_PRFyHd",
+    "delivery_locations_KFdUQt",
+    "store_locations_iaR9kY",
+    "1736462285417644d5",
+    "trustmarker_section_kcfqGn"
+  ]
+}

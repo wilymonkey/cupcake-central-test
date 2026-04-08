@@ -1,0 +1,104 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "blocks": {
+        "text_4rkDBt": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/Cupcake-Central_06_Bakery-Cafe-Design-Melbourne_ec418fb4-d48c-44a3-9adc-4b663b155f0e.png",
+            "store_name": "HIGHPOINT STORE",
+            "store_address": "Shop 2561, Level 2 Fresh Food Hall Highpoint Shopping Centre Maribyrnong, 3032",
+            "store_open_day1": "Mon - Wed:",
+            "store_open_time1": "09:00am - 5:30 pm",
+            "store_open_day2": "Thu - Fri:",
+            "store_open_time2": "09:00am - 6:00 pm",
+            "store_open_day3": "Sat - Sun:",
+            "store_open_time3": "09:00am - 6:00 pm",
+            "store_open_day4": "Store Open Days 4",
+            "store_open_time4": "Store Open Time 4",
+            "link": "https://www.google.com.au/maps/place/Highpoint/@-37.7737654,144.8896643,17z/data=!3m2!4b1!5s0x6ad65dceb96ff037:0x55f0c5888d67f555!4m6!3m5!1s0x6ad65c568adda5ed:0x96a050f6dc82f3f8!8m2!3d-37.7737654!4d144.8896643!16zL20vMDk5MTUz?entry=ttu"
+          }
+        },
+        "text_r7hDkp": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/DSC09408.png",
+            "store_name": "WEST FOOTSCRAY OFFICE",
+            "store_address": "79 Sunshine Rd West Footscray, 3012",
+            "store_open_day1": "Mon - Fri:",
+            "store_open_time1": "09.00am - 4.00pm",
+            "store_open_day2": "Sat:",
+            "store_open_time2": "09.00 - 1.00pm",
+            "store_open_day3": "Sun:",
+            "store_open_time3": "CLOSED",
+            "store_open_day4": "Store Open Days 4",
+            "store_open_time4": "Store Open Time 4",
+            "link": "https://www.google.com/maps/place/79+Sunshine+Rd,+West+Footscray+VIC+3012/@-37.8009407,144.8664402,17z/data=!3m1!4b1!4m6!3m5!1s0x6ad660aa39fb233d:0x2b1fe4046f6786aa!8m2!3d-37.800945!4d144.8690151!16s%2Fg%2F11c2dfgq1r?entry=ttu"
+          }
+        },
+        "text_gQkGGJ": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/700x700_1.jpg",
+            "store_name": "Little Bourke Street",
+            "store_address": "353 Little Bourke Street, Melbourne VIC 3000",
+            "store_open_day1": "Mon - Wed:",
+            "store_open_time1": "8:30am - 5pm",
+            "store_open_day2": "Thu - Fri:",
+            "store_open_time2": "8:30am - 6pm",
+            "store_open_day3": "Sat:",
+            "store_open_time3": "10am - 5pm",
+            "store_open_day4": "Sun:",
+            "store_open_time4": "Closed",
+            "link": "https://www.google.com/maps/place/353+Little+Bourke+St,+Melbourne+VIC+3000/@-37.8134455,144.9596942,17z/data=!3m1!4b1!4m6!3m5!1s0x6ad642b538b4d365:0x44d1e8ab3c5b4f78!8m2!3d-37.8134498!4d144.9622691!16s%2Fg%2F11c26tmxw4?entry=ttu"
+          }
+        }
+      },
+      "block_order": [
+        "text_4rkDBt",
+        "text_r7hDkp",
+        "text_gQkGGJ"
+      ],
+      "custom_css": [
+        "h1 {margin: 0;}",
+        "p {margin: 0 0 12px 0;}",
+        "hr {margin: 0 0 0 0;}"
+      ],
+      "settings": {
+        "heading_leftside": "GET IN TOUCH WITH OUR TEAM",
+        "subheading_leftside": "Need some help? Let our expert team guide you.",
+        "email": "service@cupcakecentral.com.au",
+        "phone": "(03) 9077 4542",
+        "heading": "CONTACT  US",
+        "contact_text": "",
+        "description": "Fill in the form below and we'll get back to you as soon as we can. Alternatively, you can call us on 9077 4542 from 9am to 4pm Melbourne time on weekdays, or from 9am to 2pm on Saturdays.",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "form"
+  ]
+}

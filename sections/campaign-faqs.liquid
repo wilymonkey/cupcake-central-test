@@ -1,0 +1,110 @@
+{{ 'campaign-faqs.css' | asset_url | stylesheet_tag }}
+
+
+<div class="faq-questions-container">
+    {% comment %}<div class="faq-question-description">Have a question? Here are our</div>{% endcomment %}
+    <div class="faq-question-header" id="faq-question-header"> FAQS</div>
+    <div class="faq-block" id="faq-items">
+      {% assign block_num = 0 %}
+      {% for block in section.blocks %}
+        <div class="faq-container" data-title-id="{{ block.settings.title_id }}">
+          <label class="faq-block-label">
+            {{ block.settings.title }}
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="faq-block-caret"
+              viewBox="0 0 10 6"
+            >
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+            </svg>
+          </label>
+          <div class="faq-item-content">
+            {{ block.settings.answer }}
+            <p>{{ block.settings.text1 }}</p>
+          </div>
+          <hr>
+        </div>
+        {% assign block_num = block_num | plus: 1 %}
+      {% endfor %}
+    </div>
+  </div>
+  
+<script>
+  $(document).ready(function () {
+    // Ensure all FAQ items start collapsed
+    $(".faq-item-content").css({
+      height: "0",
+      overflow: "hidden",
+      transition: "height 0.3s ease, margin-bottom 0.3s ease",
+    });
+
+    // Open the first FAQ content on load
+    const firstContent = $(".faq-item-content").first();
+    firstContent.css({
+      height: firstContent.get(0).scrollHeight + "px",
+      marginBottom: "24px",
+    });
+
+    // Toggle FAQ item on click
+    $(".faq-block-label").on("click", function () {
+      const contentElement = $(this).closest(".faq-container").find(".faq-item-content");
+
+      if (contentElement.height() === 0) {
+        // Expand
+        contentElement.css({
+          height: contentElement.get(0).scrollHeight + "px",
+          marginBottom: "24px",
+        });
+      } else {
+        // Collapse
+        contentElement.css({
+          height: "0",
+          marginBottom: "0",
+        });
+      }
+    });
+  });
+</script>
+
+  
+{% schema %}
+  {
+    "name": "Campaign Faqs",
+    "settings": [],
+    "class": "campaign-faq",
+  "blocks": [
+    {
+      "type": "faq_entry",
+      "name": "FAQ Entry",
+      "limit": 50,
+      "settings": [
+      {
+      "type": "text",
+      "id": "title_id",
+      "label": "Question Category",
+      "default": "delivery"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Question",
+      "default": "Where do you deliver to?"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "answer",
+      "label": "Answer",
+      "default": "Please use the postcode checker above to check whether you are in our sweet zones."
+    }
+      ]
+    }
+  ], 
+    "presets": [
+     {
+       "name": "Campaign Faqs"
+     }
+   ]
+  }
+{% endschema %}

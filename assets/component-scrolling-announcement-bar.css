@@ -1,0 +1,50 @@
+/* Base styles for the topbar */
+.topbar {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Flex container to allow items to be in a line */
+.topbar .flex {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/* Infinite scrolling animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.topbar .fast-animation {
+  animation: scroll 90s linear infinite;
+}
+.topbar .slow-animation {
+  animation: scroll 150s linear infinite;
+}
+.topbar .animation-translate {
+  margin: 5px;
+}
+
+/* Styles for the text paragraphs */
+.topbar p {
+  margin: 0 1.6rem; /* Adjust spacing as needed */
+  color: #f8f8f8; /* Example color */
+  font-weight: bold;
+  display: flex; /* Align text and images inline */
+  align-items: center;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+/* Image styles */
+.topbar img {
+  max-height: 18px; /* Adjust according to your preference */
+  display: block;
+  margin-right: 5px;
+}

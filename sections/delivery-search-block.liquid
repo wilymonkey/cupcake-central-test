@@ -1,0 +1,826 @@
+{{ 'section-delivery-block.css' | asset_url | stylesheet_tag }}
+<style>
+  .delivery-search-block {
+    {% comment %}background-image: url("{{section.settings.image1 | img_url: 'master'}}");{% endcomment %}
+    width: 90%;
+    height: 500px;
+    background-size: cover;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    border-radius: 20px;
+  }
+
+  #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    border-radius: 20px;
+}
+
+
+  .search-block button {
+      height: 60px;
+      width: 29%;
+      border-radius: 10px;
+    }
+
+  .hf-delivery-checker-input1{
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    transition: box-shadow var(--duration-short) ease;
+    border-radius: var(--inputs-radius);
+    height: 3.5rem;
+    position: relative;
+    border: 0;
+    margin-left: 0px! important;
+  }
+  
+  .search-block-text-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+
+  .delivery-block-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 90%;
+    padding: 0px !important;
+  }
+
+  .delivery-block-container1 {
+    background-color: #73659e;
+    height: 60px;
+    width: 100%;
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;
+    align-items: center;
+    color: white;
+  }
+
+  .delivery-block-container2 {
+    background-color: #73659e;
+    height: 60px;
+    width: 100%;
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    align-items: center;
+    color: white;
+  }
+  
+  .postcode-found-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .postcode-found-container-1 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .postcode-found-container-2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-container {
+    background-color: #f682b3;
+    border-radius: 5px;
+    padding: 1.3rem;;
+    align-items: center !important;
+    height: fit-content;
+    display: flex;
+    width: 46%;
+  }
+
+  .search-container-slogan {
+    font-size: 50px;
+    color: #434546;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .search-cursive-slogan {
+    padding-left: 20px;
+    font-size: 70px;
+    font-family: Tenstars;
+    color: #f283b4;
+    margin: 0;
+  }
+
+  .search-container .search-block {
+    padding: 0 !important;
+  }
+
+  .search-container .search-button {
+    border: none;
+    background-color: #fff;
+    color: #000;
+  }
+
+  .delivery-content-block {
+    position: relative;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 40%;
+    padding: 3rem;
+    height: fit-content;
+  }
+
+  .delivery-content-block h1 {
+    color: #000;
+    margin: 0;
+    padding: 0;
+    font: normal normal 800 64px/95px Poppins;
+    font-size: calc(100vw * (40/1920));
+    line-height: calc(100vw * (57/1920));
+    letter-spacing: 0px;
+  }
+
+  .delivery-content-block span {
+    color: #000;
+    margin: 0;
+    padding: 0;
+    font: normal normal 800 64px/95px Poppins;
+    font-size: calc(100vw * (40/1920));
+    line-height: calc(100vw * (57/1920));
+    letter-spacing: 0px;
+  }
+
+  .delivery-content-block p {
+      color: #000;
+      margin: 0;
+      padding: 0;
+      font: normal normal normal 24px/35px Poppins;
+      font-size: calc(100vw * (13/1920));
+      line-height: calc(100vw * (32/1920));
+      letter-spacing: 0px;
+      font-weight: bold;
+  }
+
+  .delivery-image {
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: -1.5rem;
+  }
+
+  .search-block-input {
+    width: 40%;
+  }
+
+  .delivery-block-container1-text {
+      font-size: 2vh !important; 
+      padding-left: 15px; 
+      font-weight: 500;
+    }
+
+    .delivery-block-container2-text {
+      font-size: 2vh !important; 
+      padding-left: 15px; 
+      font-weight: 500;
+    }
+     .delivery-block-container1-icon{
+     padding-top: 5px;
+  }
+
+  .delivery-block-container2-icon{
+     padding-top: 5px;
+  }
+  .aus-wide-button {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: #1b9a8f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 9px 10px;
+}
+    
+  
+  @media (max-width: 800px) {
+    .search-container {
+      padding: 0.7rem;
+      gap: 0 !important;
+      height: 78px;
+      width: 100%;
+    }
+
+    .search-block button {
+      height: 60px;
+      width: 30%;
+      border-radius: 10px;
+    }
+
+    .search-block-text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      margin: 20px;
+  }
+
+    .search-container-slogan {
+      font: 800 20px/64px Poppins;
+    }
+
+    .search-cursive-slogan {
+      font: 30px/64px Tenstars;
+      color: #f283b4;
+      margin: 0;
+    }
+
+    .delivery-content-block {
+      width: 100%;
+      padding: 2rem;
+      margin-top: 2rem;
+      margin-left: 0;
+    }
+
+    .delivery-block-container {
+      display: flex;
+      flex-direction: column;;
+      gap: 0px;
+      justify-content: center;
+      width: 90%;
+      padding: 0px !important;
+  }
+
+  .delivery-block-container1 {
+    background-color: #73659e;
+    height: 60px;
+    width: 100%;
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;
+    align-items: center;
+    color: white;
+  }
+
+  .delivery-block-container2 {
+    background-color: #73659e;
+    height: 60px;
+    width: 100%;
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;
+    align-items: center;
+    color: white;
+  }
+    .delivery-search-block {
+    background-image: url("{{section.settings.image1 | img_url: 'master'}}");
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+  }
+  .input {
+    border-radius: 5px;
+    height: 100%;
+    padding-left: 12px;
+    height: 60px;
+    width: 100%;
+    font-size: 18px;
+}
+    
+    .delivery-content-block h1 {
+      font-size: calc(100vw * (100/1920));
+      line-height: calc(100vw * (70/1920));
+    }
+
+    .delivery-content-block span {
+      font-size: calc(100vw * (100/1920));
+      line-height: calc(100vw * (70/1920));
+    }
+
+    .delivery-content-block p {
+        font-size: calc(100vw * (40/1920));
+        line-height: calc(100vw * (60/1920));
+    }
+
+    .delivery-image {
+      width: 5rem;
+      height: 5rem;
+      margin-bottom: -1.5rem;
+    }
+
+    .search-block-input {
+      width: 100%;
+    }
+    
+    .delivery-block-container1-text {
+      font-size: 12px; 
+      padding-left: 15px; 
+      font-weight: bold;
+    }
+
+    .delivery-block-container2-text {
+      font-size: 12px; 
+      padding-left: 15px; 
+      font-weight: bold;
+    }
+     .delivery-block-container1-icon{
+     padding-left: 5px;
+  }
+
+  .delivery-block-container2-icon{
+     padding-left: 5px;
+  }
+    #hf-delivery-checker-form{
+      display: flex;
+      flex-direction: row !important;
+      gap: 8px;
+      margin: 0px;
+    }
+    .hf-delivery-checker-input1 {
+      margin-left: 8px;
+    }
+
+    .hf-delivery-checker-input {
+      margin: 10px;
+    }
+  
+  }
+  .delivery-content-postcode-not-found, .delivery-content-postcode-found, .delivery-content-postcode-not-found2 {
+    display: none;
+  }
+</style>
+<div class="search-block-text-container">
+      <span class="search-container-slogan">Are you .... in the</span>
+      <span class="search-cursive-slogan">Sweet Zone?</span>
+    </div>
+    
+<div class="delivery-block-container page-width">
+  <div class="delivery-block-container1">
+    <div class="delivery-block-container1-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_485.svg?v=1723780962" height="30px" width="30px"></div>
+    <div class="delivery-block-container1-text">FREE DELIVERIES WITH ORDERS OVER $40</div>
+  </div>
+  <div class="delivery-block-container2">
+    <div class="delivery-block-container2-icon" ><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Calendar.svg?v=1723780964" height="30px" width="30px"></div>
+    <div class="delivery-block-container2-text">WE DELIVER 7 DAYS A WEEK</div>
+</div>
+</div>
+
+<div class="delivery-search-block page-width">
+  <!-- Background Map -->
+  <div id="map"></div>
+
+  <!-- Main Content -->
+  <div class="delivery-content-block delivery-content-postcode-not-searched">
+    <h1 class="uppercase">Search and see if we deliver to your area</h1>
+  </div>
+
+  <div class="delivery-content-block delivery-content-postcode-found">
+    <div class="postcode-found-container">
+      <div class="postcode-found-container-1">
+        <h1 class="uppercase" style="text-align: right;">{{ section.settings['title-line1'] }}</h1>
+        <span class="uppercase" style="color: #1b9a8e; text-align: left; padding-left: 10px;">
+          {{ section.settings['title-line2'] }}
+        </span>
+        <span>
+          <img
+            class="delivery-image"
+            src="{{ section.settings.image2 | img_url: 'master' }}"
+            alt="delivery Image"
+          >
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="delivery-content-block delivery-content-postcode-not-found">
+    <h1 class="uppercase" style="text-align: left;">{{ section.settings['title-delivery-false'] }}</h1>
+    <p style="font-weight: 200 !important; font-size: 14px; line-height: 19px; margin-bottom: 10px;">
+      However, please give us a call on 0390774542, and we might be able to arrange something for you. <br/>
+      Scroll down to view all the Postcodes and suburbs we deliver to.
+    </p>
+    <a href="https://cupcakecentral.com.au/collections/national-shipping">
+    <button class="aus-wide-button"> AUS WIDE</button>
+    </a>
+  </div>
+
+  <div
+    class="search-container scroll-trigger animate--slide-in"
+    data-cascade=""
+    style="--animation-order: 0;"
+  > 
+    <div class="footer-block__newsletter search-block">
+      <form id="hf-delivery-checker-form" class="fit-to-parent">
+        <p>Enter postcode to see if we can deliver to you.</p>
+          <input class="hf-delivery-checker-input1" id="hf-delivery-checker-input" type="text" placeholder="Enter your postcode...">
+        <button
+    type="submit"
+    class="delivery-checker-btn search-button"
+    onclick="handlePostcodeCheckerSubmit(event);return false;"
+  >
+          SEARCH
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_nUumrR8NTx4C6G-q40iH8BqAflgj9MY&callback=initMap" async defer></script>
+
+<script>
+  let map;
+  let geocoder;
+  var marker; // Variable to hold the marker
+
+  function initMap() {
+    console.log("Map initializing...");
+
+    // Initialize map centered on Melbourne by default
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -37.8136, lng: 144.9631 }, // Melbourne coordinates
+      zoom: 12,
+      disableDefaultUI: true,
+    });
+
+    geocoder = new google.maps.Geocoder();
+
+    // Adjust map size on window resize
+    window.addEventListener("resize", () => {
+      google.maps.event.trigger(map, "resize");
+    });
+  }
+
+  // Updated postcodeCoordinates object with suburb names
+  var postcodeCoordinates = {
+  "3000": { lat: -37.814, lng: 144.9633, suburb: "Melbourne CBD" },
+  "3001": { lat: -37.814, lng: 144.9633, suburb: "Melbourne" },
+  "3002": { lat: -37.8136, lng: 144.9841, suburb: "East Melbourne" },
+  "3003": { lat: -37.801, lng: 144.9385, suburb: "West Melbourne" },
+  "3004": { lat: -37.8367, lng: 144.9750, suburb: "Melbourne" },
+  "3005": { lat: -37.814, lng: 144.9633, suburb: "World Trade Centre" },
+  "3006": { lat: -37.824, lng: 144.9604, suburb: "Southbank" },
+  "3008": { lat: -37.8144, lng: 144.9411, suburb: "Docklands" },
+  "3010": { lat: -37.7982, lng: 144.9596, suburb: "University of Melbourne" },
+  "3011": { lat: -37.7984, lng: 144.8941, suburb: "Footscray" },
+  "3012": { lat: -37.7921, lng: 144.8629, suburb: "West Footscray" },
+  "3013": { lat: -37.8312, lng: 144.8824, suburb: "Yarraville" },
+  "3015": { lat: -37.8425, lng: 144.8961, suburb: "Newport" },
+  "3016": { lat: -37.8651, lng: 144.8835, suburb: "Williamstown" },
+  "3018": { lat: -37.867, lng: 144.814, suburb: "Altona" },
+  "3019": { lat: -37.7767, lng: 144.8317, suburb: "Braybrook" },
+  "3020": { lat: -37.7773, lng: 144.8224, suburb: "Sunshine" },
+  "3021": { lat: -37.744, lng: 144.799, suburb: "St Albans" },
+  "3022": { lat: -37.7595, lng: 144.8289, suburb: "Ardeer" },
+  "3023": { lat: -37.7595, lng: 144.749, suburb: "Deer Park" },
+  "3025": { lat: -37.8347, lng: 144.854, suburb: "Altona North" },
+  "3026": { lat: -37.8347, lng: 144.825, suburb: "Laverton North" },
+  "3027": { lat: -37.863, lng: 144.743, suburb: "Williams Landing" },
+  "3028": { lat: -37.875, lng: 144.774, suburb: "Altona Meadows" },
+  "3029": { lat: -37.865, lng: 144.703, suburb: "Hoppers Crossing" },
+  "3030": { lat: -37.915, lng: 144.67, suburb: "Werribee" },
+  "3031": { lat: -37.7887, lng: 144.9344, suburb: "Kensington" },
+  "3032": { lat: -37.7787, lng: 144.8971, suburb: "Ascot Vale" },
+  "3033": { lat: -37.732, lng: 144.839, suburb: "Keilor East" },
+  "3034": { lat: -37.723, lng: 144.78, suburb: "Keilor" },
+  "3036": { lat: -37.724, lng: 144.84, suburb: "Keilor" },
+  "3037": { lat: -37.685, lng: 144.76, suburb: "Sydenham" },
+  "3038": { lat: -37.747, lng: 144.771, suburb: "Taylors Lakes" },
+  "3039": { lat: -37.775, lng: 144.92, suburb: "Moonee Ponds" },
+  "3040": { lat: -37.761, lng: 144.893, suburb: "Essendon" },
+  "3041": { lat: -37.735, lng: 144.895, suburb: "Essendon North" },
+  "3042": { lat: -37.712, lng: 144.869, suburb: "Airport West" },
+  "3043": { lat: -37.697, lng: 144.894, suburb: "Tullamarine" },
+  "3044": { lat: -37.743, lng: 144.949, suburb: "Pascoe Vale" },
+  "3045": { lat: -37.672, lng: 144.844, suburb: "Melbourne Airport" },
+  "3046": { lat: -37.712, lng: 144.929, suburb: "Glenroy" },
+  "3047": { lat: -37.680, lng: 144.927, suburb: "Broadmeadows" },
+  "3048": { lat: -37.654, lng: 144.940, suburb: "Coolaroo" },
+  "3049": { lat: -37.648, lng: 144.885, suburb: "Meadow Heights" },
+  "3050": { lat: -37.784, lng: 144.948, suburb: "Parkville" },
+  "3051": { lat: -37.789, lng: 144.944, suburb: "North Melbourne" },
+  "3052": { lat: -37.784, lng: 144.942, suburb: "Parkville" },
+  "3053": { lat: -37.801, lng: 144.962, suburb: "Carlton" },
+  "3054": { lat: -37.791, lng: 144.979, suburb: "Carlton North" },
+  "3055": { lat: -37.767, lng: 144.942, suburb: "Brunswick West" },
+  "3056": { lat: -37.766, lng: 144.963, suburb: "Brunswick" },
+  "3057": { lat: -37.759, lng: 144.975, suburb: "Brunswick East" },
+  "3058": { lat: -37.7416, lng: 144.9646, suburb: "Coburg" },
+  "3060": { lat: -37.6987, lng: 144.9645, suburb: "Fawkner" },
+  "3061": { lat: -37.6623, lng: 144.9465, suburb: "Campbellfield" },
+  "3065": { lat: -37.8004, lng: 144.9784, suburb: "Fitzroy" },
+  "3066": { lat: -37.8046, lng: 144.9862, suburb: "Collingwood" },
+  "3067": { lat: -37.8025, lng: 144.9986, suburb: "Abbotsford" },
+  "3068": { lat: -37.7856, lng: 144.994, suburb: "Clifton Hill" },
+  "3070": { lat: -37.7717, lng: 144.9994, suburb: "Northcote" },
+  "3071": { lat: -37.7586, lng: 145.0081, suburb: "Thornbury" },
+  "3072": { lat: -37.7388, lng: 145.0127, suburb: "Preston" },
+  "3073": { lat: -37.7158, lng: 145.0062, suburb: "Reservoir" },
+  "3074": { lat: -37.6834, lng: 145.006, suburb: "Thomastown" },
+  "3075": { lat: -37.6657, lng: 145.0165, suburb: "Lalor" },
+  "3078": { lat: -37.776, lng: 145.0303, suburb: "Alphington" },
+  "3079": { lat: -37.7667, lng: 145.0445, suburb: "Ivanhoe" },
+  "3081": { lat: -37.7463, lng: 145.0386, suburb: "Heidelberg West" },
+  "3083": { lat: -37.698, lng: 145.05, suburb: "Bundoora" },
+  "3084": { lat: -37.7566, lng: 145.0696, suburb: "Heidelberg" },
+  "3085": { lat: -37.7196, lng: 145.0709, suburb: "Macleod" },
+  "3086": { lat: -37.7173, lng: 145.0489, suburb: "La Trobe University" },
+  "3087": { lat: -37.709, lng: 145.0845, suburb: "Watsonia" },
+  "3101": { lat: -37.805, lng: 145.028, suburb: "Kew" },
+  "3102": { lat: -37.7966, lng: 145.0453, suburb: "Kew East" },
+  "3103": { lat: -37.809, lng: 145.08, suburb: "Balwyn" },
+  "3104": { lat: -37.7963, lng: 145.0849, suburb: "Balwyn North" },
+  "3105": { lat: -37.7665, lng: 145.0836, suburb: "Bulleen" },
+  "3106": { lat: -37.7596, lng: 145.1255, suburb: "Templestowe" },
+  "3107": { lat: -37.7546, lng: 145.1066, suburb: "Templestowe Lower" },
+  "3108": { lat: -37.7871, lng: 145.1286, suburb: "Doncaster" },
+  "3109": { lat: -37.7812, lng: 145.1485, suburb: "Doncaster East" },
+  "3111": { lat: -37.788, lng: 145.1791, suburb: "Donvale" },
+  "3121": { lat: -37.824, lng: 144.998, suburb: "Richmond" },
+  "3122": { lat: -37.827, lng: 145.035, suburb: "Hawthorn" },
+  "3123": { lat: -37.828, lng: 145.05, suburb: "Hawthorn East" },
+  "3124": { lat: -37.826, lng: 145.078, suburb: "Camberwell" },
+  "3125": { lat: -37.849, lng: 145.1, suburb: "Burwood" },
+  "3126": { lat: -37.824, lng: 145.086, suburb: "Canterbury" },
+  "3127": { lat: -37.818, lng: 145.098, suburb: "Surrey Hills" },
+  "3128": { lat: -37.818, lng: 145.125, suburb: "Box Hill" },
+  "3129": { lat: -37.8, lng: 145.125, suburb: "Box Hill North" },
+  "3130": { lat: -37.82, lng: 145.151, suburb: "Blackburn" },
+  "3131": { lat: -37.836, lng: 145.167, suburb: "Forest Hill" },
+  "3132": { lat: -37.816, lng: 145.19, suburb: "Mitcham" },
+  "3133": { lat: -37.836, lng: 145.2, suburb: "Vermont" },
+  "3141": { lat: -37.838, lng: 144.992, suburb: "South Yarra" },
+  "3142": { lat: -37.842, lng: 145.017, suburb: "Toorak" },
+  "3143": { lat: -37.859, lng: 145.021, suburb: "Armadale" },
+  "3144": { lat: -37.864, lng: 145.041, suburb: "Malvern" },
+  "3145": { lat: -37.877, lng: 145.043, suburb: "Caulfield East" },
+  "3146": { lat: -37.857, lng: 145.066, suburb: "Glen Iris" },
+  "3147": { lat: -37.867, lng: 145.079, suburb: "Ashburton" },
+  "3148": { lat: -37.888, lng: 145.087, suburb: "Chadstone" },
+  "3149": { lat: -37.877, lng: 145.127, suburb: "Mount Waverley" },
+  "3150": { lat: -37.879, lng: 145.164, suburb: "Glen Waverley" },
+  "3151": { lat: -37.852, lng: 145.138, suburb: "Burwood East" },
+  "3161": { lat: -38.1187, lng: 145.2856, suburb: "Clayton" },
+  "3162": { lat: -38.1283, lng: 145.3014, suburb: "Notting Hill" },
+  "3163": { lat: -38.1387, lng: 145.3155, suburb: "Oakleigh" },
+  "3165": { lat: -38.1492, lng: 145.3252, suburb: "Huntingdale" },
+  "3166": { lat: -38.1575, lng: 145.3388, suburb: "Oakleigh East" },
+  "3168": { lat: -38.1694, lng: 145.3521, suburb: "Oakleigh South" },
+  "3171": { lat: -38.1829, lng: 145.3668, suburb: "Clayton South" },
+  "3172": { lat: -38.1920, lng: 145.3799, suburb: "Noble Park" },
+  "3181": { lat: -38.2040, lng: 145.3922, suburb: "Dandenong" },
+  "3182": { lat: -38.2111, lng: 145.4057, suburb: "Dandenong South" },
+  "3183": { lat: -38.2192, lng: 145.4181, suburb: "Keysborough" },
+  "3184": { lat: -38.2273, lng: 145.4307, suburb: "Springvale" },
+  "3185": { lat: -38.2341, lng: 145.4423, suburb: "Springvale South" },
+  "3186": { lat: -38.2424, lng: 145.4551, suburb: "Dingley Village" },
+  "3187": { lat: -38.2497, lng: 145.4669, suburb: "Cheltenham" },
+  "3188": { lat: -38.2579, lng: 145.4793, suburb: "Mentone" },
+  "3189": { lat: -38.2673, lng: 145.4911, suburb: "Mordialloc" },
+  "3190": { lat: -38.2744, lng: 145.5018, suburb: "Parkdale" },
+  "3191": { lat: -38.2832, lng: 145.5124, suburb: "Chelsea" },
+  "3192": { lat: -38.2926, lng: 145.5236, suburb: "Chelsea Heights" },
+  "3193": { lat: -38.3015, lng: 145.5352, suburb: "Carrum" },
+  "3194": { lat: -38.3114, lng: 145.5473, suburb: "Bonbeach" },
+  "3204": { lat: -38.3206, lng: 145.5580, suburb: "Seaford" },
+  "3205": { lat: -38.3301, lng: 145.5701, suburb: "Frankston" },
+  "3206": { lat: -38.3410, lng: 145.5822, suburb: "Cranbourne, Cranbourne West" },
+  "3207": { lat: -38.3518, lng: 145.5940, suburb: "Cranbourne North" },
+  "3800": { lat: -37.9023, lng: 144.7260, suburb: "Dandenong" },
+  "3167": { lat: -37.9747, lng: 145.3456, suburb: "Mulgrave" },
+  "3048": { lat: -37.7633, lng: 144.9694, suburb: "Essendon" },
+  "3076": { lat: -37.7551, lng: 145.0221, suburb: "Pascoe Vale South" },
+  "3082": { lat: -37.7206, lng: 145.0730, suburb: "Bundoora" },
+  "3088": { lat: -37.7102, lng: 145.1247, suburb: "Greensborough" },
+  "3093": { lat: -37.7608, lng: 145.1207, suburb: "Montmorency" },
+  "3094": { lat: -37.7774, lng: 145.1387, suburb: "Eltham" },
+  "3095": { lat: -37.7855, lng: 145.1472, suburb: "Research" },
+  "3113": { lat: -37.8324, lng: 145.1896, suburb: "Bayswater" },
+  "3114": { lat: -37.8491, lng: 145.1784, suburb: "Boronia" },
+  "3134": { lat: -37.8565, lng: 145.2585, suburb: "Mooroolbark" },
+  "3135": { lat: -37.8723, lng: 145.2449, suburb: "Kilsyth" },
+  "3136": { lat: -37.8879, lng: 145.2321, suburb: "Croydon" },
+  "3152": { lat: -37.9520, lng: 145.3078, suburb: "Wantirna" },
+  "3153": { lat: -37.9697, lng: 145.3125, suburb: "Ringwood" },
+  "3155": { lat: -37.9865, lng: 145.3219, suburb: "Heathmont" },
+  "3164": { lat: -38.0028, lng: 145.3387, suburb: "Glen Waverley" },
+  "3169": { lat: -38.0197, lng: 145.3460, suburb: "Mount Waverley" },
+  "3170": { lat: -38.0315, lng: 145.3598, suburb: "Wheelers Hill" },
+  "3173": { lat: -38.0333, lng: 145.2333, suburb: "Endeavour Hills" },
+  "3175": { lat: -37.9861, lng: 145.2206, suburb: "Noble Park" },
+  "3177": { lat: -38.0433, lng: 145.2436, suburb: "Keysborough" },
+  "3179": { lat: -38.0336, lng: 145.2853, suburb: "Braeside" },
+  "3180": { lat: -38.0049, lng: 145.2702, suburb: "Mordialloc" },
+  "3174": { lat: -38.0416, lng: 145.2833, suburb: "Springvale South" },
+  "3195": { lat: -38.1513, lng: 145.1695, suburb: "Frankston" },
+  "3196": { lat: -38.1411, lng: 145.1175, suburb: "Seaford" },
+  "3202": { lat: -38.0807, lng: 145.4811, suburb: "Port Melbourne" },
+  "3802": { lat: -38.0336, lng: 145.3506, suburb: "Berwick" },
+  "3803": { lat: -38.0711, lng: 145.4030, suburb: "Beaconsfield" },
+  "3804": { lat: -38.1257, lng: 145.3587, suburb: "Officer" },
+  "3805": { lat: -38.1099, lng: 145.3582, suburb: "Pakenham" },
+  "3806": { lat: -38.1031, lng: 145.2844, suburb: "Clyde North" },
+  "3976": { lat: -38.0807, lng: 145.2717, suburb: "Cranbourne East" },
+  "3178": { lat: -38.0594, lng: 145.3094, suburb: "Lyndhurst" },
+  "3156": { lat: -37.9296, lng: 145.2615, suburb: "Rowville" }
+  }
+ 
+
+  // Handle postcode or suburb search
+  document.getElementById("hf-delivery-checker-form").addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    const input = document.getElementById("hf-delivery-checker-input").value.trim();
+
+    if (!input) {
+      alert("Please enter a postcode or suburb.");
+      return;
+    }
+
+    // Check if the input is a postcode
+    if (postcodeCoordinates[input]) {
+      const location = postcodeCoordinates[input];
+      map.setCenter({ lat: location.lat, lng: location.lng });
+      map.setZoom(14);
+
+      // Place the marker on the map
+      if (marker) {
+        marker.setMap(null); // Remove the previous marker, if any
+      }
+      marker = new google.maps.Marker({
+        position: { lat: location.lat, lng: location.lng },
+        map: map,
+        title: `Postcode: ${input}, Suburb: ${location.suburb}`,
+      });
+
+      console.log(`Found postcode: ${input}, Suburb: ${location.suburb}`);
+      return;
+    }
+
+    // Check if the input is a suburb
+    const foundPostcode = Object.keys(postcodeCoordinates).find(
+      (postcode) => postcodeCoordinates[postcode].suburb.toLowerCase() === input.toLowerCase()
+    );
+
+    if (foundPostcode) {
+      const location = postcodeCoordinates[foundPostcode];
+      map.setCenter({ lat: location.lat, lng: location.lng });
+      map.setZoom(14);
+
+      // Place the marker on the map
+      if (marker) {
+        marker.setMap(null); // Remove the previous marker, if any
+      }
+      marker = new google.maps.Marker({
+        position: { lat: location.lat, lng: location.lng },
+        map: map,
+        title: `Postcode: ${foundPostcode}, Suburb: ${location.suburb}`,
+      });
+
+      console.log(`Found suburb: ${location.suburb}, Postcode: ${foundPostcode}`);
+      return;
+    }
+
+    // If no match is found, use geocoding as a fallback
+    geocoder.geocode({ address: input }, (results, status) => {
+      if (status === google.maps.GeocoderStatus.OK) {
+        const location = results[0].geometry.location;
+        map.setCenter(location);
+        map.setZoom(14);
+
+        // Place the marker on the map
+        if (marker) {
+          marker.setMap(null); // Remove the previous marker, if any
+        }
+        marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          title: `Location: ${results[0].formatted_address}`,
+        });
+
+        console.log("Located at:", location.lat(), location.lng());
+      } else {
+        console.error("Geocode error:", status);
+        alert("Postcode or suburb not found. Please try again.");
+      }
+    });
+  });
+
+  // Handle postcode checker form submission (to show delivery information)
+  function handlePostcodeCheckerSubmit(e) {
+    e.preventDefault();
+    var inputValEl = document.querySelector('#hf-delivery-checker-input');
+    var inputVal = inputValEl.value;
+
+    if (inputVal) {
+      var deliveryBlockRightContentText = document.querySelector(".delivery-content-postcode-not-searched");
+      var deliveryBlockFalse = document.querySelector(".delivery-content-postcode-not-found");
+      var deliveryBlockTrue = document.querySelector(".delivery-content-postcode-found");
+
+      // Check if the input is a postcode or suburb
+      const foundPostcode = Object.keys(postcodeCoordinates).find(
+        (postcode) =>
+          postcode === inputVal.trim() ||
+          postcodeCoordinates[postcode].suburb.toLowerCase() === inputVal.trim().toLowerCase()
+      );
+
+      if (foundPostcode) {
+        // Hide the "not found" message and show the "found" message
+        deliveryBlockRightContentText.style.display = 'none';
+        deliveryBlockFalse.style.display = 'none';
+        deliveryBlockTrue.style.display = 'block';
+
+        // Zoom to the searched postcode location on the map
+        var coordinates = postcodeCoordinates[foundPostcode];
+        if (coordinates) {
+          map.setCenter(new google.maps.LatLng(coordinates.lat, coordinates.lng));
+          map.setZoom(14); // Adjust the zoom level as necessary
+
+          // Place the marker on the map
+          if (marker) {
+            marker.setMap(null); // Remove the previous marker, if any
+          }
+          marker = new google.maps.Marker({
+            position: coordinates,
+            map: map,
+            title: `Postcode: ${foundPostcode}, Suburb: ${coordinates.suburb}`,
+          });
+        }
+      } else {
+        // Hide the "found" message and show the "not found" message
+        deliveryBlockRightContentText.style.display = 'none';
+        deliveryBlockFalse.style.display = 'block';
+        deliveryBlockTrue.style.display = 'none';
+      }
+    }
+  }
+</script>
+{% schema %}
+{
+  "name": "Delivery Search Block",
+  "class": "delivery-search-block-section",
+  "settings": [
+      {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Image 2"
+      },
+      {
+          "type": "text",
+          "id": "title-line1",
+          "label": "Title Line 1 (delivery available)"
+        },
+        {
+          "type": "text",
+          "id": "title-line2",
+          "label": "Title Line 2 (delivery available)"
+        },
+        {
+          "type": "text",
+          "id": "paragraph-description1",
+          "label": "Description1 (delivery available)"
+        },
+        {
+          "type": "text",
+          "id": "paragraph-description2",
+          "label": "Description2 (delivery available)"
+        },
+        {
+          "type": "text",
+          "id": "paragraph-description3",
+          "label": "Description3 (delivery available)"
+        },
+    {
+          "type": "text",
+          "id": "title-delivery-false",
+          "label": "Title (delivery not available)"
+        }
+  ],
+  "presets": [
+    {
+      "name": "Delivery Search Block"
+    }
+  ]
+}
+{% endschema %}

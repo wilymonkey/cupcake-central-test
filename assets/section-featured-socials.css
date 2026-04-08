@@ -1,0 +1,61 @@
+.featured-socials-container {
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#fcf8f3;
+}
+
+.featured-socials-block-link {
+  display: block;
+  text-decoration: none;
+  color: inherit; /* Adjust color to match your design */
+  margin:auto;
+}
+
+.featured-socials-block {
+  display: flex;
+  align-items: center;
+}
+
+.featured-socials-block-image {
+  height: 2.2rem; /* Sets the image height to match the font height */
+  width: auto; /* Maintain aspect ratio */
+  margin-right: 0.5em; /* Adjust spacing between image and text */
+}
+
+.featured-socials-block-text {
+  display: inline; /* Keep text in line with the image */
+  font-size:23px;
+    letter-spacing: 0px;
+    color: #1B9A8E;
+    text-transform: uppercase;
+    font-weight:600;
+}
+
+.featured-socials-block-text1 {
+  display: inline; /* Keep text in line with the image */
+  font-size:32px;
+    letter-spacing: 0px;
+    color: #f4a842;
+    text-transform: uppercase;
+    font-weight:600;
+}
+@media screen and (min-width:1300px){
+  .featured-socials-container{
+    padding:0 4%;
+  }
+}
+/* Responsive styles for mobile & tablet  */
+@media (max-width: 900px) {
+  .featured-socials-block-text {
+    display: none; /* Hide text on mobile */
+  }
+  .featured-socials-block-text1 {
+    display: none; /* Hide text on mobile */
+  }
+  .featured-socials-block-image{
+    height:3.5rem;
+  }
+  
+}

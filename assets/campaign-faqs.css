@@ -1,0 +1,144 @@
+.faq-questions-container {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.faq-question-header {
+  text-align: center;
+  font-size: 54px;
+  font-weight: 600;
+  color: white;
+}
+
+.faq-question-description {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  padding-top: 30px;
+}
+
+  .faq-block {
+    color: #444444;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-block svg {
+    width: 15px;
+    position: absolute;
+    top: 4rem;
+    right: 1.5rem;
+  }
+
+  .icon-rotate {
+    transform: rotate(180deg);
+  }
+
+  .faq-block-label {
+    display: block;
+    position: relative;
+    padding: 1.5rem 0;
+    padding-left: 1.5rem;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-top: 1px solid #444444;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+  }
+
+  .faq-block-label:first-child {
+    border-top: none;
+  }
+
+  .faq-block-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .faq-item-content {
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease, margin-bottom 0.3s ease;
+    color: white;
+  }
+
+  .faq-block-caret {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  .faq-container hr {
+    margin: 0;
+    height: 1px;
+    border:none;
+    color: white;
+  }
+
+@media (max-width: 500px) {
+  .faq-questions-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: auto;
+}
+  .faq-question-description {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    padding-top: 30px;
+  }
+.faq-question-header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+}
+  .faq-block-label {
+    display: block;
+    position: relative;
+    padding: 1.5rem 0;
+    padding-left: 1.5rem;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-top: 1px solid #444444;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+  }
+  .faq-item-content {
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease, margin-bottom 0.3s ease;
+    color: white;
+    font-size: calc(100vw*(13 / 430));
+    line-height: calc(1 + .5 / var(--font-body-scale));
+  }
+  .faq-block svg {
+    width: 15px;
+    position: absolute;
+    top: 2rem;
+    right: 1.5rem;
+}
+}

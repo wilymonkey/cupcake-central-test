@@ -1,0 +1,217 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "disabled": true,
+      "settings": {}
+    },
+    "17756318725aa05062": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_a3adbbe_pT7G6K": {
+          "type": "ai_gen_block_a3adbbe",
+          "settings": {
+            "video_url": "https://youtu.be/eIPw_-olhaA?si=Iomo0hcTMz38xGuk",
+            "video_height": 600,
+            "video_height_mobile": 400,
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.3,
+            "heading": "CELEBRATE PEOPLE WITH CUPCAKE CENTRAL",
+            "subtitle": "Add your brand in just a few clicks!",
+            "content_vertical_position": 40,
+            "content_horizontal_position": 5,
+            "content_max_width": 600,
+            "heading_font": "poppins_n8",
+            "heading_size": 48,
+            "heading_color": "#2e1a16",
+            "heading_spacing": 16,
+            "subtitle_font": "poppins_n4",
+            "subtitle_size": 18,
+            "subtitle_color": "#2e1a16"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_a3adbbe_pT7G6K"
+      ],
+      "settings": {}
+    },
+    "17756340316e911bb6": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_788a549_jNgxkj": {
+          "type": "ai_gen_block_788a549",
+          "settings": {
+            "desktop_width_percent": 100,
+            "container_width": 1400,
+            "column_gap": 30,
+            "content_gap": 15,
+            "background_color": "#1b9a8e",
+            "image_width": 100,
+            "image_border_radius": 8,
+            "image_alignment": "center",
+            "heading_size": 20,
+            "heading_color": "#ffffff",
+            "heading_alignment": "center",
+            "text_size": 14,
+            "text_color": "#ffffff",
+            "text_alignment": "center",
+            "column_1_image": "shopify://shop_images/Group_173.png",
+            "column_1_heading": "Feature one",
+            "column_1_text": "Share details about your product or service",
+            "column_2_image": "shopify://shop_images/Group_179.png",
+            "column_2_heading": "Feature two",
+            "column_2_text": "Share details about your product or service",
+            "column_3_image": "shopify://shop_images/Group_181.png",
+            "column_3_heading": "Feature three",
+            "column_3_text": "Share details about your product or service",
+            "column_4_image": "shopify://shop_images/Group_177.png",
+            "column_4_heading": "Feature four",
+            "column_4_text": "Share details about your product or service"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_788a549_jNgxkj"
+      ],
+      "settings": {}
+    },
+    "1775635502480f00b3": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3b5aef1_hCyDkW": {
+          "type": "ai_gen_block_3b5aef1",
+          "settings": {
+            "title": "4 WAYS TO GIFT",
+            "description": "Brighten up your events and meetings with our hand baked desserts, crafted from recipes perfected over the last 15 years. Our menu includes a dedicated vegan and Coeliac Australia certified gluten free range.",
+            "title_size": 36,
+            "description_size": 16,
+            "title_color": "#2e1a16",
+            "description_color": "#2e1a16",
+            "title_bottom_spacing": 20,
+            "header_spacing": 40,
+            "desktop_width_percent": 100,
+            "section_padding": 40,
+            "columns_top_spacing": 40,
+            "column_gap": 20,
+            "column_height": 400,
+            "column_padding": 30,
+            "column_border_radius": 8,
+            "image_fit": "cover",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.3,
+            "column_text_size": 13,
+            "column_heading_size": 20,
+            "column_text_color": "#ffffff",
+            "column_heading_color": "#ffffff",
+            "column_text_spacing": 10,
+            "column_heading_spacing": 15,
+            "button_font_size": 14,
+            "button_bg_color": "#f65b99",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#f65b99",
+            "button_border_width": 1,
+            "button_border_radius": 6,
+            "button_hover_bg_color": "#121212",
+            "button_hover_text_color": "#ffffff",
+            "button_hover_border_color": "#121212",
+            "column_1_image": "shopify://shop_images/Group97.png",
+            "column_1_text": "Vegan, Gluten Free, Custom Logo",
+            "column_1_heading": "CUSTOM CUPCAKES",
+            "column_1_button_text": "Shop Now",
+            "column_1_button_link": "https://cupcakecentral.com.au/collections/custom",
+            "column_2_image": "shopify://shop_images/Group_98.png",
+            "column_2_text": "Vegan, Gluten Free, Custom Logo",
+            "column_2_heading": "CUSTOM PHOTO CAKES",
+            "column_2_button_text": "Shop Now",
+            "column_2_button_link": "https://cupcakecentral.com.au/collections/custom-photo-cakes",
+            "column_3_image": "shopify://shop_images/Group97.png",
+            "column_3_text": "",
+            "column_3_heading": "CUSTOM COOKIES",
+            "column_3_button_text": "Shop Now",
+            "column_3_button_link": "https://cupcakecentral.com.au/collections/custom-shortbread",
+            "column_4_image": "shopify://shop_images/Group_98.png",
+            "column_4_text": "Vegan, Gluten Free, Custom Logo",
+            "column_4_heading": "CUSTOM CATERING",
+            "column_4_button_text": "Shop Now",
+            "column_4_button_link": "https://cupcakecentral.com.au/pages/corporate"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3b5aef1_hCyDkW"
+      ],
+      "settings": {}
+    },
+    "blocks_kNwkgp": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_a3adbbe_T4tyig": {
+          "type": "ai_gen_block_a3adbbe",
+          "settings": {
+            "video_url": "https://youtu.be/eIPw_-olhaA?si=Iomo0hcTMz38xGuk",
+            "video_height": 600,
+            "video_height_mobile": 400,
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.3,
+            "heading": "HEAD-TURNING CORPORATE SWEETS",
+            "subtitle": "Add your brand in just a few clicks!",
+            "content_vertical_position": 40,
+            "content_horizontal_position": 5,
+            "content_max_width": 600,
+            "heading_font": "poppins_n8",
+            "heading_size": 48,
+            "heading_color": "#2e1a16",
+            "heading_spacing": 16,
+            "subtitle_font": "poppins_n4",
+            "subtitle_size": 18,
+            "subtitle_color": "#2e1a16"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_a3adbbe_T4tyig"
+      ],
+      "settings": {}
+    },
+    "bento_grid_RfyjYw": {
+      "type": "bento-grid",
+      "disabled": true,
+      "name": "Bento Grid",
+      "settings": {
+        "heading": "Header / Title",
+        "text": "<p>In rhoncus felis sed sodales fermentum. Pellentesque eget odio vitae turpis malesuada feugiat at in risus.</p>",
+        "button_text": "Button XSML",
+        "button_link": "",
+        "background_color": "#ffffff",
+        "image_style": "framed",
+        "image_orientation": "portrait",
+        "text_alignment": "center",
+        "image_position": "right"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "17756318725aa05062",
+    "17756340316e911bb6",
+    "1775635502480f00b3",
+    "blocks_kNwkgp",
+    "bento_grid_RfyjYw"
+  ]
+}

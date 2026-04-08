@@ -1,0 +1,645 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+{{ 'section-delivery-block.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    /* .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    } */
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+    .checkoutMethodsContainer {
+      position: relative;
+      /* Ensure the parent container is positioned */
+  }
+
+  .selectedCheckoutMethodContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10; /* Adjust as necessary to ensure it appears above other content */
+      /* Additional styling as necessary */
+  }
+{%- endstyle -%}
+
+{%- unless settings.cart_type == 'drawer' -%}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+{% assign freeShippingInput = section.settings.free_shipping_min %}
+{% assign freeShippingThreshold = freeShippingInput | times: 100.0 %}
+{% assign awayFromFreeShippingValue = freeShippingThreshold | minus: cart.total_price %}
+{% assign awayFromFreeShippingDollar = cart.total_price | divided_by: freeShippingThreshold %}
+{% assign awayFromFreeShippingPercent = awayFromFreeShippingDollar | times: 100 %}
+{% assign awayFromFreeShippingValueMoney = awayFromFreeShippingValue | money %}
+
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+<div class="page-width cart-items-page-wrapper">
+  <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %} cart-page-items">
+    <div class="cart__warnings">
+      <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
+      <a href="https://cupcakecentral.com.au/" class="button">
+        {{ 'general.continue_shopping' | t }}
+      </a>
+      {%- if shop.customer_accounts_enabled and customer == null -%}
+        <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
+        <p class="cart__login-paragraph">
+          {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+        </p>
+      {%- endif -%}
+    </div>
+
+    <form
+      action="{{ routes.cart_url }}"
+      class="cart__contents critical-hidden"
+      method="post"
+      id="cart"
+    >
+      <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
+        <div class="js-contents">
+          {%- if cart != empty -%}
+            <table class="cart-items">
+              <caption class="visually-hidden">
+                My Cart
+              </caption>
+              <tbody>
+                {%- for item in cart.items -%}
+                  <tr
+                    class="cart-item d-sm:justify-between md:justify-between w-[100%]"
+                    id="CartItem-{{ item.index | plus: 1 }}"
+                  >
+                    <td class="cart-item__media">
+                      {% if item.image %}
+                        <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
+                        <div class="d-lg:w-[156px]">
+                          <img
+                            src="{{ item.image | image_url: width: 300 }}"
+                            class="cart-item__image aspect-[4/5] object-cover w-[104px] d-sm:w-[156px] d-lg:h-[195px]"
+                            alt="{{ item.image.alt | escape }}"
+                            loading="lazy"
+                            width=""
+                            height=""
+                          >
+                        </div>
+                      {% endif %}
+                    </td>
+
+                    <td class="cart-item__details flex! flex-col! d-sm:flex-row! pl-[10px]! d-sm:pl-0 gap-[0px] md:gap-[10px] ml-[0rem]! md:ml-[-15rem]! d-sm:ml-7!">
+                      <a
+                        href="{{ item.url }}"
+                        class="cart-item__name h4 break  text-espresso! d-sm:text-[16px]! d-sm:leading-[18px]! d-sm:tracking-[0.225px] d-sm:mr-[30px] d-sm:ml-[-10rem]! d-lg:ml-[-15rem]!"
+                      >
+                        {{- item.product.title | escape -}}
+                      </a>
+
+                      {%- if item.product.has_only_default_variant == false -%}
+                        <div class="product-option pt-4 md:pt-0 text-[10px]! md:mx-[5%] d-sm:text-[16px]! leading-[0.15px]! font-[700] text-espresso!">
+                          {%- for option in item.options_with_values -%}
+                            <dd>
+                              &nbsp;
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-cake-slice-icon lucide-cake-slice"
+                              >
+                                <path d="M16 13H3"/><path d="M16 17H3"/><path d="m7.2 7.9-3.388 2.5A2 2 0 0 0 3 12.01V20a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-8.654c0-2-2.44-6.026-6.44-8.026a1 1 0 0 0-1.082.057L10.4 5.6"/><circle cx="9" cy="7" r="2"/>
+                              </svg>
+                              {{ option.value }}
+                            </dd>
+                          {%- endfor -%}
+                        </div>
+                      {%- endif -%}
+
+                      <div class="cart-item__price-wrapper pt-0! md:pt-2! d-sm:pt-0! d-sm:mx-auto">
+                        {%- if item.original_line_price != item.final_line_price -%}
+                          <span class="font-bold text-sm d-sm:text-[16px]! d-sm:leading-[18px]! d-sm:tracking-[0.225px]!"
+                            >NOW {{ item.final_line_price | money -}}
+                          </span>
+                          <span class="text-gray-500 ml-2"
+                            >Was <s>{{ item.original_line_price | money }}</s></span
+                          >
+                        {%- else -%}
+                          <span class="text-[12px]! d-sm:text-[16px]! d-sm:leading-[18px]! d-sm:tracking-[0.225px]! tracking-[0.5px]! leading-[12px]! font-[700] text-espresso! my-5! d-sm:mt-0!">
+                            {{- item.original_line_price | money -}}
+                          </span>
+                        {%- endif -%}
+                        <div class="cart-item__quantity mt-[10px]!">
+                          {% unless item.product.tags contains 'No Cart Badges' %}
+                            <quantity-input class="quantity cart-quantity bg-white py-[2px] items-center justify-center">
+                              <button class="quantity__button no-js-hidden" name="minus" type="button">
+                                <span class="visually-hidden">
+                                  {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
+                                </span>
+                                {% render 'icon-minus' %}
+                              </button>
+                              <input
+                                class="quantity__input text-espresso! font-[800]! justify-center"
+                                data-quantity-variant-id="{{ item.variant.id }}"
+                                type="number"
+                                name="updates[]"
+                                value="{{ item.quantity }}"
+                                min="{{ item.variant.quantity_rule.min }}"
+                                {% if item.variant.quantity_rule.max != null %}
+                                  max="{{ item.variant.quantity_rule.max }}"
+                                {% endif %}
+                                step="{{ item.variant.quantity_rule.increment }}"
+                                aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                id="Quantity-{{ item.index | plus: 1 }}"
+                                data-index="{{ item.index | plus: 1 }}"
+                              >
+                              <button class="quantity__button no-js-hidden" name="plus" type="button">
+                                <span class="visually-hidden">
+                                  {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
+                                </span>
+                                {% render 'icon-plus' %}
+                              </button>
+                            </quantity-input>
+                          {% endunless %}
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      {% unless item.product.tags contains 'No Cart Badges' %}
+                        <cart-remove-button
+                          id="Remove-{{ item.index | plus: 1 }}"
+                          data-index="{{ item.index | plus: 1 }}"
+                          class="cart-page__remove-button"
+                        >
+                          <a
+                            href="{{ item.url_to_remove }}"
+                            class="button button--tertiary"
+                            aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                          >
+                            {% comment %}
+                              <img
+                                src="https://cdn.shopify.com/s/files/1/0633/6662/7516/files/Drive_icon_1_b3e040c6-be6d-4e86-b478-f4846a6609f9.png?v=1703594678"
+                                width="20"
+                                height="20"
+                                class="remove-qty-icon"
+                                alt="remove qty button"
+                              >
+                            {% endcomment %}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="lucide lucide-trash2-icon lucide-trash-2 text-espresso"
+                            >
+                              <path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                          </a>
+                        </cart-remove-button>
+                      {% endunless %}
+                    </td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
+      <p
+        class="visually-hidden"
+        id="shopping-cart-line-item-status"
+        aria-live="polite"
+        aria-hidden="true"
+        role="status"
+      >
+        {{ 'accessibility.loading' | t }}
+      </p>
+    </form>
+
+    <div id="gift-message-container" class="isolate">
+      <div class="atl-container">
+        <label class="atl-checkbox">
+          <input
+            type="checkbox"
+            id="gift-msg-w-rib-checkbox"
+            {% if cart.attributes['gift-msg-w-rib'] %}
+              {%- if cart.attributes['gift-msg-w-rib'] == 'Yes' %}
+                value="Yes" checked
+              {% else %}
+                value="No"
+              {% endif -%}
+            {% else %}
+              value="No"
+            {% endif %}
+          >
+          <span class="atl-checkbox-overlay">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0633/6662/7516/files/Drive_icon_2.png?v=1703663123"
+              class="checkbox-tick"
+              width="15"
+              height="15"
+            >
+          </span>
+        </label>
+        <div class="atl-text text-popsugar! text-[12px] leading-[17px] tracking-[0.25px] font-[500]!">
+          Add Gift Message with Ribbon ($2.00)
+        </div>
+      </div>
+      <div class="block mx-auto h-0 border-t-1 border-[#C1C7D1] my-[20px] md:my-[30px]">&nbsp;</div>
+      <div class="gift-message-container">
+        <div
+          id="gift-msg-w-rib-entry"
+          {% if cart.attributes['gift-msg-w-rib'] %}
+            {%- if cart.attributes['gift-msg-w-rib'] == 'Yes' %}
+            {% else %}
+              style="display: none;"
+            {% endif -%}
+          {% else %}
+            style="display: none;"
+          {% endif %}
+        >
+          <div class="cart__note field">
+            <label for="giftCardMessage">Gift Card Message</label>
+            <textarea
+              class="text-area text-area--resize-vertical field__input gift-cart-note-textarea"
+              name="attributes[gift-message]"
+              form="cart"
+              id="giftCardMessage"
+              placeholder="Add Gift Message"
+              maxlength="120"
+            >{{ cart.attributes.gift-message }}</textarea>
+          </div>
+
+          <p class="gift-note-limit-letter">0/120 characters.</p>
+          <p class="note-disclaimer">Note: Emojis and special characters are unavailable</p>
+        </div>
+      </div>
+      <div class="delivery-instructions-container">
+        <div class="cart__note field">
+          <label for="Cart-note">Delivery Instructions</label>
+          <textarea
+            class="cart-note-textarea delivery-cart-note-textarea text-area field__input text-[14px]! leading-[18px]! tracking-[0.3px]! text-shadow-none! font-[500]! p-[12px]! text-espresso! rounded-[6px]! border-1 border-[#C1C7D1]!"
+            name="note"
+            form="cart"
+            id="Cart-note-instructions"
+            placeholder="Leave driver a message, no specific delivery time requests.&#10;For gift messages, see section above."
+            maxlength="120"
+          >{{ cart.note }}</textarea>
+        </div>
+        <div class="flex text-espresso">
+          <p class="delivery-note-limit-letter text-[12px]! leading-[17px]! tracking-[0.25px]! font-[700]!">
+            0/120
+            <p class="delivery-note-limit-letter text-[12px]! leading-[17px]! tracking-[0.25px]! font-[500]!">
+              &nbspCharacters.
+            </p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </cart-items>
+  <div class="js-contents cart-page-totals-container">
+    <div class="free-shipping-container">
+      {% if awayFromFreeShippingValue > 0.00 %}
+        <h4 class="free-shipping-title">Spend {{ awayFromFreeShippingValueMoney }} more to get Free Shipping</h4>
+        <div class="free-shipping-bar">
+          <span
+            class="free-shipping-progress"
+            style="width:{{ awayFromFreeShippingPercent }}%; background-color:#F8B25E"
+          ></span>
+        </div>
+      {% else %}
+        <h4 class="free-shipping-title text-espresso! text-[16px] leading-[18px]! tracking-[0.225px]! font-[700]!">
+          You’ve unlocked free delivery!
+        </h4>
+        <div class="free-shipping-bar mt-[12px]!">
+          <span class="free-shipping-progress " style="width:100%; background-color:#F8B25E"></span>
+        </div>
+      {% endif %}
+      <div>
+        {%- if cart.cart_level_discount_applications.size > 0 -%}
+          <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+            {%- for discount in cart.cart_level_discount_applications -%}
+              <li class="discounts__discount discounts__discount--position">
+                {%- render 'icon-discount' -%}
+                {{ discount.title }}
+                (-{{ discount.total_allocated_amount | money }})
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <div class="totals text-espresso!">
+        <h2 class="totals__total text-espresso!">Total</h2>
+        <p class="totals__total-value">{{ cart.total_price | money }}</p>
+      </div>
+
+      <div class="cart__ctas">
+        <noscript>
+          <button type="submit" class="cart__update-button button button--secondary" form="cart">
+            {{ 'sections.cart.update' | t }}
+          </button>
+        </noscript>
+
+        <button
+          type="submit"
+          id="checkout"
+          class="cart__checkout-button text-[16px]!"
+          name="checkout"
+          {% if cart == empty %}
+            disabled
+          {% endif %}
+          form="cart"
+        >
+          {{ 'sections.cart.checkout' | t }}
+        </button>
+
+        {%- if additional_checkout_buttons -%}
+          <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+            {{ content_for_additional_checkout_buttons }}
+          </div>
+        {%- endif -%}
+        <div id="cart-errors"></div>
+        <small class="t-c-note caption-large rte">
+          <a target="_blank" href="/policies/terms-of-service">By checking out, I accept the Terms & Conditions</a><br>
+          <a target="_blank" href="/pages/delivery-information">Read our Delivery Guide Here</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  class CartNote extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener(
+        'change',
+        debounce((event) => {
+          const body = JSON.stringify({ note: event.target.value });
+          fetch(`${routes.cart_update_url}`, { ...fetchConfig(), ...{ body } });
+        }, 300)
+      );
+    }
+  }
+
+  customElements.define('cart-note', CartNote);
+{% endjavascript %}
+
+<script>
+      const userProvidedFreeShippingMinimum = {{section.settings.free_shipping_min}};
+      //create a js variable to be used later on to update the free shipping UI
+  
+      // js functions for the notes sections
+      document.addEventListener('DOMContentLoaded', function () {
+        var giftTextArea = document.querySelector('.gift-cart-note-textarea');
+        var giftCharCountElement = document.querySelector('.gift-note-limit-letter');
+        var deliveryTextArea = document.querySelector('.delivery-cart-note-textarea');
+        var deliveryCharCountElement = document.querySelector('.delivery-note-limit-letter');
+
+        // Function to update character count for the gift message
+        function updateGiftCharCount() {
+            var enteredText = giftTextArea.value.length;
+            giftCharCountElement.textContent = enteredText + '/120';
+        }
+
+        // Function to update character count for the delivery instructions
+        function updateDeliveryCharCount() {
+            var enteredText = deliveryTextArea.value.length;
+            deliveryCharCountElement.textContent = enteredText + '/120';
+        }
+
+        // Initial update in case there's pre-filled text
+        updateGiftCharCount();
+        updateDeliveryCharCount();
+
+        // Event listeners for text input
+        giftTextArea.addEventListener('input', updateGiftCharCount);
+        deliveryTextArea.addEventListener('input', updateDeliveryCharCount);
+        function isIE() {
+          const ua = window.navigator.userAgent;
+          const msie = ua.indexOf('MSIE ');
+          const trident = ua.indexOf('Trident/');
+
+          return msie > 0 || trident > 0;
+        }
+
+        if (!isIE()) return;
+        const cartSubmitInput = document.createElement('input');
+        cartSubmitInput.setAttribute('name', 'checkout');
+        cartSubmitInput.setAttribute('type', 'hidden');
+        document.querySelector('#cart').appendChild(cartSubmitInput);
+        document.querySelector('#checkout').addEventListener('click', function (event) {
+          document.querySelector('#cart').submit();
+        });
+      });
+    //js to  alter zapiet
+  $(document).ready(function() {
+    let currentCheckoutMethod = ""; // Track the current checkout method globally
+
+    window.ZapietEvent.listen('widget_loaded', function() {
+        // Now, start observing the target node for configured mutations
+        observer.observe(document.getElementById('storePickupApp'), observerConfig);
+      currentCheckoutMethod = 'delivery';
+      visuallyMoveCheckoutMethodContainer();
+        window.ZapietEvent.listen('selected_method', function(checkout_method) {
+            currentCheckoutMethod = checkout_method; // Update the current method
+            visuallyMoveCheckoutMethodContainer(); // Attempt to visually move the container
+        });
+    });
+
+    const observerConfig = { childList: true, subtree: true };
+    const observer = new MutationObserver((mutationsList, observer) => {
+        // Observer logic to detect when the checkoutMethodContainer is added or changed
+        for (let mutation of mutationsList) {
+            if (mutation.addedNodes.length > 0 ||
+ mutation.removedNodes.length > 0) {
+                if (currentCheckoutMethod) {
+                    visuallyMoveCheckoutMethodContainer();
+                }
+            }
+        }
+    });
+    function visuallyMoveCheckoutMethodContainer() {
+        if (!currentCheckoutMethod) return;
+      const checkoutMethodList  = document.querySelectorAll('.checkoutMethod');
+      checkoutMethodList.forEach(el => {
+        el.style.paddingBottom = "10px";
+      })
+
+        // Select the container and the target based on the current method
+        const containerSelector = `.checkoutMethodContainer.${currentCheckoutMethod}`;
+        const $containerToMove = $(containerSelector);
+        // Determine the index based on currentCheckoutMethod
+    const methodIndex = { 'delivery': 0, 'pickup': 1, 'shipping': 2 };
+    const index = methodIndex[currentCheckoutMethod];
+
+    const $targetCheckoutMethod = $('.checkoutMethod').eq(index);
+
+        if ($containerToMove.length === 0 || $targetCheckoutMethod.length === 0) {
+            return;
+// Either container or target method not found, exit the function.
+        }
+        // Calculate the new top position based on the target checkout method's position plus its height
+        let newTopPosition = $targetCheckoutMethod.offset().top + 30;
+        let targetCheckoutHeight = 10;
+        const parentLeftPadding = parseInt($('.checkoutMethodsContainer').css('padding-left'), 10);
+      if(window.innerWidth > 1000 && window.innerWidth <1450){
+         newTopPosition = $targetCheckoutMethod.offset().top + 60;
+         targetCheckoutHeight = 25;
+      }
+        // Apply the new position and other styles to the container
+        $containerToMove.css({
+            position: 'absolute',
+            top: newTopPosition + 'px',
+            left: $targetCheckoutMethod.offset().left - parentLeftPadding + 'px', // Adjust left position based on the target method and parent padding
+            width: $targetCheckoutMethod.outerWidth() 
+ + 'px' // Match the width of the target method
+        });
+        // Adjust the overall height of the container's parent to accommodate the absolutely positioned container
+        $targetCheckoutMethod.css('padding-bottom', ($containerToMove.outerHeight() + targetCheckoutHeight) + 'px');
+    }
+});
+  $("#giftCardMessage").keyup(function(){
+    giftval = $("#giftCardMessage").val();
+    $("#gift-card-text-count-number").html(giftval.length);
+    if ($("#giftCardMessage").val().length >= 120) {
+      $("#gift-card-text-count").css("color","#c00");
+    } else if ($("#giftCardMessage").val().length == 0) {
+      $("#gift-card-text-count").css("color","#3c3c3c");
+    } else {
+      $("#gift-card-text-count").css("color","#1c9a8d");
+    }
+    console.log(giftval);
+    jQuery.post('/cart/update.js', {
+      attributes: {
+        'gift-message': giftval
+      }});
+  });
+  $('#gift-msg-w-rib-checkbox').on('change', function(){
+      $('#giftCardMessage').prop('disabled', true);
+         if (this.checked){
+           $('#gift-msg-w-rib-entry').css("display", "block");
+           jQuery.post('/cart/update.js', {
+             updates: {
+              41070875770940: 1
+            },
+             attributes: {
+               'gift-msg-w-rib': 'Yes'
+             }
+           }).always(function() {
+            location.reload();});
+         }
+         else {
+           $('#gift-msg-w-rib-entry').css("display", "none");
+           $('gift-message-container').css("margin", "0");
+           jQuery.post('/cart/update.js', {
+             updates: {
+              41070875770940: 0
+            },
+             attributes: {
+               'gift-msg-w-rib': 'No',
+               'gift-message': ''
+             }
+           }).always(function() {
+            location.reload();});
+       }
+    });
+  $("#Cart-note-instructions").keyup(function(){
+    jQuery.post('/cart/update.js', {
+      note: $("#Cart-note-instructions").val()});
+    $("#instructions-text-count-number").html($("#Cart-note-instructions").val().length);
+    if ($("#Cart-note-instructions").val().length >= 120) {
+      $("#instructions-text-count").css("color","#c00");
+    } else if ($("#Cart-note-instructions").val().length == 0) {
+      $("#instructions-text-count").css("color","#3c3c3c");
+    } else {
+      $("#instructions-text-count").css("color","#1c9a8d");
+    }
+  });
+  // $('#atl-checkbox').on('change', function(){
+  //   if (this.checked){
+  //     $('#atl').val('Yes');
+  //     atlvalue = 'Yes';
+  //   }
+  //   else {
+  //     $('#atl').val('No');
+  //     atlvalue = 'No';
+  //   }
+  //   jQuery.post('/cart/update.js', {
+  //     attributes: {
+  //       'atl': atlvalue
+  //     }});
+  // });
+</script>
+
+<script>
+  $(document).ready(function () {
+    setTimeout(function () {
+      window.location.reload();
+    }, 900000);
+  });
+</script>
+{% schema %}
+{
+  "name": "t:sections.main-cart-items.name",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "number",
+      "id": "free_shipping_min",
+      "label": "Minimum Value for Free Shipping",
+      "info": "This value should be an integer value in dollars. E.g: 50",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

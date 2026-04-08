@@ -1,0 +1,513 @@
+<div id="hf-page-width-imageandtext-01" class="{{section.settings.width_layout}}">
+  <div id="hf-mobile-responsive-block" class="col-12 col-lg-6 p-0">
+    <img
+      class="lazyload"
+      loading="lazy"
+      src="{{ section.settings.image | img_url: 'master' }}"
+      alt="Section Image"
+    >
+  </div>
+  <div
+    style="{% if section.settings.image_position == "right" %}flex-direction: row;{%  elsif section.settings.image_position == "left" %}flex-direction: row-reverse;{% endif %}"
+    id="hf-container-imageandtext-01"
+  >
+    <div id="hf-block-text-imageandtext-01" class="col-12 col-lg-6">
+      <div id="hf-block-inner-imageandtext-01">
+        <div id="hf-desktop-block-content-imageandtext-01">
+          <div id="hf-desktop-block-content-texts-imageandtext-01">
+            <h1 id="hf-desktop-block-content-heading-imageandtext-01">{{ section.settings.heading }}</h1>
+            <div id="hf-desktop-block-content-description-container-imageandtext-01">
+              {% if section.settings.info != blank %}
+                {{ section.settings.info }}
+              {% endif %}
+            </div>
+            <div class="hf-lp-btn-container">
+              {% if section.settings.btn_link != blank %}
+                <a href="{% if section.settings.btn_link != blank %}{{ section.settings.btn_link }}{% endif %}">
+              {% endif %}
+              <button onclick="{{ section.settings.btn_on_click }}" style="margin: 0 0 0 0;" class="btn">
+                {{ section.settings.btn_text }}
+              </button>
+              {% if section.settings.btn_link != blank %}</a>{% endif %}
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="hf-block-img-imageandtext-01" class="col-12 col-lg-6">
+      <div id="hf-block-inner-imageandtext-01">
+        <div id="hf-desktop-block-content-imageandtext-01">
+          <div id="hf-simple-split-image-container-imageandtext-01">
+            <img
+              id="hf-simple-split-image-imageandtext-01"
+              class="lazyload"
+              loading="lazy"
+              src="{{ section.settings.image | img_url: 'master' }}"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image and Text Block",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "width_layout",
+      "label": "Width Layout",
+      "default": "page-width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "page-width"
+        }, {
+          "value": "full-page-width",
+          "label": "full-page-width"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        }, {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "Animation",
+      "default": "slide-in",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        }, {
+          "value": "slide-in",
+          "label": "Slide In"
+        }
+      ]
+    }, {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Section Heading"
+    }, {
+      "type": "html",
+      "id": "info",
+      "label": "Description",
+      "default": "<p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.Lorem ipsum.</p>"
+    }, {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Label",
+      "default": "Order Now"
+    }, {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },  {
+      "type": "text",
+      "id": "btn_on_click",
+      "label": "Button onclick Function",
+      "default": "window.location.reload();"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image and Text Block"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  <style>
+    .hf-fadeInLeft-imageandtext-01 {
+      animation-duration: 1s;
+      animation-delay: 0.3s;
+      animation-name: fadeInLeft;
+    }
+
+    .hf-fadeInRight-imageandtext-01 {
+      animation-duration: 1s;
+      animation-delay: 0.3s;
+      animation-name: fadeInRight;
+    }
+
+    #hf-page-width-imageandtext-01 {
+      padding: 0 15px;
+    }
+
+    #hf-container-imageandtext-01 {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 600px;
+    }
+
+    #hf-block-img-imageandtext-01 {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #hf-block-text-imageandtext-01 {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      width: 50%;
+      height: 100%;
+    }
+
+    #hf-block-inner-imageandtext-01 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    #hf-desktop-block-content-imageandtext-01 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    #hf-desktop-block-content-texts-imageandtext-01 {
+      padding: 0 24px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+
+    }
+
+    #hf-simple-split-image-container-imageandtext-01 {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: bottom;
+    }
+
+    #hf-simple-split-image-imageandtext-01 {
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      object-position: 35% 50%;
+    }
+
+    #hf-mobile-responsive-block {
+      display: none !important;
+      padding: 0 !important;
+    }
+
+    #contact-fields-imageandtext-01 {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    #contactForm-name-imageandtext-01,
+    #contactForm-email-imageandtext-01,
+    #contactForm-phone-imageandtext-01 {
+      background-color: white;
+    }
+
+    #contactForm-name-imageandtext-01 {
+      margin: 0 12px 0 0;
+    }
+
+    #contactForm-phone-imageandtext-01 {
+      margin: 0 0 0 12px;
+    }
+
+    #hf-form-field-text-area-imageandtext-01 {
+      display: none;
+    }
+
+    #hf-desktop-block-content-heading-imageandtext-01 {
+      font-family: "TT COMMONS";
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 40px;
+      color: #f283b4;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    #hf-desktop-block-content-subheading-imageandtext-01 {
+      font-family: "TT COMMONS";
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 40px;
+      color: #f283b4;
+      margin-bottom: 0;
+    }
+
+    #hf-desktop-block-content-description-container-imageandtext-01 {
+      padding: 48px 0;
+    }
+
+    #hf-desktop-block-content-description-imageandtext-01 {
+      font-size: 20px;
+    }
+
+    .hf-lp-btn-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hf-lp-btn-pink-imageandtext-01 {
+      font-family: "TT COMMONS";
+      font-weight: 600;
+      font-size: 1.7em;
+      background-color: #f283b4;
+      color: white;
+      border-radius: 48px;
+      border-color: transparent;
+      cursor: pointer;
+      padding: 12px 48px;
+    }
+
+    @media only screen and (max-width: 1200px) {
+      #contactForm-name-imageandtext-01 {
+        margin: 0 6px 0 0;
+      }
+
+      #contactForm-phone-imageandtext-01 {
+        margin: 0 0 0 6px;
+      }
+
+      #hf-desktop-block-content-heading-imageandtext-01 {
+        font-family: "TT COMMONS";
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 30px;
+        color: #f283b4;
+        margin-bottom: 0;
+        text-align: center;
+      }
+
+      #hf-desktop-block-content-subheading-imageandtext-01 {
+        font-family: "TT COMMONS";
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 30px;
+        color: #f283b4;
+        margin-bottom: 0;
+      }
+
+      #hf-desktop-block-content-description-container-imageandtext-01 {
+        padding: 24px 0 12px;
+      }
+
+      #hf-container-imageandtext-01 {
+        height: 400px;
+      }
+    }
+
+    @media only screen and (max-width: 992px) {
+      #hf-block-img-imageandtext-01,
+      #hf-block-text-imageandtext-01 {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 50%;
+        height: 100%;
+      }
+
+      #hf-block-inner-imageandtext-01 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #hf-desktop-block-content-texts-imageandtext-01 {
+        text-align: left;
+        width: 100%;
+        height: 100%;
+      }
+
+      #hf-desktop-block-content-heading-imageandtext-01 {
+        font-family: "TT COMMONS";
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 30px;
+        color: #f283b4;
+        margin-bottom: 0;
+        text-align: center;
+      }
+
+      #hf-desktop-block-content-subheading-imageandtext-01 {
+        font-family: "TT COMMONS";
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 30px;
+        color: #f283b4;
+        margin-bottom: 0;
+      }
+
+      #hf-form-field-imageandtext-01 {
+        margin-bottom: 6px;
+      }
+
+      #hf-desktop-form-secondary-inputs-imageandtext-01 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+      }
+
+      #contact-fields-imageandtext-01 {
+        width: 100%;
+      }
+
+      #contactForm-name-imageandtext-01 {
+        margin: 0;
+      }
+
+      #contactForm-phone-imageandtext-01 {
+        margin: 0;
+      }
+
+      #hf-block-contact-container {
+        width: 100%;
+      }
+
+      #hf-desktop-block-content-description-container-imageandtext-01 {
+        padding: 24px 0;
+      }
+
+      #hf-desktop-block-content-description-imageandtext-01 {
+        font-size: 14px;
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+      #hf-page-width-imageandtext-01 {
+        padding: 0;
+      }
+
+      #hf-container-imageandtext-01 {
+        height: auto;
+      }
+
+      #hf-block-img-imageandtext-01 {
+        display: none;
+      }
+
+      #hf-block-text-imageandtext-01 {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 100%;
+        margin: 0;
+        height: auto;
+      }
+
+      #hf-block-inner-imageandtext-01 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 35px;
+        margin: 0;
+        height: auto;
+      }
+
+      #hf-mobile-responsive-block {
+        padding: 0 !important;
+        display: block !important;
+      }
+
+      #hf-mobile-responsive-block img {
+        width: 100%;
+      }
+
+      #hf-simple-split-image-container-imageandtext-01 {
+        display: none;
+      }
+
+      #hf-desktop-block-content-texts-imageandtext-01 {
+        padding: 0;
+        text-align: left;
+        width: 100%;
+        height: auto;
+      }
+
+      #hf-desktop-block-content-description-container-imageandtext-01 {
+        padding: 12px 0;
+      }
+
+      #hf-desktop-block-content-imageandtext-01 {
+        width: 100%;
+        height: auto;
+      }
+
+      #hf-desktop-block-content-heading-imageandtext-01 {
+        font-family: "TT COMMONS";
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 30px;
+        color: #f283b4;
+        margin-bottom: 0;
+      }
+
+      #hf-desktop-block-content-subheading-imageandtext-01 {
+        font-family: "TT COMMONS";
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 30px;
+        color: #f283b4;
+        margin-bottom: 0;
+      }
+    }
+  </style>
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

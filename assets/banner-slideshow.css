@@ -1,0 +1,91 @@
+.carousel img {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .carousel video {
+    object-fit: cover;
+    height: 100%;
+  }
+  
+  .carousel {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    height: auto;
+  }
+  
+  .image-container {
+    display: flex;
+    transform: translateX(0);
+    height: 580px;
+  }
+
+@media (max-width: 600px) {
+  .image-container {
+    display: flex;
+    transform: translateX(0);
+    height: 460px;
+  }
+}
+
+  .buttons-container {
+    position: absolute; /* Position absolutely within .carousel */
+    top: 50%; /* Center vertically */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 3rem; /* Adjust margin as needed */
+    transform: translateY(-50%);
+  }
+  
+  .carousel .btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 0.8rem 1.3rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel:hover .btn {
+    opacity: 1; /* Visible when hovering over the carousel */
+    background-color: #1c9a8d;
+  }
+  
+  .carousel .btn:hover { 
+    background-color: #f283b4;
+  }
+
+  .slider-dot-control {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+
+    .dot {
+        cursor: pointer;
+        border-radius: 15px;
+        border: 1px solid #1c9a8d;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background: transparent;
+        @include transition(all 0.3s);
+
+        &:hover {
+            background: #1c9a8d;
+            border-color: #1c9a8d;
+        }
+    }
+  }
+
+  .activeDot {
+	background-color: #1c9a8d !important; 
+  }

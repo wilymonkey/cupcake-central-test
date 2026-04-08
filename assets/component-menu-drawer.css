@@ -1,0 +1,184 @@
+/* Menu drawer styles */
+.header__icon--menu {
+  position: initial;
+}
+
+.js menu-drawer > details > summary::before,
+.js menu-drawer > details[open]:not(.menu-opening) > summary::before {
+  content: "";
+  position: absolute;
+  cursor: default;
+  width: 100%;
+  height: calc(100vh - 100%);
+  height: calc(
+    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
+  );
+  top: 100%;
+  left: 0;
+  background: rgba(var(--color-foreground), 0.5);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+  transition: opacity 0s, visibility 0s;
+}
+
+menu-drawer > details[open] > summary::before {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity var(--duration-default) ease,
+    visibility var(--duration-default) ease;
+}
+
+.menu-drawer {
+  margin-top: 15%;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #fff;
+  transform: translatey(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out, visibility 1s;
+}
+
+.js details[open] > .menu-drawer,
+.js details[open] > .menu-drawer__submenu {
+  transition: transform var(--duration-default) ease,
+    visibility var(--duration-default) ease;
+}
+
+.no-js details[open] > .menu-drawer,
+.js details[open].menu-opening > .menu-drawer,
+details[open].menu-opening > .menu-drawer__submenu {
+  transform: translatey(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+@media screen and (min-width: 750px) {
+  .menu-drawer {
+    width: 40rem;
+    border-width: 0 var(--drawer-border-width) 0 0;
+    border-style: solid;
+    border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
+  }
+
+  .no-js .menu-drawer {
+    height: auto;
+  }
+}
+
+
+
+.menu-drawer__navigation {
+  padding: 3rem 0;
+}
+
+.menu-drawer__menu li a {
+  color: black;
+}
+
+.menu-drawer__menu-item {
+  padding: 1.1rem 3rem;
+  text-decoration: none;
+  font-size: 1.8rem;
+}
+
+.menu-drawer summary.menu-drawer__menu-item {
+  padding-right: 5.2rem;
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+}
+.list-menu{
+  padding-top:10
+}
+/* Submenu styling */
+.menu-drawer__submenu {
+  position: relative; /* Position relative to parent for correct submenu placement */
+  transform: translateX(0); /* Keep submenu aligned to the right */
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, visibility 0.3s ease;
+  padding-left: 1.5rem; /* Slight padding to move the submenu right */
+}
+
+/* Make submenu visible when parent is open */
+details[open] > .menu-drawer__submenu {
+  visibility: visible;
+  max-height: 100vh; /* Adjust max height as needed for smooth open */
+}
+
+.menu-drawer__submenu .menu-drawer__menu-item {
+  padding-left: 2.5rem; /* Extra padding for submenu items */
+}
+
+/* Additional adjustments to prevent duplication effects */
+.menu-drawer__menu-item {
+  padding: 1rem 2rem; /* Adjust padding as desired */
+}
+
+.menu-drawer__close-button {
+  margin-top: 1.5rem;
+  padding: 1.2rem 2.6rem 1.2rem 3rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  width: 100%;
+  background-color: transparent;
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  text-align: left;
+}
+
+.icon-caret {
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease;
+}
+
+/* Rotate class to apply on click */
+.icon-caret.rotate {
+  transform: rotate(0deg);
+}
+
+.menu-drawer__menu-item:focus,
+.menu-drawer__menu-item:active,
+.menu-drawer__menu-item:hover {
+  color: black !important; /* Ensure the text stays black on focus, active, and hover */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.05
+  ); /* Optional: light background on hover/click */
+  font-weight: bold;
+}
+/* @media screen and (max-width: 500px) {
+  .menu-drawer {
+     margin-top: 5%;
+  }
+} */
+
+@media screen and (max-width: 750px) {
+  .menu-drawer__utility-links {
+    display: none;
+  }
+  .menu-drawer {
+    position: absolute;
+    /* margin-top: 1.5rem; */
+    z-index: 1000;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #fff;
+    transition: visibility var(--duration-default) ease;
+  }
+}

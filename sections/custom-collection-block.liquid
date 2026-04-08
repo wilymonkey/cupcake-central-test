@@ -1,0 +1,116 @@
+{{ 'custom-collection-block.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+ 
+
+<div class="gift-boxes-container">
+  <div class="brownie-gift-box-container">
+         <h2 class="brownies-heading1" id="christmas-collection-block" >OUR HEARTKIDS COLLECTION</h2>
+
+    <div class="brownies-products-container1">
+      {% for product in collections.HeartKids.products %}
+          <div class="brownies-product-item1">
+            <a href="{{ product.url }}">
+              <div class="brownies-product">
+                <div class="brownie-product-image">
+                <img id="productImage" class="main-image" src="{{ product.featured_image | img_url: '350x350' }}" alt="{{ product.featured_image.alt }}">
+                  {% if product.images.size > 1 %}
+                  <img class="hover-image" src="{{ product.images[1] | img_url: '350x350' }}" alt="{{ product.images[1].alt }}">
+                {% endif %}
+              </div>
+
+                <div class="brownie-title-main">{{ product.title }}</div>
+                <div class="priceandbutton">
+                  <div class="brownie-price">{{ product.price | money }}</div>
+                  <div class="quick-add no-js-hidden">
+                          {%-liquid 
+                            assign section_id = section.id   
+                          %}
+                          {%- liquid
+                            assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                            assign qty_rules = false
+                            if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                              assign qty_rules = true
+                            endif
+                          -%}
+                          {%- if product.variants.size > 1 or qty_rules -%}
+                            <a style="text-decoration: none;" href="{{ product.url }}"
+                              ><button class="quick-add__submit button button--full-width button--secondary">
+                                ORDER NOW
+                              </button></a
+                            >
+                          {%- else -%}
+                            {%- if product.tags contains 'Custom' -%}
+                              <a style="text-decoration: none;" href="{{ product.url }}"
+                                ><button class="quick-add__submit button button--full-width button--secondary">
+                                  ORDER NOW
+                                </button></a
+                              >
+                            {%- else -%}
+                              <product-form data-section-id="{{ section.id }}">
+                                {%- form 'product',
+                                  product,
+                                  id: product_form_id,
+                                  class: 'form',
+                                  novalidate: 'novalidate',
+                                  data-type: 'add-to-cart-form'
+                                -%}
+                                  <input
+                                    type="hidden"
+                                    name="id"
+                                    value="{{ product.selected_or_first_available_variant.id }}"
+                                    class="product-variant-id"
+                                    {% if product.selected_or_first_available_variant.available == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                  <button
+                                    id="{{ product_form_id }}-submit"
+                                    type="submit"
+                                    name="add"
+                                    class="quick-add__submit button button--full-width button--secondary"
+                                    aria-haspopup="dialog"
+                                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                    aria-live="polite"
+                                    data-sold-out-message="true"
+                                    {% if product.selected_or_first_available_variant.available == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                    <span>
+                                      {%- if product.selected_or_first_available_variant.available -%}
+                                        {{ 'products.product.add_to_cart' | t }}
+                                      {%- else -%}
+                                        {{ 'products.product.sold_out' | t }}
+                                      {%- endif -%}
+                                    </span>
+                                    <span class="sold-out-message hidden">
+                                      {{ 'products.product.sold_out' | t }}
+                                    </span>
+                                    {%- render 'loading-spinner' -%}
+                                  </button>
+                                {%- endform -%}
+                              </product-form>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </div>
+                </div>
+              </div>
+            </a>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "CustomProductCollection",
+    "settings": [],
+    "presets": [
+    {
+      "name": "Custom Product Collection"
+      }
+    ],
+  }
+{% endschema %}

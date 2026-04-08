@@ -1,0 +1,1021 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "main {background-color: #ffffff; color: #2b2b2b;}"
+      ],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero_delivery_block_MVxwF3": {
+      "type": "hero-delivery-block",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ad242c",
+        "title_color": "#ffffff",
+        "description_color": "#ffffff",
+        "image_position": "left",
+        "desktop_image": "shopify://shop_images/XMAS-LANDING-PAGE-SECTION-IMG-SANTA_01.webp",
+        "mobile_image": "shopify://shop_images/XMAS-LANDING-PAGE-SECTION-IMG-SANTA_01.webp",
+        "title-line1": "CHRISTMAS CAKE RANGE",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "A gift that will be remembered, shared and enjoyed.<br>Get everyone into the spirit of the season with a gift box filled with Christmas cakes. Bring some to an event or send some festive cheer to loved ones, clients and those who have supported you throughout the year.",
+        "button-text": "ORDER NOW",
+        "link": "",
+        "is-button-scroll-to-section": true,
+        "scroll-to-section-id": "featured-collection-title"
+      }
+    },
+    "hero_delivery_block_gUcaED": {
+      "type": "hero-delivery-block",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ad242c",
+        "title_color": "#ffffff",
+        "description_color": "#ffffff",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/PROMO-XMAS23-GB-COOKIES-24.webp",
+        "mobile_image": "shopify://shop_images/PROMO-XMAS23-GB-COOKIES-24.webp",
+        "title-line1": "FREE DELIVERY*",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "We are offering FREE delivery on all orders over $40*.<br>Order in advance and let Santa’s helpers take the hassle out of the holidays.<br>Available for delivery from 13 November - 31 December, in store from 1 December - 31 December.",
+        "button-text": "ORDER NOW",
+        "link": "",
+        "is-button-scroll-to-section": true,
+        "scroll-to-section-id": "featured-collection-title"
+      }
+    },
+    "banner_slideshow_mdptnG": {
+      "type": "banner-slideshow",
+      "blocks": {
+        "slide_image_CWyweJ": {
+          "type": "slide_image",
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "",
+            "mobile_video_link": "",
+            "image": "shopify://shop_images/Scroll_Group_1_2x_c7bed5ba-875d-4a58-8e90-8b60450d2a24.png",
+            "mobile_image": "shopify://shop_images/Mobile_Home_Banner.webp",
+            "link": "shopify://pages/christmas-cupcakes",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2024 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        },
+        "slide_image_iykHKW": {
+          "type": "slide_image",
+          "disabled": true,
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "",
+            "mobile_video_link": "",
+            "image": "shopify://shop_images/DSC00427.png",
+            "link": "shopify://collections/https-cupcakecentral-com-au-pages-christmas-cupcakes",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2020 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        },
+        "slide_image_cDFyPE": {
+          "type": "slide_image",
+          "disabled": true,
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "",
+            "mobile_video_link": "",
+            "image": "shopify://shop_images/DSC00427.png",
+            "link": "#",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2020 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_CWyweJ",
+        "slide_image_iykHKW",
+        "slide_image_cDFyPE"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".buttons-container {display: none;}",
+        ".carousel {box-shadow: none;}",
+        "a {cursor: default;}"
+      ],
+      "settings": {
+        "slider_delay": 1000
+      }
+    },
+    "hero_banner_2025_hiDJVW": {
+      "type": "hero-banner-2025",
+      "blocks": {
+        "slide_iyg9rn": {
+          "type": "slide",
+          "settings": {
+            "background_type": "image",
+            "background_image": "shopify://shop_images/DSC00427.png",
+            "background_image_mobile": "shopify://shop_images/DSC00427_b19f7970-89ed-4150-b1eb-7139326be5e0.png",
+            "mobile_text_alignment": "justify-center",
+            "desktop_text_alignment": "md:items-center md:text-center",
+            "heading": "",
+            "subheading": "",
+            "button_text": "",
+            "button_link": "",
+            "heading_color": "#ffffff",
+            "subheading_color": "#ffffff",
+            "button_background": "#ff6b6b",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "slide_iyg9rn"
+      ],
+      "disabled": true,
+      "name": "Hero Banner",
+      "settings": {
+        "autoplay": true,
+        "slide_interval": 5
+      }
+    },
+    "christmas_hero_banner_cKN43Q": {
+      "type": "christmas-hero-banner",
+      "blocks": {
+        "slide_zUNrpR": {
+          "type": "slide",
+          "settings": {
+            "background_type": "image",
+            "background_image": "shopify://shop_images/DSC00427.png",
+            "background_image_mobile": "shopify://shop_images/DSC00427_b19f7970-89ed-4150-b1eb-7139326be5e0.png",
+            "image_url": "#",
+            "video_url": "",
+            "mobile_text_alignment": "justify-start",
+            "desktop_text_alignment": "md:items-start md:text-left",
+            "heading": "",
+            "subheading": "",
+            "button_text": "",
+            "button_link": "#",
+            "heading_color": "#ffffff",
+            "subheading_color": "#ffffff",
+            "button_background": "#ff6b6b",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "slide_zUNrpR"
+      ],
+      "name": "Christmas Hero Banner",
+      "settings": {
+        "autoplay": true,
+        "slide_interval": 5
+      }
+    },
+    "our_christmas_gifting_Bif6C4": {
+      "type": "our-christmas-gifting",
+      "blocks": {
+        "collection_tab_BkWGb4": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "CLASSIC",
+            "collection": "cake-range",
+            "category_image": "shopify://shop_images/Classic_Photo.png",
+            "button_text": "Shop Now",
+            "product_limit": 12
+          }
+        },
+        "collection_tab_mqfHT3": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "VEGAN",
+            "collection": "vegan",
+            "category_image": "shopify://shop_images/Vegan_Photo.png",
+            "button_text": "Shop Now",
+            "product_limit": 12
+          }
+        },
+        "collection_tab_4QCLMC": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "GLUTEN FREE",
+            "collection": "gluten-free-cakes",
+            "category_image": "shopify://shop_images/Gluten_Free_Photo.png",
+            "button_text": "Shop Now",
+            "product_limit": 6
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_BkWGb4",
+        "collection_tab_mqfHT3",
+        "collection_tab_4QCLMC"
+      ],
+      "disabled": true,
+      "name": "Our Christmas Gifting",
+      "settings": {
+        "heading": "OUR CHRISTMAS GIFTING",
+        "subheading": "<p>20-body-font. In rhoncus felis sed sodales fermentum. Pellentesque eget odio vitae turpis malesuada feugiat at.</p>",
+        "background_color": "#ffffff"
+      }
+    },
+    "featured_grid_6UYkR3": {
+      "type": "featured-grid",
+      "blocks": {
+        "card_mEggYV": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-NAKED-BDAY-4.webp",
+            "title": "Cupcake",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_tD9DgJ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-CELE-NEO-2.webp",
+            "title": "Cupcake",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_dD9AiP": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-CELE-BFOREST.webp",
+            "title": "Cupcake",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_BWEniQ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-CELE-CARROT.webp",
+            "title": "Cupcake",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_ktMYxe": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-CELE-HAZEL.webp",
+            "title": "Cupcake",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_3P3AXk": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-NAKED-CNC-3.webp",
+            "title": "Cupcake",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_DdjfXt": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-NAKED-SNICKERS-VGF-3.webp",
+            "title": "Cupcake",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_bRUX4i": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-NAKED-REDVELVET-3.webp",
+            "title": "Cupcake",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_mEggYV",
+        "card_tD9DgJ",
+        "card_dD9AiP",
+        "card_BWEniQ",
+        "card_ktMYxe",
+        "card_3P3AXk",
+        "card_DdjfXt",
+        "card_bRUX4i"
+      ],
+      "disabled": true,
+      "name": "Featured Grid",
+      "settings": {
+        "heading": "OUR CHRISTMAS GIFTING",
+        "subheading": "<p>20-body-font. In rhoncus felis sed sodales fermentum. Pellentesque eget odio vitae turpis malesuada feugiat at.</p>",
+        "background_color": "#ffffff"
+      }
+    },
+    "our_christmas_gifting_new_cqKntM": {
+      "type": "our-christmas-gifting-new",
+      "blocks": {
+        "christmas_card_rkVRXJ": {
+          "type": "christmas_card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-12-CUPCAKES.webp",
+            "title": "12 Christmas Cupcakes Gift Box",
+            "description": "",
+            "button_text": "Shop Now",
+            "button_link": "https://cupcakecentral.com.au/products/12-christmas-cupcakes-gift-box-25",
+            "card_background": "#ffffff"
+          }
+        },
+        "christmas_card_rTTech": {
+          "type": "christmas_card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-15-MINICUPCAKES.webp",
+            "title": "15 Christmas Mini Cupcakes Gift Box",
+            "description": "",
+            "button_text": "Shop Now",
+            "button_link": "https://cupcakecentral.com.au/products/15-christmas-mini-cupcakes-gift-box-25",
+            "card_background": "#ffffff"
+          }
+        },
+        "christmas_card_hU9pTg": {
+          "type": "christmas_card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-30-MINICUPCAKES.webp",
+            "title": "30 Christmas Mini Cupcakes Gift Box",
+            "description": "",
+            "button_text": "Shop Now",
+            "button_link": "https://cupcakecentral.com.au/products/30-christmas-mini-cupcakes-gift-box-25",
+            "card_background": "#ffffff"
+          }
+        },
+        "christmas_card_m7BnDA": {
+          "type": "christmas_card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-12-CUPCAKES-V.webp",
+            "title": "12 Christmas Cupcakes Gift Box (VEGAN)",
+            "description": "",
+            "button_text": "Shop Now",
+            "button_link": "https://cupcakecentral.com.au/products/12-christmas-cupcakes-gift-box-vegan-25",
+            "card_background": "#ffffff"
+          }
+        },
+        "christmas_card_kDa3e8": {
+          "type": "christmas_card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-15-MINICUPCAKES-V.webp",
+            "title": "15 Christmas Mini Cupcakes Gift Box (VEGAN)",
+            "description": "",
+            "button_text": "Shop Now",
+            "button_link": "https://cupcakecentral.com.au/products/15-christmas-mini-cupcakes-gift-box-vegan-25",
+            "card_background": "#ffffff"
+          }
+        },
+        "christmas_card_DjVPCr": {
+          "type": "christmas_card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-30-MINICUPCAKES-V.webp",
+            "title": "30 Christmas Mini Cupcakes Gift Box (VEGAN)",
+            "description": "",
+            "button_text": "Shop Now",
+            "button_link": "shopify://products/30-christmas-mini-cupcakes-gift-box-vegan-25",
+            "card_background": "#ffffff"
+          }
+        },
+        "christmas_card_RCBUWD": {
+          "type": "christmas_card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-12-CUPCAKES-GF.webp",
+            "title": "12 Christmas Cupcakes Gift Box (GF)",
+            "description": "",
+            "button_text": "Shop Now",
+            "button_link": "shopify://products/12-christmas-cupcakes-gift-box-gf",
+            "card_background": "#ffffff"
+          }
+        },
+        "christmas_card_jydCCj": {
+          "type": "christmas_card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-15-MINICUPCAKES-GF.webp",
+            "title": "15 Christmas Mini Cupcakes Gift Box (GF)",
+            "description": "",
+            "button_text": "Shop Now",
+            "button_link": "https://cupcakecentral.com.au/products/15-christmas-mini-cupcakes-gift-box-gf",
+            "card_background": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "christmas_card_rkVRXJ",
+        "christmas_card_rTTech",
+        "christmas_card_hU9pTg",
+        "christmas_card_m7BnDA",
+        "christmas_card_kDa3e8",
+        "christmas_card_DjVPCr",
+        "christmas_card_RCBUWD",
+        "christmas_card_jydCCj"
+      ],
+      "name": "Our Christmas Gifting",
+      "settings": {
+        "heading": "OUR CHRISTMAS GIFTING",
+        "subheading": "<p>Are you ready for Christmas? </p><p>Bring the festive vibes to your next party or office event with our Christmas Cupcakes. These delicious creations make the perfect gifts for friends, family, and clients—a thoughtful surprise that will be shared, remembered, and truly enjoyed.</p>",
+        "background_color": "#ffffff",
+        "text_color": "#2e1a16"
+      }
+    },
+    "banner_slideshow_JKGccf": {
+      "type": "banner-slideshow",
+      "blocks": {
+        "slide_image_mjUtTm": {
+          "type": "slide_image",
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "https://youtu.be/_kcxOyn_6o8?si=CmNT1gTqg9ZYJJI5",
+            "mobile_video_link": "https://youtu.be/_kcxOyn_6o8?si=CmNT1gTqg9ZYJJI5",
+            "image": "shopify://shop_images/DSC00427.png",
+            "link": "",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2020 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        },
+        "slide_image_BATKUe": {
+          "type": "slide_image",
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "https://youtu.be/_kcxOyn_6o8?si=CmNT1gTqg9ZYJJI5",
+            "mobile_video_link": "https://youtu.be/_kcxOyn_6o8?si=CmNT1gTqg9ZYJJI5",
+            "image": "shopify://shop_images/DSC00427.png",
+            "link": "",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2020 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_mjUtTm",
+        "slide_image_BATKUe"
+      ],
+      "disabled": true,
+      "name": "Banner Slider",
+      "settings": {
+        "slider_delay": 2000
+      }
+    },
+    "hero_banner_section_christmas_dUzFGb": {
+      "type": "hero-banner-section-christmas",
+      "disabled": true,
+      "custom_css": [
+        ".hero-banner-section-christmas {background: linear-gradient(to bottom, #c9373d, #851d1d);}",
+        "#ws-delivery-block-right-content h1 {font-size: 23px !important;}",
+        "#ws-delivery-block-inner-left {padding-top: 2rem !important;}",
+        "#ws-delivery-block-input {display: none;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#f5e7c8",
+        "title_color": "#972824",
+        "description_color": "#000000",
+        "image_position": "left",
+        "desktop_image": "shopify://shop_images/Handling_Boxes.webp",
+        "title-line1": "IN-STORE & DELIVERING",
+        "title-line2": "NOW UNTIL DEC 31ST",
+        "title-line3": "",
+        "paragraph-description": "Get in the spirit of the season with a gift that'll be remembered, shared and enjoyed by all. Our Christmas cupcakes come already gift boxed and are also available in vegan options, so just add a gift tag with a message for a personalised touch and schedule your sweet gift out for delivery.",
+        "button-text": "",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "custom_collection_block_j6FCmw": {
+      "type": "custom-collection-block",
+      "disabled": true,
+      "settings": {}
+    },
+    "classic_flavours_Q7QKU8": {
+      "type": "classic-flavours",
+      "blocks": {
+        "flavour_gQ6Pyr": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/1_a8292442-3c77-42d3-b25c-d06a060ccb4b.jpg",
+            "hover_image": "shopify://shop_images/FLAVOUR_CARD_-_PHOTO_1_SANTA_CLAUS.png",
+            "image_link": "#",
+            "title": "SANTA CLAUS",
+            "title_link": "",
+            "description": "Jolly red velvet cake with a swirl of buttercream and topped with a white chocolate Merry Christmas disc and sugar Santa portrait",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "flavour_GaNHYG": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/4_1a25a28a-2a5e-4de3-9c3e-e86d17ae9a48.jpg",
+            "hover_image": "shopify://shop_images/FLAVOUR_CARD_-_PHOTO_4_MERRY_MISCHIEF.png",
+            "image_link": "#",
+            "title": "MERRY MISCHIEF",
+            "title_link": "",
+            "description": "Sprinkled classic vanilla cupcake, complete with two chocolate elf legs stuck mid-mischief in a swirl of buttercream.",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "flavour_VJLmWy": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/5.jpg",
+            "hover_image": "shopify://shop_images/Christmas_-_Landing_Page_Products_3.jpg",
+            "image_link": "#",
+            "title": "CHRISTMAS WREATH",
+            "title_link": "",
+            "description": "A decadent chocolate cupcake decorated with a festive vanilla buttercream wreath adorned with red and green sprinkles, a sugar bow.",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "flavour_WPnEyK": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/Christmas_-_Landing_Page_Products.jpg",
+            "hover_image": "shopify://shop_images/FLAVOUR_CARD_-_PHOTO_2_STARRY_NIGHT.png",
+            "image_link": "#",
+            "title": "STARRY NIGHT",
+            "title_link": "",
+            "description": "A lightly spiced gingerbread cupcake swirled with spiced vvanilla buttercream, crowned with a white chocolate dipped gingerbread star",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "flavour_VDKJYe": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/2_722381a2-d2df-4c21-ac1c-cede0721de43.jpg",
+            "hover_image": "shopify://shop_images/FLAVOUR_CARD_-_PHOTO_3.png",
+            "image_link": "#",
+            "title": "SMASH THE SEASON",
+            "title_link": "",
+            "description": "This rich chocolate cupcake hides a festive surprise beneath its glossy chocolate dome. Once cracked, you’ll find a fun festive merry mix.",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "flavour_tH9AjU": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/6.jpg",
+            "hover_image": "shopify://shop_images/6.jpg",
+            "image_link": "#",
+            "title": "FESTIVE FLORET",
+            "title_link": "",
+            "description": "A vanilla cupcake blooming with layers of buttercream florets and finished with elegant glimmering gold and pearl sprinkles.",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "flavour_gQ6Pyr",
+        "flavour_GaNHYG",
+        "flavour_VJLmWy",
+        "flavour_WPnEyK",
+        "flavour_VDKJYe",
+        "flavour_tH9AjU"
+      ],
+      "custom_css": [],
+      "name": "Classic Flavour Slider",
+      "settings": {
+        "section_class_name": "classic-flavours-section",
+        "desktop_layout": "slider",
+        "mobile_layout": "slider",
+        "grid_columns": 4,
+        "heading": "CLASSIC FLAVOURS",
+        "heading_color": "#ffffff",
+        "description": "Enjoy Melbourne’s best Christmas cupcakes. Treat someone special (or yourself!) to a gift box filled with all your favourites that’s sure to set the scene and bring out the smiles.",
+        "background_color": "#af261c",
+        "text_color": "#fffcf9",
+        "card_background": "#819a47",
+        "card_border_radius": 8,
+        "title_color": "#fffcf9",
+        "title_font_size": 24,
+        "description_color": "#fffcf9",
+        "description_font_size": 12,
+        "button_color": "red-600"
+      }
+    },
+    "classic_flavours_pL3Pxc": {
+      "type": "classic-flavours",
+      "blocks": {
+        "flavour_tMtxTe": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/1_af55e47d-5ea6-4c06-a3b3-5816a871c57c.jpg",
+            "hover_image": "shopify://shop_images/5_5983d126-9aef-40c9-88d2-50a171a2d595.jpg",
+            "image_link": "#",
+            "title": "MERRY BERRY",
+            "title_link": "#",
+            "description": "Vegan blueberry cupcake, topped with a strawberry infused Christmas tree, sprinkle lights and chocolate star.",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "flavour_fYqFhf": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/2_4e6b6d58-292c-4762-98f9-3083a086195e.jpg",
+            "hover_image": "shopify://shop_images/FLAVOUR_CARD_-_PHOTO_8_JINGLE_BELLS.png",
+            "image_link": "",
+            "title": "JINGLE BELLS",
+            "title_link": "",
+            "description": "Vegan Biscoff cupcake with swirls of Biscoff infused buttercream with lashes of golden Biscoff and topped with glittery chocolate bells.",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "flavour_LA4bGN": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/4_54ae987a-31ff-4718-9508-d8ccafb6f41a.jpg",
+            "hover_image": "shopify://shop_images/4_54ae987a-31ff-4718-9508-d8ccafb6f41a.jpg",
+            "image_link": "",
+            "title": "RUDOLPH'S SNACK",
+            "title_link": "",
+            "description": "Vegan chocolate cupcake topped with luscious waves of chocolate buttercream and festive sprinkles.",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "flavour_99jVnj": {
+          "type": "flavour",
+          "settings": {
+            "image": "shopify://shop_images/3_f01a6313-2b20-4689-9446-4a4aec300ab0.jpg",
+            "hover_image": "shopify://shop_images/CCCCCCCCCCC.jpg",
+            "image_link": "",
+            "title": "A CHRISTMAS WISH",
+            "title_link": "",
+            "description": "Vegan vanilla gingerbread cupcake with a swirl of vanilla buttercream and crowned with a gingerbread wishing star.",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "flavour_tMtxTe",
+        "flavour_fYqFhf",
+        "flavour_LA4bGN",
+        "flavour_99jVnj"
+      ],
+      "custom_css": [],
+      "name": "Classic Flavours",
+      "settings": {
+        "section_class_name": "vegan-flavours-section",
+        "desktop_layout": "grid",
+        "mobile_layout": "slider",
+        "grid_columns": 4,
+        "heading": "VEGAN FLAVOURS",
+        "heading_color": "#2e1a16",
+        "description": "Egg-free and dairy-free Christmas cupcakes that are sure to wow a crowd. Perfect for Christmas parties - especially when you’re catering for little ones or guests with food sensitivities and allergies.",
+        "background_color": "#fff7ec",
+        "text_color": "#2e1a16",
+        "card_background": "#819a47",
+        "card_border_radius": 8,
+        "title_color": "#fffcf9",
+        "title_font_size": 24,
+        "description_color": "#fffcf9",
+        "description_font_size": 12,
+        "button_color": "red"
+      }
+    },
+    "bento_grid_CTcUVw": {
+      "type": "bento-grid",
+      "disabled": true,
+      "name": "Bento Grid",
+      "settings": {
+        "image": "shopify://shop_images/GLUTEN_FREE_CARDS_-_Desktop.png",
+        "heading": "GLUTEN FREE FLAVOURS",
+        "text": "<p>A gluten free chocolate cupcake with chocolate buttercream covered in Christmas sprinkles and topped with a chocolate golden glittery star</p>",
+        "button_text": "Button XSML",
+        "button_link": "",
+        "background_color": "#304423",
+        "image_style": "framed",
+        "image_orientation": "portrait",
+        "text_alignment": "center",
+        "image_position": "left"
+      }
+    },
+    "christmas_magic_rk9wRt": {
+      "type": "christmas-magic",
+      "name": "Christmas Magic Section",
+      "settings": {
+        "image": "shopify://shop_images/GLUTEN_FREE_CARDS_-_Desktop.png",
+        "image_link": "#",
+        "hover_image": "shopify://shop_images/Classic_Photo.png",
+        "heading": "GLUTEN FREE FLAVOURS",
+        "subheading": "CHRISTMAS MAGIC",
+        "text": "<p>Because no one should ever have to miss dessert.<br/>Our gluten-free Christmas cupcakes are as magical as they are delicious.</p>",
+        "button_text": "",
+        "button_link": "",
+        "background_color": "#304423",
+        "image_style": "framed",
+        "image_orientation": "portrait",
+        "text_alignment": "center",
+        "image_position": "left",
+        "hover_effect": true
+      }
+    },
+    "flavours_carousel_G3KT7m": {
+      "type": "flavours-carousel",
+      "disabled": true,
+      "settings": {}
+    },
+    "hero_banner_section_christmas_4prPGt": {
+      "type": "hero-banner-section-christmas",
+      "disabled": true,
+      "custom_css": [
+        ".ws-delivery-block-img-container img {object-fit: contain;}",
+        ".ws-delivery-block {width: 75%; border-radius: 10px; margin-top: 2rem !important; position: relative; margin-bottom: 2rem;}",
+        ".hero-banner-section-christmas {background-color: white; padding-top: 40px;}",
+        "@media (max-width: 500px) {.ws-delivery-block {width: 80%; border-radius: 10px; margin-top: 0rem !important; position: relative; margin-bottom: 2rem; } .hero-banner-section-christmas {background-color: white; padding-top: 20px; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "description_color": "#000000",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/Box_2x_03c6d471-7799-4461-ba23-7194464b748c.png",
+        "title-line1": "PRE-ORDER NOW FOR LATER",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "All our sweet treats are made by hand in our Melbourne kitchen, so we'll need a little bit of notice to prepare your Christmas treats. Order by 12pm two days before your desired delivery date to make sure that your desserts will be ready in time.",
+        "button-text": "",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "countdown_timer_GrBPWD": {
+      "type": "countdown-timer",
+      "disabled": true,
+      "custom_css": [
+        ".main-countdown-container {background-color: #ffffff; margin-top: -23px;}"
+      ],
+      "settings": {}
+    },
+    "rich_text_A7MFYE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_hBWP6L": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_PMhFhx": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        },
+        "button_zgeDCi": {
+          "type": "button",
+          "settings": {
+            "button_label": "ORDER NOW",
+            "button_link": "#christmas-collection-block",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_hBWP6L",
+        "text_PMhFhx",
+        "button_zgeDCi"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".button {background: linear-gradient(to bottom, #209180, #19685b); color: #fcefce; width: 20rem !important; font-family: Poppins !important; font-weight: bold; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0) !important;}",
+        ".rich-text__blocks > * + * {margin-top: 1rem !important;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 16
+      }
+    },
+    "campaign_faqs_knFarp": {
+      "type": "campaign-faqs",
+      "blocks": {
+        "faq_entry_A94N33": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "When's the earliest I can receive my Christmas cupcakes?",
+            "answer": "All our desserts are made by hand in our Melbourne kitchen, so you'll need to order by 12pm two days before your desired delivery date so we can get your Christmas cupcakes ready in time.If you need something sooner, consider our cupcake gift boxes or mini cupcake gift boxes instead, which are available for same day delivery as long as you order by 12pm (subject to availability)."
+          }
+        },
+        "faq_entry_gKfTTE": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I need cupcakes today?",
+            "answer": "Since our Christmas cupcakes require more time to prepare, they're not available for same day delivery. We do offer same day delivery for our cupcake gift boxes  and mini cupcake gift boxes though (subject to availability), so just place your order by 12pm and we'll deliver them to you later today!Alternatively, you can also visit our Highpoint store if you'd like to browse our desserts in person and collect them on the spot."
+          }
+        },
+        "faq_entry_nw7Qh3": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Are you delivering on Christmas day?",
+            "answer": "We'll be closed on Christmas and Boxing Day, but don't worry - you can still get your Christmas treats! Just order by 12pm on December 23rd for delivery on Christmas Eve. Your cupcakes will last up to 3 days, so you can enjoy them all throughout the festive period!"
+          }
+        },
+        "faq_entry_yyjgFa": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "When and where do you deliver to?",
+            "answer": "We deliver 7 days a week to most suburbs in metro Melbourne. To check if your suburb falls within our delivery zone, <a href=\"https://cupcakecentral.com.au/pages/delivery-information\">click here</a>."
+          }
+        },
+        "faq_entry_aXj3fB": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I want to deliver to multiple locations?",
+            "answer": "We're happy to arrange this for you! Just give us a call at 9077 4542 or email service@cupcakecentral.com.au and our customer service team will process the order for you."
+          }
+        },
+        "faq_entry_tg8RiA": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "How much will delivery cost?",
+            "answer": "We offer free weekday delivery with orders over $40. If your order value is below $40, then the delivery fee will vary between $10-$15 depending on your location. On weekends, there is a $8 flat rate for delivery.We also offer free click and collect from our Highpoint store and West Footscray office locations. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\">click here</a>.Please note that there is a minimum order value of $35 for delivery orders, and a minimum order value of $16 for click and collect orders."
+          }
+        },
+        "faq_entry_f4DgjE": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Can I select which flavours to include in my Christmas cupcake box?",
+            "answer": "Due to a high volume of orders, we are unable to accommodate custom Christmas cupcake boxes. If you would like to select which cupcakes flavours you receive, this is available with our <a href=\"https://cupcakecentral.com.au/collections/cupcake\">cupcakes</a> and <a href=\"https://cupcakecentral.com.au/collections/mini-cupcakes\">mini cupcakes</a>. Just add your desired flavours and quantities to your cart and we'll sort out the rest for you.Please note that minimum order values apply. For delivery orders, there is a minimum order value of $35. For click and collect orders, there is a minimum order value of $16."
+          }
+        },
+        "faq_entry_fXhHyz": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Can I order a vegan version of a non-vegan flavour?",
+            "answer": "Due to a high volume of orders, we are unable to accommodate custom Christmas cupcakes. We do have other vegan options available outside of our Christmas collection though, which you can <a href=\"https://cupcakecentral.com.au/collections/mini-cupcakes\">click here</a> to view."
+          }
+        },
+        "faq_entry_eKXJMk": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I want to order just a couple of cupcakes, instead of a whole box?",
+            "answer": "For all online orders, our Christmas cupcakes are available only in boxes of 12 for the standard cupcake size, and in boxes of 15 and 30 for mini cupcakes.If you'd like to purchase smaller quantities, our Christmas cupcakes are available individually at our Highpoint store. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\">click here</a>."
+          }
+        },
+        "faq_entry_jAX6L8": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "I have another question!",
+            "answer": "You can view all our FAQs by <a href=\"https://cupcakecentral.com.au/pages/faqs\">clicking here</a>, or you can contact our customer service team by calling 9077 4542 or emailing service@cupcakecentral.com.au.Please note than our customer service hours are between 9am and 4pm Monday to Friday, and 9am to 1pm on Saturdays. If you'd like to contact us outside of these hours, please send us an email and we'll get back to you as soon as we can!"
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_A94N33",
+        "faq_entry_gKfTTE",
+        "faq_entry_nw7Qh3",
+        "faq_entry_yyjgFa",
+        "faq_entry_aXj3fB",
+        "faq_entry_tg8RiA",
+        "faq_entry_f4DgjE",
+        "faq_entry_fXhHyz",
+        "faq_entry_eKXJMk",
+        "faq_entry_jAX6L8"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".campaign-faq {background-color: #861f1c;}",
+        "a:-webkit-any-link {color: white !important; text-decoration: underline !important;}"
+      ],
+      "settings": {}
+    },
+    "featured_grid_JqnzJG": {
+      "type": "featured-grid",
+      "blocks": {
+        "card_pcM4TJ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/PROMO-CHRISTMAS25-GB-12-CUPCAKES-GF.webp",
+            "title": "Gift Boxes",
+            "description": "Sweet treats,<br>\nbeautifully boxed.",
+            "button_text": "SHOP NOW",
+            "button_link": ""
+          }
+        },
+        "card_eyE6FC": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_UkJDVP": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        },
+        "card_4ENNB7": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "description": "Nunc mattis nec ipsum quis volutpat. Nunc mattis nec. lorem ipsum.",
+            "button_text": "Button SML",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_pcM4TJ",
+        "card_eyE6FC",
+        "card_UkJDVP",
+        "card_4ENNB7"
+      ],
+      "disabled": true,
+      "name": "Featured Grid",
+      "settings": {
+        "heading": "OUR CHRISTMAS GIFTING",
+        "subheading": "<p>20-body-font. In rhoncus felis sed sodales fermentum. Pellentesque eget odio vitae turpis malesuada feugiat at.</p>",
+        "background_color": "#fffaf2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_delivery_block_MVxwF3",
+    "hero_delivery_block_gUcaED",
+    "banner_slideshow_mdptnG",
+    "hero_banner_2025_hiDJVW",
+    "christmas_hero_banner_cKN43Q",
+    "our_christmas_gifting_Bif6C4",
+    "featured_grid_6UYkR3",
+    "our_christmas_gifting_new_cqKntM",
+    "banner_slideshow_JKGccf",
+    "hero_banner_section_christmas_dUzFGb",
+    "custom_collection_block_j6FCmw",
+    "classic_flavours_Q7QKU8",
+    "classic_flavours_pL3Pxc",
+    "bento_grid_CTcUVw",
+    "christmas_magic_rk9wRt",
+    "flavours_carousel_G3KT7m",
+    "hero_banner_section_christmas_4prPGt",
+    "countdown_timer_GrBPWD",
+    "rich_text_A7MFYE",
+    "campaign_faqs_knFarp",
+    "featured_grid_JqnzJG"
+  ]
+}

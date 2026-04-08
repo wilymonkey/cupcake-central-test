@@ -1,0 +1,169 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "main_landing_page_banner_YDcwtn": {
+      "type": "main-landing-page-banner",
+      "settings": {
+        "collection": "cookies",
+        "show_collection_description": true,
+        "mobile_textbox_background_color": "#F28EB4",
+        "show_collection_image": true,
+        "color_scheme": "",
+        "is_custom_info": false,
+        "title": "TITLE",
+        "description": "Description",
+        "banner_link": ""
+      }
+    },
+    "cookies_landing_86TbRr": {
+      "type": "cookies-landing",
+      "blocks": {
+        "image_ALKyB9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/RED_VELVET_7.jpg",
+            "title": "RED VELVET",
+            "link": ""
+          }
+        },
+        "image_hknA6n": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CHOC_CHIP_3.jpg",
+            "title": "CHOCOLATE CHIP",
+            "link": ""
+          }
+        },
+        "image_dhpNFH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/RWC_2.jpg",
+            "title": "RASPBERRY WHITE CHOCOLATE",
+            "link": ""
+          }
+        },
+        "image_7U6LMX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BDAY_3.jpg",
+            "title": "BIRTHDAY",
+            "link": ""
+          }
+        },
+        "image_aK98WQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/C_C_2.jpg",
+            "title": "COOKIES  & CREAM",
+            "link": ""
+          }
+        },
+        "image_RUYhd4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/T_CHOC_4.jpg",
+            "title": "TRIPLE CHOCOLATE CHIP",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_ALKyB9",
+        "image_hknA6n",
+        "image_dhpNFH",
+        "image_7U6LMX",
+        "image_aK98WQ",
+        "image_RUYhd4"
+      ],
+      "settings": {}
+    },
+    "section_scroll_reviews_X9XtGj": {
+      "type": "section-scroll-reviews",
+      "blocks": {
+        "review_bqaR7D": {
+          "type": "review",
+          "settings": {
+            "title": "LAURA MCG",
+            "description": "Linh from their customer service team has saved me twice now when needing cupcakes for corporate events. So grateful to her! Also the assorted mini cupcakes are divine - a huge hit with my workplace!",
+            "image": "shopify://shop_images/laura_portrait_01.webp",
+            "star_rating": 5
+          }
+        },
+        "review_Dqw9cF": {
+          "type": "review",
+          "settings": {
+            "title": "KRISTY ELLIOTT",
+            "description": "Delicious cupcakes, looked exactly like the photo on the webpage. Had to make a call on the day of delivery , phone answered promptly and issue sorted!",
+            "image": "shopify://shop_images/Kristy_Portrait_01.webp",
+            "star_rating": 5
+          }
+        },
+        "review_3PzmnM": {
+          "type": "review",
+          "settings": {
+            "title": "N H",
+            "description": "Amazing customer service from start to finish, timely delivery, and beautiful cupcakes that look so good with custom photo images :) highly recommend!",
+            "image": "shopify://shop_images/NH.webp",
+            "star_rating": 5
+          }
+        },
+        "review_d9MNn6": {
+          "type": "review",
+          "settings": {
+            "title": "SARAH FRANKLYN",
+            "description": "I sent a pack to my Godson on his birthday and according to he and his brother, I win birthday gift giving!  Thanks for making their day Cupcake Central Kitchen",
+            "image": "shopify://shop_images/Sarah_Portrait_01.webp",
+            "star_rating": 5
+          }
+        },
+        "review_yAxc6z": {
+          "type": "review",
+          "settings": {
+            "title": "LINDY HAYNES",
+            "description": "Great Customer Service.. our suppliers love the cupcakes... and the delivery service was excellent...",
+            "image": "shopify://shop_images/Lindy_Portrait_01.webp",
+            "star_rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "review_bqaR7D",
+        "review_Dqw9cF",
+        "review_3PzmnM",
+        "review_d9MNn6",
+        "review_yAxc6z"
+      ],
+      "settings": {
+        "heading_size": "h1",
+        "blog": "",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_landing_page_banner_YDcwtn",
+    "cookies_landing_86TbRr",
+    "section_scroll_reviews_X9XtGj"
+  ]
+}

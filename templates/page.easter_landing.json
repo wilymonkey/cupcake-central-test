@@ -1,0 +1,191 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "easter_banner_Y4LNFb": {
+      "type": "easter_banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Group_863_2x_4f445e46-2b81-4bd9-9fd9-c5c38d4b8456.png",
+        "mobile_image": "shopify://shop_images/Group_862_2x_49bcab3d-e838-4ebe-889a-04d9a7be90a6.png",
+        "button_link": "",
+        "button_text": ""
+      }
+    },
+    "iwd_collection_section_PxTw4F": {
+      "type": "iwd-collection-section",
+      "custom_css": [
+        ".products-showcase__description {font-size: 2rem !important; font-weight: bold !important;}"
+      ],
+      "settings": {
+        "title_first_word": "OUR",
+        "title_second_word": "DESSERTS",
+        "section_description": "<p>Easter cupcakes available in-store and for delivery from April 14 to 20.</p>",
+        "collection": "easter"
+      }
+    },
+    "flavours_carousel_valentines_Ja6VL9": {
+      "type": "flavours-carousel-valentines",
+      "custom_css": [],
+      "settings": {}
+    },
+    "review_carousel_JH8EbH": {
+      "type": "review-carousel",
+      "blocks": {
+        "review_yFFYe4": {
+          "type": "review",
+          "settings": {
+            "review_text": "This is the third time I’ve used Cupcake Central and each time has been a pleasure. Cakes arrived on time and exactly the way they appeared on the site. I live in Darwin and the kids live in Melbourne, this is become my favourite way of sending them hugs and kisses when I’m not there.",
+            "review_author": "Catherine P."
+          }
+        },
+        "review_izz6C9": {
+          "type": "review",
+          "settings": {
+            "review_text": "Love love these easter cupcakes . They were such a hit!",
+            "review_author": "Carolynne H."
+          }
+        },
+        "review_xGYfLr": {
+          "type": "review",
+          "settings": {
+            "review_text": "Bought mini cupcakes as a gift for Easter.Presentation was beautiful and the flavours of the cupcakes divine. Delivery was prompt.Definitely will purchase again, they make a great gift.",
+            "review_author": "Josie C."
+          }
+        },
+        "review_YHpBCz": {
+          "type": "review",
+          "settings": {
+            "review_text": "Thank you to Cupcake Central for the delicious cupcakes delivered for IWD. They were delicious. We will definitely be a return customer.",
+            "review_author": "Lisa S"
+          }
+        }
+      },
+      "block_order": [
+        "review_yFFYe4",
+        "review_izz6C9",
+        "review_xGYfLr",
+        "review_YHpBCz"
+      ],
+      "custom_css": [
+        ".review-section {background-color: #ffeb87;}"
+      ],
+      "settings": {}
+    },
+    "image_gallery_JYQfyP": {
+      "type": "image-gallery",
+      "settings": {
+        "image_1": "shopify://shop_images/CC_EASTER25_PHOTO-BUNNY_EDIT-2.jpg",
+        "image_2": "shopify://shop_images/CC_EASTER25_PHOTO-CHICKEN_EDIT-2.jpg",
+        "image_3": "shopify://shop_images/CC_EASTER25_PHOTO-EGG_EDIT-1.jpg",
+        "image_4": "shopify://shop_images/CC_EASTER25_PHOTO-RABBIT_EDIT-1.jpg",
+        "image_5": "shopify://shop_images/CC_EASTER25_PHOTO-CRACKIN_EDIT-2.jpg"
+      }
+    },
+    "faq_with_image_yp7Fwx": {
+      "type": "faq-with-image",
+      "blocks": {
+        "faq_entry_mkWpPr": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "When's the earliest I can receive my Easter order?",
+            "answer": "All our desserts are made by hand in our Melbourne kitchen, so you'll need to order by 12pm the day before your desired delivery date so we can get everything ready in time for you. If you need something sooner, consider our <a href=\"https://cupcakecentral.com.au/collections/cupcake-gift-boxes\" target=\"_blank\" title=\"https://cupcakecentral.com.au/collections/cupcake-gift-boxes\">classic cupcake gift boxes</a> or <a href=\"https://cupcakecentral.com.au/collections/mini-cupcake-gift-boxes\" target=\"_blank\" title=\"https://cupcakecentral.com.au/collections/mini-cupcake-gift-boxes\">mini cupcake gift boxes</a> instead, which are available for same day delivery as long as you order by 12pm (subject to availability)."
+          }
+        },
+        "faq_entry_i3W4Pa": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "When & where to you deliver to?",
+            "answer": "We deliver 7 days a week to most suburbs in Metro Melbourne. To check if your suburb falls within our delivery zone, <a href=\"https://cupcakecentral.com.au/pages/delivery-information\" target=\"_blank\" title=\"https://cupcakecentral.com.au/pages/delivery-information\">click here</a>."
+          }
+        },
+        "faq_entry_k6cU3x": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "How much will delivery cost?",
+            "answer": "We offer free delivery any day of the week with orders over $40, including on public holidays. If your order value is below $40, then there is a flat rate delivery fee of $10. We also offer free click and collect from our Highpoint store and West Footscray office locations."
+          }
+        },
+        "faq_entry_T4WQDp": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "Will you be delivering on public holidays?",
+            "answer": "Yes, we'll be delivering every day from Monday April 14th to Easter Sunday on April 20th."
+          }
+        },
+        "faq_entry_EPUB4L": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "Will your Highpoint store be open on public holidays?",
+            "answer": "Our Highpoint store will be closed on the Good Friday public holiday, and will be open on Easter Saturday and Easter Sunday."
+          }
+        },
+        "faq_entry_LCJjVK": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "I have another question!",
+            "answer": "You can view all our FAQs by <a href=\"https://cupcakecentral.com.au/pages/faqs\" target=\"_blank\" title=\"https://cupcakecentral.com.au/pages/faqs\">clicking here</a>, or contact our customer service team by calling 9077 4542 or emailing service@cupcakecentral.com.au. Please note than our customer service hours are between 9am and 4pm Monday to Friday, and 9am to 2pm on Saturdays. If you'd like to contact us outside of these hours, please send us an email and we'll get back to you as soon as we can!"
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_mkWpPr",
+        "faq_entry_i3W4Pa",
+        "faq_entry_k6cU3x",
+        "faq_entry_T4WQDp",
+        "faq_entry_EPUB4L",
+        "faq_entry_LCJjVK"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/CC_EASTER25_PHOTO-RABBIT_EDIT-1.jpg"
+      }
+    },
+    "free_shipping_GjRGgN": {
+      "type": "free-shipping",
+      "custom_css": [
+        ".why-choose-us h2 {font-family: Beefcakes-Regular;}",
+        ".benefit-item img {height: 19vw; display: block;}",
+        "@media screen and (max-width: 750px) {.why-choose-us {display: none; }}"
+      ],
+      "settings": {
+        "heading": "WHY CUPCAKE CENTRAL BAKERY?",
+        "icon_1": "shopify://shop_images/Fast_Delivery_blck_36266c11-bb31-40e0-8d63-a8b6f1fbc044.png",
+        "icon_mobile_1": "shopify://shop_images/Group_846_2x_629f51cb-aeff-4327-99a2-c2374f0f08ad.png",
+        "title_1": "OVER 15 YEARS",
+        "desc_1": "spent perfecting our recipes",
+        "icon_2": "shopify://shop_images/Gift_Message.png",
+        "icon_mobile_2": "shopify://shop_images/Group_845_2x_502ff5e6-bf09-4873-83c0-32f2790e148d.png",
+        "title_2": "FREE WEEKDAY DELIVERY",
+        "desc_2": "to most suburbs in Metro Melbourne",
+        "icon_3": "shopify://shop_images/Prioritydelivery_6e7959c5-ab5a-4f0c-a929-9dc809e33d19.png",
+        "icon_mobile_3": "shopify://shop_images/Group_847_2x_54e38ed1-336a-44bb-b1e5-e17394ed7aa2.png",
+        "title_3": "1100+ 5 STARS REVIEWS",
+        "desc_3": "and counting!"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "easter_banner_Y4LNFb",
+    "iwd_collection_section_PxTw4F",
+    "flavours_carousel_valentines_Ja6VL9",
+    "review_carousel_JH8EbH",
+    "image_gallery_JYQfyP",
+    "faq_with_image_yp7Fwx",
+    "free_shipping_GjRGgN"
+  ]
+}

@@ -1,0 +1,637 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "featured_collection_DTgkxw": {
+      "type": "featured-collection",
+      "disabled": true,
+      "custom_css": [
+        ".collection {background-color: #f9f0e5;}",
+        ".button {background-color: white; color: black;}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "corporate",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "shipping_delivery_block_8rngpF": {
+      "type": "shipping-delivery-block",
+      "blocks": {
+        "shipping_delivery_block_4dDbkQ": {
+          "type": "shipping-delivery-block",
+          "settings": {
+            "link": "",
+            "title-line": "multi locations",
+            "paragraph-description": "Gifting to your team? Get it shipped to multiple locations for no extra charge!"
+          }
+        },
+        "shipping_delivery_block_8XFhrQ": {
+          "type": "shipping-delivery-block",
+          "settings": {
+            "link": "",
+            "title-line": "priority delivery",
+            "paragraph-description": "Need it for your event today? Same-day delivery available for orders before 12pm ($15 priority delivery fee)."
+          }
+        },
+        "shipping_delivery_block_iPa6UN": {
+          "type": "shipping-delivery-block",
+          "settings": {
+            "link": "",
+            "title-line": "national shipping",
+            "paragraph-description": "Not in Melbourne? No worries! We offer domestic shipping nation-wide for selected products."
+          }
+        },
+        "shipping_delivery_block_x96p9y": {
+          "type": "shipping-delivery-block",
+          "settings": {
+            "link": "",
+            "title-line": "personalised service",
+            "paragraph-description": "Have a special request? We got you. Call us on 90774542"
+          }
+        }
+      },
+      "block_order": [
+        "shipping_delivery_block_4dDbkQ",
+        "shipping_delivery_block_8XFhrQ",
+        "shipping_delivery_block_iPa6UN",
+        "shipping_delivery_block_x96p9y"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": ""
+      }
+    },
+    "hero_delivery_block_hJ6eHP": {
+      "type": "hero-delivery-block",
+      "disabled": true,
+      "custom_css": [
+        ".three-block-button {width: fit-content;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#7764a4",
+        "title_color": "#ffffff",
+        "description_color": "#ffffff",
+        "image_position": "left",
+        "title-line1": "DELIVERED TO",
+        "title-line2": "MULTIPLE",
+        "title-line3": "ADDRESSES!",
+        "paragraph-description": "It’s okay if you can’t reach us, we’ll bring the goodies to you! We deliver bulk orders of our customised cupcakes and cookies across multiple locations at fixed shipping prices. All our delicacies are freshly made and preservative-free. We also ensure that your orders are delivered ahead of time so your event can proceed without a hitch. Get in touch with us to find out more about delivery timelines and more.",
+        "button-text": "ENQUIRE NOW",
+        "link": "shopify://pages/contact-us",
+        "is-button-scroll-to-section": true,
+        "scroll-to-section-id": "send-email-block-inner-left"
+      }
+    },
+    "hero_delivery_block_qUwEGY": {
+      "type": "hero-delivery-block",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#f283b4",
+        "title_color": "#ffffff",
+        "description_color": "#ffffff",
+        "image_position": "right",
+        "title-line1": "personalised",
+        "title-line2": "cakes, cookies",
+        "title-line3": "and cupcakes",
+        "paragraph-description": "Personalise with your brand, or relive special moments with edible photos.Upload your own pictures and we'll place them on our delicious cupcakes, cookies & cakes, making it a unique gift that they won't forget.Surprise them! Our personalised photo cupcakes, cookies & cakes are perfect for birthdays, anniversaries, corporate events and all kinds of celebrations.",
+        "button-text": "BROWSE",
+        "link": "shopify://collections/personalisation",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "three_section_block_cjEf8V": {
+      "type": "three-section-block",
+      "blocks": {
+        "three_section_block_VVJqaJ": {
+          "type": "three-section-block",
+          "settings": {
+            "background_color": "#ffffff",
+            "block_border_color": "#dddddd",
+            "heading": "BRANDED CUPCAKES",
+            "heading_color": "#ffffff",
+            "caption": "Corporate branded cupcakes topped with your brand’s logo or artwork make excellent centrepieces and are a great way to amp up company events.",
+            "text_color": "#ffffff",
+            "button_url": "shopify://collections/custom",
+            "is-button-scroll-to-section": false,
+            "scroll-to-section-id": "",
+            "button_text": "ORDER NOW",
+            "button_color": "#ffffff",
+            "button_text_color": "#686868",
+            "button_border_radius": 5,
+            "button_border_color": "#686868"
+          }
+        },
+        "three_section_block_xBNjhw": {
+          "type": "three-section-block",
+          "settings": {
+            "background_color": "#ffffff",
+            "block_border_color": "#dddddd",
+            "heading": "DIETARY REQUIREMENTS",
+            "heading_color": "#ffffff",
+            "caption": "We have vegan, gluten-free, nut-free and dairy-free options to meet your catering dietary requirements. Have a special request? Contact us now.",
+            "text_color": "#ffffff",
+            "button_url": "",
+            "is-button-scroll-to-section": true,
+            "scroll-to-section-id": "send-email-block-inner-left",
+            "button_text": "ENQUIRE NOW",
+            "button_color": "#ffffff",
+            "button_text_color": "#686868",
+            "button_border_radius": 5,
+            "button_border_color": "#686868"
+          }
+        },
+        "three_section_block_xpCJj6": {
+          "type": "three-section-block",
+          "settings": {
+            "background_color": "#ffffff",
+            "block_border_color": "#dddddd",
+            "heading": "INDIVIDUALLY BOXED",
+            "heading_color": "#ffffff",
+            "caption": "Get our customised, delectable, sweet treats in individual boxes. We also deliver bulk corporate orders in clear or premium black boxes as per the client’s requirements.",
+            "text_color": "#ffffff",
+            "button_url": "",
+            "is-button-scroll-to-section": true,
+            "scroll-to-section-id": "send-email-block-inner-left",
+            "button_text": "enquire now",
+            "button_color": "#ffffff",
+            "button_text_color": "#686868",
+            "button_border_radius": 5,
+            "button_border_color": "#686868"
+          }
+        }
+      },
+      "block_order": [
+        "three_section_block_VVJqaJ",
+        "three_section_block_xBNjhw",
+        "three_section_block_xpCJj6"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".three-block-section-img-container {height: auto;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "blocks_margin": 20,
+        "background_color": "#1b9a8e"
+      }
+    },
+    "partners_gfUMT3": {
+      "type": "partners",
+      "blocks": {
+        "partner_block_CgjJMW": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_qNzDTV": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_96TTXJ": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_c7enLE": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_HaAhyt": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_qkmNkc": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_DREwUn": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_dqaGUe": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_a7CGVY": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_EGJLMm": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "partner_block_CgjJMW",
+        "partner_block_qNzDTV",
+        "partner_block_96TTXJ",
+        "partner_block_c7enLE",
+        "partner_block_HaAhyt",
+        "partner_block_qkmNkc",
+        "partner_block_DREwUn",
+        "partner_block_dqaGUe",
+        "partner_block_a7CGVY",
+        "partner_block_EGJLMm"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-3",
+        "header_title": "brands we have worked with"
+      }
+    },
+    "partners_FzmGfi": {
+      "type": "partners",
+      "blocks": {
+        "partner_block_bt7ztn": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_KJHyQh": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_DLaeGj": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_whmVdQ": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_zWeLtj": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "partner_block_bt7ztn",
+        "partner_block_KJHyQh",
+        "partner_block_DLaeGj",
+        "partner_block_whmVdQ",
+        "partner_block_zWeLtj"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-3",
+        "header_title": ""
+      }
+    },
+    "partners_PhAnFn": {
+      "type": "partners",
+      "blocks": {
+        "partner_block_jTdzPN": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_ALg4Up": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_wrMMhB": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_bWTgWL": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_mxgwkY": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_YT3nHV": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_iXdBGf": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_6ajD8G": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_EJVYxY": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_han9Cz": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "partner_block_jTdzPN",
+        "partner_block_ALg4Up",
+        "partner_block_wrMMhB",
+        "partner_block_bWTgWL",
+        "partner_block_mxgwkY",
+        "partner_block_YT3nHV",
+        "partner_block_iXdBGf",
+        "partner_block_6ajD8G",
+        "partner_block_EJVYxY",
+        "partner_block_han9Cz"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-3",
+        "header_title": ""
+      }
+    },
+    "partners_9fzWcG": {
+      "type": "partners",
+      "blocks": {
+        "partner_block_F8z8yV": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_FQhMQh": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_gaCeJ7": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_bUbKYU": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        },
+        "partner_block_VtkYdx": {
+          "type": "partner-block",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "partner_block_F8z8yV",
+        "partner_block_FQhMQh",
+        "partner_block_gaCeJ7",
+        "partner_block_bUbKYU",
+        "partner_block_VtkYdx"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-3",
+        "header_title": ""
+      }
+    },
+    "send_email_block_FfWRpM": {
+      "type": "send-email-block",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#7764a3",
+        "image_position": "left",
+        "title-line1": "send us an email",
+        "paragraph-description": "",
+        "button-text": "submit"
+      }
+    },
+    "faq_block_EPddUP": {
+      "type": "faq-block",
+      "blocks": {
+        "faq_entry_kjWnrj": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "How do I place an order?",
+            "answer": "All cupcake and cake orders can be placed either online, in person at one of our stores or over the phone on our dedicated customer service line (03) 9077 4542. Our customer service hours are MON – FRI: 9:00am – 4:00pm and SAT: 9:00am - 3:00pm"
+          }
+        },
+        "faq_entry_8HzKjG": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you deliver?",
+            "answer": "Yes, we deliver our cupcakes and cakes in and around Melbourne. We currently offer FREE delivery for all orders within our sweet zone over $40. Check if you're in our \"Sweet Zone\" by using our postcode checker visiting delivery info."
+          }
+        },
+        "faq_entry_EmNHtN": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What is your Delivery zone?",
+            "answer": "To find out if we deliver to you, please click on \"Delivery info\" in the Navigation bar and use our postcode checker. All of our available delivery destinations will be displayed on our delivery information page. You can also use this link: https://cupcakecentral.com.au/pages/delivery-information."
+          }
+        },
+        "faq_entry_q3ML8a": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you do Same Day delivery?",
+            "answer": "Yes, we do! (except on weekends or when we are at capacity) Orders must be placed before 12pm. For full T&C's surrounding our Same Day delivery service please visit: https://cupcakecentral.com.au/pages/delivery-information"
+          }
+        },
+        "faq_entry_8xnNBV": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Where do you deliver to?",
+            "answer": "Payment for an online order can be made via the following:-Credit Card (Visa, Mastercard, American Express) -Gift Voucher (1 voucher per order) -Direct Deposit via Bank TransferPayment for an order instore can be made via the following:-Cash -Gift Voucher -Debit / Credit Card (VISA, Mastercard, American Express)"
+          }
+        },
+        "faq_entry_K9LPaR": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Can I select my own flavours?",
+            "answer": "If you add an assorted gift box into your cart, you will receive an assortment of our delicious flavours. However, if you would like to customise your order and specify flavours, please add each individual flavour into your cart."
+          }
+        },
+        "faq_entry_ATyH6A": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What is the best way to store your products and how long can I keep it for?",
+            "answer": "The best way to store our cupcakes, cookies and slices is to keep them in an airtight container (or wrap the box in cling wrap) and store them at room temperature (about 20c). When stored correctly, they can last up to 2-3 days but it goes without saying that our baked goods are at their best, when consumed fresh on the day. Please be mindful that storing them in the fridge might dry out the cupcakes a little bit."
+          }
+        },
+        "faq_entry_QJeQXU": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "I've just received my cake. How should I store it?",
+            "answer": "As soon as you receive our cake, place it straight into the fridge. We recommend that you take it out of the fridge for the cake to adjust to room temperature, between 30 minutes to an 1 hour (depending on your environment) before you intend to enjoy it. Please keep it out of the sun or it will melt. If you have left over, the best way to store our cakes is to keep them in an airtight container (or wrap the box in cling wrap) and store them in the fridge and consume within 3-5 days."
+          }
+        },
+        "faq_entry_VrmJwP": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Where do you deliver to?",
+            "answer": "We take food allergies very seriously. We have strict protocols to ensure cross contamination does not occur during every stage of our baking process as well as how we store the ingredients. However, we do bake in the same space. Therefore, we do ask those who have severe allergic reactions to avoid or take caution when consuming our baked goods. When ordering, please ensure you inform us of any allergies or if you would like us to pack certain flavours separately. We are always happy to accommodate."
+          }
+        },
+        "faq_entry_tJR4kV": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Can I pick up an order from one of your stores?",
+            "answer": "We offer a click & collect service from our Highpoint store and West Footscray Dispatch Centre. Orders must be placed online before 9pm for next day pick up. Please find the below store operating hours:HighpointMon-Wed & Sat-Sun: 10am-5pmThu-Fri: 10am-6pmWest FootscrayMon-Fri: 9am-4pmSat: 9am-3pm"
+          }
+        },
+        "faq_entry_W9UYBd": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Where can I find an ingredient list for your cakes?",
+            "answer": "As our flavours change every season, we ask that you request a copy of our ingredient list from our customer service team at (03) 9077 4542. A copy of our ingredient list can also be found in store."
+          }
+        },
+        "faq_entry_gUbNJK": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if no one is home to receive my order or the wrong address is supplied?",
+            "answer": "If we have been provided with incorrect/insufficient details or if there is no one home to receive the delivery and we were not able to leave the delivery somewhere safe, you will incur a fee. Please understand, redelivering an order is not ideal for us either. It means your original order goes to waste, then remade, repacked and sent out with a courier again."
+          }
+        },
+        "faq_entry_bnmD8B": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "How can I provide you with feedback?",
+            "answer": "Through our contact form. Whether it be good or bad, we take all feedback on board and appreciate that you have taken the time to send us your thoughts. Please provide us with as much detail as you can and ensure you include photos where appropriate."
+          }
+        },
+        "faq_entry_Cm3x4F": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Delivery Terms and Conditions",
+            "answer": "TERMS AND CONDITIONS FOR ALL DELIVERIES1. Please ensure someone is home to receive the delivery.2. Double check your Order Confirmation Email that the details you have provided to us are correct: (ie. Address and valid Australian contact number.) Please be mindful: We will not and are not allowed to enter medical institutions. If you are delivering to an apartment, please come down and meet the courier in the lobby or allow us to leave it at reception. Please provide as much extra information in the delivery instructions field to assist our couriers.3. Weekend Delivery Surcharge is an $8 flat rate for both Saturday and Sunday orders.4. If we have been provided with incorrect/insufficient details or if there is no one present to receive the delivery and we were not able to leave the delivery somewhere safe, A re-delivery fee will be required. Our redelivery fee is $10, plus 50% off the total cost of the order.5. Delivery Windows are Monday-Friday between 9am-3pm or 12-6pm. Saturday & Sunday between 10am-5pm. *Due to unforeseen circumstances that are out of our control (such as, but not limited to: traffic, weather, parking, having to wait for other customers), we may be delayed and will not be liable for those delays.6. Specific delivery time: Even if stated in your notes, we cannot guarantee a specific delivery time. If you require a specific delivery time, please contact us and see if we can accommodate the request."
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_kjWnrj",
+        "faq_entry_8HzKjG",
+        "faq_entry_EmNHtN",
+        "faq_entry_q3ML8a",
+        "faq_entry_8xnNBV",
+        "faq_entry_K9LPaR",
+        "faq_entry_ATyH6A",
+        "faq_entry_QJeQXU",
+        "faq_entry_VrmJwP",
+        "faq_entry_tJR4kV",
+        "faq_entry_W9UYBd",
+        "faq_entry_gUbNJK",
+        "faq_entry_bnmD8B",
+        "faq_entry_Cm3x4F"
+      ],
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "featured_collection_DTgkxw",
+    "shipping_delivery_block_8rngpF",
+    "hero_delivery_block_hJ6eHP",
+    "hero_delivery_block_qUwEGY",
+    "three_section_block_cjEf8V",
+    "partners_gfUMT3",
+    "partners_FzmGfi",
+    "partners_PhAnFn",
+    "partners_9fzWcG",
+    "send_email_block_FfWRpM",
+    "faq_block_EPddUP"
+  ]
+}

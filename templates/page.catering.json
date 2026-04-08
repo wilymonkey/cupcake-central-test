@@ -1,0 +1,129 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "main_landing_page_banner_tTP6zc": {
+      "type": "main-landing-page-banner",
+      "custom_css": [
+        ".lp-banner-textbox {padding: 4px !important;}"
+      ],
+      "settings": {
+        "collection": "catering-range",
+        "show_collection_description": true,
+        "mobile_textbox_background_color": "#f28eb4",
+        "show_collection_image": true,
+        "color_scheme": "",
+        "is_custom_info": false,
+        "title": "TITLE",
+        "description": "Description",
+        "banner_link": ""
+      }
+    },
+    "iwd_collection_section_jjjtxm": {
+      "type": "iwd-collection-section",
+      "disabled": true,
+      "settings": {
+        "title_first_word": "OUR",
+        "title_second_word": "PRODUCTS",
+        "section_description": "<p>This International Women's Day, a portion of the proceeds from all IWD products will be donated to the IWDA. So gather together, enjoy some sweet treats and join us in promoting gender equality for all.</p>",
+        "collection": "catering-range"
+      }
+    },
+    "catering_landing_niRBX4": {
+      "type": "catering-landing",
+      "blocks": {
+        "catering_options_caXKEe": {
+          "type": "catering_options",
+          "disabled": true,
+          "settings": {
+            "catering_title": "MORNING TEA",
+            "catering_image": "shopify://shop_images/coffee-cupcake_1388-521.png"
+          }
+        },
+        "catering_options_tnHkrQ": {
+          "type": "catering_options",
+          "disabled": true,
+          "settings": {
+            "catering_title": "HIGH TEA",
+            "catering_image": "shopify://shop_images/random-best-photo_865967-170619.png"
+          }
+        },
+        "catering_options_eaG3qq": {
+          "type": "catering_options",
+          "disabled": true,
+          "settings": {
+            "catering_title": "PARTIES AND EVENTS",
+            "catering_image": "shopify://shop_images/group-happy-children-celebrating-birthday-kids-having-fun-spring-garden_411285-10889.png"
+          }
+        }
+      },
+      "block_order": [
+        "catering_options_caXKEe",
+        "catering_options_tnHkrQ",
+        "catering_options_eaG3qq"
+      ],
+      "custom_css": [
+        ".catering-options {background-color: #fff8fc;}",
+        ".catering-heading {margin: 0px !important; font-size: 30px;}"
+      ],
+      "settings": {
+        "title": "Title",
+        "description": "Description",
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": ""
+      }
+    },
+    "featured_collection_kai6V8": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "settings": {
+        "title": "OUR BEST SELLING PRODUCTS",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "catering-range",
+        "products_to_show": 25,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-3",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_landing_page_banner_tTP6zc",
+    "featured_collection_kai6V8",
+    "iwd_collection_section_jjjtxm",
+    "catering_landing_niRBX4"
+  ]
+}

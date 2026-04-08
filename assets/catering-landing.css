@@ -1,0 +1,419 @@
+.collection-hero {
+   position: relative;
+   z-index: 1;
+}
+      
+.collection-hero__text-wrapper {
+   padding: 0 4px 0 calc(1149 / 1920 * 100vw);
+   }
+.collection-hero__title {
+   font-size: calc(100 / 1920 * 100vw);
+   line-height: 100%;
+   text-align: left;
+   text-transform: uppercase;
+   margin: 2.5rem 0;
+   color: #fff;
+}
+}
+.collection-hero__description {
+    color: white;
+    text-align: left;
+    font-size: calc(24 / 1920 * 100vw);
+}
+
+#collection-banner-hero-image-desktop {
+    display: block;
+}
+
+#collection-banner-hero-image-mobile {
+  display: none;
+}
+  
+
+.collection-hero__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-hero--with-image .collection-hero__inner {
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+}
+
+.collection-hero__inner {
+  height: 100%;
+}
+
+.collection-hero__text-wrapper {
+  flex-basis: 100%;
+  position: absolute;
+  z-index: 999;
+}
+
+
+.collection-hero__text-empty {
+  width: 100%;
+  height: calc(100vw * (100 / 1920));
+  background-color: #f9f0e5;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.collection-hero__title-empty {
+  color: #f28eb4;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero {
+    padding: 0;
+  }
+
+  .collection-hero__inner {
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero__title + .collection-hero__description {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .collection-hero__description {
+    max-width: 66.67%;
+  }
+
+  .collection-hero--with-image .collection-hero__description {
+    max-width: 100%;
+  }
+}
+
+.collection-hero--with-image .collection-hero__title {
+  margin: 0;
+}
+
+.collection-hero--with-image .collection-hero__text-wrapper {
+  /* padding: 5rem 0 4rem; */
+}
+
+.collection-hero__image-container {
+  /* border: var(--media-border-width) solid rgba(var(--color-foreground), var(--media-border-opacity)); */
+  border-radius: var(--media-radius);
+  box-shadow: var(--media-shadow-horizontal-offset)
+    var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--media-shadow-opacity));
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero--with-image .collection-hero__text-wrapper {
+    /* padding: 4rem 2rem 4rem 0;
+    flex-basis: 50%; */
+  }
+
+  .collection-hero__image-container {
+    align-self: stretch;
+    flex: 1 0 50%;
+    min-height: 20rem;
+  }
+}
+
+.how-to-heat-container {
+  background-color: #f9f1e4;
+  padding: 20px; /* Added padding for better spacing */
+}
+
+.how-to-heat-steps-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows the items to wrap and stay inside the container */
+  width: 65%;
+  margin: auto;
+  margin-top: 30px;
+  justify-content: center;
+  margin-bottom: 30px;
+  background-color: #1b9a8f;
+  padding: 30px;
+  border-radius: 30px;
+}
+
+.heat-step1, 
+.heat-step2, 
+.heat-step3 {
+  flex: 1 1 200px; /* Flexbox ensures responsiveness */
+  min-width: 200px; /* Prevents the items from becoming too small */
+  text-align: center;
+}
+
+.heat-step1-image, 
+.heat-step2-image, 
+.heat-step3-image {
+  opacity: 0.8;
+  text-align: center;
+}
+
+.heat-step1-text, 
+.heat-step2-text, 
+.heat-step3-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; /* Stacks text vertically */
+  align-items: center; /* Centers the text */
+}
+
+.heat-step1-text1, 
+.heat-step2-text1, 
+.heat-step3-text1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  opacity: 0.5;
+  line-height: 50px;
+  margin-bottom: 10px;
+}
+
+.heat-step1-text2, 
+.heat-step2-text2, 
+.heat-step3-text2 {
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+  line-height: 26px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.baked-goodies {
+  display: block; /* Forces the text to appear on a new line */
+  font-weight: 300;
+}
+
+.arrow-image {
+  display: flex; /* Hides arrows by default */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .how-to-heat-steps-container {
+    width: 90%; /* Makes the container wider on smaller screens */
+  }
+
+  .heat-step1, 
+  .heat-step2, 
+  .heat-step3 {
+    flex: 1 1 100%; /* Each step takes full width */
+    margin-bottom: 20px;
+  }
+
+  .arrow-image {
+    display: block; /* Show arrows on smaller screens */
+    width: 30px;
+    height: 30px;
+  }
+
+  .heat-step1-text1, 
+  .heat-step2-text1, 
+  .heat-step3-text1 {
+    font-size: 28px; /* Reduces font size for better readability */
+  }
+
+  .heat-step1-text2, 
+  .heat-step2-text2, 
+  .heat-step3-text2 {
+    font-size: 16px;
+  }
+  .arrow-image {
+  display: none; 
+}
+}
+
+@media (max-width: 1210px) {
+  .arrow-image {
+    display: none; 
+}
+}
+
+
+.baked-goodies {
+  display: block; /* Forces the text to appear on a new line */
+  font-weight: 300;
+}
+
+.catering-options {
+  background-color: #fcf8f3;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.catering-heading {
+  font-size: 48px;
+  color: #0f9b8c;
+  text-align: center;
+}
+
+.catering-options-container-block {
+  display: flex;
+  flex-wrap: wrap; /* Allows the child items to wrap onto the next line */
+  width: 66%;
+  margin: auto;
+  justify-content: center;
+  gap: 30px;
+}
+
+.catering-options-container {
+  flex: 1 1 200px; /* Allows each container to grow and shrink, with a minimum width */
+  text-align: center; /* Center-aligns the text inside */
+}
+
+.catering-option-text {
+  color: #444444;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button:: {
+  height: 50px !important;
+  width: 150px !important;
+  background-color: #f482b5 !important;
+  text-transform: uppercase !important;
+  color: white !important;
+  border: 1px solid #189a8d !important;
+  padding: 10px 20px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  margin-top: 20px !important; /* Space between products and button */
+  margin-left: auto !important; /* Center horizontally */
+  margin-right: auto !important;
+  content: 'SHOW MORE';
+}
+
+
+.catering-option-image img {
+  width: 340px;
+  height: 250px;
+  object-fit: cover;
+}
+
+/*MOBILE*/
+@media screen and (max-width: 749px) {
+    .collection-hero__image-container {
+    height: 20rem;
+      }
+      .collection-hero--with-image .collection-hero__inner {
+        padding-bottom: 0px;
+      }
+      #collection-banner-hero-image-desktop {
+        display: none;
+      }
+      #collection-banner-hero-image-mobile {
+        display: block;
+      }
+    .collection-hero {
+      aspect-ratio: 432/500;
+      height: 371px;
+      width: 100%;
+    }
+    .collection-hero__image-container {
+      height: auto;
+      aspect-ratio: 432/500;
+    }
+    .collection-hero__text-wrapper {
+      background-color: #F28EB4;
+      padding: 20px 0 20px 0 !important;
+      margin: calc(215 / 430* 100vw) 5% 0 5%;
+      border-radius: 15px;
+      width: 90%;
+    }
+  .collection-hero__title + .collection-hero__description {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    line-height: calc(1 + 0.5 / var(--font-body-scale));
+    text-align: center;
+  }
+    .collection-hero__title {
+      font-size: 3.5rem;
+      padding-left: 24px;
+      padding-right: 24px;
+      text-align: center;
+    }
+    .collection-hero__description {
+      padding-left: 24px;
+      padding-right: 24px;
+      font-size: calc(16 / 430 * 100vw);
+    }
+    .collection-hero__text-wrapper {
+    text-align: center;
+  }
+   .how-to-heat-steps-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+     margin-top: 60px;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+  .arrow-image {
+    display: none;
+}
+.heat-step1-text2,
+.heat-step2-text2,
+.heat-step3-text2 {
+  flex: 1 85%;
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+  line-height: 26px;
+  text-wrap: none;
+  padding-top: 10px;
+  text-align: center;
+}
+  .catering-heading {
+    font-size: 3rem;
+    color: #0f9b8c;
+    text-align: center;
+  }
+  .catering-options-container-block {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    gap: 20px;
+}
+  .catering-option-text {
+    text-align: center;
+    color: #444444;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.catering-option-image img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero.collection-hero--with-image {
+    /* padding: calc(4rem + var(--page-width-margin)) 0 calc(4rem + var(--page-width-margin)); */
+    height: calc(100vw * (585 / 1920));
+    overflow: hidden;
+  }
+
+  .collection-hero--with-image .collection-hero__inner {
+    padding-bottom: 0;
+  }
+}

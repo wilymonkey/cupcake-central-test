@@ -1,0 +1,136 @@
+<style>
+  .shipping-delivery-title {
+    font-size: 5rem;
+    color: #686868;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 7rem;
+  }
+
+  .shipping-delivery-block {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .shipping-delivery-item {
+    width: 20%;
+    margin: 2rem;
+    text-align: center;
+  }
+
+  .shipping-delivery-content .title {
+    font-size: calc(100vw * 25 / 1920);
+    font-weight: bold;
+    color: #686868;
+    margin: 0;
+  }
+
+  .shipping-delivery-content .description {
+    font-size: calc(100vw * 15 / 1920);
+    color: #686868;
+  }
+
+  @media screen and (max-width: 750px) {
+    .shipping-delivery-block {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .shipping-delivery-item {
+      width: 100%;
+      margin: 0;
+    }
+
+    .shipping-delivery-content .title {
+      font-size: 3rem;
+    }
+
+    .shipping-delivery-content .description {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} shipping-delivery-block full-page-width">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div class="shipping-delivery-item">
+          <img src="{{ block.settings.desktop_image | img_url: 'master'  }}" style="width: 30%; aspect-ratio: 1/1">
+          <div class="shipping-delivery-content">
+            <p class="uppercase title">{{ block.settings['title-line'] }}</p>
+            <p class="description">
+              {{ block.settings['paragraph-description'] }}
+            </p>
+          </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<script></script>
+
+{% schema %}
+{
+  "name": "Shipping Delivery Block",
+  "tag": "section",
+  "settings": [
+         {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "t:sections.all.colors.label",
+            "info": "t:sections.all.colors.has_cards_info",
+            "default": "scheme-1"
+         }
+  ],
+  "blocks" : [
+    {
+      "type": "shipping-delivery-block",
+      "name": "Shipping Delivery Block",
+      "settings": [
+         {
+            "type": "image_picker",
+            "id": "desktop_image",
+            "label": "Desktop Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "title-line",
+            "label": "Title Line"
+          },
+          {
+            "type": "text",
+            "id": "paragraph-description",
+            "label": "Description"
+          }
+      ]
+    }
+  ],
+   "presets": [
+        {
+          "name": "Shipping Delivery Block",
+          "blocks": [
+            {
+              "type": "shipping-delivery-block"
+            },
+            {
+              "type": "shipping-delivery-block"
+            },
+            {
+              "type": "shipping-delivery-block"
+            }
+          ]
+        }
+      ]
+}
+{% endschema %}

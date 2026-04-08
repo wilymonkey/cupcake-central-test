@@ -1,0 +1,95 @@
+<style>
+  .hero_banner_container {
+    width: 100vw;
+    height: calc(100vw / 1920 * 585)
+  }
+
+  .hero_banner_img_desktop {
+    object-fit: cover;
+    min-width: 100%;
+    display: block;
+  }
+
+  .hero_banner_img_mobile {
+    object-fit: cover;
+    min-width: 100%;
+  }
+
+  @media (max-width: 749px) {
+    .hero_banner_container {
+      width: 100vw;
+      height: calc(100vw / 430 * 500)
+    }
+  }
+</style>
+
+<div class="hero_banner_container">
+  {% for block in section.blocks %}
+    <img class="hero_banner_img_desktop" src="{{ block.settings.image | image_url: width: 1920 }}">
+    <img class="hero_banner_img_mobile" src="{{ block.settings.mobile_image | image_url: width: 1920 }}">
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [],
+  "blocks":[
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Media"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "Media Type",
+          "default": "image",
+          "options": [
+            { "value": "image", "label": "Image"},
+            { "value": "video", "label": "Video"}
+          ]
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Desktop Video",
+          "info": "Aspect ratio: 1920:585"
+        },
+        {
+          "type": "video",
+          "id": "mobile_video",
+          "label": "Mobile Video",
+         "info": "Aspect ratio: 430:500"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop Image",
+          "info": "Aspect ratio: 1920:585"
+        },
+        {
+         "type": "image_picker",
+         "id": "mobile_image",
+         "label": "Mobile Image",
+         "info": "Aspect ratio: 430:500"
+       }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

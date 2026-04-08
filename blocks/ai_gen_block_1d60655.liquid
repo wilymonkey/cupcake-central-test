@@ -1,0 +1,276 @@
+{% doc %}
+  @prompt
+    Add an alignment setting to the Four column section block (block ID: template--26287503802678__1775617785d3b0fca4__ai_gen_block_9dabbc2_HqNUKW, section ID: template--26287503802678__1775617785d3b0fca4) that allows the merchant to change the heading, text, and image alignment to left, center, or right. The setting should be a select option in the block's schema with three choices: Left, Center, Right. The alignment should apply to all content within the block including the heading, body text, and image.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-four-column-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+    background: #1b9a8e;
+  }
+
+  .ai-four-column-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-four-column-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  .ai-four-column-item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: {{ block.settings.content_alignment }};
+    text-align: {{ block.settings.content_alignment }};
+  }
+
+  .ai-four-column-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .ai-four-column-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .ai-four-column-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .ai-four-column-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-four-column-heading-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #fff;
+  }
+
+  .ai-four-column-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #fff;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-four-column-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-four-column-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .ai-four-column-{{ ai_gen_id }} {
+      padding: 30px 15px;
+    }
+  }
+{% endstyle %}
+
+<four-column-section-{{ ai_gen_id }}
+  class="ai-four-column-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-four-column-container-{{ ai_gen_id }}">
+    <div class="ai-four-column-grid-{{ ai_gen_id }}">
+      {% for i in (1..4) %}
+        {% liquid
+          assign image_key = 'column_' | append: i | append: '_image'
+          assign heading_key = 'column_' | append: i | append: '_heading'
+          assign text_key = 'column_' | append: i | append: '_text'
+          
+          assign column_image = block.settings[image_key]
+          assign column_heading = block.settings[heading_key]
+          assign column_text = block.settings[text_key]
+        %}
+        
+        <div class="ai-four-column-item-{{ ai_gen_id }}">
+          <div class="ai-four-column-image-wrapper-{{ ai_gen_id }}">
+            {% if column_image %}
+              <img
+                src="{{ column_image | image_url: width: 400 }}"
+                alt="{{ column_image.alt | escape }}"
+                loading="lazy"
+                width="{{ column_image.width }}"
+                height="{{ column_image.height }}"
+                class="ai-four-column-image-{{ ai_gen_id }}"
+              >
+            {% else %}
+              <div class="ai-four-column-image-placeholder-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+          
+          {% if column_heading != blank %}
+            <h3 class="ai-four-column-heading-{{ ai_gen_id }}">{{ column_heading }}</h3>
+          {% endif %}
+          
+          {% if column_text != blank %}
+            <div class="ai-four-column-text-{{ ai_gen_id }}">{{ column_text }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</four-column-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class FourColumnSection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('four-column-section-{{ ai_gen_id }}', FourColumnSection{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Four column section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "column_1_heading",
+      "label": "Heading",
+      "default": "Feature 1"
+    },
+    {
+      "type": "textarea",
+      "id": "column_1_text",
+      "label": "Text",
+      "default": "Share details about your product or service"
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "column_2_heading",
+      "label": "Heading",
+      "default": "Feature 2"
+    },
+    {
+      "type": "textarea",
+      "id": "column_2_text",
+      "label": "Text",
+      "default": "Share details about your product or service"
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "column_3_heading",
+      "label": "Heading",
+      "default": "Feature 3"
+    },
+    {
+      "type": "textarea",
+      "id": "column_3_text",
+      "label": "Text",
+      "default": "Share details about your product or service"
+    },
+    {
+      "type": "header",
+      "content": "Column 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "column_4_heading",
+      "label": "Heading",
+      "default": "Feature 4"
+    },
+    {
+      "type": "textarea",
+      "id": "column_4_text",
+      "label": "Text",
+      "default": "Share details about your product or service"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Four column section"
+    }
+  ]
+}
+{% endschema %}

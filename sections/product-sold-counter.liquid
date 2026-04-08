@@ -1,0 +1,76 @@
+{% schema %}
+{
+  "name": "Collection Counter",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "selected_collection",
+      "label": "Select a Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Counter",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section id="collection-counter" class="counter-section">
+    <div class="counter-container">
+        <h2>🔥 Total Products Sold: <span id="sold-counter">Loading...</span></h2>
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", async function () {
+    const collectionHandle = "{{ section.settings.selected_collection.handle }}"; // Selected collection handle
+    const soldCounter = document.getElementById("sold-counter");
+
+    async function fetchTotalSold() {
+        try {
+            const response = await fetch('/admin/api/2023-04/orders.json?status=closed', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+
+            const data = await response.json();
+            let totalSold = 0;
+
+            data.orders.forEach(order => {
+                order.line_items.forEach(item => {
+                    if (item.product.tags.includes(collectionHandle)) {
+                        totalSold += item.quantity;
+                    }
+                });
+            });
+
+            soldCounter.textContent = totalSold.toLocaleString();
+        } catch (error) {
+            console.error("Error fetching sold count:", error);
+            soldCounter.textContent = "Error";
+        }
+    }
+
+    fetchTotalSold();
+});
+</script>
+
+<style>
+.counter-section {
+    text-align: center;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+.counter-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+</style>

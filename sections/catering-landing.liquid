@@ -1,0 +1,232 @@
+{{ 'catering-landing.css' | asset_url | stylesheet_tag }}
+
+{% if collection.metafields.collection.banner.value.desktop_image
+  and collection.metafields.collection.banner.value.mobile_image
+%}
+  <div class="collection-hero{% if section.settings.show_collection_image and collection.metafields.collection.banner.value.desktop_image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+    <div class="collection-hero__inner {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- if section.settings.show_collection_image and collection.metafields.collection.banner.value.desktop_image -%}
+        <div class="collection-hero__text-wrapper">
+          <h1 class="collection-hero__title">
+            <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+            {{- section.settings.title | escape -}}
+          </h1>
+
+          {%- if section.settings.show_collection_description -%}
+            <div class="collection-hero__description rte">
+              {{ section.settings.description | truncate: 150 }}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="collection-hero__image-container media gradient">
+          <img
+            id="collection-banner-hero-image-desktop"
+            srcset="
+              {%- if collection.metafields.collection.banner.value.desktop_image.width >= 165 -%}{{ collection.metafields.collection.banner.value.desktop_image | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.desktop_image.width >= 360 -%}{{ collection.metafields.collection.banner.value.desktop_image | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.desktop_image.width >= 535 -%}{{ collection.metafields.collection.banner.value.desktop_image | image_url: width: 535 }} 535w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.desktop_image.width >= 750 -%}{{ collection.metafields.collection.banner.value.desktop_image | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.desktop_image.width >= 1070 -%}{{ collection.metafields.collection.banner.value.desktop_image | image_url: width: 1070 }} 1070w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.desktop_image.width >= 1500 -%}{{ collection.metafields.collection.banner.value.desktop_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ collection.metafields.collection.banner.value.desktop_image | image_url }} {{ collection.metafields.collection.banner.value.desktop_image.width }}w
+            "
+            src="{{ collection.metafields.collection.banner.value.desktop_image | img_url: 'master' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+            alt=""
+            width="{{ collection.metafields.collection.banner.value.desktop_image.width }}"
+            height="{{ collection.metafields.collection.banner.value.desktop_image.height }}"
+          >
+          <img
+            id="collection-banner-hero-image-mobile"
+            srcset="
+              {%- if collection.metafields.collection.banner.value.mobile_image.width >= 165 -%}{{ collection.metafields.collection.banner.value.mobile_image | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.mobile_image.width >= 360 -%}{{ collection.metafields.collection.banner.value.mobile_image | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.mobile_image.width >= 535 -%}{{ collection.metafields.collection.banner.value.mobile_image | image_url: width: 535 }} 535w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.mobile_image.width >= 750 -%}{{ collection.metafields.collection.banner.value.mobile_image | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.mobile_image.width >= 1070 -%}{{ collection.metafields.collection.banner.value.mobile_image | image_url: width: 1070 }} 1070w,{%- endif -%}
+              {%- if collection.metafields.collection.banner.value.mobile_image.width >= 1500 -%}{{ collection.metafields.collection.banner.value.mobile_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ collection.metafields.collection.banner.value.mobile_image | image_url }} {{ collection.metafields.collection.banner.value.mobile_image.width }}w
+            "
+            src="{{ collection.metafields.collection.banner.value.mobile_image | img_url: 'master' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+            alt=""
+            width="{{ collection.metafields.collection.banner.value.mobile_image.width }}"
+            height="{{ collection.metafields.collection.banner.value.mobile_image.height }}"
+          >
+        </div>
+      {% else %}
+        <div class="collection-hero__text-empty">
+          <h1 class="collection-hero__title-empty">
+            <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+            {{- collection.metafields.collection.banner.value.title | escape -}}
+          </h1>
+
+          {%- if section.settings.show_collection_description -%}
+            <div class="collection-hero__description rte">
+              {{ collection.metafields.collection.banner.value.description }}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{% endif %}
+
+<div class="how-to-heat-container">
+  <div class="how-to-heat-steps-container">
+    <div class="heat-step1">
+      <div class="heat-step1-text">
+        <div class="heat-step1-text1">1</div>
+        <div class="heat-step1-text2">
+          <span style="font-weight: bold">CHOOSE</span> YOUR 
+          <span class="baked-goodies">BAKED GOODIES</span></div>
+      </div>
+      <div class="heat-step1-image">
+        <img
+              class="lazyload"
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_531.svg?v=1724654148"
+              alt="service Image"
+              width="180"
+              height="150"
+            >
+      </div>
+    </div>
+    <div class="arrow-image">
+    <img
+      src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_549_1.svg?v=1724654148"
+      alt="Arrow"
+      width="50"
+      height="50"
+    >
+  </div>
+    <div class="heat-step2">
+      <div class="heat-step2-text">
+        <div class="heat-step2-text1">2</div>
+        <div class="heat-step2-text2"><span style="font-weight: bold">CHECKOUT</span></div>
+      </div>
+      <div class="heat-step2-image">
+        <img
+              class="lazyload"
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_540.svg?v=1724654148"
+              alt="service Image"
+              width="180"
+              height="150"
+            >
+      </div>
+    </div>
+    <div class="arrow-image">
+    <img
+      src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_549_1.svg?v=1724654148"
+      alt="Arrow"
+      width="50"
+      height="50"
+    >
+  </div>
+    <div class="heat-step3">
+      <div class="heat-step3-text">
+        <div class="heat-step3-text1">3</div>
+        <div class="heat-step3-text2" style="white-space: nowrap;"><span style="font-weight: bold">RELAX</span> AND <span style="font-weight: bold">ENJOY</span></div>
+      </div>
+      <div class="heat-step3-image">
+        <img
+              class="lazyload"
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_541.svg?v=1724654149z"
+              alt="service Image"
+              width="120"
+              height="150"
+            >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="catering-options">
+  <h2 class="catering-heading">CATERING OPTIONS</h2>
+  {% if section.blocks.size > 0 %}
+      <div class="catering-options-container-block">
+        {% for block in section.blocks %}
+          <div class="catering-options-container">
+            <div class="catering-option-text">{{ block.settings.catering_title }}</div>
+            <div class="catering-option-image">
+              <img
+                    class="lazyload"
+                    src="{{ block.settings.catering_image | img_url: 'master' }}"
+                    alt="service Image"
+                    width="50"
+                    height="50"
+                  >
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Catering Landing Page",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Title",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "default": "Description",
+      "label": "t:sections.featured-collection.settings.description.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+  {
+    "name": "Catering Landing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "catering_options",
+      "name": "Catering Options",
+      "limit": 20,
+      "settings": [
+      {
+      "type": "text",
+      "id": "catering_title",
+      "label": "Catering Option",
+      "default": "Morning Tea"
+    },
+    {
+      "type": "image_picker",
+      "id": "catering_image",
+      "label": "Catering Option Image",
+    }
+      ]
+    }
+  ]
+}
+{% endschema %}

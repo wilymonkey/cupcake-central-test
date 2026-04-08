@@ -1,0 +1,123 @@
+.main-countdown-container {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin: 0px;
+  background-color: #f8f0e4;
+}
+.countdown-timer-main-main-container {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to left, #f188a9, #fb98b7);
+  padding: 20px 40px;
+  padding-bottom: 40px;
+  border-radius: 10px;
+  color: #f7efd2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 0px;
+  position: relative;
+}
+
+.countdown-timer {
+  display: flex;
+}
+
+.countdown-timer-text {
+  text-align: center;
+  font-size: 34px;
+  font-weight: bold;
+  line-height: 32px;
+  font-family: Poppins;
+  color: white;
+}
+
+.time-unit {
+  text-align: center;
+  margin: 0 50px;
+}
+
+.number {
+  font-size: 6vh;
+  font-weight: bold;
+  color: white;
+  font-family: Poppins;
+}
+
+.label {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.colon {
+  font-size: 50px;
+  line-height: 50px;
+  color: white;;
+  margin: auto;
+}
+
+.order-now2 {
+  background: #D83D37;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: Poppins !important;
+  width: 20rem !important;
+}
+
+.order-now2:hover {
+  background-color: #f76871; 
+}
+
+.order-now-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 750px) {
+  .main-countdown-container {
+    margin-top: -25rem !important;
+    background-color: #f8f0e4;
+}
+  .time-unit {
+    text-align: center;
+    margin: 0 2px;
+}
+  .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #d9c5a6;
+}
+  .number {
+  font-size: 4vh;
+  font-weight: bold;
+  color: white;
+  font-family: Poppins;
+}
+  .countdown-timer-text {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+    font-family: Poppins
+}
+  .countdown-timer-main-main-container {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to left, #f188a9, #fb98b7);
+    padding: 20px 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    color: #f7efd2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 0px;
+    position: relative;
+  }
+}

@@ -1,0 +1,208 @@
+{% comment %}
+  Accepts:
+  - blocks: The blocks from the section settings.
+  - background_color: The background color for the section.
+  - section_id: The ID of the parent section.
+{% endcomment %}
+
+{%- style -%}
+  @media screen and (max-width: 450px) {
+    @keyframes scroll-x {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+    .animate-scroll-x {
+      animation: scroll-x 20s linear infinite;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="section-{{ section_id }}-padding py-8"
+  style="background-color: {{ background_color }};"
+>
+  {%- comment -%} This outer container clips the animation to prevent overflow {%- endcomment -%}
+  <div class="overflow-hidden">
+    {%- comment -%}
+      This inner container holds the duplicated content and is animated.
+    {%- endcomment -%}
+    <div class="flex animate-scroll-x md:justify-center p-4 md:grid md:grid-cols-4 md:gap-x-2">
+      {%- comment -%}
+        The content is duplicated (run twice) to create the seamless, infinite loop.
+      {%- endcomment -%}
+
+      {%- comment -%} FIRST SET OF ICONS {%- endcomment -%}
+      {%- for block in blocks -%}
+        <div
+          class="flex flex-col flex-shrink-0 min-w-[190px] d-sm:min-w-[250px] px-4 text-center text-white"
+        >
+          <div class="mb-4">
+            {%- if block.settings.icon == 'heart' -%}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            {%- elsif block.settings.icon == 'smile' -%}
+              {% comment %}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  class="inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+                >
+                  <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>
+                </svg>
+              {% endcomment %}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-smile-icon lucide-smile inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>
+              </svg>
+            {%- elsif block.settings.icon == 'cake' -%}
+              {% comment %}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  class="inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+                >
+                  <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 7v3"/><path d="M17 8v2"/><path d="M7 4h.01"/><path d="M12 3h.01"/><path d="M17 4h.01"/>
+                </svg>
+              {% endcomment %}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-cake-slice-icon lucide-cake-slice inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <path d="M16 13H3"/><path d="M16 17H3"/><path d="m7.2 7.9-3.388 2.5A2 2 0 0 0 3 12.01V20a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-8.654c0-2-2.44-6.026-6.44-8.026a1 1 0 0 0-1.082.057L10.4 5.6"/><circle cx="9" cy="7" r="2"/>
+              </svg>
+              {% comment %} <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-cake-icon lucide-cake inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v3"/><path d="M12 8v3"/><path d="M17 8v3"/><path d="M7 4h.01"/><path d="M12 4h.01"/><path d="M17 4h.01"/>
+              </svg> {% endcomment %}
+            {%- elsif block.settings.icon == 'star' -%}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            {%- endif -%}
+          </div>
+          {% if block.settings.title != blank %}
+            <p class="text-xl font-bold uppercase">{{ block.settings.title }}</p>
+          {% endif %}
+          {% if block.settings.subtitle != blank %}
+            <p class="mt-1 text-base font-medium">{{ block.settings.subtitle }}</p>
+          {% endif %}
+        </div>
+      {%- endfor -%}
+
+      {%- comment -%} SECOND SET OF ICONS (DUPLICATE) {%- endcomment -%}
+      {%- for block in blocks -%}
+        <div
+          data-aos="flip-left"
+          class="md:hidden flex flex-col flex-shrink-0 min-w-[190px] d-sm:min-w-[250px] px-4 text-center text-white"
+        >
+          <div class="mb-4">
+            {%- if block.settings.icon == 'heart' -%}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            {%- elsif block.settings.icon == 'smile' -%}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>
+              </svg>
+            {%- elsif block.settings.icon == 'cake' -%}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 7v3"/><path d="M17 8v2"/><path d="M7 4h.01"/><path d="M12 3h.01"/><path d="M17 4h.01"/>
+              </svg>
+            {%- elsif block.settings.icon == 'star' -%}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="inline-block w-14 h-14 d-sm:w-20 d-sm:h-20"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            {%- endif -%}
+          </div>
+          {% if block.settings.title != blank %}
+            <p class="text-[16px] font-[700] leading-[18px] tracking-[0.225px] uppercase">{{ block.settings.title }}</p>
+          {% endif %}
+          {% if block.settings.subtitle != blank %}
+            <p class="mt-1 font-[500] text-[14px] leading-[18px] tracking-[0.3px]">{{ block.settings.subtitle }}</p>
+          {% endif %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

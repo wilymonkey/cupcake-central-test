@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "gift_finder_UQcCTt": {
+      "type": "gift_finder",
+      "settings": {
+        "recipient_choices": "Her: gifts-for-her, Him: gifts-for-him, Mum: gifts-for-her, Dad: gifts-for-him, Family: gifts-for-them, Friends: gifts-for-them, Coworkers: gifts-for-them, Clients: gifts-for-them, Kids: gifts-for-kids",
+        "occasion_choices": "Just Because, Thank you",
+        "collection_list": [
+          "birthday",
+          "baby-shower-cupcakes",
+          "gender-reveal-cupcakes",
+          "graduation-cupcakes"
+        ],
+        "budget_choices": "Up to $50: 50, Up to $100: 100, Up to $200: 200",
+        "default_recipient": "gifts-for-her",
+        "default_occasion": "Just Because",
+        "default_budget": "Up to $100",
+        "show_view_all": true,
+        "products_to_show": 10
+      }
+    }
+  },
+  "order": [
+    "main",
+    "gift_finder_UQcCTt"
+  ]
+}

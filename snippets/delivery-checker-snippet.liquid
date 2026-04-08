@@ -1,0 +1,151 @@
+{% comment %}
+  Accepts all settings from the section file.
+{% endcomment %}
+<style>
+  textarea:focus,
+  input:focus {
+    outline: none;
+  }
+  *:focus {
+    outline: none;
+  }
+</style>
+<div class="section-{{ section_id }}-padding w-full" style="background-color: {{ section_background_color }};">
+  <div class="mx-auto d-sm:max-w-[1100px] d-lg:max-w-[1650px] d-sm:mx-auto">
+    {%- comment -%}
+      This container is a column on mobile and a row on desktop.
+    {%- endcomment -%}
+    <div
+      class="flex flex-col md:flex-row d-sm:items-center d-sm:justify-between d-sm:gap-8"
+      id="delivery-checker-{{ section_id }}"
+      data-success-heading="{{ success_heading | escape }}"
+      data-success-subheading="{{ success_subheading | escape }}"
+      data-close-heading="{{ close_heading | escape }}"
+      data-close-subheading="{{ close_subheading | escape }}"
+      data-sorry-heading="{{ sorry_heading | escape }}"
+      data-sorry-subheading="{{ sorry_subheading | escape }}"
+    >
+      {%- comment -%} Heading Column {%- endcomment -%}
+      <div class="w-full md:w-[512px] d-sm:w-[640px] text-center d-sm:text-center md:h-[256px] d-sm:h-[320px] d-lg:h-[480px]">
+        {% if image != blank %}
+          <img
+            src="{{ image | image_url: width: 1200 }}"
+            alt="{{ image.alt | escape }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            class="object-cover w-full h-full"
+          >
+        {% endif %}
+      </div>
+
+      {%- comment -%} Content Column {%- endcomment -%}
+      <div
+        class="w-full md:w-[512px] d-lg:w-[960px] md:h-[256px] d-sm:h-[320px] d-lg:h-[480px] py-[24px] d-sm:py-[60px] d-lg:py-[90px] px-[12px] d-sm:items-center d-sm:justify-center"
+        style="background-color: {{ content_background_color }};"
+      >
+        <div
+          class="d-lg:justify-center flex flex-col items-center d-sm:items-center"
+        >
+          <p
+            id="checker-heading"
+            class="text-white text-[36px] d-sm:text-[48px] d-lg:text-[72px] d-lg:leading-[66px] text-center mt-4 leading-[33px] d-sm:leading-[44px] font-[900]! uppercase d-sm:text-5xl [text-shadow:0_9.6px_19.2px_rgba(0,0,0,0.16)]"
+          >
+            {{ heading }}
+          </p>
+          <div
+            id="checker-subheading"
+            class="text-[18px] d-lg:text-[36px] text-white font-[700] leading-[20px]! d-lg:leading-[40px]! tracking-[0.25px] d-lg:tracking-[0.5px] text-center mt-[5px] d-lg:mt-[12px] text-xl d-sm:text-2xl"
+          >
+            {{ subheading }}
+          </div>
+
+          <form id="postcode-form" class="mt-[16px] d-lg:mt-[30px] mx-[12px] pb-[35px] d-sm:mx-[7px] d-lg:mx-[50px]">
+            <div class="flex flex-col d-sm:flex-row gap-[6px]">
+              <input
+                type="tel"
+                id="postcode-input"
+                placeholder="Enter your delivery postcode..."
+                class="w-full d-sm:w-[301px] h-[42px] d-sm:h-[50px] border-none! p-[12px] text-center text-[14px] italic leading-[18px] bg-white text-espresso! font-[500] rounded-[4px]  focus:outline-none! focus:ring-2! focus:ring-popsugar!"
+                maxlength="4"
+                pattern="[0-9]{4}"
+                inputmode="numeric"
+              >
+              <button
+                type="submit"
+                class="w-full d-sm:w-[157px] h-[42px] d-sm:h-[50px] text-[18px] leading-[18px]! tracking-[0.75px]! p-[12px] font-bold text-white uppercase bg-popsugar rounded-[4px]"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} confetti library {% endcomment %}
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const container = document.getElementById('delivery-checker-{{ section_id }}');
+      if (!container) return;
+
+      const form = container.querySelector('#postcode-form');
+      const input = container.querySelector('#postcode-input');
+      const headingElement = container.querySelector('#checker-heading');
+      const subheadingElement = container.querySelector('#checker-subheading');
+
+      const melbournePostcodes = '{{ melbourne_postcodes | escape }}'
+        .split(',')
+        .map((pc) => pc.trim())
+        .filter((pc) => pc);
+
+      const successHeading = container.dataset.successHeading;
+      const successSubheading = container.dataset.successSubheading;
+      const closeHeading = container.dataset.closeHeading;
+      const closeSubheading = container.dataset.closeSubheading;
+      const sorryHeading = container.dataset.sorryHeading;
+      const sorrySubheading = container.dataset.sorrySubheading;
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const postcode = input.value.trim();
+
+        if (!/^\d{4}$/.test(postcode)) {
+          input.value = '';
+          input.placeholder = 'Please enter a 4-digit postcode';
+          return;
+        }
+
+        if (melbournePostcodes.includes(postcode)) {
+          headingElement.textContent = successHeading;
+          subheadingElement.textContent = successSubheading;
+
+          // Shoot from the left
+          confetti({
+            particleCount: 200,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a'],
+          });
+          // Shoot from the right
+          confetti({
+            particleCount: 200,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a'],
+          });
+        } else if (postcode.startsWith('3')) {
+          headingElement.textContent = closeHeading;
+          subheadingElement.textContent = closeSubheading;
+        } else {
+          headingElement.textContent = sorryHeading;
+          subheadingElement.textContent = sorrySubheading;
+        }
+      });
+    });
+  </script>
+</div>

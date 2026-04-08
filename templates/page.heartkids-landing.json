@@ -1,0 +1,347 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "main {background-color: #ffffff !important; color: #2b2b2b;}",
+        ".content-for-layout {background-color: white;}",
+        "#ws-delivery-block-input button {width: 150px; color: white; border: none; cursor: pointer; padding: 8px; background: linear-gradient(to top, #e71667, #ff68ab); font-size: 14px;}"
+      ],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "hero_delivery_block_MVxwF3": {
+      "type": "hero-delivery-block",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ad242c",
+        "title_color": "#ffffff",
+        "description_color": "#ffffff",
+        "image_position": "left",
+        "desktop_image": "shopify://shop_images/XMAS-LANDING-PAGE-SECTION-IMG-SANTA_01.webp",
+        "mobile_image": "shopify://shop_images/XMAS-LANDING-PAGE-SECTION-IMG-SANTA_01.webp",
+        "title-line1": "CHRISTMAS CAKE RANGE",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "A gift that will be remembered, shared and enjoyed.<br>Get everyone into the spirit of the season with a gift box filled with Christmas cakes. Bring some to an event or send some festive cheer to loved ones, clients and those who have supported you throughout the year.",
+        "button-text": "ORDER NOW",
+        "link": "",
+        "is-button-scroll-to-section": true,
+        "scroll-to-section-id": "featured-collection-title"
+      }
+    },
+    "hero_delivery_block_gUcaED": {
+      "type": "hero-delivery-block",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ad242c",
+        "title_color": "#ffffff",
+        "description_color": "#ffffff",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/PROMO-XMAS23-GB-COOKIES-24.webp",
+        "mobile_image": "shopify://shop_images/PROMO-XMAS23-GB-COOKIES-24.webp",
+        "title-line1": "FREE DELIVERY*",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "We are offering FREE delivery on all orders over $40*.<br>Order in advance and let Santa’s helpers take the hassle out of the holidays.<br>Available for delivery from 13 November - 31 December, in store from 1 December - 31 December.",
+        "button-text": "ORDER NOW",
+        "link": "",
+        "is-button-scroll-to-section": true,
+        "scroll-to-section-id": "featured-collection-title"
+      }
+    },
+    "banner_slideshow_mdptnG": {
+      "type": "banner-slideshow",
+      "blocks": {
+        "slide_image_CWyweJ": {
+          "type": "slide_image",
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "",
+            "mobile_video_link": "",
+            "image": "shopify://shop_images/Group_17.png",
+            "mobile_image": "shopify://shop_images/Group_36.png",
+            "link": "shopify://pages/heartkids",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2024 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_CWyweJ"
+      ],
+      "custom_css": [
+        ".buttons-container {display: none;}",
+        ".carousel {box-shadow: none;}",
+        "a {cursor: default;}"
+      ],
+      "settings": {
+        "slider_delay": 2000
+      }
+    },
+    "hero_banner_section_christmas_dUzFGb": {
+      "type": "hero-banner-section-christmas",
+      "custom_css": [
+        "#ws-delivery-block-right-content h1 {font-size: 32px; font-family: Lemon Days;}",
+        "#ws-delivery-block-inner-left {padding-top: 2rem !important;}",
+        "#ws-delivery-block-input {display: none;}",
+        ".hero-banner-section-christmas {background-color: #fee8f2;}",
+        ".ws-delivery-block {margin-top: -5rem !important; margin-bottom: 2rem; background: #ff70a7 !important;}",
+        "#ws-delivery-block-inner-right {width: 40%; padding: 2rem;}",
+        "@media (max-width: 767px) {#ws-delivery-block-right-content h1 {font-size: 21px !important; font-family: Lemon Days; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#f5e7c8",
+        "title_color": "#ffffff",
+        "description_color": "#ffffff",
+        "image_position": "left",
+        "desktop_image": "shopify://shop_images/Handling_Boxes.webp",
+        "title-line1": "Delivering Jan 13 to March 31",
+        "title-line2": "In-store from Feb 10 to Feb 16",
+        "title-line3": "",
+        "paragraph-description": "When you treat yourself, your friends or your colleagues to some HeartKids cupcakes, a portion of the proceeds will be donated to HeartKids. So enjoy a sweet treat made even sweeter with the knowledge that you're helping to support Aussie kids in need.",
+        "button-text": "",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "custom_collection_block_j6FCmw": {
+      "type": "custom-collection-block",
+      "custom_css": [
+        ".brownie-gift-box-container {margin-top: 0px;}",
+        "@media (max-width: 767px) {.brownie-gift-box-container {margin-top: 31px; } .brownies-heading1 {margin-bottom: 0px; }}"
+      ],
+      "settings": {}
+    },
+    "hero_delivery_block_VepJpK": {
+      "type": "hero-delivery-block",
+      "disabled": true,
+      "custom_css": [
+        ".fit-image-to-parent {object-fit: contain;}",
+        ".ws-delivery-block {background: linear-gradient(to right, #0c4a4a, #1c9589); width: 80%;}",
+        "#ws-delivery-block-right-content h1 {font-family: Lemon Days; letter-spacing: 2px; text-shadow: 3px 3px 0px #ff66a1; margin-bottom: 10px;}",
+        "#ws-delivery-block-inner-right {width: 60%; padding: 2rem; padding-bottom: 0px;}",
+        "#ws-delivery-block-input button {width: 150px; color: white; border: none; cursor: pointer; padding: 8px; background: linear-gradient(to top, #e71667, #ff68ab); font-size: 14px;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "title_color": "#f7efef",
+        "description_color": "#f5f1f1",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/Layer_0.png",
+        "mobile_image": "shopify://shop_images/Layer_0.png",
+        "title-line1": "WHY HEARTKIDS?",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "HeartKids is the only Australian charity dedicated to providing lifelong support, resources, and advocacy for people affected by childhood-onset heart disease (CoHD). From the hospital to the home, the community and beyond, each and every journey with CoHD is different, and that's why their mission is to be there wherever and whenever they're needed by the 1,000,000 Australians touched by CoHD.",
+        "button-text": "LEARN MORE",
+        "link": "https://www.sweetheartsforheartkids.org.au/",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "hero_banner_section_heartkids_RVVyBD": {
+      "type": "hero-banner-section-heartkids",
+      "custom_css": [
+        ".fit-image-to-parent {object-fit: contain;}",
+        ".ws-delivery-block {background: linear-gradient(to right, #0c4a4a, #1c9589); width: 80%;}",
+        "#ws-delivery-block-right-content-heartkids h1 {font-family: Lemon Days; letter-spacing: 2px; text-shadow: 3px 3px 0px #ff66a1; margin-bottom: 10px;}",
+        "#ws-delivery-block-inner-right {width: 60%; padding: 2rem; padding-bottom: 0px;}",
+        "#ws-delivery-block-input button {width: 150px; margin-left: 150px;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "title_color": "#f7efef",
+        "description_color": "#f5f1f1",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/Layer_0.png",
+        "mobile_image": "shopify://shop_images/Layer_0.png",
+        "title-line1": "WHY HEARTKIDS?",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "HeartKids is the only Australian charity dedicated to providing lifelong support, resources, and advocacy for people affected by childhood-onset heart disease (CoHD). From the hospital to the home, the community and beyond, each and every journey with CoHD is different, and that's why their mission is to be there wherever and whenever they're needed by the 1,000,000 Australians touched by CoHD.",
+        "button-text": "LEARN MORE",
+        "link": "https://www.sweetheartsforheartkids.org.au/",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "hero_delivery_block_CYqRhz": {
+      "type": "hero-delivery-block",
+      "custom_css": [
+        ".ws-delivery-block {background: url(\"https://cdn.shopify.com/s/files/1/1848/3097/files/CC_HEARTKIDS25_PHOTO_4.png?v=1736391073\"); background-size: cover; margin-top: -20px !important;}",
+        ".fit-image-to-parent {display: none;}",
+        "#ws-delivery-block-right-content h1 {font-family: Lemon Days; letter-spacing: 2px; text-shadow: 3px 3px 0px #ff66a1; margin-bottom: 10px;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "description_color": "#444444",
+        "image_position": "left",
+        "title-line1": "JOIN US IN HELPING  HEARTKIDS!",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "This Valentine's season, we're partnering with HeartKids to help raise funds to support their mission. 10c from every HeartKids cupcake sold will be donated to HeartKids, so by sharing around some sweet treats, you'll also be sharing the love with Aussie heart kids!",
+        "button-text": "ORDER NOW",
+        "link": "",
+        "is-button-scroll-to-section": true,
+        "scroll-to-section-id": "shopify-section-template--17300055064636__hero_banner_section_christmas_dUzFGb"
+      }
+    },
+    "hero_delivery_block_yP7jFY": {
+      "type": "hero-delivery-block",
+      "custom_css": [
+        ".fit-image-to-parent {object-fit: contain; object-position: center;}",
+        ".ws-delivery-block {background: white;}",
+        "#ws-delivery-block-right-content h1 {font-family: Lemon Days; text-shadow: 3px 3px 0px #efa0b6;}",
+        "#ws-delivery-block-input {display: none;}",
+        "@media (max-width: 767px) {#ws-delivery-block-input {display: none; }}",
+        ".hero-image-and-text {margin-top: -21px; width: 100% !important; background: white !important;}",
+        "#ws-delivery-block-inner-right {width: 50%; padding: 2rem;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "title_color": "#e41468",
+        "description_color": "#444444",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/Box_2x_03c6d471-7799-4461-ba23-7194464b748c.png",
+        "mobile_image": "shopify://shop_images/Box_2x_03c6d471-7799-4461-ba23-7194464b748c.png",
+        "title-line1": "PRE-ORDER NOW FOR LATER",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "All our sweet treats are made by hand in our Melbourne kitchen, so we'll need a little bit of notice to prepare your cupcakes. Order by 12pm two days before your desired delivery date to make sure that your desserts will be ready in time.",
+        "button-text": "",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "campaign_faqs_knFarp": {
+      "type": "campaign-faqs",
+      "blocks": {
+        "faq_entry_A94N33": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "When's the earliest I can receive my cupcakes?",
+            "answer": "All our desserts are made by hand in our Melbourne kitchen, so you'll need to order your HeartKids cupcakes by 12pm two days before your desired delivery date so we can get your cupcakes ready in time. If you need something sooner, consider our <a href=\"https://cupcakecentral.com.au/collections/cupcake-gift-boxes\" target=\"_blank\" title=\"Cupcake Gift Boxes\">cupcake gift boxes</a> or <a href=\"https://cupcakecentral.com.au/collections/mini-cupcake-gift-boxes\" target=\"_blank\" title=\"Mini Cupcake Gift Boxes\">mini cupcake gift boxes</a> instead, which are available for same day delivery as long as you order by 12pm (subject to availability)."
+          }
+        },
+        "faq_entry_gKfTTE": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I need cupcakes today?",
+            "answer": "Since our HeartKids cupcakes require more time to prepare, they're not available for same day delivery. We do offer same day delivery for our <a href=\"https://cupcakecentral.com.au/collections/cupcake-gift-boxes\" target=\"_blank\" title=\"Cupcake Gift Boxes\">cupcake gift boxes</a>  and <a href=\"https://cupcakecentral.com.au/collections/mini-cupcake-gift-boxes\" target=\"_blank\" title=\"Mini Cupcake Gift Boxes\">mini cupcake gift boxes</a> though (subject to availability), so just place your order by 12pm and we'll deliver them to you later today! Alternatively, you can also visit our <a href=\"https://cupcakecentral.com.au/pages/locations\" target=\"_blank\" title=\"Highpoint Store Information\">Highpoint store</a> if you'd like to browse our desserts in person and collect them on the spot."
+          }
+        },
+        "faq_entry_nw7Qh3": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you deliver on the Australia Day public holiday?",
+            "answer": "Yes we do! Just order by 12pm two days before and we'll deliver them to you on the day."
+          }
+        },
+        "faq_entry_yyjgFa": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "When and where do you deliver to?",
+            "answer": "We deliver 7 days a week to most suburbs in Metro Melbourne. To check if your suburb falls within our delivery zone, <a href=\"https://cupcakecentral.com.au/pages/delivery-information\" target=\"_blank\">click here</a>."
+          }
+        },
+        "faq_entry_aXj3fB": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I want to deliver to multiple locations?",
+            "answer": "We're happy to arrange this for you! Just give us a call at 9077 4542 or email service@cupcakecentral.com.au and our customer service team will process the order for you."
+          }
+        },
+        "faq_entry_tg8RiA": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "How much will delivery cost?",
+            "answer": "We offer free weekday delivery with orders over $40. If your order value is below $40, then the delivery fee will vary between $10-$15 depending on your location. On weekends, there is a $8 flat rate for delivery. We also offer free click and collect from our Highpoint store and West Footscray office locations. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\" target=\"_blank\">click here</a>. Please note that there is a minimum order value of $35 for delivery orders, and a minimum order value of $16 for click and collect orders."
+          }
+        },
+        "faq_entry_f4DgjE": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Can I select which flavours to include in my HeartKids cupcake box?",
+            "answer": "Due to a high volume of orders, we are unable to accommodate custom requests for our HeartKids products. If you would like to select which cupcakes flavours you receive, this is available with our <a href=\"https://cupcakecentral.com.au/collections/cupcake\">cupcakes</a> and <a href=\"https://cupcakecentral.com.au/collections/mini-cupcakes\">mini cupcakes</a>. Just add your desired flavours and quantities to your cart and we'll sort out the rest for you. Please note that minimum order values apply. For delivery orders, there is a minimum order value of $35. For click and collect orders, there is a minimum order value of $16."
+          }
+        },
+        "faq_entry_eKXJMk": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I want to order just a couple of cupcakes, instead of a whole box?",
+            "answer": "For all online orders, our HeartKids cupcakes are available only in boxes of 12. If you'd like to purchase smaller quantities, our HeartKids cupcakes are available individually at our Highpoint store. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\">click here</a>."
+          }
+        },
+        "faq_entry_jAX6L8": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "I have another question!",
+            "answer": "You can view all our FAQs by <a href=\"https://cupcakecentral.com.au/pages/faqs\">clicking here</a>, or you can contact our customer service team by calling 9077 4542 or emailing service@cupcakecentral.com.au. Please note than our customer service hours are between 9am and 4pm Monday to Friday, and 9am to 1pm on Saturdays. If you'd like to contact us outside of these hours, please send us an email and we'll get back to you as soon as we can!"
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_A94N33",
+        "faq_entry_gKfTTE",
+        "faq_entry_nw7Qh3",
+        "faq_entry_yyjgFa",
+        "faq_entry_aXj3fB",
+        "faq_entry_tg8RiA",
+        "faq_entry_f4DgjE",
+        "faq_entry_eKXJMk",
+        "faq_entry_jAX6L8"
+      ],
+      "custom_css": [
+        ".campaign-faq {background-color: #ff70a7; margin-top: -19px;}",
+        "a:-webkit-any-link {color: white !important; text-decoration: underline !important;}"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "hero_delivery_block_MVxwF3",
+    "hero_delivery_block_gUcaED",
+    "banner_slideshow_mdptnG",
+    "hero_banner_section_christmas_dUzFGb",
+    "custom_collection_block_j6FCmw",
+    "hero_delivery_block_VepJpK",
+    "hero_banner_section_heartkids_RVVyBD",
+    "hero_delivery_block_CYqRhz",
+    "hero_delivery_block_yP7jFY",
+    "campaign_faqs_knFarp"
+  ]
+}

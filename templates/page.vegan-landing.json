@@ -1,0 +1,207 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "main_landing_page_banner_6w6kCf": {
+      "type": "main-landing-page-banner",
+      "settings": {
+        "collection": "vegan-giftboxes",
+        "show_collection_description": true,
+        "mobile_textbox_background_color": "#f28eb4",
+        "show_collection_image": true,
+        "color_scheme": "",
+        "is_custom_info": false,
+        "banner_image": "shopify://shop_images/CC_VEGAN_COLLECTION-BANNER-_1.webp",
+        "banner_image_mobile": "shopify://shop_images/CC_VEGAN_COLLECTION_MOBILE_BANNER.webp",
+        "title": "OUR VEGAN RANGE",
+        "description": "Our vegan cakes & cupcakes are dairy free and egg free, some are even gluten free too. Enjoy our flavourful dietary sweet gifts!",
+        "banner_link": "shopify://collections/vegan-cakes"
+      }
+    },
+    "vegan_landing_cXYbjw": {
+      "type": "vegan-landing",
+      "blocks": {
+        "image_Xd6BqY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CC_NEW-RANGE24_MC-CHOC_V.jpg",
+            "title": "CHOCOLATE",
+            "link": ""
+          }
+        },
+        "image_jEcCww": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SEASON-SPR23-STY-BERRY.png",
+            "title": "BLUEBERRY",
+            "link": ""
+          }
+        },
+        "image_FLiU4e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CC_CAKES_BISCOFF_CAKE-4.jpg",
+            "title": "BISCOFF",
+            "link": ""
+          }
+        },
+        "image_AALm4n": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CC_NEW-RANGE24_CC-COFFEE_V.jpg",
+            "title": "COFFEE",
+            "link": ""
+          }
+        },
+        "image_xiiYNd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CAKE-STY-NAKEDSNICKERS2.png",
+            "title": "SNICKERS",
+            "link": ""
+          }
+        },
+        "vegan_options_abWiaw": {
+          "type": "vegan_options",
+          "settings": {
+            "vegan_title": "CUPCAKES",
+            "vegan_image": "shopify://shop_images/CC_NEW-RANGE24_CC-BISCOFF_V_2x_06616c50-8111-48c1-9ab3-03e6ea6f4b51.png",
+            "vegan_tags": "cupcake"
+          }
+        },
+        "vegan_options_fHFjCc": {
+          "type": "vegan_options",
+          "settings": {
+            "vegan_title": "MINI CUPCAKES",
+            "vegan_image": "shopify://shop_images/CC_NEW-RANGE24_CC-BISCOFF_V_2x_06616c50-8111-48c1-9ab3-03e6ea6f4b51.png",
+            "vegan_tags": "mini-cupcakes"
+          }
+        },
+        "vegan_options_Tr3ddN": {
+          "type": "vegan_options",
+          "settings": {
+            "vegan_title": "CAKES",
+            "vegan_image": "shopify://shop_images/CC_CAKES_BLUEBERRYCAKE-1_2x_40238bad-6e14-4d79-8b9b-7b2e50d71195.png",
+            "vegan_tags": "cake-range"
+          }
+        },
+        "vegan_options_NRTgJf": {
+          "type": "vegan_options",
+          "settings": {
+            "vegan_title": "GIFT BOXES",
+            "vegan_image": "shopify://shop_images/CC_ASSORTED24_CC_V_12-1_2x_427ece81-1b23-4177-be94-d64e9b28b623.png",
+            "vegan_tags": "gift-box"
+          }
+        },
+        "vegan_options_jxawAG": {
+          "type": "vegan_options",
+          "settings": {
+            "vegan_title": "CUSTOM",
+            "vegan_image": "shopify://shop_images/12_CUSTOM_PHOTO_CUPCAKE_GIFT_BOX_PREVIEW_04.webp",
+            "vegan_tags": "custom"
+          }
+        }
+      },
+      "block_order": [
+        "image_Xd6BqY",
+        "image_jEcCww",
+        "image_FLiU4e",
+        "image_AALm4n",
+        "image_xiiYNd",
+        "vegan_options_abWiaw",
+        "vegan_options_fHFjCc",
+        "vegan_options_Tr3ddN",
+        "vegan_options_NRTgJf",
+        "vegan_options_jxawAG"
+      ],
+      "settings": {}
+    },
+    "section_scroll_reviews_r8giDQ": {
+      "type": "section-scroll-reviews",
+      "blocks": {
+        "review_qabenP": {
+          "type": "review",
+          "settings": {
+            "title": "Laura McG",
+            "description": "Linh from their customer service team has saved me twice now when needing cupcakes for corporate events. So grateful to her! Also the assorted mini cupcakes are divine - a huge hit with my workplace!",
+            "image": "shopify://shop_images/laura_portrait_01.webp",
+            "star_rating": 5
+          }
+        },
+        "review_7gnwLR": {
+          "type": "review",
+          "settings": {
+            "title": "Kristy Elliott",
+            "description": "Delicious cupcakes, looked exactly like the photo on the webpage. Had to make a call on the day of delivery , phone answered promptly and issue sorted!",
+            "image": "shopify://shop_images/Kristy_Portrait_01.webp",
+            "star_rating": 5
+          }
+        },
+        "review_37bnta": {
+          "type": "review",
+          "settings": {
+            "title": "N H",
+            "description": "Amazing customer service from start to finish, timely delivery, and beautiful cupcakes that look so good with custom photo images :) highly recommend!",
+            "image": "shopify://shop_images/NH.webp",
+            "star_rating": 5
+          }
+        },
+        "review_PAUp8N": {
+          "type": "review",
+          "settings": {
+            "title": "Sarah Franklyn",
+            "description": "I sent a pack to my Godson on his birthday and according to he and his brother, I win birthday gift giving!  Thanks for making their day Cupcake Central Kitchen",
+            "image": "shopify://shop_images/Sarah_Portrait_01.webp",
+            "star_rating": 5
+          }
+        },
+        "review_tiBjwX": {
+          "type": "review",
+          "settings": {
+            "title": "Lindy Haynes",
+            "description": "Great Customer Service.. our suppliers love the cupcakes... and the delivery service was excellent...",
+            "image": "shopify://shop_images/Lindy_Portrait_01.webp",
+            "star_rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "review_qabenP",
+        "review_7gnwLR",
+        "review_37bnta",
+        "review_PAUp8N",
+        "review_tiBjwX"
+      ],
+      "settings": {
+        "heading_size": "h1",
+        "blog": "",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_landing_page_banner_6w6kCf",
+    "vegan_landing_cXYbjw",
+    "section_scroll_reviews_r8giDQ"
+  ]
+}

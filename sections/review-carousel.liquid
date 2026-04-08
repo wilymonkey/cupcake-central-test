@@ -1,0 +1,189 @@
+{% schema %}
+{
+  "name": "Review Carousel",
+  "settings": [],
+  "class": "review-section",
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "review_text",
+          "label": "Review Text"
+        },
+        {
+          "type": "text",
+          "id": "review_author",
+          "label": "Reviewer Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Carousel",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="review-carousel">
+  <div class="review-container">
+    {% for block in section.blocks %}
+      <div class="review-slide {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">{{ block.settings.review_text }}</p>
+        <p class="review-author">- {{ block.settings.review_author }}</p>
+      </div>
+    {% else %}
+      <p>No reviews yet. Add some in the Theme Editor.</p>
+    {% endfor %}
+  </div>
+  <button class="review-btn left" onclick="prevReview()">&#10094;</button>
+  <button class="review-btn right" onclick="nextReview()">&#10095;</button>
+</div>
+
+<style>
+  .review-carousel {
+    background: #FFEB87; 
+    text-align: center;
+    padding: 40px 50px;
+    position: relative;
+    max-width: 880px;
+    margin: auto;
+    border-radius: 10px;
+    height: 266px;
+  }
+
+  .review-container {
+    position: relative;
+    min-height: 150px;
+  }
+
+  .review-slide {
+    display: none;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .review-slide.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .review-stars {
+    font-size: 28px;
+    color: #292378;
+    letter-spacing: 13px;
+}
+
+
+
+  .review-text {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 10px 0;
+  }
+
+  .review-author {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+  }
+
+  .review-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 2px solid #4b0082;
+    color: #4b0082;
+    padding: 6px 12px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .review-btn.left {
+    left: -20px;
+  }
+
+  .review-btn.right {
+    right: -20px;
+  }
+
+  .review-btn:hover {
+    background: #4b0082;
+    color: #fff;
+  }
+  @media (max-width: 768px) {
+.review-text {
+    font-size: 12px;
+    color: #333;
+    margin: 10px 0;
+}
+    .review-btn {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 2px solid #4b0082;
+    color: #4b0082;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .review-btn.left {
+    left: 10px;
+  }
+
+  .review-btn.right {
+    right: 10px;
+  }
+    .review-carousel {
+    background: #FFEB87; 
+    text-align: center;
+    padding: 40px 50px;
+      padding-top: 15px;
+    position: relative;
+    max-width: 880px;
+    margin: auto;
+    border-radius: 10px;
+    height: 266px;
+  }
+
+  }
+</style>
+
+<script>
+  let currentIndex = 0;
+  const reviews = document.querySelectorAll('.review-slide');
+
+  function showReview(index) {
+    reviews.forEach((review, i) => {
+      review.classList.remove('active');
+      if (i === index) {
+        review.classList.add('active');
+      }
+    });
+  }
+
+  function nextReview() {
+    currentIndex = (currentIndex + 1) % reviews.length;
+    showReview(currentIndex);
+  }
+
+  function prevReview() {
+    currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+    showReview(currentIndex);
+  }
+
+  setInterval(nextReview, 5000); // Auto-scroll every 5 seconds
+</script>

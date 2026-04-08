@@ -1,0 +1,413 @@
+<style>
+  .send-email-block {
+    position: relative;
+    border-radius: 10px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 5rem;
+    align-items: flex-start;
+  }
+
+  #send-email-block-inner-left {
+      width: fit-content;
+      padding: 2rem;
+  }
+
+  #send-email-block-inner-right {
+      width: 40%;
+      padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #send-email-block-right-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+  }
+
+  #send-email-block-right-content h1 {
+      color:white;
+      margin: 0;
+      padding: 0;
+      font: normal normal 800 64px/95px Poppins;
+      font-size: calc(100vw * (40/1920));
+      line-height: 1;
+      letter-spacing: 0px;
+  }
+
+  #send-email-block-right-content h2 {
+      color:white;
+      margin: 0;
+      padding: 0;
+      font: normal normal normal 100px/100px Tenstars;
+      font-size: calc(100vw * (100/1920));
+      line-height: calc(100vw * (100/1920));
+      letter-spacing: 0px;
+      color: #F283B4;
+      margin-top: calc(100vw * ( -13 / 1920));
+  }
+
+  #send-email-block-right-content p {
+      color:white;
+      margin: 0;
+      padding: 0;
+      font: normal normal normal 24px/35px Poppins;
+      font-size: calc(100vw * (18/1920));
+      line-height: calc(100vw * (28/1920));
+      letter-spacing: 0px;
+      padding-top: 1rem;
+  }
+
+  .send-email-block input {
+    border-radius: 3px;
+    height: 4rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+  }
+
+  #send-email-block-input {
+      gap: 16px;
+      height: calc(100vw * (60/1920));
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 1rem;
+      margin-left: auto;
+    width: 100%;
+  }
+
+  #send-email-block-input form input {
+      height: 100%;
+      background: #F0F0F0 0% 0% no-repeat padding-box;
+      border: 1px solid #686868;
+      border-radius: 5px;
+      width: calc(100vw * (360/1920));
+      padding: 0 23px;
+      font: normal normal normal 18px/27px Poppins;
+      font-size: calc(100vw * (18/1920));
+      line-height: calc(100vw * (27/1920));
+  }
+
+  #send-email-block-input button {
+      height: 100%;
+      width: calc(100vw * (180/1920));
+      font: normal normal bold 18px/27px Poppins;
+      font-size: calc(100vw * (18/1920));
+      font-weight: bold;
+      line-height: calc(100vw * (27/1920));
+      letter-spacing: 0px;
+      background-color: #fff;
+      color: #686868;
+      border: none;
+      border-radius: 5px;
+    float: left;
+  }
+
+  #send-email-block-true, #send-email-block-false {
+      display: none;
+  }
+
+  #send-email-block-true h1 {
+      font: normal normal 800 64px/64px Poppins;
+      font-size: calc(100vw * (64/1920));
+      line-height: calc(100vw * (64/1920));
+  }
+
+  #send-email-block-false h1 {
+      font: normal normal 800 64px/64px Poppins;
+      font-size: calc(100vw * (64/1920));
+      line-height: calc(100vw * (64/1920));
+  }
+
+  #send-email-checker-form p {
+      display: none;
+  }
+
+  .send-email-block-img-container {
+    width: 75%;
+  }
+
+  #send-email-block-right-content-text h1 {
+    font-size: calc(72 / 1920 * 100vw);
+  }
+
+  .delivery-checker-btn {
+    cursor: pointer;
+  }
+
+  @media (max-width: 767px) {
+      .send-email-block {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+
+      #send-email-block-inner-left {
+          width: 100%;
+          padding: 0;
+          padding-bottom: 2rem;
+      }
+
+      #send-email-block-inner-right {
+          width: 100%;
+          padding: 0;
+      }
+
+      #send-email-block-right-content {
+          align-items: center;
+          width: calc(100vw * (334/430));
+          margin: auto;
+          justify-content: space-between;
+      }
+
+      #send-email-block-right-content h1 {
+          font: normal normal 800 36px/50px Poppins;
+          font-size: calc(100vw * (36/430));
+          line-height: 1;
+          text-align: center;
+      }
+
+      #send-email-block-right-content h2 {
+          font: normal normal normal 50px/30px Tenstars;
+          font-size: calc(100vw * (50/430));
+          line-height: calc(100vw * (30/430));
+          text-align: center;
+      }
+
+      #send-email-block-right-content p {
+          display: none;
+      }
+
+      #send-email-checker-form {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+      }
+
+      #send-email-block-input {
+          height: fit-content;
+          width: 100%;
+          margin-left: auto;
+      }
+
+      #send-email-block-input form {
+          width: 100%;
+          height: fit-content;
+          gap: 16px;
+      }
+
+      #send-email-block-input form input {
+          width: calc(100vw * (300/430));
+          height: calc(100vw * (60/430));
+          padding: 0;
+          text-align: center;
+          font: normal normal normal 18px/27px Poppins;
+          font-size: calc(100vw * (18/430));
+          line-height: calc(100vw * (27/430));
+      }
+
+      #send-email-block-input form button {
+          width: calc(100vw * (180/430));
+          height: calc(100vw * (50/430));
+          font: normal normal bold 18px/27px Poppins;
+          font-size: calc(100vw * (18/430));
+          line-height: calc(100vw * (27/430));
+          letter-spacing: 0px;
+      }
+
+      #send-email-checker-form p {
+          display: block;
+          font: normal normal normal 18px/24px Poppins;
+          font-size: calc(100vw * (18/430));
+          line-height: calc(100vw * (24/430));
+          text-align: center;
+      }
+
+      #send-email-block-true h1 {
+          font: normal normal 800 36px/36px Poppins;
+          font-size: calc(100vw * (36/430));
+          line-height: calc(100vw * (36/430));
+      }
+
+      #send-email-block-false h1 {
+          font: normal normal 800 36px/36px Poppins;
+          font-size: calc(100vw * (36/430));
+          line-height: calc(100vw * (36/430));
+      }
+
+      #send-email-block-input button {
+          width: 70%;
+          height: auto;
+          aspect-ratio: 7/1;
+          font: normal normal bold 18px/27px Poppins;
+          font-size: 2rem;
+          line-height: calc(100vw * (27/430));
+          letter-spacing: 0px;
+          margin-left: auto;
+      }
+  }
+</style>
+{%- form 'contact', id: 'ContactForm' -%}
+  {%- if form.posted_successfully? -%}
+    <div class="form-status form-status-list form__message alert alert-success" tabindex="-1" autofocus>
+      {% include 'icons' with 'success' %}
+      Thank you, we'll be in touch soon.
+    </div>
+  {%- elsif form.errors -%}
+    <ul class="form-status-list caption-large alert alert-danger" role="list">
+      <li>
+        {% include 'icons' with 'error' %}
+        {{ form.errors.translated_fields.email | capitalize }}
+        {{ form.errors.messages.email }}
+      </li>
+    </ul>
+  {%- endif -%}
+  <div class="page-width flex-centered send-email-block" style="background-color: {{ section.settings.bg_color }}">
+    {% if section.settings.image_position == 'left' %}
+      <div id="send-email-block-inner-left">
+        <div id="send-email-block-right-content" class="fit-to-parent">
+          <div id="send-email-block-right-content-text">
+            <h1 class="uppercase">{{ section.settings['title-line1'] }}</h1>
+            <p>
+              {{ section.settings['paragraph-description'] }}
+            </p>
+          </div>
+          <input
+            class=""
+            type="text"
+            id="ContactForm-name"
+            placeholder="Name"
+            form="ContactForm"
+          >
+          <input
+            class=""
+            type="text"
+            id="ContactForm-phone"
+            placeholder="Phone"
+            form="ContactForm"
+          >
+          <input
+            class=""
+            type="text"
+            id="ContactForm-email"
+            placeholder="Email"
+            form="ContactForm"
+          >
+          <textarea
+            class=""
+            type="text"
+            id="ContactForm-comment"
+            placeholder="Comment"
+            form="ContactForm"
+            style="width: 100%; height: 8rem; resize: vertical; padding: 1rem;margin: 1rem 0;"
+          ></textarea>
+          <div id="send-email-block-input" class="">
+            <button type="submit" form="ContactForm" class="delivery-checker-btn uppercase">
+              {{ section.settings['button-text'] }}
+            </button>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div id="send-email-block-inner-right">
+        <div class="send-email-block-img-container fit-to-parent">
+          <img
+            id="send-email-block-img"
+            class="lazyload fit-image-to-parent"
+            loading="lazy"
+            src="{{section.settings.desktop_image | img_url: 'master'}}"
+          >
+        </div>
+      </div>
+    {% endif %}
+    {% if section.settings.image_position == 'left' %}
+      <div id="send-email-block-inner-right">
+        <div class="send-email-block-img-container fit-to-parent">
+          <img
+            id="send-email-block-img"
+            class="lazyload fit-image-to-parent"
+            loading="lazy"
+            src="{{section.settings.desktop_image | img_url: 'master'}}"
+          >
+        </div>
+      </div>
+    {% else %}
+      <div id="send-email-block-inner-left">
+        <div id="send-email-block-right-content" class="fit-to-parent">
+          <div id="send-email-block-right-content-text">
+            <h1 class="uppercase">{{ section.settings['title-line1'] }}</h1>
+            <p>
+              {{ section.settings['paragraph-description'] }}
+            </p>
+          </div>
+          <div id="send-email-block-input" class="">
+            <button type="submit" form="ContactForm" class="delivery-checker-btn uppercase">
+              {{ section.settings['button-text'] }}
+            </button>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endform %}
+
+{% schema %}
+ {
+   "name": "Send Email Block",
+   "tag": "section",
+   "settings": [
+     {
+       "type": "text",
+       "id": "bg_color",
+       "label": "Background Color"
+     },
+     {
+       "type": "select",
+       "id": "image_position",
+       "label": "Image Position",
+       "default": "left",
+       "options": [
+         { "value": "left", "label": "Left"},
+         { "value": "right", "label": "Right"}
+       ]
+     },
+     {
+       "type": "image_picker",
+       "id": "desktop_image",
+       "label": "Desktop Image"
+     },
+     {
+       "type": "image_picker",
+       "id": "mobile_image",
+       "label": "Mobile Image"
+     },
+     {
+       "type": "text",
+       "id": "title-line1",
+       "label": "Title Line 1"
+     },
+     {
+       "type": "text",
+       "id": "paragraph-description",
+       "label": "Description"
+     },
+     {
+       "type": "text",
+       "id": "button-text",
+       "label": "Button Text"
+     }
+],
+"presets": [
+     {
+       "name": "Send Email Block"
+     }
+   ]
+ }
+{% endschema %}

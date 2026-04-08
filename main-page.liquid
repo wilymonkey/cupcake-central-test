@@ -1,0 +1,85 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+{{ 'tailwind-main-page.output.css' | asset_url | stylesheet_tag }}
+<!--Ugly hack needed because I don't have access to the tailwind config.-->
+{{ 'tailwind.output.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width page-width--narrow section-{{ section.id }}-padding">
+  <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="flex space-x-4">
+          <div class="flex flex-col bg-orange-100 rounded-2xl border-orange-200 border-2 p-8">
+              <h2>1. PICK YOUR CUPCAKES</h2>
+              <hr class="!m-2 !border-orange-300 !border-b-2">
+              <div class="">
+                  <div class="cupcake-card">
+                      <!--<img src="placerholder" alt="" class="w-full">-->
+                      <div class="p-4">
+                          <h3 class="heading-font">Cupcake Name</h3>
+                          <p class="text-sm">Description</p>
+                          <div class="flex justify-between items-center mt-2">
+                              <span class="text-sm">Price: $<span id="price"></span></span>
+                              <button class="quantity-btn">Add to Cart</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="flex flex-col bg-orange-100 rounded-2xl border-orange-200 border-2 p-8">
+              <h3 class="flex space-between">
+                  <div>2. GIFT BOX PREVIEW</div>
+                  <div id="">11/12</div>
+              </h3>
+          </div>
+      </div>
+      </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

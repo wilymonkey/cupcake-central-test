@@ -1,0 +1,355 @@
+{{ 'banner-slideshow.css' | asset_url | stylesheet_tag }}
+
+<div class="carousel">
+  <div class="image-container" id="carousel-imgs">
+    {% for block in section.blocks %}
+      {% if block.settings.is_datetime_enabled %}
+        {% assign today_date = 'now' | date: '%s' %}
+        {% assign start_date = block.settings.start_time | date: '%d/%m/%Y %H:%M:%S' %}
+        {% assign start_date = start_date | date: '%s' %}
+        {% assign end_date = block.settings.end_time | date: '%d/%m/%Y %H:%M:%S' %}
+        {% assign end_date = end_date | date: '%s' %}
+        {% if today_date > start_date %}
+          {% if today_date < end_date %}
+            <a
+              href="{{ block.settings.link }}"
+            >
+              {% if block.settings.enable_video %}
+                <div style="width: 100%; height: 100%;">
+                  <video
+                    playsinline=""
+                    muted=""
+                    autoplay="true"
+                    loop="true"
+                    class="md-max:hidden lazy entered loaded video-banner-{{ block.id }}"
+                    data-ll-status="loaded"
+                    style="object-fit: cover;"
+                    loading="lazy"
+                    data-desktop-src="{{ block.settings.desktop_video_link }}"
+                    data-mobile-src="{{ block.settings.mobile_video_link }}"
+                  >
+                    <source
+                      type="video/mp4"
+                      src="{{ block.settings.mobile_video_link }}"
+                    >
+                  </video>
+                </div>
+              {% else %}
+                {% if block.settings.image != blank and block.settings.mobile_image != blank %}
+                  <picture>
+                    <source srcset="{{ block.settings.image | img_url: 'master' }}" media="(min-width: 1000px)">
+                    <img
+                      src="{{ block.settings.mobile_image | img_url: 'master' }}"
+                      alt="banner image"
+                      width="100"
+                      height="100"
+                    >
+                  </picture>
+                {% endif %}
+              {% endif %}
+            </a>
+          {% endif %}
+        {% endif %}
+      {% else %}
+        <a
+          href="{{ block.settings.link }}"
+        >
+          {% if block.settings.enable_video %}
+            <div style="width: 100%; height: 100%;">
+              <video
+                playsinline=""
+                muted=""
+                autoplay="true"
+                loop="true"
+                class="md-max:hidden lazy entered loaded video-banner-{{ block.id }}"
+                data-ll-status="loaded"
+                style="object-fit: cover;"
+                loading="lazy"
+                data-desktop-src="{{ block.settings.desktop_video_link }}"
+                data-mobile-src="{{ block.settings.mobile_video_link }}"
+              >
+                <source
+                  type="video/mp4"
+                  src="{{ block.settings.mobile_video_link }}"
+                >
+              </video>
+            </div>
+          {% else %}
+            {% if block.settings.image != blank and block.settings.mobile_image != blank %}
+              <picture>
+                <source srcset="{{ block.settings.image | img_url: 'master' }}" media="(min-width: 1000px)">
+                <img
+                  src="{{ block.settings.mobile_image | img_url: 'master' }}"
+                  alt="banner image"
+                  width="100"
+                  height="100"
+                >
+              </picture>
+            {% endif %}
+          {% endif %}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="buttons-container">
+    <button id="left" class="btn">&#10094;</button>
+    <button id="right" class="btn">&#10095;</button>
+  </div>
+  <div class="slider-dot-control">
+    {% for block in section.blocks %}
+      {% if block.settings.is_datetime_enabled %}
+        {% assign today_date = 'now' | date: '%s' %}
+        {% assign start_date = block.settings.start_time | date: '%d/%m/%Y %H:%M:%S' %}
+        {% assign start_date = start_date | date: '%s' %}
+        {% assign end_date = block.settings.end_time | date: '%d/%m/%Y %H:%M:%S' %}
+        {% assign end_date = end_date | date: '%s' %}
+        {% if today_date > start_date %}
+          {% if today_date < end_date %}
+            <button class="dot"></button>
+          {% endif %}
+        {% endif %}
+      {% else %}
+        <button class="dot"></button>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+ const imgs = document.querySelector('#carousel-imgs');
+const leftBtn = document.querySelector('#left');
+const rightBtn = document.querySelector('#right');
+const img = imgs.querySelectorAll('.carousel img');
+const video = imgs.querySelectorAll('.carousel video');
+const scrollbarWidth = 19;
+let IMG_CONTAINER_WIDTH = 0;
+const DELAY = {{ section.settings.slider_delay | json }};
+
+const videoElements = document.querySelectorAll('.carousel video');
+const dotArray = document.querySelectorAll('.slider-dot-control .dot');
+
+let totalItems = img.length + video.length; // Total number of items (images and videos)
+let idx = 0; // Current index
+let interval = setInterval(run, DELAY);
+
+// Add event listeners for touch events (swiping functionality)
+let startX, endX, isSwipe = false; // Add a flag for detecting a swipe
+
+imgs.addEventListener('touchstart', handleTouchStart);
+imgs.addEventListener('touchmove', handleTouchMove);
+imgs.addEventListener('touchend', handleTouchEnd);
+imgs.addEventListener('click', handleImageClick); // Listen for click events
+
+function handleTouchStart(event) {
+  startX = event.touches[0].clientX; // Record the starting touch point (X-axis)
+  isSwipe = false; // Reset swipe flag
+}
+
+function handleTouchMove(event) {
+  endX = event.touches[0].clientX; // Update the ending touch point (X-axis)
+}
+
+function handleTouchEnd() {
+  if (startX > endX + 50 && idx < totalItems - 1) { // Swipe left
+    handleButtonClick(1); // Move to the next slide
+    isSwipe = true; // Set swipe flag to true
+  } else if (startX < endX - 10 && idx > 0) { // Swipe right
+    handleButtonClick(-1); // Move to the previous slide
+    isSwipe = true; // Set swipe flag to true
+  }
+}
+
+function handleImageClick(event) {
+  if (isSwipe) {
+    event.preventDefault(); // Prevent the default click action if a swipe occurred
+  } else {
+    // Let the normal link behavior happen on click
+    const clickedImage = event.target; // Get the clicked image
+    window.location.href = clickedImage.getAttribute('data-link'); // Redirect to the link of the clicked image
+  }
+}
+
+// Update the image and video widths to match the screen width
+function updateImageWidth() {
+  const screenWidth = window.innerWidth;
+  
+  img.forEach(imgElement => {
+    imgElement.style.width = screenWidth + 'px'; // Set image width to the screen width
+  });
+
+  videoElements.forEach(videoElement => {
+    videoElement.style.width = screenWidth + 'px'; // Set video width to the screen width
+  });
+
+  IMG_CONTAINER_WIDTH = screenWidth; // Update the container width
+  changeImage(); // Recalculate and apply the new translation
+}
+
+// Run the carousel every delay interval
+function run() {
+  idx++;
+  if (idx >= totalItems) {
+    idx = 0; // Loop back to the first item when the last is reached
+  }
+  changeImage();
+}
+
+// Change image by applying transform based on the current index
+function changeImage() {
+  imgs.style.transform = `translateX(${-idx * IMG_CONTAINER_WIDTH}px)`; // Move the container to the correct slide
+
+  // Update the active dot
+  dotArray.forEach((dot, i) => {
+    dot.classList.toggle('activeDot', i === idx);
+  });
+}
+
+// Handle button clicks for left and right navigation
+function handleButtonClick(direction) {
+  idx += direction;
+
+  // Handle boundaries
+  if (idx < 0) {
+    idx = totalItems - 1; // Go to the last item if going left from the first
+  } else if (idx >= totalItems) {
+    idx = 0; // Go back to the first item if going right from the last
+  }
+
+  changeImage(); // Change the image
+  resetInterval(); // Reset the interval so it doesn't speed up
+}
+
+// Reset the interval for the carousel autoplay
+function resetInterval() {
+  clearInterval(interval);
+  interval = setInterval(run, DELAY);
+}
+
+// Handle dot click navigation
+dotArray.forEach((dot, index) => {
+  dot.addEventListener('click', function() {
+    idx = index;
+    changeImage();
+    resetInterval(); // Reset the interval after manual navigation
+  });
+});
+
+// Update video sources based on screen size
+function updateVideos() {
+  document.querySelectorAll('.carousel video').forEach(function(video) {
+    const desktopSrc = video.getAttribute('data-desktop-src');
+    const mobileSrc = video.getAttribute('data-mobile-src');
+    const currentSrc = window.innerWidth > 1000 ? desktopSrc : mobileSrc;
+    
+    if (video.src !== currentSrc) {
+      video.src = currentSrc;
+      video.load();
+    }
+  });
+}
+
+// Initialize everything on page load
+document.addEventListener("DOMContentLoaded", function() {
+  updateImageWidth(); // Initial image width setup
+  updateVideos(); // Update video sources
+  
+  window.addEventListener('resize', updateImageWidth); // Handle window resize for images
+  window.addEventListener('resize', updateVideos); // Handle window resize for videos
+});
+</script>
+
+{% schema %}
+{
+  "name": "Banner Slider",
+  "tag": "section",
+  "class": "banner-slider-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "slider_delay",
+      "label": "Slider Delay",
+      "info": "The value 1000 corresponds to 1s",
+      "min": 1000,
+      "max": 9000,
+      "step": 1000,
+      "default": 2000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide_image",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_video",
+          "label": "Enable Video On Slider",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "desktop_video_link",
+          "label": "Desktop Video Link",
+          "default": "https://youtu.be/_kcxOyn_6o8?si=CmNT1gTqg9ZYJJI5"
+        },
+        {
+          "type": "text",
+          "id": "mobile_video_link",
+          "label": "Mobile Video Link",
+          "default": "https://youtu.be/_kcxOyn_6o8?si=CmNT1gTqg9ZYJJI5"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Destkop Image",
+          "info": "Size: 4000px x 1564px"
+        },
+        {
+         "type": "image_picker",
+         "id": "mobile_image",
+         "label": "Mobile Image",
+         "info": "Size: 2000px x 2400px"
+       },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+      {
+        "type": "checkbox",
+        "id": "is_datetime_enabled",
+        "label": "Enable Date Restriction",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "start_time",
+        "label": "Start date and time",
+        "default": "20/01/2020 09:00:00",
+        "info": "Format: dd/mm/yyyy hh:mm:ss"
+      },
+      {
+        "type": "text",
+        "id": "end_time",
+        "label": "End date and time",
+        "default": "20/01/2050 09:00:00",
+        "info": "Format: dd/mm/yyyy hh:mm:ss"
+      }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Slider",
+      "blocks": [
+        {
+          "type": "slide_image"
+        },
+        {
+          "type": "slide_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

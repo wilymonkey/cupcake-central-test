@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+  <html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+    <head>
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXGBCMK');</script>
+<!-- End Google Tag Manager -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+      <meta name="referrer" content="origin">
+  
+      <title>{{ page_title }}</title>
+  
+      {{ content_for_header }}
+  
+      {{ checkout_stylesheets }}
+      <!-- Zeta Digital - CSS -->
+      <style>
+        .banner {
+          display: none !important;
+        }
+        #checkout-logo-banner {
+          height: 70px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          background-color: #1c9a8d;
+        }
+        #checkout-logo-banner img {
+          height: 50px;
+          padding-left: 50px;
+        }
+        @media only screen and (min-width: 1000px) {
+          .order-summary__sections {
+              height: auto;
+          }
+        }
+        @media only screen and (max-width: 767px) {
+          #checkout-logo-banner img {
+            padding-left: 0;
+          }
+          #checkout-logo-banner {
+            justify-content: center;
+          }
+        }
+      </style>
+      <!-- Zeta Digital - CSS -->    
+      
+      {{ checkout_scripts }}  
+    </head>
+    <body>
+       <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXGBCMK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+      {{ skip_to_content_link }}
+  
+      <header class="banner" data-header role="banner">
+        <div class="wrap">
+          {{ content_for_logo }}
+        </div>
+      </header>
+      {{ order_summary_toggle }}
+      <div class="content" data-content>
+        <div id="checkout-logo-banner">
+          <a href="https://cupcakecentral.com.au"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/cupcakecentral-logo-white.png?v=1657672575"></a>
+        </div>
+        <div class="wrap">
+          <div class="main">
+            <header class="main__header" role="banner">
+              {{ breadcrumb }}
+              {{ alternative_payment_methods }}
+            </header>
+              <main class="main__content" role="main">
+                {{ content_for_layout }}
+              </main>
+            <footer class="main__footer" role="contentinfo">
+              {{ content_for_footer }}
+            </footer>
+          </div>
+          <aside class="sidebar" role="complementary">
+            {% comment %}
+            {% render 'checkout-discount-block' %} <!--  Zeta Digital (15/09/2022) - Discount Block -->
+            {% endcomment %}
+            <div class="sidebar__header">
+              {{ content_for_logo }}
+            </div>
+            <div class="sidebar__content">
+              {{ content_for_order_summary }}
+            </div>
+            {% comment %} {% render 'checkout-upsell-block' %} <!--  Zeta Digital (12/07/2022) - Upsell Block --> {% endcomment %}
+          </aside>
+        </div>
+      </div>
+  
+      {{ tracking_code }}
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+  
+    <script>
+    var deliveryPostcode = localStorage.getItem("delivery_postcode");
+    
+    (function CheckoutContactInformation() {
+      'use strict';
+      if (Shopify.Checkout.step !== 'contact_information') return;
+      
+      // Zeta Digital - Lock Postcode Field for Delivery
+ {% if checkout.attributes.Checkout-Method == "delivery" %}
+        document.addEventListener('page:load', disablePostcode);
+        document.addEventListener('page:change', disablePostcode);
+        function disablePostcode() {
+          $('#checkout_shipping_address_zip').val(deliveryPostcode);
+          $('#checkout_shipping_address_zip').css("pointer-events", "none");
+        }
+      {% endif %}
+      
+        // document.addEventListener('page:load', disablePostcode);
+        // document.addEventListener('page:change', disablePostcode);
+        // function disablePostcode() {
+        //   $('#checkout_shipping_address_zip').val(deliveryPostcode);
+        //   $('#checkout_shipping_address_zip').css("pointer-events", "none");
+        // }
+    })();
+      
+    // Zeta Digital - Postcode Field for Delivery Change Warnings
+    {% if checkout.attributes.Checkout-Method == "delivery" %}
+    var postcodeErrorMsg = `<div id="postcode-error-msg" style="display: flex;background-color: #e95144;padding: 15px;justify-content: space-between;margin-bottom: 12px;border-radius: 5px;"><h3 style="color: white;display: flex;align-items: center;"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/exclamation-mark-in-a-circle_2.png?v=1664951265" style="margin-right: 5px;" width="20">If you want to change the postcode, please&nbsp;<a style="color: white; text-decoration: underline;" href="https://cupcakecentral.com.au/cart">go back to the cart page</a>!</h3></div>`
+    $("#checkout_shipping_address_zip").on("change",function(){
+      if ($('#checkout_shipping_address_zip').val() != deliveryPostcode) {
+        $('#postcode-error-msg').remove();
+        $('#checkout_shipping_address_phone').parent().parent().prepend(postcodeErrorMsg);
+        $('#checkout_shipping_address_zip').val(deliveryPostcode);
+      }
+    });
+    {% endif %}
+    </script>
+  
+    <script>
+      (function CheckoutShipping() {
+        'use strict';
+  
+        if (Shopify.Checkout.step !== 'shipping_method') return;
+  
+        // Zeta Digital - Disable Express Shipping for Melb Delivery
+        {% comment %} {% if checkout.attributes.Checkout-Method == "delivery" %}
+          document.addEventListener('page:load', DisableExpressShipping);
+          document.addEventListener('page:change', DisableExpressShipping);
+          function DisableExpressShipping() {
+            var shippingOptions = document.querySelectorAll('.radio-wrapper');
+            var postcodeErrorMsg = `<div id="postcode-error-msg" style="display: flex;background-color: #e95144;padding: 15px;justify-content: space-between;margin-bottom: 12px;border-radius: 5px;"><h3 style="color: white;display: flex;align-items: center;"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/exclamation-mark-in-a-circle_2.png?v=1664951265" style="margin-right: 5px;" width="20">We are unable to deliver to your address, please&nbsp;<a style="color: white; text-decoration: underline;" href="https://cupcakecentral.com.au/cart">go back to the cart page</a>!</h3></div>`
+            shippingOptions.forEach(function(shippingOption){
+              if (shippingOption.getAttribute('data-shipping-method').includes('express-shipping')){
+                  shippingOption.parentNode.style.display = 'none';
+                  if (shippingOptions.length <= 1){
+                    $('#postcode-error-msg').remove();
+                    $('.section__content').append(postcodeErrorMsg);
+                    $('.step__footer').css("display", "none");
+                  }
+              }
+            });
+          }
+        {% endif %} {% endcomment %}
+
+        // Zeta Digital - Priority Delivery
+        document.addEventListener('page:load', priorityDelivery);
+        document.addEventListener('page:change', priorityDelivery);
+        function priorityDelivery() {
+          var priorityDelivery = localStorage.getItem("priority_delivery_surcharge"); 
+          var shippingOptions = document.querySelectorAll('.radio-wrapper');
+          
+          if (priorityDelivery == 'true'){
+            // Hide Free Delivery
+            shippingOptions.forEach(function(shippingOption){
+              if (shippingOption.getAttribute('data-shipping-method').includes('free-delivery')){
+                  shippingOption.parentNode.style.display = 'none';
+              }
+              if (shippingOption.getAttribute('data-shipping-method').includes('priority-delivery-15.00')){
+                  shippingOption.parentNode.style.borderTop = '0px solid #d9d9d9';
+                  shippingOption.children[0].children[0].click();
+              }
+            });
+          }
+          else {
+            // Hide Priority Delivery
+            shippingOptions.forEach(function(shippingOption){
+              if (shippingOption.getAttribute('data-shipping-method').includes('priority-delivery-15.00')){
+                  shippingOption.parentNode.style.display = 'none';
+              }
+            });
+          }
+        }      
+  
+        // Zeta Digital - Weekend Delivery
+        document.addEventListener('page:load', weekendDelivery);
+        document.addEventListener('page:change', weekendDelivery);
+        function weekendDelivery() {
+          var weekendDelivery = localStorage.getItem("delivery_weekend"); 
+          var shippingOptions = document.querySelectorAll('.radio-wrapper');
+          
+          if (weekendDelivery == 'true'){
+            // Hide Free Delivery and Standard Delivery
+            shippingOptions.forEach(function(shippingOption){
+              if (shippingOption.getAttribute('data-shipping-method').includes('free-delivery')){
+                  shippingOption.parentNode.style.display = 'none';
+              }
+              if (shippingOption.getAttribute('data-shipping-method').includes('standard-delivery-10.00') || shippingOption.getAttribute('data-shipping-method').includes('standard-delivery-15.00')){
+                  shippingOption.parentNode.style.display = 'none';
+              }
+              if (shippingOption.getAttribute('data-shipping-method').includes('weekend-delivery')){
+                  shippingOption.parentNode.style.borderTop = '0px solid #d9d9d9';
+                  shippingOption.children[0].children[0].click();
+              }
+              if (shippingOption.getAttribute('data-shipping-method').includes('priority-delivery-15.00')){
+                shippingOption.parentNode.style.display = 'none';
+              }
+            });
+          }
+          else {
+            // Hide Weekend Delivery
+            shippingOptions.forEach(function(shippingOption){
+              if (shippingOption.getAttribute('data-shipping-method').includes('weekend-delivery')){
+                  shippingOption.parentNode.style.display = 'none';
+              }
+            });
+          }
+        }
+        
+        // Zeta Digital - Same Day Delivery
+        document.addEventListener('page:load', sameDayDelivery);
+        document.addEventListener('page:change', sameDayDelivery);
+        function sameDayDelivery() {
+          var sameDayDelivery = localStorage.getItem("delivery_same_day"); 
+          var shippingOptions = document.querySelectorAll('.radio-wrapper');
+          
+          if (sameDayDelivery == 'true'){
+            // Hide Free Delivery
+            shippingOptions.forEach(function(shippingOption){
+              if (shippingOption.getAttribute('data-shipping-method').includes('free-delivery')){
+                  shippingOption.parentNode.style.display = 'none';
+              }
+              if (shippingOption.getAttribute('data-shipping-method').includes('standard-delivery-10.00') || shippingOption.getAttribute('data-shipping-method').includes('standard-delivery-15.00')){
+                  shippingOption.parentNode.style.display = 'none';
+              }
+              if (shippingOption.getAttribute('data-shipping-method').includes('same-day-priority-delivery')){
+                  shippingOption.parentNode.style.borderTop = '0px solid #d9d9d9';
+                  shippingOption.children[0].children[0].click();
+              }
+              if (shippingOption.getAttribute('data-shipping-method').includes('priority-delivery-15.00')){
+                shippingOption.parentNode.style.display = 'none';
+              }
+            });
+          }
+          else {
+            // Hide Same Day Delivery
+            shippingOptions.forEach(function(shippingOption){
+              if (shippingOption.getAttribute('data-shipping-method').includes('same-day-priority-delivery')){
+                  shippingOption.parentNode.style.display = 'none';
+              }
+            });
+          }
+        }
+
+      })();
+    </script>
+  </html>

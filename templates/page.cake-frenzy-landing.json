@@ -1,0 +1,232 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner_slideshow_tjwhT4": {
+      "type": "banner-slideshow",
+      "blocks": {
+        "slide_image_LU8MWa": {
+          "type": "slide_image",
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "",
+            "mobile_video_link": "",
+            "image": "shopify://shop_images/CC_BLACKFRIDAY24_LANDING_PAGE_BANNER.jpg",
+            "mobile_image": "shopify://shop_images/CC_BLACKFRIDAY24_MOBILE_LANDING_PAGE_BANNER.webp",
+            "link": "",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2020 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_LU8MWa"
+      ],
+      "custom_css": [
+        ".buttons-container {display: none;}"
+      ],
+      "settings": {
+        "slider_delay": 2000
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "main_landing_page_banner_bcNTE4": {
+      "type": "main-landing-page-banner",
+      "disabled": true,
+      "settings": {
+        "collection": "",
+        "show_collection_description": false,
+        "mobile_textbox_background_color": "#f28eb4",
+        "show_collection_image": true,
+        "color_scheme": "",
+        "is_custom_info": false,
+        "banner_image": "shopify://shop_images/Landing_Banner.png",
+        "banner_image_mobile": "shopify://shop_images/Mobile_Home_Banner_9d0883f3-e4f3-4720-ad21-7834a7c8a5df.jpg",
+        "title": "",
+        "description": "",
+        "banner_link": ""
+      }
+    },
+    "cake_frenzy_landing_mi3YeB": {
+      "type": "cake-frenzy-landing",
+      "settings": {
+        "countdown_end_date": "2024-11-15T09:00:00",
+        "cake_frenzy_description": "Our Black Friday sale has now ended, but our bestselling desserts are still available year-round! Just scroll down to browse what our other customers have been loving. Thanks for all of your support, and we hope you enjoy your sweet treats!"
+      }
+    },
+    "hero_delivery_block_BF4CxG": {
+      "type": "hero-delivery-block",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#7c60aa",
+        "title_color": "#ffffff",
+        "description_color": "#f9f0e5",
+        "image_position": "left",
+        "desktop_image": "shopify://shop_images/Delivery_Mobile.jpg",
+        "title-line1": "",
+        "title-line2": "PREORDER NOW FOR LATER",
+        "title-line3": "",
+        "paragraph-description": "All our sweet treats are made by hand in our Melbourne kitchen, so we'll need a little bit of notice to prepare your desserts.This means that the items you can order will vary depending on when you'd like to schedule your delivery. DELIVERING TODAY Order by 12pm today for same day delivery (subject to availability)Desserts available: cupcakes & mini cupcakes DELIVERING TOMORROW Order by 12pm today for next day deliveryDesserts available: cupcakes, mini cupcakes & naked cakes DELIVERING LATER Order by 12pm two days before your desired delivery dateDesserts available: cupcakes, mini cupcakes, naked cakes & celebration cakes.If you'd like to order desserts across multiple categories, the longest notice period will apply to the order. For example, an order for a celebration cake with a box of mini cupcakes will need to be placed by 12pm two days prior to your desired delivery date.",
+        "button-text": "",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "rich_text_aLmhdJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Yt9bew": {
+          "type": "heading",
+          "settings": {
+            "heading": "PREORDER NOW FOR LATER!",
+            "heading_size": "h1"
+          }
+        },
+        "text_q8c36e": {
+          "type": "text",
+          "settings": {
+            "text": "<p>All our sweet treats are made by hand in our Melbourne kitchen, so we'll need a little bit of notice to prepare your desserts. This means that the items you can order will vary depending on when you'd like to schedule your delivery:</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Yt9bew",
+        "text_q8c36e"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 450px) {.rich-text__text {font-size: 12px; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "campaign_faqs_fY67LQ": {
+      "type": "campaign-faqs",
+      "blocks": {
+        "faq_entry_9Vkpy6": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "DELIVERING TODAY",
+            "answer": "Order by 12pm today for same day delivery (subject to availability). Desserts available: cupcakes, mini cupcakes, cookies, brownies & slices."
+          }
+        },
+        "faq_entry_J8bxMR": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "DELIVERING TOMORROW",
+            "answer": "Order by 12pm today for next day delivery. Desserts available: cupcakes, mini cupcakes, cookies, brownies, slices & naked cakes."
+          }
+        },
+        "faq_entry_DaAWWh": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "DELIVERING LATER",
+            "answer": "Order by 12pm two days before your desired delivery date. Desserts available: cupcakes, mini cupcakes, cookies, brownies, slices, naked cakes & celebration cakes."
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_9Vkpy6",
+        "faq_entry_J8bxMR",
+        "faq_entry_DaAWWh"
+      ],
+      "custom_css": [
+        ".faq-block-label {color: white; text-align: center;}",
+        ".faq-item-content {color: white; text-align: center;}",
+        ".faq-question-header {display: none;}",
+        ".faq-question-description {display: none;}",
+        ".campaign-faq {background-color: #1b9a8f;}",
+        "@media screen and (max-width: 450px) {.faq-block svg {top: 2rem;}"
+      ],
+      "settings": {}
+    },
+    "rich_text_PDYPfJ": {
+      "type": "rich-text",
+      "blocks": {
+        "text_iFdbd9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you'd like to order desserts across multiple categories, the longest notice period will apply to the order. For example, an order for a celebration cake with a box of mini cupcakes will need to be placed by 12pm two days prior to your desired delivery date.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_iFdbd9"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media screen and (max-width: 450px) {.rich-text__text {font-size: 12px; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_3kjWjM": {
+      "type": "rich-text",
+      "blocks": {
+        "text_TYELmC": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>PROMOTION TERMS & CONDITIONS</strong></p><p>*Available in-store and online. Offer ends 11:59pm AEDT Sunday 8 December. Excludes Christmas cupcakes, themed cupcakes, edible logo cupcakes, custom cakes, custom cookies and catering boxes. Both items must be added to cart to redeem. Discount will automatically apply to the item of equal or lesser value, no code required. Offer cannot be applied to previously placed orders or pending purchases, and is not available in conjunction with any other offer.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_TYELmC"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 450px) {.rich-text__text {font-size: 12px; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    }
+  },
+  "order": [
+    "banner_slideshow_tjwhT4",
+    "main",
+    "main_landing_page_banner_bcNTE4",
+    "cake_frenzy_landing_mi3YeB",
+    "hero_delivery_block_BF4CxG",
+    "rich_text_aLmhdJ",
+    "campaign_faqs_fY67LQ",
+    "rich_text_PDYPfJ",
+    "rich_text_3kjWjM"
+  ]
+}

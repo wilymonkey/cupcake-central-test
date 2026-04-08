@@ -1,0 +1,282 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "banner_slideshow_K7CQET": {
+      "type": "banner-slideshow",
+      "blocks": {
+        "slide_image_ieMaL6": {
+          "type": "slide_image",
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "",
+            "mobile_video_link": "",
+            "image": "shopify://shop_images/Group_829_2x_6f901b72-40ae-4389-9424-12a560dcdd87.png",
+            "mobile_image": "shopify://shop_images/Group_841_2x_5c875a3a-1edd-49ff-980e-4a9b477562d3.png",
+            "link": "",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2020 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_ieMaL6"
+      ],
+      "custom_css": [
+        ".carousel .btn {display: none;}",
+        ".carousel .btn {display: none;}",
+        ".carousel {pointer-events: none;}",
+        ".slider-dot-control .dot {cursor: pointer; display: none;}",
+        "@media screen and (max-width: 750px) {.slider-dot-control {display: none; } .carousel {pointer-events: none; } .slider-dot-control .dot {cursor: pointer; display: none; }}"
+      ],
+      "settings": {
+        "slider_delay": 2000
+      }
+    },
+    "scrolling_preorder_zrB7jc": {
+      "type": "scrolling-preorder",
+      "settings": {
+        "scrolling_text": "ORDER NOW",
+        "background_color": "#d6d76e",
+        "text_color": "#1e1e81",
+        "scroll_speed": 20
+      }
+    },
+    "rich_text_TXaxRH": {
+      "type": "rich-text",
+      "blocks": {
+        "text_E4iG9J": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This International Women's Day, a portion of the proceeds from all IWD products will be donated to the International Women's Development Agency. So gather together with your friends and colleagues, enjoy some sweet treats and join us in promoting gender equality for all.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_E4iG9J"
+      ],
+      "custom_css": [
+        "@media (max-width: 500px) {.rich-text {padding-bottom: 10px; padding-top: 10px; font-size: 1.3rem; line-height: 1.9rem; } .rich-text__text {font-size: 1.2rem;}.rich-text__text {font-size: 1.4rem;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "iwd_collection_section_PxTw4F": {
+      "type": "iwd-collection-section",
+      "settings": {
+        "collection": "international-womens-day"
+      }
+    },
+    "iwd_banner_two_images_GQamRH": {
+      "type": "iwd_banner_two_images",
+      "settings": {
+        "heading": "WHY THE IWDA?",
+        "text": "The International Women's Development Agency (IWDA) is an Australia-based organisation dedicated to advancing gender equality for all. The donations raised through our IWD campaign will go towards their funding, advocacy, knowledge creation and translation for diverse women's rights organisations across Asia and the Pacific, and contribute to their mission to expand this impact to the feminist movement across the globe.",
+        "button_link": "https://iwda.org.au/",
+        "button_link2": "",
+        "button_text": "LEARN MORE",
+        "button_text2": "ORDER NOW",
+        "image_1": "shopify://shop_images/PHOTO-1_2x_2290b2a9-129b-49e8-94ad-4b1a1e2d280d.png",
+        "image_2": "shopify://shop_images/PHOTO-2_2x_d692ef66-83ac-4e3a-93d5-0d1420108b4e.png"
+      }
+    },
+    "free_shipping_GjRGgN": {
+      "type": "free-shipping",
+      "settings": {
+        "heading": "WHY CUPCAKE CENTRAL BAKERY?",
+        "icon_1": "shopify://shop_images/Fast_Delivery_blck_36266c11-bb31-40e0-8d63-a8b6f1fbc044.png",
+        "icon_mobile_1": "shopify://shop_images/Group_846_2x_629f51cb-aeff-4327-99a2-c2374f0f08ad.png",
+        "title_1": "OVER 15 YEARS",
+        "desc_1": "spent perfecting our recipes",
+        "icon_2": "shopify://shop_images/Gift_Message.png",
+        "icon_mobile_2": "shopify://shop_images/Group_845_2x_502ff5e6-bf09-4873-83c0-32f2790e148d.png",
+        "title_2": "FREE WEEKDAY DELIVERY",
+        "desc_2": "to most suburbs in Metro Melbourne",
+        "icon_3": "shopify://shop_images/Prioritydelivery_6e7959c5-ab5a-4f0c-a929-9dc809e33d19.png",
+        "icon_mobile_3": "shopify://shop_images/Group_847_2x_54e38ed1-336a-44bb-b1e5-e17394ed7aa2.png",
+        "title_3": "1100+ 5 STARS REVIEWS",
+        "desc_3": "and counting!"
+      }
+    },
+    "donation_banner_PgJ9ft": {
+      "type": "donation-banner",
+      "settings": {
+        "banner_image": "shopify://shop_images/Group_828_2x_c52675a9-0550-4f79-91d5-2eba375cecd2.png",
+        "donation_text": "WITH EVERY ORDER PLACED, WE DONATE TO IWDA TO DEFEND AND ADVANCE THE RIGHTS OF WOMEN ACROSS THE ASIA-PACIFIC.",
+        "bg_color": "#cbd64b"
+      }
+    },
+    "hero_image_text_iwd_k3y3mW": {
+      "type": "hero-image-text-iwd",
+      "custom_css": [
+        ".ws-delivery-block {margin-bottom: 0rem; margin-top: -2rem;}",
+        ".hero-image-and-text {background: white;}",
+        "@media (max-width: 768px) {.ws-delivery-block-mobile {background-color: #ffffff; display: flex; flex-direction: column; padding: 0px !important; } .ws-delivery-block-img-container {border-radius: 0px; } #ws-delivery-block-inner-right {padding: 0rem; } #ws-delivery-block-inner-left {background: white; border-radius: 10px; opacity: 0.8; margin-top: -64px; width: 84% !important; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "title_color": "#2a227a",
+        "description_color": "#2a227a",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/PHOTO-5_2x_8539752a-0c7f-424f-b006-b5f1e6f9b28d.png",
+        "mobile_image": "shopify://shop_images/PHOTO-5_2x_8539752a-0c7f-424f-b006-b5f1e6f9b28d.png",
+        "title-line1": "6890",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "International Women's Day dessert boxes delivered to date! Join us in supporting IWD and advancing gender equality for all.",
+        "button-text": "ORDER NOW",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "review_carousel_JH8EbH": {
+      "type": "review-carousel",
+      "blocks": {
+        "review_yFFYe4": {
+          "type": "review",
+          "settings": {
+            "review_text": "Perfect for work. Celebrated International Women's Day at work and they went down a treat. The gluten free and the vegan ones were fantastic too so everyone was catered for. Highly recommend.",
+            "review_author": "Sophie D"
+          }
+        },
+        "review_izz6C9": {
+          "type": "review",
+          "settings": {
+            "review_text": "Aside from great customer service and very responsive staff, the cupcakes are amazing and delicious.",
+            "review_author": "Juna H."
+          }
+        },
+        "review_xGYfLr": {
+          "type": "review",
+          "settings": {
+            "review_text": "Wonderful service! The cupcakes looked fabulous and tasted even better!",
+            "review_author": "Cathy H"
+          }
+        },
+        "review_YHpBCz": {
+          "type": "review",
+          "settings": {
+            "review_text": "Thank you to Cupcake Central for the delicious cupcakes delivered for IWD. They were delicious. We will definitely be a return customer.",
+            "review_author": "Lisa S"
+          }
+        }
+      },
+      "block_order": [
+        "review_yFFYe4",
+        "review_izz6C9",
+        "review_xGYfLr",
+        "review_YHpBCz"
+      ],
+      "custom_css": [
+        ".review-section {background: #d9bbce;}"
+      ],
+      "settings": {}
+    },
+    "image_gallery_JYQfyP": {
+      "type": "image-gallery",
+      "settings": {
+        "image_1": "shopify://shop_images/CC_IWD25_12GB-COOKIE-2_2x_8f5a98f3-7468-4037-ab2e-7a8511bd4784.png",
+        "image_2": "shopify://shop_images/PHOTO-3_2x_b1d79195-077a-4bef-9036-db1ad4aa0c84.png",
+        "image_3": "shopify://shop_images/CC_IWD25_12GB-3_2x_82c8d619-ea69-4879-b6ba-1acf4a8e41e3.png",
+        "image_4": "shopify://shop_images/PHOTO-3-1_2x_12269be0-aa18-430a-a4f7-d577fcba5136.png",
+        "image_5": "shopify://shop_images/CC_IWD25_12GB_V_-4_2x_acd079da-6f56-492f-b56b-b7d7b82cb700.png"
+      }
+    },
+    "faq_with_image_yp7Fwx": {
+      "type": "faq-with-image",
+      "blocks": {
+        "faq_entry_mkWpPr": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "When's the earliest I can receive my IWD order?",
+            "answer": "All our desserts are made by hand in our Melbourne kitchen, so you'll need to order by 12pm the day before your desired delivery date so we can get everything ready in time for you. If you need something sooner, consider our classic cupcake gift boxes or mini cupcake gift boxes instead, which are available for same day delivery as long as you order by 12pm (subject to availability)."
+          }
+        },
+        "faq_entry_i3W4Pa": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "When & where to you deliver to?",
+            "answer": "We deliver 7 days a week to most suburbs in Metro Melbourne. To check if your suburb falls within our delivery zone, click on the \"Delivery Information\" link in our footer menu."
+          }
+        },
+        "faq_entry_k6cU3x": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "How much will Melbourne delivery cost?",
+            "answer": "For locations in Metro Melbourne, we offer free weekday delivery with orders over $40. If your order value is below $40, then the delivery fee will vary between $10-$15 depending on your location. On weekends, there is a $8 flat rate for delivery. We also offer free click and collect from our Highpoint store and West Footscray office locations. Please note that there is a minimum order value of $35 for delivery orders, and a minimum order value of $16 for click and collect orders."
+          }
+        },
+        "faq_entry_qp4h3T": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "How much will Aus-wide delivery cost?",
+            "answer": "For any locations outside of our standard delivery zone, Australia-wide delivery is available via AusPost with a flat fee of $15."
+          }
+        },
+        "faq_entry_T4WQDp": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "Will you be delivering on the Labour Day public holiday?",
+            "answer": "Delivery will not be available on the public holiday, however our IWD cupcakes can last up to 3 days and our IWD cookies and shortbreads last 5 days, so we recommend scheduling your delivery for the day before so you can still enjoy your IWD sweets on Labour Day!"
+          }
+        },
+        "faq_entry_LCJjVK": {
+          "type": "faq_entry",
+          "settings": {
+            "title": "I have another question!",
+            "answer": "You can view all our FAQs by clicking here, or contact our customer service team by calling 9077 4542 or emailing service@cupcakecentral.com.au. Please note than our customer service hours are between 9am and 4pm Monday to Friday, and 9am to 2pm on Saturdays. If you'd like to contact us outside of these hours, please send us an email and we'll get back to you as soon as we can!"
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_mkWpPr",
+        "faq_entry_i3W4Pa",
+        "faq_entry_k6cU3x",
+        "faq_entry_qp4h3T",
+        "faq_entry_T4WQDp",
+        "faq_entry_LCJjVK"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/CC_IWD25_COLLECTION_2x_e3ca9ac8-4142-42e7-bb94-745fb73a831a.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "banner_slideshow_K7CQET",
+    "scrolling_preorder_zrB7jc",
+    "rich_text_TXaxRH",
+    "iwd_collection_section_PxTw4F",
+    "iwd_banner_two_images_GQamRH",
+    "free_shipping_GjRGgN",
+    "donation_banner_PgJ9ft",
+    "hero_image_text_iwd_k3y3mW",
+    "review_carousel_JH8EbH",
+    "image_gallery_JYQfyP",
+    "faq_with_image_yp7Fwx"
+  ]
+}

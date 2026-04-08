@@ -1,0 +1,53 @@
+{% comment %}
+  Renders a single card for the featured grid.
+  Accepts:
+  - card_block: The block object from the section loop.
+{% endcomment %}
+
+{%- liquid
+  assign image = card_block.settings.image
+  assign title = card_block.settings.title
+  assign description = card_block.settings.description
+  assign button_text = card_block.settings.button_text
+  assign button_link = card_block.settings.button_link
+-%}
+
+<div data-aos="flip-right" class="flex-shrink-0 md:w-100 h-100 md:max-width-220 ">
+  <div class="flex flex-col gap-4 bg-white rounded-[8px] md:box-shadow">
+    {% if image != blank %}
+      <div class="overflow-hidden rounded-t-[8px] h-[235px] md:h-[275px] d-lg:h-[325px] aspect-[4/5]">
+        <img
+          src="{{ image | image_url: width: 400 }}"
+          alt="{{ image.alt | escape }}"
+          width="{{ image.width }}"
+          height="{{ image.height }}"
+          class="object-cover w-full h-full"
+        >
+      </div>
+    {% else %}
+      <div class="flex items-center justify-center aspect-square bg-gray-100">
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {% endif %}
+    <div class="flex flex-col flex-grow h-56 d-sm:h-56 d-sm:px-5 px-3 pt-1 pb-5 d-sm:pb-0">
+      <div class="flex flex-col flex-grow gap-3 text-center">
+        {% if title != blank %}
+          <p class="text-[16px] d-sm:text-[16px] d-lg:text-[18px] leading-[18px]! d-sm:leading-[20px]! d-lg:leading-[16px]! tracking-[0.3px]! d-lg:tracking-[0.25px] font-bold text-espresso">{{ title }}</p>
+        {% endif %}
+
+        {% if description != blank %}
+          <p class="text-[14px] d-sm:text-[14px] d-sm:leading-[18px]! d-lg:text-[16px] d-lg:leading-[22px]! d-lg:tracking-[0.325px] leading-[18px]! tracking-[0.3px] text-bold mb-[12px] text-espresso font-[500] ">{{ description }}</p>
+        {% endif %}
+      </div>
+
+      {% if button_text != blank and button_link != blank %}
+        <a
+          href="{{ button_link }}"
+          class="self-center w-[146px] md:w-[188px] mb-[16px] px-[12px] py-[10px] md:px-0 d-sm:p-4 transition-colors text-[18px] leading-[18px]! tracking-[0.75px]! d-sm:text-[18px] d-sm:leading-[18px] font-bold! text-center uppercase border-[2px] rounded-lg border-popsugar bg-white text-popsugar hover:bg-white hover:text-popsugar d-sm:border-popsugar d-sm:text-popsugar d-sm:bg-white d-sm:hover:bg-popsugar d-sm:hover:text-white"
+        >
+          {{ button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,313 @@
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    .collection-hero__text-wrapper {
+      padding: 0 24px 0 calc(1000 / 1920 * 100vw);
+    }
+    .collection-hero__title {
+      font-size: calc(100 / 1920 * 100vw);
+      line-height: 100%;
+      text-align: left;
+    }
+    .collection-hero__description {
+      color: white;
+      text-align: left;
+      font-size: calc(24 / 1920 * 100vw);
+    }
+    #collection-banner-hero-image-desktop {
+      display: block;
+    }
+    #collection-banner-hero-image-mobile {
+      display: none;
+    }
+  .lp-banner-textbox {
+    background-color: transparent;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 24px;
+    border-radius: 8px;
+  }
+  @media screen and (max-width: 990px) {
+    .collection-hero__text-wrapper {
+      padding: 0 24px 0 calc(960 / 1920 * 100vw);
+    }
+    .collection-hero__title {
+      font-size: calc(80 / 1920 * 100vw);
+    }
+    .lp-banner-textbox {
+      padding: 10px;
+      width: 95%;
+      background-color: {{section.settings.mobile_textbox_background_color}};
+    }
+  }
+  @media screen and (max-width: 749px) {
+    .contact-item-block {
+      flex-direction: column;
+    }
+      .collection-hero--with-image .collection-hero__inner {
+        padding-bottom: 0px;
+      }
+      #collection-banner-hero-image-desktop {
+        display: none;
+      }
+      #collection-banner-hero-image-mobile {
+        display: block;
+      }
+    .collection-hero {
+      height: 430px !important;
+    }
+    
+    .collection-hero__image-container {
+      height: 430px !important;
+    }
+    .collection-hero__text-wrapper {
+      padding: calc(236 / 430 * 100vw) 0 0 0;
+    }
+    .lp-banner-textbox {
+      text-align: center;
+      padding: 15px;
+      width: 95%;
+      background-color: {{section.settings.mobile_textbox_background_color}};
+    }
+    .collection-hero__title {
+      font-size: calc(30 / 430 * 100vw);
+      padding-left: 24px;
+      padding-right: 24px;
+      text-align: center;
+    }
+    .collection-hero__description {
+      text-align: center;
+      padding-left: 24px;
+      padding-right: 24px;
+      font-size: 1.3rem !important;
+    }
+  }
+{%- endstyle -%}
+{% if section.settings.is_custom_info == false %}
+  <div
+    style="z-index: 1; position: relative;"
+    class="collection-hero{% if section.settings.show_collection_image and section.settings.collection.metafields.collection.banner.value.desktop_image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
+  >
+    <div class="collection-hero__inner {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- if section.settings.show_collection_image
+        and section.settings.collection.metafields.collection.banner.value.desktop_image
+      -%}
+        <div class="collection-hero__text-wrapper">
+          <div class="lp-banner-textbox">
+            <h1 class="collection-hero__title">
+              <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+              {{- section.settings.collection.metafields.collection.banner.value.title | escape -}}
+            </h1>
+
+            {%- if section.settings.show_collection_description -%}
+              <div class="collection-hero__description rte">
+                {{ section.settings.collection.metafields.collection.banner.value.description | truncate: 150 }}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="collection-hero__image-container media gradient">
+          <img
+            id="collection-banner-hero-image-desktop"
+            srcset="
+              {%- if section.settings.collection.metafields.collection.banner.value.desktop_image.width >= 165 -%}{{ section.settings.collection.metafields.collection.banner.value.desktop_image | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.desktop_image.width >= 360 -%}{{ section.settings.collection.metafields.collection.banner.value.desktop_image | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.desktop_image.width >= 535 -%}{{ section.settings.collection.metafields.collection.banner.value.desktop_image | image_url: width: 535 }} 535w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.desktop_image.width >= 750 -%}{{ section.settings.collection.metafields.collection.banner.value.desktop_image | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.desktop_image.width >= 1070 -%}{{ section.settings.collection.metafields.collection.banner.value.desktop_image | image_url: width: 1070 }} 1070w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.desktop_image.width >= 1500 -%}{{ section.settings.collection.metafields.collection.banner.value.desktop_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ section.settings.collection.metafields.collection.banner.value.desktop_image | image_url }} {{ section.settings.collection.metafields.collection.banner.value.desktop_image.width }}w
+            "
+            src="{{ section.settings.collection.metafields.collection.banner.value.desktop_image | img_url: 'master' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+            alt=""
+            width="{{ section.settings.collection.metafields.collection.banner.value.desktop_image.width }}"
+            height="{{ section.settings.collection.metafields.collection.banner.value.desktop_image.height }}"
+          >
+          <img
+            id="collection-banner-hero-image-mobile"
+            srcset="
+              {%- if section.settings.collection.metafields.collection.banner.value.mobile_image.width >= 165 -%}{{ section.settings.collection.metafields.collection.banner.value.mobile_image | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.mobile_image.width >= 360 -%}{{ section.settings.collection.metafields.collection.banner.value.mobile_image | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.mobile_image.width >= 535 -%}{{ section.settings.collection.metafields.collection.banner.value.mobile_image | image_url: width: 535 }} 535w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.mobile_image.width >= 750 -%}{{ section.settings.collection.metafields.collection.banner.value.mobile_image | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.mobile_image.width >= 1070 -%}{{ section.settings.collection.metafields.collection.banner.value.mobile_image | image_url: width: 1070 }} 1070w,{%- endif -%}
+              {%- if section.settings.collection.metafields.collection.banner.value.mobile_image.width >= 1500 -%}{{ section.settings.collection.metafields.collection.banner.value.mobile_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ section.settings.collection.metafields.collection.banner.value.mobile_image | image_url }} {{ section.settings.collection.metafields.collection.banner.value.mobile_image.width }}w
+            "
+            src="{{ section.settings.collection.metafields.collection.banner.value.mobile_image | img_url: 'master' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+            alt=""
+            width="{{ section.settings.collection.metafields.collection.banner.value.mobile_image.width }}"
+            height="{{ section.settings.collection.metafields.collection.banner.value.mobile_image.height }}"
+          >
+        </div>
+      {% else %}
+        <div class="collection-hero__text-empty">
+          <h1 class="collection-hero__title-empty">
+            <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+            {{- section.settings.collection.metafields.collection.banner.value.title | escape -}}
+          </h1>
+
+          {%- if section.settings.show_collection_description -%}
+            <div class="collection-hero__description rte">
+              {{ section.settings.collection.metafields.collection.banner.value.description }}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{% else %}
+  <div
+    style="z-index: 1; position: relative;"
+    class="collection-hero{% if section.settings.show_collection_image and section.settings.banner_image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
+  >
+    <div class="collection-hero__inner {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- if section.settings.show_collection_image and section.settings.banner_image -%}
+        <div class="collection-hero__text-wrapper">
+          <div class="lp-banner-textbox">
+            <h1 class="collection-hero__title">
+              <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+              {{- section.settings.title | escape -}}
+            </h1>
+
+            {%- if section.settings.show_collection_description -%}
+              <div class="collection-hero__description rte">
+                {{ section.settings.description | truncate: 150 }}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="collection-hero__image-container media gradient">
+          <img
+            id="collection-banner-hero-image-desktop"
+            srcset="
+              {%- if section.settings.banner_image.width >= 165 -%}{{ section.settings.banner_image | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if section.settings.banner_image.width >= 360 -%}{{ section.settings.banner_image | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if section.settings.banner_image.width >= 535 -%}{{ section.settings.banner_image | image_url: width: 535 }} 535w,{%- endif -%}
+              {%- if section.settings.banner_image.width >= 750 -%}{{ section.settings.banner_image | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if section.settings.banner_image.width >= 1070 -%}{{ section.settings.banner_image | image_url: width: 1070 }} 1070w,{%- endif -%}
+              {%- if section.settings.banner_image.width >= 1500 -%}{{ section.settings.banner_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ section.settings.banner_image | image_url }} {{ section.settings.banner_image.width }}w
+            "
+            src="{{ section.settings.banner_image | img_url: 'master' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+            alt=""
+            width="{{ section.settings.banner_image.width }}"
+            height="{{ section.settings.banner_image.height }}"
+          >
+          <img
+            id="collection-banner-hero-image-mobile"
+            srcset="
+              {%- if section.settings.banner_image_mobile.width >= 165 -%}{{ section.settings.banner_image_mobile | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if section.settings.banner_image_mobile.width >= 360 -%}{{ section.settings.banner_image_mobile | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if section.settings.banner_image_mobile.width >= 535 -%}{{ section.settings.banner_image_mobile | image_url: width: 535 }} 535w,{%- endif -%}
+              {%- if section.settings.banner_image_mobile.width >= 750 -%}{{ section.settings.banner_image_mobile | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if section.settings.banner_image_mobile.width >= 1070 -%}{{ section.settings.banner_image_mobile | image_url: width: 1070 }} 1070w,{%- endif -%}
+              {%- if section.settings.banner_image_mobile.width >= 1500 -%}{{ section.settings.banner_image_mobile | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ section.settings.banner_image_mobile | image_url }} {{ section.settings.banner_image_mobile.width }}w
+            "
+            src="{{ section.settings.banner_image_mobile | img_url: 'master' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+            alt=""
+            width="{{ section.settings.banner_image_mobile.width }}"
+            height="{{ section.settings.banner_image_mobile.height }}"
+          >
+        </div>
+      {% else %}
+        <div class="collection-hero__text-empty">
+          <h1 class="collection-hero__title-empty">
+            <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+            {{- section.settings.title | escape -}}
+          </h1>
+
+          {%- if section.settings.show_collection_description -%}
+            <div class="collection-hero__description rte">
+              {{ section.settings.description }}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Landing Page Banner",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "Show Description",
+      "info": "150 character limit"
+    },
+    {
+      "type": "color",
+      "id": "mobile_textbox_background_color",
+      "default": "#F28EB4",
+      "label": "Mobile Textbox Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": true,
+      "label": "Show Image"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_custom_info",
+      "label": "Use Custom Banner",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image_mobile",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "TITLE"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Description"
+    },
+    {
+       "type": "url",
+       "id": "banner_link",
+       "label": "Banner Link"
+    }
+  ],
+  "presets": [
+      {
+      "name": "Landing Page Banner"
+    }
+  ]
+}
+{% endschema %}

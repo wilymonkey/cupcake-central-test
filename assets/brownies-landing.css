@@ -1,0 +1,407 @@
+.brownies-heading {
+  font-size: 48px;
+  color: #0f9b8c;
+  text-align: center;
+}
+
+.brownies-flavour-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  align-items: flex-start; /* Align items at the top */
+  margin: auto;
+  height: auto; /* Allow container to adjust to content height */
+  width: 100%;
+}
+
+.brownies-flavour-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 210px;
+  height: auto; /* Allow the item height to adjust to its content */
+}
+
+.brownie-image img {
+  width: 200px;
+  height: 250px;
+  object-fit: cover; /* Ensure the image covers the container without stretching */
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.brownie-title {
+  text-wrap: wrap;
+  text-align: center;
+  color: #444444;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+  margin-bottom: 40px;
+}
+
+.gift-boxes-container{
+  width: 100%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 10px;
+  background-color: #fcf8f3;
+}
+
+.brownie-gift-box-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.brownies-products-container1 {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 20px; /* Adjust the space between items */
+  max-width: calc((315px * 4) + (20px * 3)); /* Ensure container width fits 4 items with gaps */
+  margin: 0 auto; /* Center the container if needed */
+}
+
+.brownies-heading1 {
+  font-size: 36px;
+  color: #0f9b8c;
+  text-align: center;
+}
+
+.brownies-heading2 {
+  font-size: 36px;
+  color: #0f9b8c;
+  text-align: left;
+  margin-left: 114px;
+}
+
+.brownies-products-container2 {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 20px; /* Adjust the space between items */
+  margin-left: 20px;
+}
+
+.brownies-product-item1 {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 315px; /* Fixed width for items */
+  height: 500px; /* Fixed height for consistency */
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden; /* Prevents content from overflowing */
+}
+
+.brownies-product-item2 {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 315px;
+  height: 500px; /* Fixed height for consistency */
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden; /* Prevents content from overflowing */
+}
+
+.brownies-product {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Full height of the parent */
+  flex-grow: 1;
+}
+
+.brownie-product-image img {
+  width: 285px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.brownie-title-main {
+  color: #444444;
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none !important;
+  margin-bottom: 40px; /* Consistent gap between title and price */
+  overflow-wrap: break-word; /* Handles long words */
+}
+
+.brownies-products-container1 a {
+  text-decoration: none;
+}
+
+.brownies-products-container2 a {
+  text-decoration: none;
+}
+
+.brownie-price {
+  color: #444444;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.priceandbutton {
+  position: absolute; /* Absolutely position the price and button */
+  bottom: 15px; /* 15px from the bottom of the container */
+  left: 15px; /* Keep consistent padding on the left */
+  right: 15px; /* Keep consistent padding on the right */
+  display: flex;
+  flex-direction: column;
+}
+
+.brownie-order-button{
+  padding-top: 10px;
+}
+
+.view-more-button:hover {
+  background-color: #0e8c7c;
+}
+
+/* Hide extra products initially */
+.hidden {
+  display: none;
+}
+.view-more-button {
+  height: 50px;
+  width: 150px;
+  background-color: #f482b5;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 20px; /* Space between products and button */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto;
+}
+
+.view-more {
+  background-color: #fcf8f3;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.brownies-product-item1.hidden,
+.brownies-product-item2.hidden {
+  display: none;
+}
+
+.brownie-options {
+  background-color: #f8f0e4;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.brownie-heading {
+  font-size: 48px;
+  color: #0f9b8c;
+  text-align: center;
+}
+
+.brownie-options-container-block {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: auto;
+  justify-content: center;
+  gap: 20px;
+}
+
+.brownie-option-text {
+  text-align: center;
+  color: #444444;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.brownie-option-image img {
+  width: 280px;
+  height: 220px;
+}
+
+@media (max-width: 768px) {
+.brownies-heading {
+  font-size: 24px;
+  color: #0f9b8c;
+  text-align: center;
+}
+  .brownies-heading1 {
+    font-size: 28px;
+    color: #0f9b8c;
+    text-align: center;
+    padding-left: 0px;
+}
+
+.brownies-heading2 {
+  font-size: 28px;
+  color: #0f9b8c;
+  text-align: center;
+  padding-right: 0px;
+}
+
+  .brownies-flavour-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100px;
+    height: 200px; /* Allow the item height to adjust to its content */
+}
+  .brownie-title {
+    text-wrap: wrap;
+    text-align: center;
+    color: #444444;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+}
+  .brownie-image img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover; /* Ensure the image covers the container without stretching */
+    border-radius: 20px;100border: 1px solid black;1}
+  
+  .brownies-flavour-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+    margin: auto;
+    height: auto; /* Allow container to adjust to content height */
+    width: 100%;
+}
+  .brownies-products-container1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 20px; /* Adjust the space between items */
+    margin-left: 0px;
+}
+  .brownies-products-container2 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 20px; /* Adjust the space between items */
+    margin-right: 0px;
+}
+  .brownie-options-container-block {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    gap: 20px;
+}
+  .brownie-option-text {
+    text-align: center;
+    color: #444444;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.brownie-option-image img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+}
+.quick-add {
+    position: relative;
+    grid-row-start: 4;
+    margin: 0px !important;
+    z-index: 1;
+}
+
+.quick-add__submit {
+  padding: 0.8rem;
+  min-width: 80%;
+  box-sizing: border-box;
+  width:90%;
+  font-size: 14px !important;
+}
+
+@media (max-width: 450px) {
+  .brownies-products-container1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 10px; /* Adjust the space between items */
+    max-width: calc((315px * 4) + (20px * 3)); /* Ensure container width fits 4 items with gaps */
+    margin: 0 auto; /* Center the container if needed */
+}
+  .brownies-product-item1 {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 160px; /* Fixed width for items */
+    height: 327px; /* Fixed height for consistency */
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    overflow: hidden; /* Prevents content from overflowing */
+}
+  .brownie-product-image img {
+    width: 138px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+  .brownie-title-main {
+    color: #444444;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none !important;
+    margin-bottom: 40px; /* Consistent gap between title and price */
+    overflow-wrap: break-word; /* Handles long words */
+}
+  .brownie-price {
+    color: #444444;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+  .quick-add__submit {
+  padding: 0.8rem;
+  min-width: 80%;
+  box-sizing: border-box;
+  width:90%;
+  font-size: 10px !important;
+}
+  .brownie-heading {
+    font-size: 30px;
+    color: #0f9b8c;
+    text-align: center;
+}
+  .brownies-heading {
+    font-size: 30px;
+    color: #0f9b8c;
+    text-align: center;
+}
+}

@@ -1,0 +1,89 @@
+{{ 'section-delivery-block.css' | asset_url | stylesheet_tag }}
+<div class="full-page-width flex-centered hf-delivery-block">
+  <div id="hf-delivery-block-inner-left">
+    <div class="fit-to-parent">
+      <img
+        id="hf-delivery-block-img"
+        class="lazyload fit-image-to-parent"
+        alt="postcode-checker-image"
+        loading="lazy"
+        src="{{section.settings.desktop_image | img_url: 'master'}}"
+      >
+    </div>
+  </div>
+  <div id="hf-delivery-block-inner-right">
+    <div id="hf-delivery-block-right-content" class="fit-to-parent">
+      <div id="hf-delivery-block-right-content-text">
+        <h1>DELIVERY ZONES</h1>
+        <h2>Are you in the sweet zone?</h2>
+        <p>Enter postcode to see if we can deliver to you.</p>
+      </div>
+      <div id="hf-delivery-block-true">
+        <h1 style="color:#F283B4">YES!<br></h1>
+        <h1>WE DELIVER TO YOUR AREA.</h1>
+      </div>
+      <div id="hf-delivery-block-false">
+        <h1>SORRY, YOU'RE NOT IN THE SWEET ZONE.</h1>
+      </div>
+      <div id="hf-delivery-block-input" class="">
+        <form
+          id="hf-delivery-checker-form"
+          class="fit-to-parent"
+          onsubmit="handlePostcodeCheckerSubmit(event);return false;"
+        >
+          <p>Enter postcode to see if we can deliver to you.</p>
+          <input id="hf-delivery-checker-input" type="text" placeholder="Enter your postcode...">
+          <button type="submit" class="delivery-checker-btn">SEARCH</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+      var postcodes = "3000,3001,3002,3003,3004,3005,3006,3008,3010,3011,3012,3013,3015,3016,3018,3019,3020,3021,3022,3023,3025,3026,3027,3028,3029,3030,3031,3032,3033,3034,3036,3037,3038,3039,3040,3041,3042,3043,3044,3045,3046,3047,3049,3050,3051,3052,3053,3054,3055,3056,3057,3058,3060,3061,3065,3066,3067,3068,3070,3071,3072,3073,3074,3075,3078,3079,3081,3083,3084,3085,3086,3087,3101,3102,3103,3104,3105,3106,3107,3108,3109,3111,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3161,3162,3163,3165,3166,3168,3171,3172,3181,3182,3183,3184,3185,3186,3187,3188,3189,3190,3191,3192,3193,3194,3204,3205,3206,3207,3800,3167,3048,3076,3082,3088,3093,3094,3095,3113,3114,3134,3135,3136,3152,3153,3155,3164,3169,3170,3173,3175,3177,3179,3180,3174,3195,3196,3202,3802,3803,3804,3805,3806,3976,3178,3156";
+      function handlePostcodeCheckerSubmit(e) {
+      e.preventDefault();
+      var inputVal = document.querySelector('#hf-delivery-checker-input').value;
+
+      if (inputVal) {
+          var deliveryBlockRightContentText = document.querySelector("#hf-delivery-block-right-content-text");
+          var deliveryBlockFalse = document.querySelector("#hf-delivery-block-false");
+          var deliveryBlockTrue = document.querySelector("#hf-delivery-block-true");
+
+          if (postcodes.split(",").includes(inputVal.trim())) {
+              deliveryBlockRightContentText.style.display = 'none';
+              deliveryBlockFalse.style.display = 'none';
+              deliveryBlockTrue.style.display = 'block';
+          } else {
+              deliveryBlockRightContentText.style.display = 'none';
+              deliveryBlockFalse.style.display = 'block';
+              deliveryBlockTrue.style.display = 'none';
+          }
+      }
+  }
+</script>
+
+{% schema %}
+ {
+   "name": "Delivery Block",
+   "tag": "section",
+   "settings": [
+     {
+       "type": "image_picker",
+       "id": "desktop_image",
+       "label": "Desktop Image"
+     },
+     {
+       "type": "image_picker",
+       "id": "mobile_image",
+       "label": "Mobile Image"
+     }
+],
+"presets": [
+     {
+       "name": "Delivery Block"
+     }
+   ]
+ }
+{% endschema %}

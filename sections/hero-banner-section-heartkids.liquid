@@ -1,0 +1,239 @@
+{{ 'hero-banner-section-heartkids.css' | asset_url | stylesheet_tag }}
+<div
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} page-width flex-centered ws-delivery-block ws-delivery-block-desktop"
+  style="background-color: {{ section.settings.bg_color }}"
+>
+  {% if section.settings.image_position == 'left' %}
+    <div id="ws-delivery-block-inner-right-heartkids">
+      <div class="ws-delivery-block-img-container fit-to-parent">
+        <img
+          id="ws-delivery-block-img"
+          class="lazyload fit-image-to-parent"
+          alt="postcode-checker-image"
+          loading="lazy"
+          src="{{section.settings.desktop_image | img_url: 'master'}}"
+        >
+      </div>
+    </div>
+  {% else %}
+    <div id="ws-delivery-block-inner-left-heartkids">
+      <div id="ws-delivery-block-right-content-heartkids" class="fit-to-parent">
+        <div id="ws-delivery-block-right-content-heartkids-text">
+          <h1 class="uppercase" style="color: {{ section.settings.title_color }}">
+            {{ section.settings['title-line1'] }}
+          </h1>
+          <h1 class="uppercase second_line" style="color: white;">{{ section.settings['title-line2'] }}</h1>
+          <h1 class="uppercase" class="title2"  style="color: white;" >{{ section.settings['title-line3'] }}</h1>
+          <p style="color: {{ section.settings.description_color }}">
+            {{ section.settings['paragraph-description'] }}
+          </p>
+        </div>
+        <div id="ws-delivery-block-input" class="">
+          {% if section.settings['is-button-scroll-to-section'] == false -%}
+            <a href="{{ section.settings.link }}">
+          {%- endif %}
+          <button
+            type="submit"
+            class="three-block-button uppercase"
+            {% if section.settings['is-button-scroll-to-section'] == true %}
+              onclick="document.getElementById('{{ section.settings.scroll-to-section-id }}').scrollIntoView();"
+            {% endif %}
+          >
+            {{ section.settings['button-text'] }}
+          </button>
+          {% if section.settings['is-button-scroll-to-section'] == false %}</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.image_position == 'left' %}
+    <div id="ws-delivery-block-inner-left-heartkids">
+      <div id="ws-delivery-block-right-content-heartkids" class="fit-to-parent">
+        <div id="ws-delivery-block-right-content-heartkids-text">
+          <h1 class="uppercase" style="color: {{ section.settings.title_color }}">
+            {{ section.settings['title-line1'] }}
+          </h1>
+          <h1 class="uppercase second_line" style="color: white;">{{ section.settings['title-line2'] }}</h1>
+          <h1 class="uppercase" style="color: white;">{{ section.settings['title-line3'] }}</h1>
+          <p style="color: {{ section.settings.description_color }}">
+            {{ section.settings['paragraph-description'] }}
+          </p>
+        </div>
+        <div id="ws-delivery-block-input" class="">
+          {% if section.settings['is-button-scroll-to-section'] == false -%}
+            <a href="{{ section.settings.link }}">
+          {%- endif %}
+          <button
+            type="submit"
+            class="three-block-button uppercase"
+            {% if section.settings['is-button-scroll-to-section'] == true %}
+              onclick="document.getElementById('{{ section.settings.scroll-to-section-id }}').scrollIntoView();"
+            {% endif %}
+          >
+            {{ section.settings['button-text'] }}
+          </button>
+          {% if section.settings['is-button-scroll-to-section'] == false %}</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div id="ws-delivery-block-inner-right-heartkids">
+      <div class="ws-delivery-block-img-container fit-to-parent" >
+        <img
+          id="ws-delivery-block-img"
+          class="lazyload fit-image-to-parent"
+          alt="postcode-checker-image"
+          loading="lazy"
+          src="{{section.settings.desktop_image | img_url: 'master'}}"
+        >
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<div
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} page-width flex-centered ws-delivery-block ws-delivery-block-mobile"
+  style="background-color: {{ section.settings.bg_color }}"
+>
+  <div id="ws-delivery-block-inner-right-heartkids">
+    <div class="ws-delivery-block-img-container fit-to-parent">
+      <img
+        id="ws-delivery-block-img"
+        class="lazyload fit-image-to-parent"
+        alt="postcode-checker-image"
+        loading="lazy"
+        src="{{section.settings.desktop_image | img_url: 'master'}}"
+      >
+    </div>
+  </div>
+  <div id="ws-delivery-block-inner-left-heartkids">
+    <div id="ws-delivery-block-right-content-heartkids" class="fit-to-parent">
+      <div id="ws-delivery-block-right-content-heartkids-text">
+        <h1 class="uppercase" style="color: {{ section.settings.title_color }}">
+          {{ section.settings['title-line1'] }}
+        </h1>
+        <h1 class="uppercase second_line" style="color: white">{{ section.settings['title-line2'] }}</h1>
+        <h1 class="uppercase" style="color: white;">{{ section.settings['title-line3'] }}</h1>
+        <p style="color: {{ section.settings.description_color }}">
+          {{ section.settings['paragraph-description'] }}
+        </p>
+      </div>
+      <div id="ws-delivery-block-input" class="">
+        {% if section.settings['is-button-scroll-to-section'] == false -%}
+          <a href="{{ section.settings.link }}">
+        {%- endif %}
+        <button
+          type="submit"
+          class="three-block-button uppercase"
+          {% if section.settings['is-button-scroll-to-section'] == true %}
+            onclick="document.getElementById('{{ section.settings.scroll-to-section-id }}').scrollIntoView();"
+          {% endif %}
+        >
+          {{ section.settings['button-text'] }}
+        </button>
+        {% if section.settings['is-button-scroll-to-section'] == false %}</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+ {
+   "name": "HeroImage&TextHeartKids",
+   "tag": "section",
+   "class": "hero-banner-section-christmas",
+   "settings": [
+     {
+         "type": "color_scheme",
+         "id": "color_scheme",
+         "label": "t:sections.all.colors.label",
+         "info": "t:sections.all.colors.has_cards_info",
+         "default": "scheme-1"
+     },
+     {
+       "type": "color",
+       "id": "bg_color",
+       "label": "Background Color",
+       "default": "#FFFFFF"
+     },
+     {
+       "type": "color",
+       "id": "title_color",
+       "label": "Title Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "description_color",
+       "label": "Description Color",
+       "default": "#000000"
+     },
+     {
+       "type": "select",
+       "id": "image_position",
+       "label": "Image Position",
+       "default": "left",
+       "options": [
+         { "value": "left", "label": "Left"},
+         { "value": "right", "label": "Right"}
+       ]
+     },
+     {
+       "type": "image_picker",
+       "id": "desktop_image",
+       "label": "Desktop Image"
+     },
+     {
+       "type": "image_picker",
+       "id": "mobile_image",
+       "label": "Mobile Image"
+     },
+     {
+       "type": "text",
+       "id": "title-line1",
+       "label": "Title Line 1"
+     },
+     {
+       "type": "text",
+       "id": "title-line2",
+       "label": "Title Line 2"
+     },
+     {
+       "type": "text",
+       "id": "title-line3",
+       "label": "Title Line 3"
+     },
+     {
+       "type": "text",
+       "id": "paragraph-description",
+       "label": "Description"
+     },
+     {
+       "type": "text",
+       "id": "button-text",
+       "label": "Button Text"
+     },
+     {
+       "type": "url",
+       "id": "link",
+       "label": "Link"
+     },
+     {
+       "type": "checkbox",
+       "id": "is-button-scroll-to-section",
+       "label": "Button scrolls to section",
+       "default": false
+     },
+     {
+       "type": "text",
+       "id": "scroll-to-section-id",
+       "label": "Scroll to section ID"
+     }
+],
+"presets": [
+     {
+       "name": "Hero Image & Text - Heartkids"
+     }
+   ]
+ }
+{% endschema %}

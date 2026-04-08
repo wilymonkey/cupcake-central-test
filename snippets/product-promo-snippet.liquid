@@ -1,0 +1,56 @@
+{% comment %}
+  Accepts:
+  - heading, subheading, products_to_show, background_color, section_id,
+  - heading_color, subheading_color
+{% endcomment %}
+<style>
+  body {
+    ;
+  }
+</style>
+<div data-aos="zoom-in" class="py-[45px] m-xs:py-[56px] md:py-[45px] d-sm:py-[56px] d-lg:py-[70px]" style="background-color: {{ background_color }};">
+  <div class="mx-auto display-block relative">
+    {% if heading != blank or subheading != blank %}
+      <div class="text-center">
+        {% if heading != blank %}
+          <div
+            class="text-[24px] leading-[22px]! d-sm:text-[36px] d-sm:leading-[33px]! font-[900]! font-poppins! tracking-normal!"
+            style="color: {{ heading_color }};"
+          >
+           {{ heading }}
+          </div>
+        {% endif %}
+        <div class="d-sm:max-w-[1184px] mx-auto pt-[12px] pb-[24px] d-sm:pb-[30px] d-lg:pb-[35px] text-center px-[24px] d-sm:px-0 text-[14px] font-[500]! leading-[18px]! d-sm:py-5 d-sm:text-[16px] d-sm:leading-[23px]!">
+          {% if subheading != blank %}
+            <div
+              class="tracking-[0.80px]"
+              style="color: {{ subheading_color }};"
+            >
+              {{ subheading }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% comment %}
+      This container handles the horizontal scrolling. The padding is now on this element.
+    {% endcomment %}
+    <div class="pl-[6px] pb-8 -mb-4 d-sm:mb-8 overflow-x-auto custom-scrollbar d-sm:justify-center d-sm:items-center">
+      <div class="inline-flex gap-[12px] m-xs:gap-[16px] h-auto d-sm:gap-[16px] d-lg:gap-[36px]">
+        {%- for product in products_to_show -%}
+          <div class="flex-shrink-0">
+            {% render 'card-product-v2', card_product: product, section_id: section_id %}
+          </div>
+        {%- else -%}
+          {%- comment -%} This code runs if the product list is empty {%- endcomment -%}
+          {%- for i in (1..4) -%}
+            <div class="flex-shrink-0">
+              {% render 'card-product-v2' %}
+            </div>
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>

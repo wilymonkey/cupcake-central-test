@@ -1,0 +1,97 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cce9da3f-bf07-49db-bd8a-1b0a56a67f9d": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16304009019580__cce9da3f-bf07-49db-bd8a-1b0a56a67f9d-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_size": "h1"
+          }
+        },
+        "template--16304009019580__cce9da3f-bf07-49db-bd8a-1b0a56a67f9d-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--16304009019580__cce9da3f-bf07-49db-bd8a-1b0a56a67f9d-heading-1",
+        "template--16304009019580__cce9da3f-bf07-49db-bd8a-1b0a56a67f9d-text-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-right",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        ".collection-hero__title {font-size: calc(85 / 1920 * 100vw);}"
+      ],
+      "settings": {
+        "title": "",
+        "description": "",
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".facet-checkbox input {outline: solid 1px rgba(var(--color-foreground), 0.75);}"
+      ],
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-3",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": true,
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "featured_product_link": "shopify://pages/international-womens-day"
+      }
+    },
+    "product_reviews_NTXPNP": {
+      "type": "product-reviews",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "cce9da3f-bf07-49db-bd8a-1b0a56a67f9d",
+    "banner",
+    "product-grid",
+    "product_reviews_NTXPNP"
+  ]
+}

@@ -1,0 +1,120 @@
+{{ 'faq-with-image.css' | asset_url | stylesheet_tag }}
+
+
+
+<div class="collection__title">
+  <div class="faq-title related-products__heading inline-richtext">
+      <span class="products-showcase__title-first1">FREQUENTLY ASKED</span>
+      <span class="products-showcase__title-second">QUESTIONS</span>
+  </div>
+  
+</div>
+<div class="faq-main-container page-width">
+  <div class="faq-image">
+    <img class="lazyload"
+                    src="{{ section.settings.image | img_url: 'master' }}"
+                    alt="service Image">
+  </div>
+<div class="faq-content">
+<div class="faq-block">
+  {% assign block_num = 0 %}
+  {% for block in section.blocks %}
+    <div class="faq-container">
+      <label class="faq-block-label">
+        {{ block.settings.title }}
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          role="presentation"
+          class="icon icon-caret icon-rotate faq-block-caret"
+          viewBox="0 0 10 6"
+        >
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"/>
+        </svg>
+      </label>
+      <div class="faq-item-content">
+        {{ block.settings.answer }}
+      </div>
+      <hr>
+    </div>
+    {% assign block_num = block_num | plus: 1 %}
+  {% endfor %}
+</div>
+</div>
+</div>
+
+<script>
+    $( document ).ready(function() {
+      $(".faq-block-label").on('click', function(event){
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        const currentHeight = $(event.target.parentNode).find('.faq-item-content').height();
+        const contentElement = $(event.target.parentNode).find('.faq-item-content');
+        if (currentHeight === 0) {
+          contentElement.css('height', "auto");
+          contentElement.css('marginBottom', "24px");
+        } else {
+          contentElement.css('height', "0");
+          contentElement.css('marginBottom', "0");
+        }
+    });
+
+      $(".faq-block-caret").on('click', function(event){
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        const currentHeight = $(event.target.parentNode.parentNode).find('.faq-item-content').height();
+        const contentElement = $(event.target.parentNode.parentNode).find('.faq-item-content');
+        if (currentHeight === 0) {
+          contentElement.css('height', "auto");
+          contentElement.css('marginBottom', "24px");
+        } else {
+          contentElement.css('height', "0");
+          contentElement.css('marginBottom', "0");
+        }
+    });
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Faq with image",
+  "tag": "section",
+  "settings": [
+    {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image",
+           "info":"Size : 300px X 300px"
+         }
+  ],
+   "presets": [
+        {
+          "name": "FAQ with Image"
+        }
+      ],
+  "blocks": [
+    {
+      "type": "faq_entry",
+      "name": "FAQ Entry",
+      "limit": 20,
+      "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title",
+      "default": "Where do you deliver to?"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "answer",
+      "label": "answer",
+      "default": "Please use the postcode checker above to check whether you are in our sweet zones."
+    }
+
+      ]
+
+    }
+  ]
+}
+{% endschema %}

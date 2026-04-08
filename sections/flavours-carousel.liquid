@@ -1,0 +1,214 @@
+{{ 'flavours-carousel.css' | asset_url | stylesheet_tag }}
+
+
+<div class="flavours-carousel-container">
+  <div class="carousel-festive-container">
+    <h1 class="carousel-festive-container-header1">MEET OUR FESTIVE FLAVOURS</h1>
+    
+    <!-- carousel-festive Wrapper -->
+    <div class="carousel-festive-wrapper">
+      <!-- Left Arrow -->
+      <button class="nav-btn left-btn">&lt;</button>
+      
+      <!-- carousel-festive -->
+      <div class="carousel-festive" >
+            <div class="card" data-details="A red velvet base with red vanilla buttercream, topped with gold sprinkles, an edible 'Fu' (Prosperity) fondant disk and two gold-dusted white chocolate ingots." data-alt-img="wealthy_red_velvet.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Component_10_1.png?v=1736726633" alt="WEALTHY RED VELVET">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_479.png?v=1736726625" alt="WEALTHY RED VELVET" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Prosperity.png?v=1736726639" alt="WEALTHY RED VELVET" class="details-panel1">
+            </div>
+            <div class="card" data-details="A vanilla base with red and yellow vanilla buttercream, garnished with some gold sprinkles." data-alt-img="lucky_lunar_vanilla.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Component_9_1.png?v=1736726634" alt="LUCKY LUNAR VANILLA">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_478.png?v=1736726625" alt="LUCKY LUNAR VANILLA" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Lunar_New_Year.png?v=1736726639" alt="LUCKY LUNAR VANILLA" class="details-panel1">
+            </div>
+            <div class="card" data-details="A vanilla base with yellow vanilla buttercream, topped with a Year of the Snake edible fondant decoration." data-alt-img="serpents_vanilla_swirl.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Component_14_1.png?v=1736726634" alt="SERPENT'S VANILLA SWIRL">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Component_8_1.png?v=1736726625" alt="SERPENT'S VANILLA SWIRL" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Year_of_Snake.png?v=1736726639" alt="SERPENT'S VANILLA SWIRL Panel" class="details-panel1">
+            </div>
+            <div class="card" data-details="A mandarin flavoured base with a large dollop of orange vanilla buttercream, decorated with green fondant leaves and a dark chocolate coated pretzel stick." data-alt-img="happy_mandarin.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Component_11_1.png?v=1736726634" alt="HAPPY MANDARIN">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_480.png?v=1736726626" alt="HAPPY MANDARIN" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Fortune_Mandarin.png?v=1736726639" alt="HAPPY MANDARIN Panel" class="details-panel1">
+            </div>
+        </div>
+
+      <button class="nav-btn right-btn">&gt;</button>
+    </div>
+    
+</div>
+
+    <!-- Dots Indicator -->
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <!-- Details Panel -->
+    <div class="card-container">
+      <div class="cutout"></div>
+      <!-- Left: Image -->
+      <div class="details-panel">
+        <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Santa.png?v=1732075452" alt="Chocolate Pudding Details" class="details-image">
+      </div>
+    
+      <!-- Right: Title and Description -->
+      <div class="details-content">
+        <h2 class="card-title">WEALTHY RED VELVET</h2>
+        <p class="card-details">
+          A red velvet base with red vanilla buttercream, topped with gold sprinkles, an edible 'Fu' (Prosperity) fondant disk and two gold-dusted white chocolate ingots.
+        </p>
+        <button class="order-now" href="#ws-delivery-block">ORDER NOW</button>
+      </div>
+
+      
+    </div>
+  </div>
+
+<script>
+
+  
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('.carousel-festive');
+  const cards = document.querySelectorAll('.card');
+  const dotsContainer = document.querySelector('.dots');
+  const leftBtn = document.querySelector('.left-btn');
+  const rightBtn = document.querySelector('.right-btn');
+  const detailsPanel = document.querySelector('.details-panel');
+  const detailsPanelImage = detailsPanel.querySelector('img');
+  const cardTitle = document.querySelector('.card-title');
+  const cardDetails = document.querySelector('.card-details');
+  let currentIndex = 0;
+
+  // Function to create dots dynamically
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    cards.forEach((_, index) => {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dotsContainer.appendChild(dot);
+
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+  }
+
+  // Initialize the first card as active
+  function initializeActiveCard() {
+    const activeCard = cards[currentIndex];
+    activeCard.classList.add('active');
+
+    // Update details panel with the first card's details
+    updateDetailsPanel(activeCard);
+  }
+
+  // Function to update the details panel
+  function updateDetailsPanel(activeCard) {
+    const detailsImage = activeCard.querySelector('.details-panel1');
+    const detailsImageSrc = detailsImage ? detailsImage.src : '';
+    detailsPanelImage.src = detailsImageSrc;
+
+    const activeImage = activeCard.querySelector('.active-image');
+    if (activeImage) {
+      cardTitle.textContent = activeImage.alt || '';
+    } else {
+      cardTitle.textContent = '';
+    }
+
+    cardDetails.textContent = activeCard.getAttribute('data-details') || '';
+    detailsPanel.classList.add('show');
+  }
+
+  // Function to update the carousel
+  function updateCarousel() {
+    const activeCard = cards[currentIndex];
+    const carouselWidth = carousel.offsetWidth;
+    const cardWidth = activeCard.offsetWidth;
+    const scrollLeft = activeCard.offsetLeft - (carouselWidth / 2 - cardWidth / 2);
+
+    // Smooth scroll to center the active card
+    carousel.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+
+    // Update active classes and images
+    cards.forEach(card => {
+      card.classList.remove('active');
+      const defaultImage = card.querySelector('img:not(.active-image):not(.details-image)');
+      const activeImage = card.querySelector('.active-image');
+      if (defaultImage) defaultImage.style.display = 'block';
+      if (activeImage) activeImage.style.display = 'none';
+    });
+
+    dotsContainer.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+    activeCard.classList.add('active');
+    dotsContainer.children[currentIndex].classList.add('active');
+
+    // Swap images for the active card
+    const defaultImage = activeCard.querySelector('img:not(.active-image):not(.details-image)');
+    const activeImage = activeCard.querySelector('.active-image');
+    if (defaultImage) defaultImage.style.display = 'none';
+    if (activeImage) activeImage.style.display = 'block';
+
+    // Update the details panel
+    updateDetailsPanel(activeCard);
+  }
+
+  // Add event listeners to cards for clicks
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      currentIndex = index;
+      updateCarousel();
+    });
+  });
+
+  // Navigation Buttons
+  leftBtn.addEventListener('click', () => {
+    if (currentIndex > 0) currentIndex--;
+    updateCarousel();
+  });
+
+  rightBtn.addEventListener('click', () => {
+    if (currentIndex < cards.length - 1) currentIndex++;
+    updateCarousel();
+  });
+
+  // Smooth scrolling for buttons
+  document.querySelectorAll('.order-now1, .smooth-scroll-button').forEach(button => {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        const offsetTop = targetSection.getBoundingClientRect().top + window.scrollY - 220; // Adjust -220 if needed
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Initialize carousel
+  createDots();
+  initializeActiveCard();
+});
+
+
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Flavours Carousel",
+    "settings": [],
+    "presets": [
+    {
+      "name": "Flavours Carousel"
+    }
+  ]
+  }
+{% endschema %}

@@ -1,0 +1,393 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "faq_block_EPddUP": {
+      "type": "faq-block",
+      "blocks": {
+        "faq_entry_kjWnrj": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "ordering",
+            "title": "How do I place an order?",
+            "answer": "Orders can be placed either online, in person at one of our stores, or over the phone on our dedicated customer service line (03) 9077 4542. Our customer service hours are 9am to 4pm on weekdays, and 9am to 2pm on Saturdays."
+          }
+        },
+        "faq_entry_Ld8RAn": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "ordering",
+            "title": "Can I add a gift message to my order?",
+            "answer": "Yes you can! Just tick the Gift Message with Ribbon box at checkout and enter your message in the text box below. A $2 fee will apply, and your message will come printed on a Cupcake Central gift tag tied onto your dessert box with our signature turquoise ribbon."
+          }
+        },
+        "faq_entry_8HzKjG": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "ordering",
+            "title": "Can I add something to my order once its been placed?",
+            "answer": "Yes you can! We do require at least 24 hours notice prior to the delivery date so our team can amend this for you. Kindly contact us via email or phone and one of our customer service representatives will help organise this for you."
+          }
+        },
+        "faq_entry_EmNHtN": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "ordering",
+            "title": "How do I enter a discount/promo code or gift voucher?",
+            "answer": "Once you have added your items to the cart and clicked \"Check out\", there will be a discount code/gift card section where you can add your unique code."
+          }
+        },
+        "faq_entry_q3ML8a": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "Ordering",
+            "title": "Do you offer pick up options?",
+            "answer": "Yes we do! We have 2 click and collect locations. Highpoint store front: Open Saturday - Wednesday 9am-5pm & Thursday/Friday between 9am-6pm. West Footscray Dispatch centre: Monday to Friday 9am-4pm & Saturday 9m-1pm."
+          }
+        },
+        "faq_entry_7dCeqM": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "ordering",
+            "title": "Can I pick specific flavours in my assorted gift box?",
+            "answer": "If you add an assorted gift box into your cart, you will receive an assortment of our delicious flavours. However, if you would like to customise your order and specify flavours, please add each individual flavour into your cart. Please note that in doing so, it will cost a little more than it would to purchase an assorted gift box."
+          }
+        },
+        "faq_entry_Cm3x4F": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Where do you deliver to?",
+            "answer": "If you would like to find out what suburbs we do deliver to, you can visit our website or follow this link: https://cupcakecentral.com.au/pages/delivery-information"
+          }
+        },
+        "faq_entry_Hw84a7": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you have a delivery surcharge?",
+            "answer": "For locations in Melbourne, we offer free delivery with any order over $40. If your order value is below $40, then a flat delivery fee of $10 will apply. We also offer free click and collect from our Highpoint store and West Footscray office locations. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\" target=\"_blank\">click here</a>. For Australia-wide delivery, orders will be dispatched via AusPost and a flat delivery fee of $15 will apply."
+          }
+        },
+        "faq_entry_4j3UxE": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you do same day delivery?",
+            "answer": "Yes we do! (except on weekends or when we are at capacity) Orders must be placed before 12pm. Please note that this is subject to availability on the day ordered. If we cannot fulfil your order, you will get an email notification or call over the phone."
+          }
+        },
+        "faq_entry_zTmQKG": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "How can I track my order?",
+            "answer": "Once your order has been dispatched you will receive an SMS notification to the mobile phone number provided in your shipping details within 24 to 48 hours with further delivery information. This SMS will include a tracking link so you can keep an eye on delivery."
+          }
+        },
+        "faq_entry_TTePKj": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "I've entered the wrong address. How can I update this?",
+            "answer": "If your have already placed your order and received your order confirmation email, please contact us via email: service@cupcakecentral.com.au with the new address within 24 hours so our team can amend this as soon as possible. Please note that we aren't able to do address changes on the day of dispatch."
+          }
+        },
+        "faq_entry_W4m7it": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if no one is home to receive my order or the wrong address is supplied?",
+            "answer": "Please contact us via email or over the phone as soon as possible to see what we can arrange for you. Please note that drivers are able to leave your order at the delivery address if there is a safe and secure place to do so. You will be able to see proof of delivery via the tracking link you received, including photos. Please note that our drivers will not go upstairs, into apartments, into hospital rooms and go up building levels."
+          }
+        },
+        "faq_entry_HDgy4p": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "I've entered the wrong address. How can I update this?",
+            "answer": "Please contact us over the phone as soon as possible to arrange a change of address at least 24 hours before your delivery date. If we have been provided with incorrect/insufficient details or if there is no one home to receive the delivery and we were not able to leave the delivery somewhere safe, you will incur a fee. Please understand, redelivering an order is not ideal for us either. It means your original order goes to waste, then remade, repacked and sent out with a courier again."
+          }
+        },
+        "faq_entry_fFRnTt": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you offer specific delivery times?",
+            "answer": "At this moment we are unable to guarantee specific arrival times for deliveries. On weekdays, your order will arrive within your chosen time slot of either 9am-3pm or 12pm-6pm. On weekends, your order will arrive between 10am and 5pm. If this will interfere with your plans, we recommend having your order delivered the day prior as our cupcakes can last up to 3 days when stored correctly in a cool space out of the sun until ready to serve."
+          }
+        },
+        "faq_entry_BhyNe7": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "My order was delivered outside the delivery window selected. What happens now?",
+            "answer": "Although we do try our best to deliver within the delivery window selected, there are times that elements outside our control my delay your order including traffic, the weather and unforeseen circumstances. For any orders running late, please contact our team immediately at (03)9077 4542."
+          }
+        },
+        "faq_entry_7WMC7X": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you deliver interstate or nationally?",
+            "answer": "Yes we do! Currently our brownies, slices, shortbread and cookies are available for nation wide delivery. Please note that orders are dispatch every Monday, Wednesday and Friday with Australia Post Express delivery. For estimates on delivery windows, please visit the Australia's Post website. Please note that we are not liable for any damaged goods handled by Australia Post and are not accountable for delays."
+          }
+        },
+        "faq_entry_PmXEMP": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "How does Click and Collect work?",
+            "answer": "Once your order has been placed & you have received your confirmation, we will have your order available for collection at the location, date & time selected."
+          }
+        },
+        "faq_entry_ePaQgQ": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "I can't make it to my Click and Collect order. What happens now?",
+            "answer": "We understand that life happens & you may not be able to collect your order anymore. Please send us an email at your earliest to inform our staff of any date changes for click & collect: service@cupcakecentral.com.au"
+          }
+        },
+        "faq_entry_ejPqm6": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "storage",
+            "title": "How can I store my cupcakes?",
+            "answer": "Once you receive your cupcakes, keep them in an airtight container and store them at room temperature (about 20°C). When stored correctly, they can last up to 2-3 days. All our products are best consumed on the day."
+          }
+        },
+        "faq_entry_rHqM8P": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "storage",
+            "title": "How can I store my cake?",
+            "answer": "Once you receive your cake, please place straight into the fridge. Please bring to room temperature at least 1 hour prior to serving. Consume within 3-5 days once served."
+          }
+        },
+        "faq_entry_dKkWBK": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "storage",
+            "title": "How can I store my cookies?",
+            "answer": "Our cookies have up to 5 days shelf life at room temperature. To extend shelf life, refrigerate or freeze cookies then thaw back to room temperature. For a baked fresh and gooey experience microwave the cookies for just 10-15 seconds!"
+          }
+        },
+        "faq_entry_rMDMAU": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "storage",
+            "title": "How can I store my brownies and slices?",
+            "answer": "Our brownies and slices have up to 5 days shelf life at room temperature. Best to be consumed on the day."
+          }
+        },
+        "faq_entry_pWkJbj": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "allergens",
+            "title": "Are your products nut-free?",
+            "answer": "Yes, we can accommodate for this! If you write \"no nuts\" in the note section when placing an order, our team will make sure that we don't place any products that contain nuts in your order. With that said, all our desserts are baked by hand in the same environment, so there may be traces of nuts present in our products. If the recipient is severely allergic, we would recommend against consuming our products."
+          }
+        },
+        "faq_entry_piUEgn": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "allergens",
+            "title": "Do you have gluten-free options?",
+            "answer": "Yes we do! We have a range of gluten-free cakes and cupcakes that you can browse by <a href=\"https://cupcakecentral.com.au/collections/gluten-free\" title=\"https://cupcakecentral.com.au/collections/gluten-free\">clicking here</a>. Please note though that our desserts are made by hand using shared equipment, so there may be traces of gluten present in our products."
+          }
+        },
+        "faq_entry_eMtpCA": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "allergens",
+            "title": "Are your products halal?",
+            "answer": "At this point, our cupcakes are not certified Halal. All our flavours that have a vanilla cake or use vanilla frosting, contain vanilla extract. Please note that during the baking process, the alcohol is burned away. In our current collection of flavours, Devil's Food Chocolate and Vegan/Gluten Free chocolate do not contain vanilla extract."
+          }
+        },
+        "faq_entry_NxHVKM": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "allergens",
+            "title": "Where can I find product Ingredients?",
+            "answer": "Product ingredients are displayed on each product page under the \"Ingredients\" tab. However if you have any further questions or would like to request an e-copy of the ingredients list, please email us at service@cupcakecentral.com.au"
+          }
+        },
+        "faq_entry_a8qnJj": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "allergens",
+            "title": "What size are your cupcakes and mini cupcakes?",
+            "answer": "Our standard sized cupcakes are approximately 7cm W x 6cm H, Whereas the mini cupcakes are 3.5cm W x 4cm H (around a bite size)."
+          }
+        },
+        "faq_entry_TEF7j8": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "allergens",
+            "title": "What size are you cakes?",
+            "answer": "Our cakes currently come in 2 sizes. These are 6 & 8 inches. 6 Inch cakes generally serve 6 - 10 people and 8 inch cakes serve 10 - 14."
+          }
+        },
+        "faq_entry_E3awQf": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "payment",
+            "title": "What payment options do you accept?",
+            "answer": "Payment for an online order can be made via the following: Visa, Mastercard, American Express, Apple Pay & Union pay. Our in store purchases accept Visa, Mastercard, Apple Pay & American Express"
+          }
+        },
+        "faq_entry_yRGCwJ": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "payment",
+            "title": "What is your refund policy?",
+            "answer": "An order must be cancelled 2 business days before the required date, to be eligible for a refund. For cakes and custom orders (including, edible logo orders) we require 3 business days and for same day orders, within the hour of when you placed your order."
+          }
+        },
+        "faq_entry_t7mGxD": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "payment",
+            "title": "What are your terms of service?",
+            "answer": "If you would like to read our Full terms of service, Please follow the link provided: https://cupcakecentral.com.au/policies/terms-of-service"
+          }
+        },
+        "faq_entry_rkX7EM": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "wholesale",
+            "title": "Do you do wholesale?",
+            "answer": "Yes we do! We currently have a wide range of baked goodies with different price points to suit all business needs. Please contact wholesale@cupcakecentral.com.au so we can help you start your journey with us."
+          }
+        },
+        "faq_entry_PAKRYq": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "wholesale",
+            "title": "What is your minimum for wholesale quantities?",
+            "answer": "Currently, our minimum for wholesale orders start at $100. We understand that all businesses have different needs and capacities and we're happy to work with you to grow in your early stages working with us."
+          }
+        },
+        "faq_entry_fKFdBH": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "wholesale",
+            "title": "What is your notice period for wholesale orders?",
+            "answer": "Our notice period is Monday - Friday 12pm each day for next day delivery."
+          }
+        },
+        "faq_entry_3hnPwA": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "corporate",
+            "title": "Do you offer Corporate Gifting?",
+            "answer": "We sure do!  Whether you’re looking for a gift for your clients or staff, a conference, event or guest speaker, Cupcake Central has a gift for every corporate occasion. We also offer a range of customisation options to feature your logo, branding and colours on our cupcakes and baked goods. Please get in contact with our team at service@cupcakecentral.com.au to help you arrange this."
+          }
+        },
+        "faq_entry_JMLqGg": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "corporate",
+            "title": "I want to send to multiple locations. Can this be done?",
+            "answer": "Yes we do! Shoot us a quick email regarding Multi orders and our team will send a form for you to fill out and then we'll take it from there."
+          }
+        },
+        "faq_entry_LcBKXE": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "corporate",
+            "title": "I need my order by a specific time. Can this be done?",
+            "answer": "At this moment we are unable to guarantee specific time deliveries. All orders will be coming in their chosen time slot of either 9am-3pm or 12pm-6pm. If this will interfere with your current event, We do suggest having your order delivered the day prior as our cupcakes do last for up to 3 days once received."
+          }
+        },
+        "faq_entry_CAbMix": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "other",
+            "title": "My order is incorrect.",
+            "answer": "We're sorry to hear you received the wrong order. Please contact our team via email: service@cupcakecentral.com.au with an image of what was received so we can further investigate and organise something for you."
+          }
+        },
+        "faq_entry_YdTF3n": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "other",
+            "title": "I'm not happy with the products I received.",
+            "answer": "Please note that any concerns regarding the quality of the baked goods must be addressed within 24 hours of the time you received your product. Please send through a detailed response on the quality of the received goods and an image attached to service@cupcakecentral.com.au so our team can review your order."
+          }
+        },
+        "faq_entry_pccA6N": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "other",
+            "title": "How can I provide feedback?",
+            "answer": "Through our contact form. Whether it be good or bad, we take all feedback on board and appreciate that you have taken the time to send us your thoughts. Please provide us with as much detail as you can and ensure you include photos where appropriate."
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_kjWnrj",
+        "faq_entry_Ld8RAn",
+        "faq_entry_8HzKjG",
+        "faq_entry_EmNHtN",
+        "faq_entry_q3ML8a",
+        "faq_entry_7dCeqM",
+        "faq_entry_Cm3x4F",
+        "faq_entry_Hw84a7",
+        "faq_entry_4j3UxE",
+        "faq_entry_zTmQKG",
+        "faq_entry_TTePKj",
+        "faq_entry_W4m7it",
+        "faq_entry_HDgy4p",
+        "faq_entry_fFRnTt",
+        "faq_entry_BhyNe7",
+        "faq_entry_7WMC7X",
+        "faq_entry_PmXEMP",
+        "faq_entry_ePaQgQ",
+        "faq_entry_ejPqm6",
+        "faq_entry_rHqM8P",
+        "faq_entry_dKkWBK",
+        "faq_entry_rMDMAU",
+        "faq_entry_pWkJbj",
+        "faq_entry_piUEgn",
+        "faq_entry_eMtpCA",
+        "faq_entry_NxHVKM",
+        "faq_entry_a8qnJj",
+        "faq_entry_TEF7j8",
+        "faq_entry_E3awQf",
+        "faq_entry_yRGCwJ",
+        "faq_entry_t7mGxD",
+        "faq_entry_rkX7EM",
+        "faq_entry_PAKRYq",
+        "faq_entry_fKFdBH",
+        "faq_entry_3hnPwA",
+        "faq_entry_JMLqGg",
+        "faq_entry_LcBKXE",
+        "faq_entry_CAbMix",
+        "faq_entry_YdTF3n",
+        "faq_entry_pccA6N"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "faq_block_EPddUP"
+  ]
+}

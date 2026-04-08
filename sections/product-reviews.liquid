@@ -1,0 +1,151 @@
+{{ 'product-reviews.css' | asset_url | stylesheet_tag }}
+
+{% assign product_rating = 4.7 %}
+{% assign review_counts = 57 %}
+<div class="collection__title">
+  <h2 class="title related-products__heading inline-richtext">
+    Reviews
+  </h2>
+</div>
+<div id="review-container">
+  <div class="review-header">
+    <div class="virtical-start" style="margin: 2rem;">
+      <span class="review-title" style="margin-right: 5px;">{{ product_rating }}</span>
+      <div>
+        <div class="Stars" style="--rating: 2.3;"></div>
+        <div>{{ review_counts }} reviews</div>
+      </div>
+    </div>
+    <div id="progress-container">
+    </div>
+    <button class="review btn">write a reviewd</button>
+  </div>
+  <facet-filters-form class="facets facets-vertical-sort page-width small-hide no-js-hidden">
+    <form id="FacetSortReviewForm" style="display: flex; margin: 2rem; padding: 0;">
+      <div class="facet-filters sorting caption">
+        <div class="facet-filters__field">
+          <h2 class="facet-filters__label caption-large text-body">
+            <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+          </h2>
+          <div class="select">
+            <select
+              name="sort_by"
+              class="facet-filters__sort select__select caption-large"
+              id="SortBy"
+              aria-describedby="a11y-refresh-page-message"
+            >
+              <option
+                value="rating"
+                selected="selected"
+              >
+                Rating
+              </option>
+              <option
+                value="name"
+              >
+                Name
+              </option>
+            </select>
+            {% render 'icon-caret' %}
+          </div>
+        </div>
+      </div>
+    </form>
+  </facet-filters-form>
+</div>
+
+<script>
+  const reviewers = [
+  {
+    status : 1,
+    img_url: "//cupcakecentral.com.au/cdn/shop/products/WEBPRO-CAKE-NAKEDFC_12fc04db-1f7b-4729-809b-e06a92cc6acc.jpg", 
+    title : "Thin Neu",
+    rating : 4.3,
+    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    status : 0,
+    img_url: "//cupcakecentral.com.au/cdn/shop/products/CAKE-CNC-NAKED.jpg",
+    title : "Kimberly",
+    rating : 5,
+    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    status : 1,
+    img_url: "//cupcakecentral.com.au/cdn/shop/products/CAKE-SNICKERS-NAKED-2.jpg",
+    title : "Audrey",
+    rating : 3.6,
+    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  }
+]
+
+const progress_value =[80, 80,45, 67,10];
+
+const progressContainer = document.getElementById('progress-container');
+
+progress_value.forEach((value, idx) => {
+  const progressDiv = document.createElement('div');
+  progressDiv.className = 'progress-item';
+  progressDiv.innerHTML = `
+      <div style="margin-right:5px;">${ 5 - idx}</div>
+      <div class="single-star" style="--rating: 5;"></div>
+      <div class="progress">
+          <div class="bar" style="width:${value}%">
+          <p class="percent"></p>
+        </div>
+      </div>
+  `;
+  progressContainer.appendChild(progressDiv);
+});
+
+const reviewsContainer = document.getElementById('review-container');
+
+reviewers.forEach(reviewer => {
+  const reviewDiv = document.createElement('div');
+  reviewDiv.className = 'review-item';
+  let html = ``;
+   html = `
+    <div style="display: flex;">
+      <div style="margin: 2rem;">
+        <img src="${reviewer.img_url}" style="width: 85px; border-radius: 100px;"/>`;
+    if (reviewer.status == 1) {
+      html += `<img style="position: absolute; right: 1rem; top: 6.5rem;" src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSIyMSIgdmlld0JveD0iMCAwIDIxIDIxIj4KICA8ZyBpZD0iR3JvdXBfMjAxIiBkYXRhLW5hbWU9Ikdyb3VwIDIwMSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQxNy40MTMgLTI0NDQuMjQpIj4KICAgIDxnIGlkPSJFbGxpcHNlXzUiIGRhdGEtbmFtZT0iRWxsaXBzZSA1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MTcuNDEzIDI0NDQuMjQpIiBmaWxsPSIjYjcyYzJjIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iMSI+CiAgICAgIDxjaXJjbGUgY3g9IjEwLjUiIGN5PSIxMC41IiByPSIxMC41IiBzdHJva2U9Im5vbmUiLz4KICAgICAgPGNpcmNsZSBjeD0iMTAuNSIgY3k9IjEwLjUiIHI9IjEwIiBmaWxsPSJub25lIi8+CiAgICA8L2c+CiAgICA8cGF0aCBpZD0iUGF0aF8yMiIgZGF0YS1uYW1lPSJQYXRoIDIyIiBkPSJNNTA3My42NzYsODQxLjA2MmwyLjk1MiwyLjg3OSw1LjQzMS01LjQzMSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQ2NTAuNTgzIDE2MTMuNTE0KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwvZz4KPC9zdmc+Cg=='/>
+              </div>
+              <div>
+                <div style="font-size: 1rem; color: #444;">Verified Buyer</div>`;
+    } else {
+      html += `</div>
+              <div>`;
+    }
+   html += `<div class="review-title">${reviewer.title}</div>
+        <div class="Stars" style="--rating: ${reviewer.rating};" aria-label="Rating of this product is ${reviewer.rating} out of 5."></div>
+        <div style="margin-bottom: 3rem;">${reviewer.description}</div>
+      </div>
+    </div>
+  `;
+  reviewDiv.innerHTML = html
+  reviewsContainer.appendChild(reviewDiv);
+});
+
+  var bars = document.querySelectorAll('.meter > span');
+console.clear();
+
+setInterval(function(){
+  bars.forEach(function(bar){
+    var getWidth = parseFloat(bar.dataset.progress);
+    
+    for(var i = 0; i < getWidth; i++) {
+      bar.style.width = i + '%';
+    }
+  });
+}, 500);
+</script>
+
+{% schema %}
+  {
+    "name": "Product Reviews",
+    "tag": "section",
+    "class": "product-review-section",
+    "settings": []
+  }
+{% endschema %}

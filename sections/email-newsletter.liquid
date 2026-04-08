@@ -1,0 +1,180 @@
+{%- comment -%}
+  This section file contains the settings and passes them to the snippet.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .newsletter-input-{{ section.id }}::placeholder {
+    color: {{ section.settings.input_placeholder_color }};
+    opacity: 0.8;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- render 'email-newsletter-snippet',
+  image: section.settings.image,
+  heading: section.settings.heading,
+  subheading: section.settings.subheading,
+  button_text: section.settings.button_text,
+  background_color: section.settings.background_color,
+  heading_color: section.settings.heading_color,
+  subheading_color: section.settings.subheading_color,
+  input_background_color: section.settings.input_background_color,
+  input_text_color: section.settings.input_text_color,
+  input_placeholder_color: section.settings.input_placeholder_color,
+  button_background_color: section.settings.button_background_color,
+  button_text_color: section.settings.button_text_color,
+  social_icon_color: section.settings.social_icon_color,
+  facebook_link: section.settings.facebook_link,
+  instagram_link: section.settings.instagram_link,
+  youtube_link: section.settings.youtube_link,
+  section_id: section.id
+-%}
+
+{% schema %}
+{
+  "name": "Email Newsletter",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Header / Title"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>In rhoncus felis sed sodales fermentum. Pellentesque eget odio vitae turpis malesuada feugiat at in risus.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Button LRG"
+    },
+    {
+      "type": "header",
+      "content": "Social Links"
+    },
+    {
+      "type": "url",
+      "id": "facebook_link",
+      "label": "Facebook Link"
+    },
+    {
+      "type": "url",
+      "id": "instagram_link",
+      "label": "Instagram Link"
+    },
+    {
+      "type": "url",
+      "id": "youtube_link",
+      "label": "YouTube Link"
+    },
+    {
+      "type": "header",
+      "content": "Style & Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#A7E0DE"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#212121"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#424242"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "Input Field Background",
+      "default": "#10CDB9"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input Field Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "input_placeholder_color",
+      "label": "Input Field Placeholder",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background",
+      "default": "#EC407A"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_color",
+      "label": "Social Icon Color",
+      "default": "#10CDB9"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email Newsletter"
+    }
+  ]
+}
+{% endschema %}

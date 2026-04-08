@@ -1,0 +1,1015 @@
+.halloween-banner-container {
+  margin-top: -3px;
+  position: relative;
+}
+
+.halloween-banner-subheading1 {
+  color: #f4812a;
+  /* text-align: center; */
+}
+
+.halloween-logo {
+  width: 100%; /* Set the image to take full width of the container */
+}
+.halloween-banner-headingDate {
+  top: 65%;
+  left: 50%; /* Changed from 20% to 50% */
+  transform: translate(-50%, -50%); /* This now perfectly centers the element */
+  width: 90%; /* Changed from fixed 810px to a responsive percentage */
+  max-width: 810px; /* Added max-width to maintain a limit */
+  height: auto; /* Changed from fixed 48px to auto */
+  text-align: center;
+  font: normal normal normal 2.5vw/1.2 CCMonsterMash; /* Added a line-height */
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-shadow: 0px 0px 25px #ff6600db !important;
+  text-transform: uppercase;
+  opacity: 1;
+  position: absolute;
+}
+
+.halloween-banner-heading1 {
+  position: absolute;
+  font-family: "fave-condensed-pro";
+  color: #f4812a;
+  text-align: center;
+  top: 75%;
+  left: 50%; /* This was already correct */
+  transform: translate(-50%, -50%); /* This was already correct */
+  font-size: 4.5vw;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.halloween-banner-subheading1 {
+  position: absolute;
+  color: #f4812a;
+  text-align: center;
+  top: 82%;
+  left: 50%; /* This was already correct */
+  transform: translate(-50%, -50%); /* This was already correct */
+  font-size: 1.3vw;
+  line-height: 2vw;
+  max-width: 35%;
+  word-wrap: break-word;
+}
+
+.halloween-product-container {
+  margin-top: -1px;
+  background-image: url("https://cdn.shopify.com/s/files/1/1848/3097/files/Mask_Group_25.png?v=1759708818");
+  background-color: #221729;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 150px;
+  padding-right: 150px;
+  /* padding-top: 20px; */
+  /* padding-bottom: 30px; */
+  flex-wrap: wrap;
+  /* position: relative; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+
+.bob-eye {
+  position: absolute;
+  top: 49%;
+  left: 32%;
+  z-index: 999;
+  width: 73px;
+  height: 30px;
+}
+
+.product {
+  flex: 1 1 calc(33.33% - 60px); /* Set width to one-third minus the combined gap */
+  max-width: 400px; /* Limit the max width */
+  text-align: center;
+  position: relative;
+}
+.product-background {
+  height: 350px;
+  background-position: center;
+  background-size: 100% 100%; /* Set initial background size */
+  position: relative;
+  background-repeat: no-repeat;
+  overflow: hidden; /* Prevent overflow of scaled background */
+  transition: background-size 0.4s ease; /* Smooth transition */
+}
+
+.product-background:hover {
+  background-size: 110% 110%; /* Scale up the background size on hover */
+}
+
+.product-image {
+  width: 340px; /* Adjust the product image size */
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Remove the transition if you don't want the image to change */
+  /* transition: none; */
+}
+
+.special-product .product-image {
+  top: 55%;
+}
+
+.product-text {
+  margin-top: 40px;
+  font-size: 16px;
+  line-height: 3rem;
+  color: #fefefe;
+}
+
+.halloween-collection-header {
+  font-family: "fave-condensed-pro";
+  color: #f4812a;
+  text-align: center;
+  font-size: 8vw; /* Relative unit based on viewport width */
+  word-wrap: break-word; /* Ensure text wraps on small screens */
+  background-color: #1b0c26;
+  margin-top: -2px;
+  line-height: 18vh;
+}
+
+.halloween-collection-subheader {
+  color: #f4812a;
+  text-align: center;
+  font-size: 1vw;
+  word-wrap: break-word;
+  background-color: #1b0c26;
+  margin-top: -11px;
+  line-height: 41px;
+}
+
+.halloween-products-container1 {
+  background-color: #1b0c26;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 30px;
+  padding-top: 40px;
+  margin-top: -3px;
+}
+
+.halloween-heading1 {
+  font-size: 36px;
+  color: #0f9b8c;
+  text-align: center;
+}
+
+.halloween-product-item1 {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 315px; /* Fixed width for items */
+  height: 495px; /* Fixed height for consistency */
+  background-color: #652d71;
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden; /* Prevents content from overflowing */
+}
+
+.special-image-container1 {
+  position: absolute;
+  z-index: 99;
+  left: 235px;
+  text-align: center; /* Center the image within the product container */
+  margin-bottom: 10px; /* Space between the special image and the product image */
+  animation: fall 6s ease-in-out infinite;
+  top: 0px;
+}
+
+.special-image1 {
+  width: 46px; /* Adjust the size as needed */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Center within container */
+}
+
+@keyframes fall {
+  0% {
+    top: -50px; /* Start position above */
+  }
+  100% {
+    top: 0px; /* Final position */
+  }
+}
+
+.special-image-container2 {
+  position: absolute;
+  z-index: 99;
+  left: 0px;
+  top: 0px;
+  text-align: center; /* Center the image within the product container */
+  margin-bottom: 10px; /* Space between the special image and the product image */
+}
+
+.special-image2 {
+  width: 0px; /* Adjust the size as needed */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Center within container */
+  animation: grow 6s ease-in-out infinite;
+}
+
+@keyframes grow {
+  0% {
+    width: 0; /* Start width */
+  }
+  100% {
+    width: 190px; /* Final width */
+  }
+}
+
+.special-image-container3 {
+  position: absolute;
+  z-index: 99;
+  left: 241px; /* Adjust as needed */
+  top: 273px; /* Adjust as needed */
+  text-align: center; /* Center the image within the product container */
+  margin-bottom: 10px; /* Space between the special image and the product image */
+}
+
+/* Image styling for right-to-left growth */
+.special-image3 {
+  width: 0; /* Start width */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0; /* Centering not required */
+  animation: grow1 6s ease-in-out infinite; /* Animation on load */
+  transform: translateX(93px); /* Move it to the right by its final width */
+  transform-origin: right; /* Set the origin for scaling to the right */
+}
+
+/* Growing width animation */
+@keyframes grow1 {
+  0% {
+    width: 0; /* Start width */
+    transform: translateX(93px); /* Keep it shifted during the animation */
+  }
+  100% {
+    width: 93px; /* Final width */
+    transform: translateX(0); /* Move it back to its original position */
+  }
+}
+
+.halloween-product {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Full height of the parent */
+  flex-grow: 1;
+}
+
+.halloween-product-image img {
+  width: 285px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid black;
+  transition: opacity 0.4s ease-in-out; /* Smooth transition */
+  position: relative;
+}
+
+.halloween-product-image img.hover-image {
+  position: absolute; /* Stack on top of the main image */
+  top: 16px;
+  left: 14px;
+  opacity: 0; /* Start with hover image hidden */
+  transition: opacity 0.4s ease-in-out; /* Smooth transition */
+}
+
+.halloween-product-image:hover img.hover-image {
+  opacity: 1; /* Show the hover image on hover */
+}
+
+.halloween-product-image:hover img.original-image {
+  opacity: 0; /* Hide the original image on hover */
+}
+
+.halloween-title-main {
+  color: #e7ae37;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none !important;
+  margin-bottom: 40px; /* Consistent gap between title and price */
+  overflow-wrap: break-word; /* Handles long words */
+}
+
+.halloween-products-container1 a {
+  text-decoration: none;
+}
+
+.halloween-price {
+  color: #dfbb88;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.priceandbutton {
+  position: absolute; /* Absolutely position the price and button */
+  bottom: 15px; /* 15px from the bottom of the container */
+  left: 15px; /* Keep consistent padding on the left */
+  right: 15px; /* Keep consistent padding on the right */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.halloween-order-button {
+  padding-top: 10px;
+}
+
+.quick-add__submit {
+  background: linear-gradient(
+    1deg,
+    #ff9911,
+    #ffcc33
+  ); /* Gradient from #ff9911 to #ffcc33 */
+  color: white; /* Text color */
+  border: none; /* Remove default border */
+  padding: 15px 30px; /* Vertical and horizontal padding */
+  font-size: 16px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background 0.3s ease; /* Smooth transition for background color */
+  min-width: 63% !important;
+  margin: auto !important;
+}
+
+.quick-add__submit:hover {
+  background: linear-gradient(
+    135deg,
+    #ffcc33,
+    #ff9911
+  ); /* Reverse gradient on hover */
+}
+
+.halloween-from-the-grave-container {
+  background-image: url("https://cdn.shopify.com/s/files/1/1848/3097/files/Mask_Group_4_4ca36a9b-e4cd-45f8-a8c5-47765361e006.png?v=1759710535");
+  height: 1389px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: #1b0c25;
+  margin-top: -68px;
+}
+.halloween-from-the-grave-image {
+  /* width: 35%; */
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+.halloween-logo1 {
+  width: 100%;
+}
+.quick-add {
+  position: relative;
+  grid-row-start: 4;
+  margin: 0px !important;
+  z-index: 1;
+}
+
+.halloween-from-the-grave-image:hover {
+  transform: translate(-50%, -50%) scale(1.07); /* Grow effect on hover */
+}
+
+.action-button {
+  display: none;
+}
+
+/* Media query for smaller screens (tablets and phones) */
+@media (max-width: 844px) {
+  .halloween-banner-heading1 {
+    width: 83%;
+    font-size: 8.5vh;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .halloween-banner-subheading1 {
+    font-size: 2vw;
+    width: 80%;
+    line-height: 3.5vh;
+    top: 103%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+  }
+  .halloween-product-container {
+    background-image: url("https://cdn.shopify.com/s/files/1/1848/3097/files/Mask_Group_26.png?v=1759709942");
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 100px 90px 30px 90px;
+    flex-wrap: wrap;
+  }
+  .product {
+    flex: 1 1 calc(33.33% - 12px);
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+  }
+  .product-image {
+    width: 280px; /* Adjust the product image size */
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s ease;
+  }
+  .product-background {
+    height: 238px;
+    background-position: center;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .halloween-from-the-grave-container {
+    height: 450px;
+  }
+  .product-text {
+    margin-top: 67px;
+    font-size: 16px;
+    color: #fefefe;
+  }
+  .halloween-collection-header {
+    font-family: fave-condensed-pro;
+    color: #f4812a;
+    text-align: center;
+    font-size: 4vw;
+    word-wrap: break-word;
+    background-color: #1b0c26;
+    margin-top: -2px;
+    line-height: 18vh;
+  }
+  .halloween-collection-subheader {
+    color: #f4812a;
+    text-align: center;
+    font-size: 2vw;
+    word-wrap: break-word;
+    background-color: #1b0c26;
+    margin-top: -11px;
+  }
+  .halloween-from-the-grave-image {
+    width: 49%;
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s ease;
+    z-index: 999;
+  }
+}
+
+/* Media query for very small screens (e.g., smartphones) */
+@media (max-width: 480px) {
+  .halloween-banner-subheading1 {
+    /* display: none; */
+    width: 100%;
+    font-size: 2vh;
+    line-height: 2.3vh;
+    top: 110%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    max-width: 75%;
+  }
+  .halloween-banner-heading1 {
+    font-size: 9vw;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .product {
+    flex: 1 1 calc(33.33% - 12px);
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+  }
+  .product-image {
+    width: 150px; /* Adjust the product image size */
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s ease;
+  }
+  .product-background {
+    height: 160px;
+    background-position: center;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .halloween-product-container {
+    background-image: url("https://cdn.shopify.com/s/files/1/1848/3097/files/Mask_Group_26.png?v=1759718290");
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 30px 30px 30px;
+    flex-wrap: wrap;
+    padding-top: 40%;
+  }
+  .product-text {
+    margin-top: 23px;
+    font-size: 12px;
+    color: #fefefe;
+    line-height: 19px;
+  }
+  .halloween-collection-header {
+    font-family: "fave-condensed-pro";
+    color: #f4812a;
+    text-align: center;
+    font-size: 13vw;
+    word-wrap: break-word;
+    background-color: #1b0c26;
+    margin-top: -27px;
+    line-height: 18vh;
+  }
+  .halloween-collection-subheader {
+    color: #f4812a;
+    text-align: center;
+    font-size: 3vw;
+    word-wrap: break-word;
+    background-color: #1b0c26;
+    margin-top: -10px;
+    line-height: 18px;
+  }
+  .halloween-products-container1 {
+    background-color: #1b0c26;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 10px;
+    padding-top: 10px;
+    margin-top: -3px;
+  }
+  .halloween-product-item1 {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 174px;
+    height: 320px;
+    background-color: #652d71;
+    border: 1px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .halloween-product-image img {
+    width: 151px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid black;
+  }
+  .halloween-title-main {
+    color: #e7ae37;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none !important;
+    margin-bottom: 40px;
+    overflow-wrap: break-word;
+  }
+  .halloween-from-the-grave-container {
+    /* display: none; */
+    background-image: url(https://cdn.shopify.com/s/files/1/1848/3097/files/Mask_Group_4_4ca36a9b-e4cd-45f8-a8c5-47765361e006.png?v=1759710535);
+    /* height: 393px; */
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-color: #1b0c25;
+  }
+  .halloween-from-the-grave-image {
+    width: 100%;
+    /* height: 100%; */
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s ease;
+    z-index: 1;
+  }
+  .special-image-container1 {
+    display: none;
+  }
+  .special-image-container2 {
+    display: none;
+  }
+  .special-image-container3 {
+    display: none;
+  }
+  .quick-add__submit {
+    background: linear-gradient(
+      1deg,
+      #ff9911,
+      #ffcc33
+    ); /* Gradient from #ff9911 to #ffcc33 */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    padding: 15px 30px; /* Vertical and horizontal padding */
+    font-size: 11px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth transition for background color */
+    min-width: 63% !important;
+  }
+  .action-button {
+    display: block;
+    background-color: black;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    padding-bottom: 20px;
+    margin-top: -2px;
+  }
+  .action-button-button {
+    background: linear-gradient(1deg, #f91, #fc3);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .halloween-price {
+    color: #dfbb88;
+    font-size: 11px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.vertical-announcement-bar {
+  background-color: #f4812d;
+}
+html .header {
+  background-color: #1b0c26 !important;
+}
+html .footer {
+  background-color: #1b0c26 !important;
+}
+html .footer-block__details-content a {
+  color: #f4812d !important;
+}
+html #Subscribe {
+  background-color: #f4812d !important;
+}
+html .divider{
+  border-color: #f4812d !important;
+}
+html .cart-count-bubble {
+  background-color: #1b0c26 !important;
+  color: white !important;
+}
+html .lucide .lucide-search-icon .lucide-search .modal__toggle-open .icon .icon-search{
+  color: #f4812d !important;
+  stroke: #f4812d !important;
+}
+html .gm-menu-installed .gm-menu.gm-menu-126809 {
+  background-color: #1b0c26 !important;
+  color: white !important;
+}
+.gm-menu-installed
+  .gm-menu.gm-menu-126809
+  .gm-item.gm-level-0
+  > .gm-target
+  > .gm-text {
+  color: white !important;
+}
+.gm-menu-installed
+  .gm-menu.gm-menu-126809
+  .gm-item.gm-level-0
+  > .gm-target
+  > .gm-text:hover {
+  color: #f4812d !important;
+}
+.newsletter-cursive-slogan {
+  font: 100px/64px Tenstars;
+  color: #95d40b !important;
+  margin: 0;
+}
+/* --- Halloween Promo Section --- */
+.image-slider-section,
+.promo-container {
+  width: 100%;
+}
+.promo-container {
+  margin-top: 0px;
+  padding: 80px 20px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #1a0d24;
+}
+
+.promo-header {
+  font-family: "CCMonsterMash", sans-serif;
+  font-size: 3.5vw;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px #ff6600db;
+}
+
+.promo-subheader {
+  font-size: 2rem;
+  color: #f4812a;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.promo-products-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.promo-product-card {
+  background-color: #1b0c26;
+  border: 2px solid #f4812a;
+  border-radius: 15px;
+  padding: 25px;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(244, 129, 42, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promo-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(244, 129, 42, 0.8);
+}
+
+.promo-product-link {
+  text-decoration: none;
+}
+
+.promo-product-image {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  max-width: 100%;
+  height: auto;
+}
+
+.promo-product-title {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  min-height: 40px;
+  text-transform: uppercase;
+  font-family: "poppins", sans-serif;
+}
+
+.promo-product-price {
+  color: #f4812a;
+  font-size: 1.9rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "poppins", sans-serif;
+}
+
+.promo-product-button {
+  display: inline-block;
+  background-color: transparent;
+  border: 2px solid #f4812a;
+  color: #f4812a;
+  padding: 12px 40px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "poppins", sans-serif;
+}
+
+.promo-product-button:hover {
+  background-color: #f4812a;
+  color: #ffffff;
+}
+
+/* --- Media Queries for Promo Section --- */
+@media (max-width: 768px) {
+  .promo-header {
+    font-size: 4.5rem;
+  }
+  .promo-subheader {
+    font-size: 1.8rem;
+  }
+  .promo-products-grid {
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    justify-content: flex-start; /* Align items to the start */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  .promo-products-grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+  }
+  .promo-product-card {
+    flex: 0 0 280px; /* Give each card a fixed width so they don't shrink */
+  }
+}
+/* halloween-slider-container */
+/* --- Image Slider Section --- */
+.image-slider-section {
+  padding: 60px 0;
+  background-image: url("https://cdn.shopify.com/s/files/1/1848/3097/files/slider-background.png?v=1759450350");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.slider-heading {
+  font-family: "CCMonsterMash";
+  font-size: 3.5vw;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px #ff6600db;
+}
+
+.slider-container {
+  position: relative;
+  max-width: 100%; /* Make container wider */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
+.slide-content-link {
+  text-decoration: none;
+  display: block;
+}
+
+.slide-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.slide-text-wrapper {
+  flex: 1; /* Less space for text */
+  text-align: left;
+}
+
+.slide-image-wrapper {
+  flex: 2; /* More space for the image */
+}
+
+.slide-text {
+  font-family: "CCMonsterMash", sans-serif;
+  font-size: 3rem;
+  color: #f4812a;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.slide-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: 2px solid #f4812a;
+  stroke: #fff;
+  color: #f4812a;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  text-shadow: 0px 0px 35px #ff6600db !important;
+  box-shadow: 0 0 30px rgba(244, 129, 42, 0.5);
+}
+
+.slider-button:hover {
+  background-color: #f4812a;
+  color: #ffffff;
+}
+
+.slider-button.prev {
+  left: 30px;
+}
+
+.slider-button.next {
+  right: 30px;
+}
+
+.slider-dots {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  border: 2px solid #f4812a;
+  padding: 0;
+}
+
+.dot.active,
+.dot:hover {
+  background-color: #f4812a;
+}
+
+/* --- Media Queries for Slider --- */
+@media (max-width: 1024px) {
+  .slider-button {
+    top: 50%;
+  }
+
+  .slider-button.prev {
+    left: 5px; /* Further apart on mobile */
+  }
+
+  .slider-button.next {
+    right: 5px; /* Further apart on mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .image-slider-section .page-width {
+    padding: 0;
+  }
+
+  .slider-heading {
+    font-size: 4rem;
+  }
+
+  .slide-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+  }
+
+  .slide-text-wrapper {
+    text-align: center;
+    order: 2;
+  }
+
+  .slide-image-wrapper {
+    order: 1;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .slide-text {
+    font-size: 2rem;
+  }
+}

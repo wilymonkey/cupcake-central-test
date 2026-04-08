@@ -1,0 +1,248 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "banner_slideshow_CtbAwY": {
+      "type": "banner-slideshow",
+      "blocks": {
+        "slide_image_mE6Len": {
+          "type": "slide_image",
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "https://youtu.be/_kcxOyn_6o8?si=CmNT1gTqg9ZYJJI5",
+            "mobile_video_link": "https://youtu.be/_kcxOyn_6o8?si=CmNT1gTqg9ZYJJI5",
+            "image": "shopify://shop_images/WEB-BANNER-3_2x_f7f5a676-57a5-47ad-9d6e-17a84060bd35.png",
+            "mobile_image": "shopify://shop_images/WEB-BANNER-3MOBILE_1.jpg",
+            "link": "",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2020 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_mE6Len"
+      ],
+      "custom_css": [
+        ".carousel .btn {display: none;}",
+        ".carousel {pointer-events: none;}",
+        "@media screen and (max-width: 750px) {.slider-dot-control {display: none; } .carousel {pointer-events: none; }}"
+      ],
+      "settings": {
+        "slider_delay": 2000
+      }
+    },
+    "hero_banner_section_christmas_jFt4r8": {
+      "type": "hero-banner-section-christmas",
+      "disabled": true,
+      "custom_css": [
+        ".ws-delivery-block {background: linear-gradient(to left, #fcc7c3, #f690b6); width: 75%; border-radius: 20px; margin-top: -19rem !important; z-index: 1;}",
+        "#ws-delivery-block-input {display: none;}",
+        "#ws-delivery-block-inner-right {width: 30%;}",
+        "#ws-delivery-block-inner-left {width: 48%;}",
+        "#ws-delivery-block-right-content h1 {font-size: 2.3vh;}",
+        "@media screen and (max-width: 750px) {.ws-delivery-block {margin-top: -18rem !important; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "description_color": "#000000",
+        "image_position": "left",
+        "desktop_image": "shopify://shop_images/Delivery.gif",
+        "title-line1": "DELIVERING FEB 3RD TO 16TH",
+        "title-line2": "IN-STORE FROM FEB 10TH TO 16TH",
+        "title-line3": "",
+        "paragraph-description": "Celebrate the season of love by sharing around some sweet Valentine's Day treats! Whether it's to your closest friends, your family members, your favourite coworkers or your special someone, a surprise dessert delivery is just the thing for warm and fuzzy feelings all around.",
+        "button-text": "",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "custom_collection_block_valentines_FaWQM3": {
+      "type": "custom-collection-block-valentines",
+      "custom_css": [],
+      "settings": {}
+    },
+    "flavours_carousel_valentines_Dx9wf9": {
+      "type": "flavours-carousel-valentines",
+      "settings": {}
+    },
+    "image_banner_dRdyKQ": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_bz9XiF": {
+          "type": "heading",
+          "settings": {
+            "heading": "PRE-ORDER NOW FOR LATER",
+            "heading_size": "h1"
+          }
+        },
+        "text_RFYrbn": {
+          "type": "text",
+          "settings": {
+            "text": "All our sweet treats are made by hand in our Melbourne kitchen, so we'll need a little bit of notice to prepare your cupcakes. Order by 12pm the day before your desired delivery date to make sure that your desserts will be ready in time.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bz9XiF",
+        "text_RFYrbn"
+      ],
+      "custom_css": [
+        ".banner__box {background: none; color: white;}",
+        ".banner__heading {color: white;}",
+        ".banner__content--middle-center {flex-direction: column; justify-content: start; margin-top: -25px;}",
+        ".banner--medium:not(.banner--adapt) {min-height: 38rem;}",
+        "@media screen and (max-width: 750px) {.banner--medium:not(.banner--adapt) {min-height: 21rem; } .banner__heading {font-size: 16px; } .banner__text {font-size: 11px; line-height: 14px; } .banner__content--middle-center {margin-top: -21rem; } .banner__box {margin-top: 1px; } .banner__media {height: 21rem; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/BANNER-2.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "countdown_timer_JmFTCM": {
+      "type": "countdown-timer",
+      "disabled": true,
+      "custom_css": [
+        ".main-countdown-container {margin-top: -38rem !important; position: relative; z-index: 2; background: none;}",
+        ".label {color: white;}",
+        "@media screen and (max-width: 750px) {.main-countdown-container {margin-top: -33rem !important; } .countdown-timer-main-main-container {opacity: 0.8 !important; }}"
+      ],
+      "settings": {}
+    },
+    "campaign_faqs_6VW999": {
+      "type": "campaign-faqs",
+      "blocks": {
+        "faq_entry_TA6HR6": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "WHEN'S THE EARLIEST I CAN RECEIVE MY VALENTINES CUPCAKES?",
+            "answer": "All our desserts are made by hand in our Melbourne kitchen, so you'll need to order your Valentines Day cupcakes by 12pm the day before your desired delivery date so we can get your cupcakes ready in time. If you need something sooner, consider our <a href=\"https://cupcakecentral.com.au/collections/cupcake-gift-boxes\" target=\"_blank\" title=\"Cupcake Gift Boxes\">cupcake gift boxes</a> or <a href=\"https://cupcakecentral.com.au/collections/mini-cupcake-gift-boxes\" target=\"_blank\" title=\"Mini Cupcake Gift Boxes\">mini cupcake gift boxes</a> instead, which are available for same day delivery as long as you order by 12pm (subject to availability)."
+          }
+        },
+        "faq_entry_fgPwcx": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I need cupcakes today?",
+            "answer": "Since our Valentines cupcakes require more time to prepare, they're not available for same day delivery. We do offer same day delivery for our <a href=\"https://cupcakecentral.com.au/collections/cupcake-gift-boxes\" target=\"_blank\" title=\"Cupcake Gift Boxes\">cupcake gift boxes</a>  and <a href=\"https://cupcakecentral.com.au/collections/mini-cupcake-gift-boxes\" target=\"_blank\" title=\"Mini Cupcake Gift Boxes\">mini cupcake gift boxes</a> though (subject to availability), so just place your order by 12pm and we'll deliver them to you later today! Alternatively, you can also visit our <a href=\"https://cupcakecentral.com.au/pages/locations\" target=\"_blank\" title=\"Highpoint Store Information\">Highpoint store</a> if you'd like to browse our desserts in person and collect them on the spot."
+          }
+        },
+        "faq_entry_Xm7qiU": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you deliver on the Australia Day public holiday?",
+            "answer": "Yes we do! Just order by 12pm two days before and we'll deliver them to you on the day."
+          }
+        },
+        "faq_entry_aRQh3h": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "When and where do you deliver to?",
+            "answer": "We deliver 7 days a week to most suburbs in Metro Melbourne. To check if your suburb falls within our delivery zone, <a href=\"https://cupcakecentral.com.au/pages/delivery-information\" target=\"_blank\">click here</a>."
+          }
+        },
+        "faq_entry_NAEVWe": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I want to deliver to multiple locations?",
+            "answer": "We're happy to arrange this for you! Just give us a call at 9077 4542 or email service@cupcakecentral.com.au and our customer service team will process the order for you."
+          }
+        },
+        "faq_entry_RRLgL8": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "How much will delivery cost?",
+            "answer": "We offer free weekday delivery with orders over $40. If your order value is below $40, then the delivery fee will vary between $10-$15 depending on your location. On weekends, there is a $8 flat rate for delivery. We also offer free click and collect from our Highpoint store and West Footscray office locations. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\" target=\"_blank\">click here</a>. Please note that there is a minimum order value of $35 for delivery orders, and a minimum order value of $16 for click and collect orders."
+          }
+        },
+        "faq_entry_AqEx6m": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Can I select which flavours to include in my Valentines Day cupcake box?",
+            "answer": "Due to a high volume of orders, we are unable to accommodate custom requests for our Valentines Day products. If you would like to select which cupcakes flavours you receive, this is available with our <a href=\"https://cupcakecentral.com.au/collections/cupcake\">cupcakes</a> and <a href=\"https://cupcakecentral.com.au/collections/mini-cupcakes\">mini cupcakes</a>. Just add your desired flavours and quantities to your cart and we'll sort out the rest for you. Please note that minimum order values apply. For delivery orders, there is a minimum order value of $35. For click and collect orders, there is a minimum order value of $16."
+          }
+        },
+        "faq_entry_jqTQCB": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I want to order just a couple of cupcakes, instead of a whole box?",
+            "answer": "For all online orders, our Valentines Day cupcakes are available only in boxes of 12. If you'd like to purchase smaller quantities, our valentines day cupcakes are available individually at our Highpoint store. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\">click here</a>."
+          }
+        },
+        "faq_entry_gHmpcH": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "I have another question!",
+            "answer": "You can view all our FAQs by <a href=\"https://cupcakecentral.com.au/pages/faqs\">clicking here</a>, or you can contact our customer service team by calling 9077 4542 or emailing service@cupcakecentral.com.au. Please note than our customer service hours are between 9am and 4pm Monday to Friday, and 9am to 1pm on Saturdays. If you'd like to contact us outside of these hours, please send us an email and we'll get back to you as soon as we can!"
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_TA6HR6",
+        "faq_entry_fgPwcx",
+        "faq_entry_Xm7qiU",
+        "faq_entry_aRQh3h",
+        "faq_entry_NAEVWe",
+        "faq_entry_RRLgL8",
+        "faq_entry_AqEx6m",
+        "faq_entry_jqTQCB",
+        "faq_entry_gHmpcH"
+      ],
+      "custom_css": [
+        ".campaign-faq {background: #ffdfe0; margin-top: 1rem;}",
+        ".faq-question-header {color: #f96772;}",
+        ".faq-block-label {color: #f96772;}",
+        ".faq-item-content {color: black;}",
+        "a:-webkit-any-link {color: black !important; text-decoration: underline !important;}",
+        "@media screen and (max-width: 750px) {.campaign-faq {background: #ffdfe0; margin-top: 0rem !important; } .faq-block-label:first-child {padding-top: 0px; }}"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "banner_slideshow_CtbAwY",
+    "hero_banner_section_christmas_jFt4r8",
+    "custom_collection_block_valentines_FaWQM3",
+    "flavours_carousel_valentines_Dx9wf9",
+    "image_banner_dRdyKQ",
+    "countdown_timer_JmFTCM",
+    "campaign_faqs_6VW999"
+  ]
+}

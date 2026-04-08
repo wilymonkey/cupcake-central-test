@@ -1,0 +1,166 @@
+{% comment %}
+  Renders product variant options
+
+  Accepts:
+  - product: {Object} product object.
+  - option: {Object} current product_option object.
+  - block: {Object} block object.
+
+
+  Usage:
+  {% render 'product-variant-options',
+    product: product,
+    option: option,
+    block: block
+  %}
+{% endcomment %}
+{%- liquid
+  assign variants_available_arr = product.variants | map: 'available'
+  assign variants_option1_arr = product.variants | map: 'option1'
+  assign variants_option2_arr = product.variants | map: 'option2'
+  assign variants_option3_arr = product.variants | map: 'option3'
+
+  assign product_form_id = 'product-form-' | append: section.id
+-%}
+
+<style>
+  .cake-variant-label {
+    background-color: transparent !important;
+    border: 1px solid black !important;
+    border-radius: 5px !important;
+    padding: 12px !important;
+    color: black !important;
+  }
+
+  .cake-variant-button:checked+label
+  {
+    background-color: #1B9A8E !important;
+    color: white !important;
+  }
+
+  #cake-serving-size-tri, #cake-serving-size-sqr {
+    line-height: 200%;
+  }
+</style>
+
+<span id="currently-selected-variation"></span>
+
+{%- for value in option.values -%}
+  {%- liquid
+    assign option_disabled = true
+
+    for option1_name in variants_option1_arr
+      case option.position
+        when 1
+          if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+            assign option_disabled = false
+          endif
+        when 2
+          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+            assign option_disabled = false
+          endif
+        when 3
+          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+            assign option_disabled = false
+          endif
+      endcase
+    endfor
+  -%}
+
+  {%- if block.settings.picker_type == 'button' -%}
+    <input
+      type="radio"
+      id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+      name="{{ option.name }}"
+      value="{{ value | escape }}"
+      form="{{ product_form_id }}"
+      {% if option.selected_value == value %}
+        checked
+      {% endif %}
+      {% if option_disabled %}
+        class="disabled"
+      {% endif %}
+      {% if product.tags contains 'cake-range' %}
+        class="cake-variant-button"
+      {% endif %}
+    >
+    <label
+      for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+      {% if product.tags contains 'cake-range' %}
+        class="cake-variant-label"
+      {% endif %}
+    >
+      {% if product.tags contains 'cake-range' %}
+        {% if value contains '6 INCH' or value contains '8 INCH' %}
+          <img
+            {% if value contains '6 INCH' %}
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/6_INCH_TRIANGLE.webp?v=1713313759"
+            {% elsif value contains '8 INCH' %}
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/8_INCH_TRIANGLE.webp?v=1713313758"
+            {% endif %}
+            height="70"
+            width="70"
+            id="cake-cutting-style-diagram{% if value == 'TRIANGLE CUT' %}-tri{% elsif value == 'SQUARE CUT' %}-sqr{% endif %}"
+          >
+          <br>
+          <br>
+          {{- value -}}
+          <br>
+          {% if value contains '6 INCH' %}
+            (Serves 6-8)
+          {% elsif value contains '8 INCH' %}
+            (Serves 10-12)
+          {% endif %}
+        {% elsif value contains 'Plaque' %}
+          <img
+            {% if value contains 'With Plaque' %}
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/6_INCH_TRIANGLE.webp?v=1713313759"
+            {% elsif value contains 'No Plaque' %}
+              src="https://cdn.shopify.com/s/files/1/1848/3097/files/8_INCH_TRIANGLE.webp?v=1713313758"
+            {% endif %}
+            height="70"
+            width="70"
+            id="cake-cutting-style-diagram{% if value == 'TRIANGLE CUT' %}-tri{% elsif value == 'SQUARE CUT' %}-sqr{% endif %}"
+          >
+          <br>
+          <br>
+          {{- value -}}
+        {% else %}
+          {{- value -}}
+        {% endif %}
+      {% else %}
+        {{- value -}}
+      {% endif %}
+      <br>
+      {% if value == 'TRIANGLE CUT' and product.selected_variant.title contains '6 INCH' %}
+        <span id="cake-serving-size-tri">(Serves 8)</span>
+      {% elsif value == 'TRIANGLE CUT' and product.selected_variant.title contains '8 INCH' %}
+        <span id="cake-serving-size-tri">(Serves 12)</span>
+      {% elsif value == 'SQUARE CUT' and product.selected_variant.title contains '6 INCH' %}
+        <span id="cake-serving-size-sqr">(Serves 12)</span>
+      {% elsif value == 'SQUARE CUT' and product.selected_variant.title contains '8 INCH' %}
+        <span id="cake-serving-size-sqr">(Serves 25)</span>
+      {% else %}
+        {% if value == 'TRIANGLE CUT' %}
+          <span id="cake-serving-size-tri">(Serves 8)</span>
+        {% elsif value == 'SQUARE CUT' %}
+          <span id="cake-serving-size-sqr">(Serves 12)</span>
+        {% endif %}
+      {% endif %}
+      <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+    </label>
+  {%- elsif block.settings.picker_type == 'dropdown' -%}
+    <option
+      value="{{ value | escape }}"
+      {% if option.selected_value == value %}
+        selected="selected"
+      {% endif %}
+    >
+      {% if option_disabled -%}
+        {{- 'products.product.value_unavailable' | t: option_value: value -}}
+      {%- else -%}
+        {{- value -}}
+      {%- endif %}
+    </option>
+  {%- endif -%}
+{%- endfor -%}

@@ -1,0 +1,120 @@
+.collection-list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.collection-list-title {
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-list:not(.slider) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-collection-list .page-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-collection-list .collection-list:not(.slider) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.collection-list__item:only-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .slider.collection-list--1-items {
+    padding-bottom: 0;
+  }
+  .collection-list-button{
+    margin:auto;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .slider.collection-list--1-items,
+  .slider.collection-list--2-items,
+  .slider.collection-list--3-items,
+  .slider.collection-list--4-items {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .collection-list__item a:hover {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .collection-list.slider .collection-list__item {
+    max-width: 100%;
+  }
+  .card__information{
+  text-align:center;
+}
+  .show_description{
+    margin-bottom: 2rem !important;
+  }
+}
+
+.collection-list-view-all {
+  margin-top: 2rem;
+}
+
+.collection-list-button{
+  margin: auto;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-radius: 3px;
+  background-color: white;
+  text-decoration: none;
+  color: #686868;
+  border: 1px solid #686868;
+  transition: all 0.5s;
+  z-index:2;
+  position: relative;
+  font-weight:600;
+  width:fit-content;
+}
+
+.collection-list-button:hover{
+  background-color: #686868;
+  color: white;
+}
+
+.collection-list__item {
+    padding: 15px !important;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid #707070;
+}
+.collection-card__heading{
+  margin-bottom: 1.5rem !important;
+  text-align: left;
+}
+.card__inner {
+  border: 1px solid #707070 !important;
+}
+.show_description {
+  display: block !important;
+  margin-bottom: 4rem;
+  font-size:1.3rem;
+  text-align: left;
+}
+@media screen and (max-width: 450px) {
+  .show_description {
+    display: none !important;
+    margin-bottom: 4rem;
+    font-size:1.3rem;
+    text-align: left;
+}
+}
+

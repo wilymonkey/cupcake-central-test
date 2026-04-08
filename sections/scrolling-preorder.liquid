@@ -1,0 +1,89 @@
+{% schema %}
+{
+  "name": "Scrolling Preorder",
+  "settings": [
+    {
+      "type": "text",
+      "id": "scrolling_text",
+      "label": "Scrolling Text",
+      "default": "PRE-ORDER NOW"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#D6D76E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1E1E81"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "Scroll Speed (Seconds)",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Preorder"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="scrolling-banner" style="background-color: {{ section.settings.background_color }};">
+  <div class="scrolling-wrapper">
+    <div class="scrolling-text" style="color: {{ section.settings.text_color }};">
+      {% for i in (1..15) %}
+        <span>{{ section.settings.scrolling_text }} &nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      {% endfor %}
+    </div>
+    <div class="scrolling-text" style="color: {{ section.settings.text_color }};">
+      {% for i in (1..15) %}
+        <span>{{ section.settings.scrolling_text }} &nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .scrolling-banner {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .scrolling-wrapper {
+    display: flex;
+    width: 200%;
+    white-space: nowrap;
+    animation: scrollText {{ section.settings.scroll_speed }}s linear infinite;
+  }
+
+  .scrolling-text {
+    display: flex;
+    font-weight: bold;
+    font-size: 23px;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+
+  @keyframes scrollText {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>

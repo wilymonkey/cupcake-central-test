@@ -1,0 +1,151 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="gradient color-{{ section.settings.color_scheme }}{% if cart == empty %} is-empty{% endif %}"
+  id="main-cart-footer"
+  data-id="{{ section.id }}"
+>
+  <div class="page-width">
+    <div class="cart__footer isolate section-{{ section.id }}-padding">
+      <div class="gift-message-container">
+        <cart-note class="cart__note field">
+          <label for="Cart-note">Gift Card Message</label>
+          <textarea
+            class="cart-note-textarea gift-cart-note-textarea text-area field__input"
+            name="note"
+            form="cart"
+            id="Cart-note"
+            placeholder="Please enter gift message here"
+            maxlength="120"
+          ></textarea>
+        </cart-note>
+
+        <p class="note-disclaimer">Note: Emojis and special characters are unavailable</p>
+        <p class="note-disclaimer gift-note-limit-letter">0/120 characters.</p>
+        <div class="atl-container">
+          <label class="atl-checkbox">
+            <input type="checkbox" checked>
+            <span class="atl-checkbox-overlay">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0633/6662/7516/files/Drive_icon_2.png?v=1703663123"
+                class="checkbox-tick"
+                width="15"
+                height="15"
+              >
+            </span>
+          </label>
+          <h3 class="atl-text">Authorise to leave in a safe place</h3>
+        </div>
+      </div>
+      <div class="delivery-instructions-container">
+        <cart-note class="cart__note field">
+          <label for="Cart-note">Delivery Instruction</label>
+          <textarea
+            class="cart-note-textarea delivery-cart-note-textarea text-area field__input"
+            name="note"
+            form="cart"
+            id="Cart-note"
+            placeholder="Special Instructions for delivery"
+            maxlength="120"
+          >{{ cart.note }}</textarea>
+        </cart-note>
+        <p class="note-disclaimer delivery-note-limit-letter ">0/120 characters.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var giftTextArea = document.querySelector('.gift-cart-note-textarea');
+      var giftCharCountElement = document.querySelector('.gift-note-limit-letter');
+      var deliveryTextArea = document.querySelector('.delivery-cart-note-textarea');
+      var deliveryCharCountElement = document.querySelector('.delivery-note-limit-letter');
+
+      // Function to update character count for the gift message
+      function updateGiftCharCount() {
+          var enteredText = giftTextArea.value.length;
+          giftCharCountElement.textContent = enteredText + '/120 characters';
+      }
+
+      // Function to update character count for the delivery instructions
+      function updateDeliveryCharCount() {
+          var enteredText = deliveryTextArea.value.length;
+          deliveryCharCountElement.textContent = enteredText + '/120 characters';
+      }
+
+      // Initial update in case there's pre-filled text
+      updateGiftCharCount();
+      updateDeliveryCharCount();
+
+      // Event listeners for text input
+      giftTextArea.addEventListener('input', updateGiftCharCount);
+      deliveryTextArea.addEventListener('input', updateDeliveryCharCount);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

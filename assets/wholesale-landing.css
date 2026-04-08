@@ -1,0 +1,9 @@
+.wholesale-heading-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.wholesale-heading-image {
+  height: 200px;
+}

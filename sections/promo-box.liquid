@@ -1,0 +1,208 @@
+{% comment %}
+  A large promotional box section with a background, heading, and subheading.
+  Now with separate background media for mobile and desktop.
+{% endcomment %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="">
+    <a href="{{ section.settings.link }}" class="block group">
+      <div
+        class="relative flex flex-col p-8 text-white overflow-hidden h-[468px] m-xs:h-[500px] t-md:h-[320px] d-sm:h-[400px] justify-end items-center text-center d-sm:justify-center d-sm:items-start d-sm:text-left"
+      >
+        {%- comment -%} --- Backgrounds --- {%- endcomment -%}
+        <div class="absolute inset-0 z-0">
+          {%- liquid
+            assign desktop_image = section.settings.background_image_desktop
+            assign mobile_image = section.settings.background_image_mobile | default: desktop_image
+
+            assign desktop_video = section.settings.background_video_desktop
+            assign mobile_video = section.settings.background_video_mobile | default: desktop_video
+          -%}
+
+          {%- if section.settings.background_type == 'video' -%}
+            {%- if mobile_video != blank -%}
+              <video
+                src="{{ mobile_video.sources[1].url }}"
+                class="block t-md:hidden! w-full h-full object-cover"
+                autoplay loop muted playsinline
+                {% if section.settings.poster_image != blank %}poster="{{ section.settings.poster_image | image_url }}"{% endif %}
+              ></video>
+            {%- endif -%}
+            {%- if desktop_video != blank -%}
+              <video
+                src="{{ desktop_video.sources[1].url }}"
+                class="hidden t-md:block! w-full h-full object-cover"
+                autoplay loop muted playsinline
+                {% if section.settings.poster_image != blank %}poster="{{ section.settings.poster_image | image_url }}"{% endif %}
+              ></video>
+            {%- endif -%}
+          {%- elsif section.settings.background_type == 'image' -%}
+            {%- if mobile_image != blank -%}
+              <img
+                src="{{ mobile_image | image_url: width: 1000 }}"
+                alt="{{ mobile_image.alt | escape }}"
+                class="block t-md:hidden! w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                width=""
+                height=""
+              >
+            {%- endif -%}
+             {%- if desktop_image != blank -%}
+              <img
+                src="{{ desktop_image | image_url: width: 1800 }}"
+                alt="{{ desktop_image.alt | escape }}"
+                class="hidden t-md:block! w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                width=""
+                height=""
+              >
+            {%- endif -%}
+          {%- endif -%}
+          
+          {%- comment -%} If no image or video is present, use the background color {%- endcomment -%}
+          <div class="w-full h-full" style="background-color: {{ section.settings.background_color }};"></div>
+        </div>
+
+        <div class="absolute inset-0 z-1 bg-black/30"></div>
+
+        <div class="relative z-2">
+          {%- if section.settings.heading != blank -%}
+            <div class="self-stretch font-sans! text-center font-black text-[48px] leading-[44px] tracking-[0.325px] text-shadow-[0px_8px_16px_10px_#00000029] d-sm:text-left d-sm:text-[72px] d-sm:leading-[66px] d-sm:tracking-[0.5px]" style="color: {{ section.settings.text_color }};">
+              {{ section.settings.heading }}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.subheading != blank -%}
+            <p class="self-stretch text-[24px] mt-[12px] text-center font-bold text-shadow-[0px_8px_16px_10px_#00000029] leading-[26px] tracking-wide d-sm:text-[36px] d-sm:leading-[40px] d-sm:text-left" style="color: {{ section.settings.text_color }};">
+              {{ section.settings.subheading }}
+            </p>
+          {%- endif -%}
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Promo Box",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "36-DISPLAY FONT"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "18-H1-Font"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "Makes the entire box clickable."
+    },
+    {
+      "type": "header",
+      "content": "Style & Layout"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "video", "label": "Video" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background Image (Mobile)",
+      "info": "If blank, desktop image will be used."
+    },
+    {
+      "type": "video",
+      "id": "background_video_desktop",
+      "label": "Background Video (Desktop)"
+    },
+    {
+      "type": "video",
+      "id": "background_video_mobile",
+      "label": "Background Video (Mobile)",
+      "info": "If blank, desktop video will be used."
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image",
+      "label": "Video Poster Image",
+      "info": "Fallback image shown before video plays."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Fallback Background Color",
+      "default": "#7BC1B9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Box"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,142 @@
+.faq-main-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  
+}
+
+.products-showcase__title-first {
+  font-family: Beefcakes-Regular;
+  font-size: 3vw;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.products-showcase__title-second {
+  font-family: Beefcakes-Regular;
+  font-size: 3vw;
+  color: #F75533;
+  font-weight: bold;
+}
+.faq-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  width: 700px;
+  height: 500px;
+  border: 1px solid #707070;
+  border-radius: 25px;
+  opacity: 1;
+}
+
+.faq-content {
+  width: 100%;
+  flex: 1;
+}
+
+.faq-title {
+    font-family: Beefcakes-Regular;
+    font-size: 3rem;
+    color: #2A227A;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0rem;
+  padding: 2rem;
+  }
+
+  .faq-block {
+    color: #2A227A;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-block svg {
+    width: 15px;
+    position: absolute;
+    top: 3rem;
+    right: 1.5rem;
+  }
+
+  .icon-rotate {
+    transform: rotate(180deg);
+  }
+
+  .faq-block-label {
+    color: #444444;
+    display: block;
+    position: relative;
+    padding: 1.5rem 1.5rem;
+    padding-left: 1.5rem;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-top: 1px solid #686868;
+    text-transform: uppercase;
+  }
+
+  .faq-block-label:first-child {
+    border-top: none;
+  }
+
+  .faq-block-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .faq-item-content {
+    color: #444444;
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+    height: 0;
+    overflow: hidden;
+    font-size: 1.4rem;
+  }
+
+  .faq-block-caret {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  .faq-container hr {
+    margin: 0;
+    height: 1px;
+    border:none;
+  }
+
+  @media screen and (max-width: 750px) {
+    .faq-block {
+      color: #2A227A;
+      gap: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .faq-title {
+      font-size: 28px;
+    color: #2a227a;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: -17px; 
+    margin-left: 2rem;
+    margin-right: 2rem;
+    }
+
+    .faq-block-label {
+      width: 100%;
+      font-size: 1.5rem;
+    }
+      .faq-image {
+      display: none;
+  }
+  }

@@ -1,0 +1,182 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "wholesale_landing_zLK6VM": {
+      "type": "wholesale-landing",
+      "settings": {}
+    },
+    "hero_banner_section_christmas_GVCT37": {
+      "type": "hero-banner-section-christmas",
+      "custom_css": [
+        "@media (max-width: 767px) {.ws-delivery-block {width: 100% !important; border-radius: 10px; margin-top: -1rem !important; position: relative; padding: 1px !important; } #ws-delivery-block-right-content h1 {margin-top: 1px !important; font-size: 40px !important; text-align: center !important; }}",
+        ".ws-delivery-block {padding: 30px;}",
+        "#ws-delivery-block-right-content h1 {font: 800 64px / 95px Poppins; font-size: calc(100vw * (47 / 1920)); line-height: 1; letter-spacing: 0px; text-align: left;}",
+        "#ws-delivery-block-input button {height: 39px; width: 9.375vw;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "bg_color": "#f28eb4",
+        "title_color": "#ffffff",
+        "description_color": "#ffffff",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/Wholesale-Pic_2x_bf26c13e-2fd0-4b9c-8828-bfcc4c38b666.png",
+        "title-line1": "ABOUT US",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "Cupcake Central is here to bring Melbourne’s favorite cupcakes to your business. With over a decade of experience, our wholesale division now extends this experience to cafes, restaurants, and retailers looking to elevate their dessert offerings. Let’s make every day a little sweeter, together.",
+        "button-text": "ENQUIRE NOW",
+        "link": "",
+        "is-button-scroll-to-section": true,
+        "scroll-to-section-id": "shopify-section-template--16211541917756__partners_gfUMT3"
+      }
+    },
+    "wholesale_flavours_carousel_3XwNGk": {
+      "type": "wholesale-flavours-carousel",
+      "settings": {}
+    },
+    "partners_gfUMT3": {
+      "type": "partners",
+      "blocks": {
+        "partner_block_c7enLE": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Grazeland_Logo_Transparent.webp",
+            "mobile_image": "shopify://shop_images/Grazeland_Logo_Transparent.webp",
+            "link": ""
+          }
+        },
+        "partner_block_CgjJMW": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Poked_Logo_Transparent.webp",
+            "mobile_image": "shopify://shop_images/Poked_Logo_Transparent.webp",
+            "link": ""
+          }
+        },
+        "partner_block_qNzDTV": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Doughville_Logo_Transparent_2.webp",
+            "mobile_image": "shopify://shop_images/Doughville_Logo_Transparent_2_b01db4a5-9292-402a-b651-b32d78b8f1dc.webp",
+            "link": ""
+          }
+        },
+        "partner_block_96TTXJ": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/BBT_Club_Logo_Transparent.webp",
+            "mobile_image": "shopify://shop_images/BBT_Club_Logo_Transparent.webp",
+            "link": ""
+          }
+        },
+        "partner_block_hbApcq": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/logo_scoopy.png",
+            "link": ""
+          }
+        },
+        "partner_block_rQRXWj": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/logo_the_pantry.png",
+            "link": ""
+          }
+        },
+        "partner_block_gmiN7r": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/logo_bonnie_duke.png",
+            "link": ""
+          }
+        },
+        "partner_block_7HnmcJ": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/logo_truffles.png",
+            "link": ""
+          }
+        },
+        "partner_block_iNMHzW": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/logo_splash.png",
+            "link": ""
+          }
+        },
+        "partner_block_KTNmcz": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/logo_royale.png",
+            "link": ""
+          }
+        },
+        "partner_block_FLUNK7": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/logo_leaf.png",
+            "link": ""
+          }
+        },
+        "partner_block_aHj3rM": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/logo_coffeehit.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "partner_block_c7enLE",
+        "partner_block_CgjJMW",
+        "partner_block_qNzDTV",
+        "partner_block_96TTXJ",
+        "partner_block_hbApcq",
+        "partner_block_rQRXWj",
+        "partner_block_gmiN7r",
+        "partner_block_7HnmcJ",
+        "partner_block_iNMHzW",
+        "partner_block_KTNmcz",
+        "partner_block_FLUNK7",
+        "partner_block_aHj3rM"
+      ],
+      "custom_css": [
+        "div {background-color: #f9f0e5;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "header_title": "our partners"
+      }
+    },
+    "1736462288a61295f5": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "wholesale_landing_zLK6VM",
+    "hero_banner_section_christmas_GVCT37",
+    "wholesale_flavours_carousel_3XwNGk",
+    "partners_gfUMT3",
+    "1736462288a61295f5"
+  ]
+}

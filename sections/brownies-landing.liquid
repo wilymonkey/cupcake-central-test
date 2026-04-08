@@ -1,0 +1,253 @@
+{{ 'brownies-landing.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<h2 class="brownies-heading">OUR FLAVOURS</h2>
+<div class="brownies-flavour-container">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      {% if block.type == 'image' %}
+      <div class="brownies-flavour-item">
+        {% if block.settings.image != blank %}
+          <div class="brownie-image">
+            <img
+              class="lazyload"
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="service Image"
+              width="100%"
+              height="100%"
+            >
+          </div>
+        {% endif %}
+          <div class="brownie-title">{{ block.settings.title | escape }}</div>
+      </div>
+        {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
+<div class="gift-boxes-container">
+  <div class="brownie-gift-box-container">
+    <h2 class="brownies-heading1">OUR GIFT BOXES</h2>
+    <div class="brownies-products-container1">
+      {% for product in collections.brownie-slices.products %}
+          <div class="brownies-product-item1">
+            <a href="{{ product.url }}">
+              <div class="brownies-product">
+                <div class="brownie-product-image">
+                  <img id="productImage" src="{{ product.featured_image | img_url: '350x350' }}" alt="{{ product.featured_image.alt }}">
+                </div>
+                <div class="brownie-title-main">{{ product.title }}</div>
+                <div class="priceandbutton">
+                  <div class="brownie-price">{{ product.price | money }}</div>
+                  <div class="quick-add no-js-hidden">
+                          {%-liquid 
+                            assign section_id = section.id   
+                          %}
+                          {%- liquid
+                            assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                            assign qty_rules = false
+                            if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                              assign qty_rules = true
+                            endif
+                          -%}
+                          {%- if product.variants.size > 1 or qty_rules -%}
+                            <a style="text-decoration: none;" href="{{ product.url }}"
+                              ><button class="quick-add__submit button button--full-width button--secondary">
+                                ORDER NOW
+                              </button></a
+                            >
+                          {%- else -%}
+                            {%- if product.tags contains 'Custom' -%}
+                              <a style="text-decoration: none;" href="{{ product.url }}"
+                                ><button class="quick-add__submit button button--full-width button--secondary">
+                                  ORDER NOW
+                                </button></a
+                              >
+                            {%- else -%}
+                              <product-form data-section-id="{{ section.id }}">
+                                {%- form 'product',
+                                  product,
+                                  id: product_form_id,
+                                  class: 'form',
+                                  novalidate: 'novalidate',
+                                  data-type: 'add-to-cart-form'
+                                -%}
+                                  <input
+                                    type="hidden"
+                                    name="id"
+                                    value="{{ product.selected_or_first_available_variant.id }}"
+                                    class="product-variant-id"
+                                    {% if product.selected_or_first_available_variant.available == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                  <button
+                                    id="{{ product_form_id }}-submit"
+                                    type="submit"
+                                    name="add"
+                                    class="quick-add__submit button button--full-width button--secondary"
+                                    aria-haspopup="dialog"
+                                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                    aria-live="polite"
+                                    data-sold-out-message="true"
+                                    {% if product.selected_or_first_available_variant.available == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                    <span>
+                                      {%- if product.selected_or_first_available_variant.available -%}
+                                        {{ 'products.product.add_to_cart' | t }}
+                                      {%- else -%}
+                                        {{ 'products.product.sold_out' | t }}
+                                      {%- endif -%}
+                                    </span>
+                                    <span class="sold-out-message hidden">
+                                      {{ 'products.product.sold_out' | t }}
+                                    </span>
+                                    {%- render 'loading-spinner' -%}
+                                  </button>
+                                {%- endform -%}
+                              </product-form>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </div>
+                </div>
+              </div>
+            </a>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="view-more">
+  <button id="view-more-button" class="view-more-button">SHOW MORE</button>
+</div>
+
+<div class="brownie-options">
+  <h2 class="brownie-heading">A BITE OF HAPPINESS</h2>
+  {% if section.blocks.size > 0 %}
+      <div class="brownie-options-container-block">
+        {% for block in section.blocks %}
+          {% if block.type == 'brownie_options' %}
+          <div class="brownie-options-container">
+            <div class="brownie-option-text">{{ block.settings.brownie_title }}</div>
+            <div class="brownie-option-image">
+              <img
+                    class="lazyload"
+                    src="{{ block.settings.brownie_image | img_url: 'master' }}"
+                    alt="service Image"
+                    width="50"
+                    height="50"
+                  >
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+</div>
+
+<script>
+
+  
+    document.addEventListener('DOMContentLoaded', function () {
+    const productItems1 = document.querySelectorAll('.brownies-product-item1');
+  
+    // Initially hide all items after the first 4
+    function updateLayout() {
+      productItems1.forEach((item, index) => {
+        if (index >= 4) {
+          item.classList.add('hidden');
+        } else {
+          item.classList.remove('hidden');
+        }
+      });
+    }
+
+  updateLayout(); // Call initially to set up the layout
+
+  // Show all items on button click
+  document.getElementById('view-more-button').addEventListener('click', function () {
+    productItems1.forEach(item => item.classList.remove('hidden'));
+
+    // Optionally hide the button after clicking
+    this.style.display = 'none';
+  });
+
+  // Adjust layout to ensure 4 items per row
+  function adjustItemWidth() {
+    const container = document.querySelector('.brownies-products-container1');
+    if (container) {
+      const containerWidth = container.clientWidth;
+      const itemWidth = 315; // Fixed width of items
+      const gap = 20; // Gap between items
+
+      // Calculate number of items per row
+      const itemsPerRow = Math.floor(containerWidth / (itemWidth + gap));
+      
+      // Update CSS to ensure correct number of items per row
+      container.style.setProperty('--items-per-row', itemsPerRow);
+    }
+  }
+
+  adjustItemWidth(); // Call initially
+  window.addEventListener('resize', adjustItemWidth); // Update on window resize
+});
+
+</script>
+{% schema %}
+{
+  "name": "Bownies Landing Page",
+  "settings": [],
+  "blocks": [
+   {
+     "type": "image",
+     "name": "Brownie Types",
+     "settings": [
+       {
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image",
+         "info":"Size : 50px X 50px"
+       },
+       {
+         "type": "text",
+         "id": "title",
+         "label": "Title",
+         "default": "item title"
+       },
+       {
+         "type": "url",
+         "id": "link",
+         "label": "Link"
+       }
+     ]
+   },
+   {
+      "type": "brownie_options",
+      "name": "Brownie Options",
+      "limit": 20,
+      "settings": [
+      {
+      "type": "text",
+      "id": "brownie_title",
+      "label": "Brownie Option",
+      "default": "Morning Tea"
+    },
+    {
+      "type": "image_picker",
+      "id": "brownie_image",
+      "label": "Brownie Option Image",
+    }
+      ]
+    }
+ ],
+  "presets": [
+  {
+    "name": "Brownies Landing"
+    }
+  ],
+  
+}
+{% endschema %}

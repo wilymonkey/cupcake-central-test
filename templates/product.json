@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "20505f4d-dbf7-4a76-8959-8b82d7952c04": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "scheme-3",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_MUyHb8": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% if product.tags contains 'CRM' %}\n<script>window.location.href=\"/\"</script>\n{% endif %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "9c1563ab-4f2a-4c05-bb67-e0cefb7537a5": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "d26c02c0-cd81-4cf5-b948-4ffc2fb7986a": {
+          "type": "quantity_buy_buttons",
+          "settings": {}
+        },
+        "b503e276-2d98-469f-a736-eec851748e8a": {
+          "type": "dietary_icons",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "d5b8ff38-1c63-4c0c-bcfb-4d6f6dad8f50": {
+          "type": "add_on_products",
+          "disabled": true,
+          "settings": {
+            "first_product": "candles-happy-birthday",
+            "second_product": "happy-birthday-gold-acrylic-cake-topper",
+            "third_product": "candles-let-s-get-lit"
+          }
+        },
+        "fb7abd0d-93fa-4aa6-8fd6-ee682232931c": {
+          "type": "mobile_description",
+          "settings": {}
+        },
+        "07464126-3114-401e-997a-a341da8eee2a": {
+          "type": "delivery_click",
+          "settings": {}
+        },
+        "42381012-d28a-48a0-b0e6-9fc0258847c7": {
+          "type": "delivery_information_text",
+          "disabled": true,
+          "settings": {
+            "standard_delivery_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "fast_delivery_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "9c1563ab-4f2a-4c05-bb67-e0cefb7537a5",
+        "price",
+        "d26c02c0-cd81-4cf5-b948-4ffc2fb7986a",
+        "b503e276-2d98-469f-a736-eec851748e8a",
+        "variant_picker",
+        "description",
+        "d5b8ff38-1c63-4c0c-bcfb-4d6f6dad8f50",
+        "fb7abd0d-93fa-4aa6-8fd6-ee682232931c",
+        "07464126-3114-401e-997a-a341da8eee2a",
+        "42381012-d28a-48a0-b0e6-9fc0258847c7"
+      ],
+      "custom_css": [
+        ".product-form__buttons {margin-top: 15px;}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-3",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "17066578723a1aac7d": {
+      "type": "apps",
+      "custom_css": [
+        "@media screen and (min-width: 780px) {.jdgm-review-widg {margin: auto !important; width: 85% !important; }}",
+        ".jdgm-row-stars {padding: 20px !important;"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "72cfe91d-4c0b-4393-b692-17dd159958ca": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "YOU MAY ALSO LIKE",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "best-sellers",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-3",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "20505f4d-dbf7-4a76-8959-8b82d7952c04",
+    "custom_liquid_MUyHb8",
+    "main",
+    "17066578723a1aac7d",
+    "72cfe91d-4c0b-4393-b692-17dd159958ca",
+    "related-products"
+  ]
+}

@@ -1,0 +1,38 @@
+<style>
+  nav.breadcrumb a {
+    text-decoration: none;
+    color: #444;
+}
+    nav.breadcrumb .breadcrumb-caret {
+    text-decoration: none;
+    color: #444;
+}
+nav.breadcrumb {
+    margin: 25px 0 0 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #444;
+    font-weight: bold;
+}
+</style>
+{% if template == 'product' %}
+  {% assign current_collection = product.collections.first %}
+  {% if current_collection %}
+    <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+      <a href="/" title="Home">Home</a>
+      <span class="breadcrumb-caret" aria-hidden="true">›</span>
+      <a href="{{ current_collection.url }}" title="{{ current_collection.title }}">{{ current_collection.title }}</a>
+      <span class="breadcrumb-caret" aria-hidden="true">›</span>
+      <span>{{ product.title }}</span>
+    </nav>
+  {% endif %}
+{% endif %}
+{% if template == 'blog' %}
+    <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+      <a href="/" title="Home">Home</a>
+      <span class="breadcrumb-caret" aria-hidden="true">›</span>
+      <a href="{{ blog.url }}" title="{{ blog.title }}">{{ blog.title }}</a>
+      <span class="breadcrumb-caret" aria-hidden="true">›</span>
+      <span>{{ article.title }}</span>
+    </nav>
+{% endif %}

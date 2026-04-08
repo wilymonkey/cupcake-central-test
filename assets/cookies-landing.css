@@ -1,0 +1,352 @@
+.cookies-heading {
+  font-size: 48px;
+  color: #0f9b8c;
+  text-align: center;
+}
+
+.cookies-flavour-container {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: flex-start; /* Align items at the top */
+  margin: auto;
+  height: auto; /* Allow container to adjust to content height */
+  width: 100%;
+}
+
+.cookies-flavour-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 210px;
+  height: auto; /* Allow the item height to adjust to its content */
+}
+
+.cookie-image img {
+  height: 250px;
+  object-fit: cover; /* Ensure the image covers the container without stretching */
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+
+.cookie-title {
+  text-transform: uppercase;
+  text-decoration: none !important;
+  margin-bottom: 40px; /* Consistent gap between title and price */
+  overflow-wrap: break-word; /* Handles long words */
+  text-wrap: wrap;
+  text-align: center;
+  color: #444444;
+  font-size: 1.7rem;
+  font-weight: bold;
+  line-height: 24px;
+  flex-grow: 1;
+}
+
+.gift-boxes-container{
+  width: 100%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 10px;
+  background-color: #fcf8f3;
+}
+
+.twelve-cookie-gift-box-container {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.six-cookie-gift-box-container{
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cookies-products-container1 {
+  display: flex;
+  justify-content: right;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 40px; /* Adjust the space between items */
+  margin-right: 20px;
+}
+.cookies-heading1 {
+  font-size: 36px;
+  color: #0f9b8c;
+  text-align: right;
+  margin-right: 200px;
+}
+
+.cookies-heading2 {
+  font-size: 36px;
+  color: #0f9b8c;
+  text-align: left;
+  margin-left: 200px;
+}
+
+.cookies-products-container2 {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 40px; /* Adjust the space between items */
+  margin-left: 20px;
+}
+
+.cookies-product-item1 {
+  display: flex;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 315px;
+  height: 500px; /* Fixed height for consistency */
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden; /* Prevents content from overflowing */
+}
+
+.cookies-product-item2 {
+  display: flex;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 315px;
+  height: 500px; /* Fixed height for consistency */
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden; /* Prevents content from overflowing */
+}
+
+.cookies-product {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Full height of the parent */
+  flex-grow: 1;
+}
+
+.cookie-product-image img {
+  width: 285px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.cookies-products-container1 a {
+  text-decoration: none;
+}
+
+.cookies-products-container2 a {
+  text-decoration: none;
+}
+
+.cookie-price {
+  color: #444444;
+  font-size: 1.7rem;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.priceandbutton {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cookie-order-button{
+  padding-top: 10px;
+}
+
+.view-more-button:hover {
+  background-color: #0e8c7c;
+}
+
+/* Hide extra products initially */
+.hidden {
+  display: none;
+}
+.view-more-button {
+  height: 50px;
+  width: 150px;
+  background-color: #f482b5;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 20px; /* Space between products and button */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto;
+}
+
+.view-more {
+  background-color: #fcf8f3;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.cookies-product-item1.hidden,
+.cookies-product-item2.hidden {
+  display: none;
+}
+
+.how-to-heat-container {
+  background-color: #f9f1e4;
+}
+
+.how-to-heat-steps-container {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.heat-step1-text,
+.heat-step2-text,
+.heat-step3-text {
+  display: flex;
+  justify-content: center;
+}
+
+.heat-step1-text1,
+.heat-step2-text1,
+.heat-step3-text1 {
+  flex: 1 15%;
+  font-size: 42px;
+  font-weight: bold;
+  color: #444444;
+  opacity: 0.5;
+  line-height: 50px;
+}
+
+.arrow-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heat-step1-text2,
+.heat-step2-text2,
+.heat-step3-text2 {
+  flex: 1 85%;
+  font-size: 24px;
+  font-weight: 300;
+  color: #444444;
+  line-height: 26px;
+}
+
+.heat-step1-image,
+.heat-step2-image,
+.heat-step3-image {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+.cookies-heading {
+  font-size: 24px;
+  color: #0f9b8c;
+  text-align: center;
+}
+  .cookies-heading1 {
+    font-size: 28px;
+    color: #0f9b8c;
+    text-align: center;
+    padding-left: 0px;
+    margin-right: 0px
+}
+
+.cookies-heading2 {
+  font-size: 28px;
+  color: #0f9b8c;
+  text-align: center;
+  padding-right: 0px;
+  margin-left: 0px;
+}
+
+  .cookies-flavour-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100px;
+    height: 200px; /* Allow the item height to adjust to its content */
+}
+  .cookie-title {
+    text-wrap: wrap;
+    text-align: center;
+    color: #444444;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+}
+  .cookie-image img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover; /* Ensure the image covers the container without stretching */
+    border-radius: 20px;100border: 1px solid black;1}
+  
+  .cookies-flavour-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+    margin: auto;
+    height: auto; /* Allow container to adjust to content height */
+    width: 100%;
+    margin-bottom: 2px;
+}
+  .cookies-products-container1 {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 20px; /* Adjust the space between items */
+    margin-left: 0px;
+}
+  .cookies-products-container2 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 20px; /* Adjust the space between items */
+    margin-right: 0px;
+}
+  .how-to-heat-steps-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+  .arrow-image {
+    display: none;
+}
+}
+
+.quick-add {
+    position: relative;
+    grid-row-start: 4;
+    margin: 0px !important;
+    z-index: 1;
+}
+
+.quick-add__submit {
+  padding: 0.8rem;
+  min-width: 80%;
+  box-sizing: border-box;
+  width:90%;
+  font-size: 14px !important;
+}
+
+

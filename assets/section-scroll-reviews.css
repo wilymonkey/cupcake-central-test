@@ -1,0 +1,187 @@
+.reviews-section {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.review-bubble {
+  min-width: 300px !important;
+  margin-right: -20px; /* Creates the overlap effect */
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.review-bubble:nth-child(odd) {
+  transform: translateY(40px) !important; /* Lower odd-numbered cards */
+  margin-left: -20px; /* Overlap effect with the previous bubble */
+}
+
+.review-bubble:nth-child(even) {
+  margin-left: -20px; /* Overlap effect with the previous bubble */
+}
+
+.star-rating {
+  color: #ffd700; /* Gold color for stars */
+  font-size: 20px;
+}
+.reviews__posts {
+  gap: 0 !important;
+}
+.star {
+  display: inline-block;
+}
+
+.filled {
+  color: #ffd700;
+}
+.reviews-section-wrapper {
+  overflow: hidden;
+}
+
+.reviews-section-title {
+  text-align: left;
+  font-size: 4rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.reviews-slider {
+  display: flex !important;
+}
+
+.review-bubble {
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  height: fit-content;
+}
+
+.reviewer-photo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 20px;
+  position: absolute;
+  left: -15px;
+  z-index: 5;
+  margin-top: 5px;
+}
+
+.reviewer-info {
+  text-align: left;
+  padding-left: 3rem;
+}
+
+.reviewer-name {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: bold;
+  color: #444444;
+}
+
+.reviewer-rating {
+  margin: 5px 0;
+}
+
+.star {
+  color: #ffd700; /* Star color */
+  margin-right: 5px;
+}
+
+.filled {
+  color: #ffd700;
+}
+
+.reviewer-comment {
+  font-size: 1.2rem;
+  color: #444444;
+}
+
+.reviews-title-wrapper {
+  width: 100%;
+  display: block;
+  margin-bottom: 3rem;
+}
+.reviews-slider-btn {
+  justify-content: left;
+}
+@media screen and (min-width: 990px) {
+  .slider--desktop .slider__slide:first-child {
+    margin-left: 25px !important;
+  }
+}
+@media screen and (max-width: 989px) {
+  .reviews-slider {
+    display: block !important;
+  }
+  .reviews-title-wrapper {
+    display: flex !important;
+  }
+  .reviews-slider-btn {
+    align-items: start;
+    position: absolute;
+    float: right;
+    right: 5%;
+    margin-top: 5.5rem !important;
+  }
+  .reviews__posts {
+    padding-bottom: 15%;
+  }
+  .review-bubble:nth-child(odd) {
+    transform: translateY(40px) !important; /* Lower odd-numbered cards */
+    margin-left: -30px; /* Overlap effect with the previous bubble */
+  }
+
+  .review-bubble:nth-child(even) {
+    margin-left: -40px; /* Overlap effect with the previous bubble */
+  }
+}
+@media screen and (min-width: 1400px) {
+  .reviews-section-title {
+    font-size: 5rem;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .reviews-slider-btn {
+    display: flex !important;
+  }
+  .reviews__posts {
+    padding-bottom: 5%;
+  }
+}
+/* The below can be done in a more scalable way with javascript or sass but I have opted against it due to time constraints */
+.review-bubble:nth-child(10) {
+  z-index: 10;
+}
+.review-bubble:nth-child(9) {
+  z-index: 9;
+}
+.review-bubble:nth-child(8) {
+  z-index: 8;
+}
+.review-bubble:nth-child(7) {
+  z-index: 7;
+}
+.review-bubble:nth-child(6) {
+  z-index: 6;
+}
+.review-bubble:nth-child(5) {
+  z-index: 5;
+}
+.review-bubble:nth-child(4) {
+  z-index: 4;
+}
+.review-bubble:nth-child(3) {
+  z-index: 3;
+}
+.review-bubble:nth-child(2) {
+  z-index: 2;
+}
+.review-bubble:nth-child(1) {
+  z-index: 1;
+}

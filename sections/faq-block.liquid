@@ -1,0 +1,146 @@
+{{ 'faq-block.css' | asset_url | stylesheet_tag }}
+
+<div class="faq-main-container">
+  <div class="faq-header">
+    HOW CAN WE HELP?
+  </div>
+  <div class="faq-icons-container">
+    <div class="faq-icon-container-background" id="faq-ordering">
+      <div class="faq-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_188.svg?v=1723184291" height="100px" width="100px"></div>
+      <div class="faq-icon-title" data-title-id="ordering">ORDERING</div>
+    </div>
+    <div class="faq-icon-container-background" id="faq-delivery">
+      <div class="faq-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_201.svg?v=1723184291" height="100px" width="100px"></div>
+      <div class="faq-icon-title" data-title-id="delivery">DELIVERY AND CLICK AND COLLECT</div>
+    </div>
+    <div class="faq-icon-container-background" id="faq-storage">
+      <div class="faq-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Path_8.svg?v=1723184291" height="100px" width="100px"></div>
+      <div class="faq-icon-title" data-title-id="storage">STORAGE</div>
+    </div>
+    <div class="faq-icon-container-background" id="faq-allergy">
+      <div class="faq-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_454.svg?v=1723184291" height="100px" width="100px"></div>
+      <div class="faq-icon-title" data-title-id="allergens">ALLERGENS & PRODUCT INFORMATION</div>
+    </div>
+    <div class="faq-icon-container-background" id="faq-paymentrefund">
+      <div class="faq-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_208.svg?v=1723184291" height="100px" width="100px"></div>
+      <div class="faq-icon-title" data-title-id="payment">PAYMENT & REFUND</div>
+    </div>
+    <div class="faq-icon-container-background" id="faq-wholsale">
+      <div class="faq-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Layer_x0020_1.svg?v=1723184291" height="100px" width="100px"></div>
+      <div class="faq-icon-title" data-title-id="wholesale">WHOLESALE</div>
+    </div>
+    <div class="faq-icon-container-background" id="faq-feedback">
+      <div class="faq-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_507.svg?v=1723526913" height="100px" width="100px"></div>
+      <div class="faq-icon-title" data-title-id="corporate">CORPORATE</div>
+    </div>
+    <div class="faq-icon-container-background" id="faq-otherquestion">
+      <div class="faq-icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_212.svg?v=1723184291" height="100px" width="100px"></div>
+      <div class="faq-icon-title" data-title-id="other">OTHER QUESTIONS</div>
+  </div>
+  </div>
+  <div class="faq-questions-container hidden">
+    <div class="faq-question-header" id="faq-question-header">FREQUENTY ASKED QUESTION</div>
+    <div class="faq-block" id="faq-items">
+      {% assign block_num = 0 %}
+      {% for block in section.blocks %}
+        <div class="faq-container" data-title-id="{{ block.settings.title_id }}">
+          <label class="faq-block-label">
+            {{ block.settings.title }}
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="faq-block-caret"
+              viewBox="0 0 10 6"
+            >
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+            </svg>
+          </label>
+          <div class="faq-item-content">
+            {{ block.settings.answer }}
+          </div>
+          <hr>
+        </div>
+        {% assign block_num = block_num | plus: 1 %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+    
+
+  $(document).ready(function() {
+  // Toggle FAQ item on click
+  $(".faq-block-label, .faq-block-caret").on('click', function(event) {
+    event.stopPropagation();
+    const contentElement = $(event.target).closest('.faq-container').find('.faq-item-content');
+    const currentHeight = contentElement.height();
+    if (currentHeight === 0) {
+      contentElement.css('height', "auto");
+      contentElement.css('marginBottom', "24px");
+    } else {
+      contentElement.css('height', "0");
+      contentElement.css('marginBottom', "0");
+    }
+  });
+
+  // Filter FAQ items based on icon click
+  $(".faq-icon-container-background").on('click', function(event) {
+    const faqContainer = $('.faq-questions-container');
+    if (faqContainer.hasClass('hidden')) {
+      faqContainer.removeClass('hidden'); // Show FAQ questions container
+    }
+    document.querySelector('.faq-header').scrollIntoView({ behavior: 'smooth' });
+    const titleId = $(this).find('.faq-icon-title').data('title-id');
+    $(".faq-container").hide(); // Hide all FAQ items
+    $(`.faq-container[data-title-id="${titleId}"]`).show(); // Show only the relevant FAQ items
+    $("#faq-question-header").text($(this).find('.faq-icon-title').text());
+  });
+});
+
+
+
+
+  
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Block",
+  "tag": "section",
+  "settings": [ ],
+   "presets": [
+        {
+          "name": "FAQ Block"
+        }
+      ],
+  "blocks": [
+    {
+      "type": "faq_entry",
+      "name": "FAQ Entry",
+      "limit": 50,
+      "settings": [
+      {
+      "type": "text",
+      "id": "title_id",
+      "label": "Question Category",
+      "default": "delivery"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Question",
+      "default": "Where do you deliver to?"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "answer",
+      "label": "Answer",
+      "default": "Please use the postcode checker above to check whether you are in our sweet zones."
+    }
+      ]
+    }
+  ]
+}
+{% endschema %}

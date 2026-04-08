@@ -1,0 +1,87 @@
+  {{ 'component-cart-delivery.css' | asset_url | stylesheet_tag }}
+  <div class="page-width cart-delivery-section">
+    <div class="cart-delivery">
+    <div class="delivery-title-container">
+      <h2 class="delivery-title">Delivery</h2>
+    </div>
+<div class="cart-delivery-blocks-section">
+  {% for block in section.blocks %}
+    <div class="cart-delivery-block-container">
+    <div class="cart-delivery-block" style="background-color: {{ block.settings.background_color }}; border-color: {{ block.settings.block_border_color }};">
+      {% if block.settings.image != blank %}
+        <img src="{{ block.settings.image | img_url: '1024x' }}" alt="{{ block.settings.heading | escape }}" class="block-image" width="28" height="24">
+      {% endif %}
+        <h2 class="cart-delivery-heading" style="color: {{ block.settings.heading_color }};">{{ block.settings.heading }}</h2>
+      </div>
+  <small class="delivery-error-msg hidden">Sorry, shipping is not available for your selected items. Please only select products tagged with 'AUS WIDE' icon.</small>
+    </div>
+  {% endfor %}
+</div>
+    </div>
+  </div>
+<script>
+  const deliveryBlocks = document.querySelectorAll('.cart-delivery-block');
+
+  for (let i = 0; i < deliveryBlocks.length; i++) {
+    deliveryBlocks[i].addEventListener("click", function() {
+      // Remove 'active' class from all elements
+      deliveryBlocks.forEach(function(element) {
+        element.classList.remove("active");
+      });
+
+      // Add 'active' class to the clicked element
+      this.classList.add("active");
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Delivery Selection ",
+  "class": "delivery-selection-section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "block_border_color",
+          "label": "Block Border Color",
+          "default": "#dddddd"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Text Color",
+          "default": "#444"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Your Heading Here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Delivery Selection",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1728 @@
+<script
+  type="text/javascript"
+  async
+>
+    $(document).ready(function(){
+      $('.cart__checkout-button').on('click', function(){
+        window.localStorage.setItem('delivery_postcode', $('#deliveryGeoSearchField').val());
+      });
+    
+      window.ZapietEvent.listen('delivery.datepicker.rendered', function() {
+        $('#storePickupApp .delivery-fee-msg').remove();
+        // Apply Customisation Conditions
+        // Condition - Trigger
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            var triggerSatisfied = false;
+            // Prepare Trigger
+            // Trigger - Prepare Selecetd Products
+            {% if block.settings.trigger != blank and block.settings.trigger == "products" %}
+              var selectedProductIds = [];
+              {% for product in block.settings.trigger_products %}
+                {% for eachVariant in product.variants %}
+                selectedProductIds.push(`{{eachVariant.id}}`);
+                  {% endfor %}
+              {% endfor %}
+            // Trigger - Prepare Selecetd Collections
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "collections" %}
+              var selectedCollectionIds = [];
+              {% for collection in block.settings.trigger_collections %}
+                selectedCollectionIds.push(`{{collection.id}}`);
+              {% endfor %}
+            // Trigger - Prepare Entered Tags
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "tags" %}
+              {% assign selectedTags = block.settings.trigger_tags | split: ", " %}
+              var selectedTags = [];
+              {% for tag in selectedTags %}
+                selectedTags.push(`{{tag}}`);
+              {% endfor %}
+            // Trigger - Prepare Entered Product Types
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "types" %}
+              {% assign selectedTypes = block.settings.trigger_types | split: ", " %}
+              var selectedTypes = [];
+              {% for type in selectedTypes %}
+                selectedTypes.push(`{{type}}`);
+              {% endfor %}
+            {% endif %}
+        
+            // Check if Cart Items Satisfy the Trigger
+            {% if block.settings.trigger != blank and block.settings.trigger == "products" %}
+              {% for lineItem in cart.items %}
+                if (selectedProductIds.includes(`{{lineItem.id}}`)){
+                  triggerSatisfied = true;
+                }
+              {% endfor %}
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "collections" %}
+              {% for lineItem in cart.items %}
+                {% for collection in lineItem.product.collections %}
+                  if (selectedCollectionIds.includes(`{{collection.id}}`)){
+                    triggerSatisfied = true;
+                  }
+                {% endfor %}
+              {% endfor %}
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "tags" %}
+              {% for lineItem in cart.items %}
+                {% for tag in lineItem.product.tags %}
+                  if (selectedTags.includes(`{{ tag }}`)) {
+                    triggerSatisfied = true;
+                  }
+                {% endfor %}
+              {% endfor %}
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "types" %}
+              {% for lineItem in cart.items %}
+                if (selectedTypes.includes(`{{lineItem.product.type}}`)) {
+                  triggerSatisfied = true;
+                }
+              {% endfor %}
+            {% endif %}
+
+
+            
+            // Action
+            if (triggerSatisfied) {
+              // Action - Prepare Dates
+              var prepareDate = null;
+              var now = new Date();
+              var isPastNoon = now.getHours() >= 12;
+              {% if block.settings.half_day_preparation %}
+                prepareDate = new Date().getTime() + 43200000;
+              {% elsif block.settings.six_hour_preparation %}
+                prepareDate = new Date().getTime() + 21600000;
+              {% elsif block.settings.nine_hour_preparation %}
+                prepareDate = new Date().getTime() + 32400000;
+              {% elsif block.settings.one_day_preparation %}
+                prepareDate = new Date().getTime() + 86400000;
+                if (isPastNoon) {
+                prepareDate += 86400000; // Add another 24 hours
+                }
+              {% elsif block.settings.two_days_preparation %}
+                prepareDate = new Date().getTime() + 172800000;
+              {% endif %} 
+              
+              {% if block.settings.date_options != blank and block.settings.date_options == "date_range_option" %}
+                var dateRanges = [];
+                {% if block.settings.enable_date_rannge_1 %}
+                  {% if block.settings.date_rannge_from_1 != blank and block.settings.date_rannge_to_1 != blank %}
+                    var fromDate = new Date(`{{block.settings.date_rannge_from_1}}`).getTime();
+                    var toDate = new Date(`{{block.settings.date_rannge_to_1}}`).getTime();
+                      dateRanges.push([fromDate, toDate]);
+                  {% endif %}
+                {% endif %}
+                {% if block.settings.enable_date_rannge_2 %}
+                  {% if block.settings.date_rannge_from_2 != blank and block.settings.date_rannge_to_2 != blank %}
+                    var fromDate = new Date(`{{block.settings.date_rannge_from_2}}`).getTime();
+                    var toDate = new Date(`{{block.settings.date_rannge_to_2}}`).getTime();
+                      dateRanges.push([fromDate, toDate]);
+                  {% endif %}
+                {% endif %}
+                {% if block.settings.enable_date_rannge_3 %}
+                  {% if block.settings.date_rannge_from_3 != blank and block.settings.date_rannge_to_3 != blank %}
+                    var fromDate = new Date(`{{block.settings.date_rannge_from_3}}`).getTime();
+                    var toDate = new Date(`{{block.settings.date_rannge_to_3}}`).getTime();
+                      dateRanges.push([fromDate, toDate]);
+                  {% endif %}
+                {% endif %}
+              {% elsif block.settings.date_options != blank and block.settings.date_options == "specific_dates_option" %}
+                var specificDates = [];
+                  {% if block.settings.specific_date != empty %}
+                  {% assign specificDates = block.settings.specific_date | split: "," %}
+                  {% for date in specificDates %}
+                    var specificDate = new Date (`{{date}}`).getTime();
+                    specificDates.push(specificDate);
+                  {% endfor %}
+                  {% endif %}
+              {% endif %}
+
+          
+              
+              //Pratik changes 10th July, 2024 START
+              function convertDateToMillisec(dateStr) {
+                    const date = new Date(dateStr);
+                    if (isNaN(date.getTime())) {
+                        throw new Error("Invalid date format");
+                    }
+                    return date.getTime();
+                }
+
+              // Pratik -15th July Added this to convert a date to date format
+                function convertToDate(dateStr) {
+                    const date = new Date(dateStr);
+                    if (isNaN(date)) {
+                        throw new Error("Invalid date format");
+                    }
+                    return date;
+                }
+
+            {% comment %}
+              //START: 25th July - Pratik changes as the one day preparatio date disable was not working
+              //{% if block.settings.one_day_preparation  %}
+            // // $(".picker__day").filter(function(){	
+           //       if ($(this).hasClass("Zapiet-Calendar__Date--today")) {	
+              //       $(this).addClass('Zapiet-Calendar__Date--disabled');
+           //          $(this).addClass('picker__day--disabled');
+          //           }	
+          //        });
+            //  {% endif %}
+            //END: 25th July - Pratik 
+            
+              
+            
+              {% if block.settings.half_day_preparation or block.settings.six_hour_preparation or block.settings.nine_hour_preparation or block.settings.one_day_preparation or block.settings.two_days_preparation  %}
+                $(".picker__day").filter(function() {
+                      const millisec = convertDateToMillisec($(this).attr("aria-label"));
+                      let prepareDate1 = millisec + prepareDate;
+                      console.log("CURRENT DATE: " + new Date($(this).attr("aria-label")));
+                      console.log("millisec: ", millisec);  // Log the millisec for the aria-label date
+                      console.log("PREPARE DATE: " + new Date(prepareDate1))
+                      console.log("prepareDatemillisec: ", prepareDate1);  // Log the prepareDate to ensure it's correct
+                      console.log("---------");                        
+                      if (millisec <= prepareDate) {
+                          $(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled test');
+                      }
+                  });
+              {% endif %}
+              // END
+              {% endcomment %}
+
+       
+              {% if block.settings.half_day_preparation or block.settings.six_hour_preparation or block.settings.nine_hour_preparation or block.settings.one_day_preparation or block.settings.two_days_preparation %}
+              $(document).ready(function() {     
+
+                
+                  const now = new Date();
+                  let adjustedPrepareDate = now.getTime();
+          
+                  {% if block.settings.half_day_preparation %}
+                      adjustedPrepareDate += 43200000; // Add 12 hours
+                  {% elsif block.settings.six_hour_preparation %}
+                      adjustedPrepareDate += 21600000; // Add 6 hours
+                  {% elsif block.settings.nine_hour_preparation %}
+                      adjustedPrepareDate += 32400000; // Add 9 hours
+                  {% elsif block.settings.one_day_preparation %}
+                      adjustedPrepareDate += 86400000; // Add 24 hours
+                      if (now.getHours() >= 12) {
+                          adjustedPrepareDate += 86400000; // Add another 24 hours if past noon
+                      }
+                  {% elsif block.settings.two_days_preparation %}
+                      adjustedPrepareDate += 172800000; // Add 48 hours
+                  {% endif %}
+          
+                  console.log("Globall Adjusted Preparation Cutoff:", new Date(adjustedPrepareDate));
+          
+                  $(".picker__day").each(function() {
+                      const dateStr = $(this).attr("aria-label");
+                      if (!dateStr) return; // Skip if there's no valid date string
+          
+                      // Parse date from aria-label and normalize it to remove time
+                      const cellDate = new Date(dateStr);
+                      cellDate.setHours(0, 0, 0, 0); // Reset time to midnight
+                      const cellMillis = cellDate.getTime();
+                      if (isNaN(cellMillis)) return; // Skip if the date is invalid
+          
+                      console.log("Checking Date:", cellDate, "vs Cutoff:", new Date(adjustedPrepareDate));
+          
+                      // Compare the cell's date to the adjusted preparation cutoff
+                      if (cellMillis < adjustedPrepareDate) {
+                          if (!$(this).hasClass('picker__day--disabled')) {
+                              $(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled test');
+                          }
+                      } else {
+                          // Remove class if date is now allowed
+                          $(this).removeClass('Zapiet-Calendar__Date--disabled picker__day--disabled test');
+                      }
+                  });
+                }); // Ensure it runs after the calendar is fully rendered
+
+              {% endif %}
+        
+              
+              {% comment %}
+            // Action - Disable Dates
+             {% if block.settings.half_day_preparation or block.settings.six_hour_preparation or block.settings.nine_hour_preparation or block.settings.one_day_preparation or block.settings.two_days_preparation  %}
+                $(".picker__day").filter(function() {
+                if (parseInt($(this).attr("data-pick")) < prepareDate){
+                    $(this).addClass('picker__day--disabled');
+                  }
+               });
+              {% endif %}
+              {% endcomment %}
+            
+              {% if block.settings.actions != blank and block.settings.actions == "within" %}
+                {% if block.settings.date_options == "date_range_option" %}
+                  dateRanges.forEach(function(dateRange){
+                    $(".picker__day").filter(function() {
+                      // Pratik 19th July, change to disable dates within a range
+                      const date = convertToDate($(this).attr("aria-label"));
+                      if (date >= dateRange[0] && date <= dateRange[1]){
+                        $(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled');
+                      }
+                      else {
+                        $(this).removeClass('Zapiet-Calendar__Date--disabled picker__day--disabled');
+                      }
+                      {% comment %}}
+                      if (parseInt($(this).attr("data-pick")) >= dateRange[0] && parseInt($(this).attr("data-pick")) <= dateRange[1]){
+                        $(this).addClass('picker__day--disabled');
+                      }
+                      {% endcomment %}
+                    });
+                  });
+                {% elsif block.settings.date_options == "specific_dates_option" %}
+                  specificDates.forEach(function(specificDate){
+                    $(".picker__day").filter(function() {
+                      if (parseInt($(this).attr("data-pick")) == specificDate){
+                        $(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled');
+                      }
+                    });
+                  });
+                {% endif %}
+              {% elsif block.settings.actions != blank and block.settings.actions == "outside" %}
+                {% if block.settings.date_options == "date_range_option" %}
+                  
+                  setTimeout(function () {
+                  dateRanges.forEach(function (dateRange) {
+                    // Convert range start and end to Date objects
+                    const startDate = new Date(dateRange[0]);
+                    const endDate = new Date(dateRange[1]);
+          
+                    console.log("Disabling dates outside:", startDate, "to", endDate);
+          
+                    $(".picker__day").each(function () {
+                      const dateStr = $(this).attr("aria-label");
+                      if (!dateStr) return; // Skip if aria-label is missing
+          
+                      const date = convertToDate(dateStr); // Convert aria-label to Date object
+          
+                      // Debugging logs
+                      console.log("Checking:", dateStr, "Converted:", date);
+          
+                      // Force-disable 09 June 2025
+                      const forceDisableDate = new Date("2025-06-09"); // YYYY-MM-DD
+          
+                      if (date instanceof Date && !isNaN(date.getTime())) {
+                        if (date.toDateString() === forceDisableDate.toDateString()) {
+                          $(this).addClass("picker__day--disabled");
+                          console.log("Force-disabled specific date:", date);
+                          return;
+                        }
+          
+                        // Disable outside date range
+                        if (date < startDate || date > endDate) {
+                          $(this).addClass("picker__day--disabled");
+                          console.log("Disabled:", date);
+                        } else {
+                          $(this).removeClass("picker__day--disabled");
+                        }
+                      } else {
+                        console.warn("Invalid date format:", dateStr);
+                      }
+                    });
+                  });
+                }, 100);
+
+                  // Pratik -15th July 2024, added the following lines to fix the date range dates diasable function
+                  {% comment %}
+                  dateRanges.forEach(function(dateRange){
+                    $(".picker__day").filter(function() {
+                      const date = convertToDate($(this).attr("aria-label"));
+                      if (date > dateRange[0] || date < dateRange[1]){
+                        $(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled makakaa');
+                        console.log("HIIII");
+                      }
+                      else {
+                        $(this).removeClass('Zapiet-Calendar__Date--disabled picker__day--disabled');
+                      }
+                    });
+                  });
+                  {% endcomment %}
+                  //END: Pratik - 15th July 2024
+
+                  {% comment %}
+                    dateRanges.forEach(function(dateRange){
+                    $(".picker__day").filter(function() {
+                      if (parseInt($(this).attr("data-pick")) < dateRange[0] || parseInt($(this).attr("data-pick")) > dateRange[1]){
+                        $(this).addClass('picker__day--disabled');
+                      }
+                    });
+                  });
+                  {% endcomment %}
+                  
+                {% elsif block.settings.date_options == "specific_dates_option" %}
+                    $(".picker__day").addClass('picker__day--disabled');
+                  specificDates.forEach(function(specificDate){
+                    $(".picker__day").filter(function() {
+                      if (parseInt($(this).attr("data-pick")) == specificDate){
+                        $(this).removeClass('picker__day--disabled');
+                      }
+                    });
+                  });
+                {% endif %}
+              {% endif %}
+
+            
+           {% if block.settings.cutoff_fridaytosunday == true %}
+            $(document).ready(function () {
+                const currentDate = new Date();
+                const currentDay = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+                const currentHour = currentDate.getHours(); // Current hour (24-hour format)
+            
+                console.log("Current Day:", currentDay);
+                console.log("Current Hour:", currentHour);
+            
+                // Calculate upcoming Saturday and Sunday
+                const upcomingSaturday = new Date(currentDate);
+                const upcomingSunday = new Date(currentDate);
+                upcomingSaturday.setDate(currentDate.getDate() + ((6 - currentDay) % 7)); // Nearest Saturday
+                upcomingSunday.setDate(currentDate.getDate() + ((7 - currentDay) % 7)); // Nearest Sunday
+            
+                $(".picker__day").each(function () {
+                    const dateLabel = $(this).attr("aria-label"); // Example: "Friday, January 5, 2024"
+                    if (!dateLabel) return; // Skip if aria-label is missing
+            
+                    const date = new Date(dateLabel); // Parse date from aria-label
+                    if (isNaN(date)) {
+                        console.log("Invalid date:", dateLabel);
+                        return; // Skip invalid dates
+                    }
+            
+                    //console.log("Checking date:", date);
+            
+                    // Conditions to disable specific dates
+                    const isFridayAfterNoon = currentDay === 5 && currentHour >= 12; // Current day is Friday after 12 pm
+                    const isSaturday = date.toDateString() === upcomingSaturday.toDateString(); // Matches Saturday
+                    const isSunday = date.toDateString() === upcomingSunday.toDateString(); // Matches Sunday
+            
+                    if ((isFridayAfterNoon && (isSaturday || isSunday)) || (currentDay === 6 && isSaturday) || (currentDay === 0 && isSunday)) {
+                        $(this).addClass("picker__day--disabled");
+                        //console.log("Disabling:", date.toDateString());
+                    } else {
+                        //console.log("Not disabling:", date.toDateString());
+                    }
+                });
+            });
+            {% endif %}
+
+        
+            }        
+          {% endfor %}
+        {% endif %}
+        // Disable Delivery Dates
+        {% if section.settings.disable_delivery_dates != null and section.settings.disable_delivery_dates != "" %}
+          {% assign disableDates = section.settings.disable_delivery_dates | split: "," %}
+          {% for date in disableDates %}
+            var disableDate = new Date(`{{date}}`).getTime() + (new Date(`{{date}}`).getTimezoneOffset() * 60000);
+            $(".picker__day").filter(function() {
+              if (parseInt($(this).attr("data-pick")) == disableDate){
+                $(this).addClass('picker__day--disabled');
+              }
+            });
+          {% endfor %}
+        {% endif %}
+  
+                // Priority Delivery
+                window.localStorage.setItem('priority_delivery_surcharge', false);
+                {% if section.settings.enable_priority_delivery_surcharge %}
+                    // Disable Priority Delivery if Postcode Entered Not In Postcode Settings
+                    var priorityDeliveryPostcodes = [{{ section.settings.priority_delivery_postcode }}];
+                    if (!priorityDeliveryPostcodes.includes(parseInt($('#deliveryGeoSearchField').val()))){
+                      // Disable 8:30am and 9:15am time slot
+                      window.ZapietEvent.listen('delivery.timepicker.opened', function() {	
+                        $(`.picker__list-item[aria-label='8:30 AM']`).hide();
+                        $(`.picker__list-item[aria-label='9:15 AM']`).hide();
+                      });
+                    }
+                    else {
+                      var sameDayTwelvePM = $(".picker__day--today").data("pick") + (12 * 60 * 60 * 1000);
+                      {% assign disablePriorityDeliveryDates = section.settings.disable_priority_delivery_dates | split: "," %}
+                      window.ZapietEvent.listen('delivery.timepicker.opened', function() {	
+                        $(`.picker__list-item[aria-label='8:30 AM']`).html('Priority Delivery Before 9:30AM (Courier Express Fee $15)');
+                        $(`.picker__list-item[aria-label='8:30 AM']`).show();
+                        $(`.picker__list-item[aria-label='9:15 AM']`).html('Priority Delivery Before 10:30AM (Courier Express Fee $15)');
+                        $(`.picker__list-item[aria-label='9:15 AM']`).show();
+                        $(`.picker__list-item[aria-label='12:00 PM']`).after($(`.picker__list-item[aria-label='8:30 AM']`));
+                        $(`.picker__list-item[aria-label='8:30 PM']`).after($(`.picker__list-item[aria-label='9:15 AM']`));
+            
+                        // Cut-off time for priority delivery 12PM
+                        var selectedDate = $(".picker__day--selected").data("pick");
+                        if ((currentDatetime.getTime() > sameDayTwelvePM) && ((sameDayTwelvePM + (12 * 60 * 60 * 1000)) == selectedDate)) {
+                          $(`.picker__list-item[aria-label='8:30 AM']`).hide();
+                          $(`.picker__list-item[aria-label='9:15 AM']`).hide();	
+                        };
+            
+                        // // Check 3 Order Limit
+                        {% comment %} var selectedDateJs = new Date(selectedDate);
+                        var selectedDateJsString = selectedDateJs.getFullYear() + '-' + ('0' + (selectedDateJs.getMonth()+1)).slice(-2) + '-' + ('0' + selectedDateJs.getDate()).slice(-2);
+                        jQuery.ajax({
+                        url: `https://api.cupcakecentral.com.au/order/priority/${selectedDateJsString}`,
+                            dataType: 'json',
+                           async: false,
+                           success: function(response) {
+                             if (parseInt(response) >= 3){
+                               $(`.picker__list-item[aria-label='8:30 AM']`).hide();
+                               $(`.picker__list-item[aria-label='9:15 AM']`).hide();	
+                             }
+                           }
+                         });   {% endcomment %}
+            
+                        // Mannual Disable Dates for Priority Delivery
+                        {% for date in disablePriorityDeliveryDates %}
+                          var disablePriorityDeliveryDate = new Date(`{{date}}`).getTime() + (new Date(`{{date}}`).getTimezoneOffset() * 60000);
+                          if (selectedDate == disablePriorityDeliveryDate){
+                            $(`.picker__list-item[aria-label='8:30 AM']`).hide();
+                            $(`.picker__list-item[aria-label='9:15 AM']`).hide();	
+                          }
+                        {% endfor %}
+                  
+                        $(`.picker__list-item[aria-label='8:30 AM'],.picker__list-item[aria-label='9:15 AM']`).on('click', function(){
+                          window.localStorage.setItem('priority_delivery_surcharge', true);
+                        });
+                      });
+                    }
+                {% else %}
+                    // Disable 8:30am and 9:15am time slot
+                    window.ZapietEvent.listen('delivery.timepicker.opened', function() {
+                      $(`.picker__list-item[aria-label='8:30 AM']`).hide();
+                      $(`.picker__list-item[aria-label='9:15 AM']`).hide();
+                    });
+                {% endif %}
+    
+        // Same Day or Weekend Local Storage
+
+        // The following line was edited by Hui Fei on 4th July 2024 due to Zapiet breaking.
+        // Zapiet most likely removed or changed 'zpDate' name.
+        // var selectedDate = $("#deliveryDatePicker").find("[name='zpDate']").val().split('/');
+      
+        // Pratik- 15th July 2024, added the following code to add weekend surcharge
+        $(".picker__day").on('click',function(){	
+              if ($(this).hasClass("Zapiet-Calendar__Date--selected")) {	
+                //console.log("Working");
+                if ($(this).attr('aria-label').includes('Sat') || $(this).attr('aria-label').includes('Sun')){
+                  window.localStorage.setItem('delivery_weekend', true);
+                 //Pratik Latest delivery haul $('#storePickupApp').append("<div class='delivery-fee-msg mt-3'><font color='red'>Weekend delivery surcharge has been applied!</font></div>");
+                //console.log("Weekend");
+                }
+              };	
+            });
+        //End Pratik 15h July 2024
+      
+        var selectedDate = $("#deliveryDatePicker").find('.Zapiet-Calendar__Date--today').val().split('/');
+      
+        var selectedDateJs = new Date(parseInt(selectedDate[0]), parseInt(selectedDate[1]) - 1, parseInt(selectedDate[2]));
+        const currentDatetime = new Date();
+        const tomorrow = new Date(currentDatetime);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        var isWeekend = (selectedDateJs.getDay() === 6) || (selectedDateJs.getDay()  === 0);
+        var isSameDay = (selectedDateJs.getYear() === currentDatetime.getYear() && selectedDateJs.getMonth() === currentDatetime.getMonth() && selectedDateJs.getDate()  === currentDatetime.getDate() && isWeekend == false);
+        if (isWeekend){
+          {% if section.settings.enable_weekend_delivery_surcharge %}
+            {% if section.settings.weekend_delivery_surcharge_exclude_dates != null and section.settings.weekend_delivery_surcharge_exclude_dates != "" %}
+              var isExcludeDate = false; 
+              {% assign excludeDates = section.settings.weekend_delivery_surcharge_exclude_dates | split: "," %}
+              {% for date in excludeDates %}
+                var excludeDate = new Date(`{{date}}`).getTime() + (new Date(`{{date}}`).getTimezoneOffset() * 60000);
+                if (selectedDateJs.getTime() == excludeDate){
+                  isExcludeDate = true;
+                }
+              {% endfor %}
+    
+              if (!isExcludeDate){
+                window.localStorage.setItem('delivery_weekend', true);
+                //Pratik Latest delivery haul$('#storePickupApp').append("<div class='delivery-fee-msg mt-3'><font color='red'>Weekend delivery surcharge has been applied!</font></div>");
+              }
+            {% else %}
+              window.localStorage.setItem('delivery_weekend', true);
+              //Pratik Latest delivery haul$('#storePickupApp').append("<div class='delivery-fee-msg mt-3'><font color='red'>Weekend delivery surcharge has been applied!</font></div>");
+            {% endif %}
+          {% else %}
+            window.localStorage.setItem('delivery_weekend', false);
+          {% endif %}
+        }
+        else {
+            window.localStorage.setItem('delivery_weekend', false);
+        }
+        if (isSameDay){
+          {% if section.settings.enable_same_day_delivery_surcharge %}
+            window.localStorage.setItem('delivery_same_day', true);
+              $('#storePickupApp').append("<div class='delivery-fee-msg mt-3'><font color='red'>Same day priority delivery fee has been applied!</font></div>");
+          {% else %}
+            window.localStorage.setItem('delivery_same_day', false);
+          {% endif %}
+        }
+        else {
+            window.localStorage.setItem('delivery_same_day', false);
+        }
+        
+        // Sat and Sun Text Color and Background Color
+        $('.picker__day').each(function(i, day) {
+
+          if (!$(day).hasClass('picker__day--disabled')){
+
+            $(day).css('color', 'black');
+          }
+          if ($(day).attr('aria-label').includes('Sat') || $(day).attr('aria-label').includes('Sun')){
+            if (!$(day).hasClass('picker__day--disabled')){
+              $(day).css('color', `{{ section.settings.weekend_text_color }}`);
+              $(day).css('background-color', `{{ section.settings.weekend_background_color }}`);          
+            }
+          }
+        });
+        //window.ZapietEvent.listen('delivery.timepicker.rendered', function() {
+         //       $(".Zapiet-Select__Value").text("12:00 PM - 6:00 PM");
+          //        console.log("HIII");
+          //        $("li[aria-label='12:00 PM']").addClass('Zapiet-Select__Option--selected');
+          //})
+        
+        // Enable or Disable Same Day Delivery
+        {% if section.settings.enable_same_day_delivery %}
+            // Disable Same Day Delivery if Postcode Entered Not In Postcode Settings
+            var sameDayPostcodes = [{{ section.settings.same_day_delivery_postcode }}];
+            if (!sameDayPostcodes.includes(parseInt($('#deliveryGeoSearchField').val()))){
+                $(".picker__day--today").addClass('picker__day--disabled');
+            }
+
+          {% comment %}
+            // Disable Same Day Morning Delivery After 6am	
+            $(".picker__day").on('click',function(){	
+              if ($(this).hasClass("picker__day--today")) {	
+                  window.ZapietEvent.listen('delivery.timepicker.opened', function() {	
+                  console.log("Working");
+                  var sameDaySixAM = $(".picker__day--today").data("pick") + (6 * 60 * 60 * 1000);
+                  if (currentDatetime.getTime() > sameDaySixAM) {	
+                    $(`.picker__list-item[aria-label='9:00 AM']`).hide();	
+                  }	
+                });	
+              } else {	
+                window.ZapietEvent.listen('delivery.timepicker.opened', function() {	
+                  //$(`.picker__list-item[aria-label='9:00 AM']`).show();
+                  console.log("Working1");
+                  $(".picker__list-item[aria-label='9:00 AM']").hide();
+                });	
+              };	
+            });
+          {% endcomment %}
+
+          $(".picker__day").on('click', function() {	
+    // Get today's date formatted to match the aria-label format
+    const today = new Date();
+    const formattedToday = today.toLocaleDateString("en-GB", {
+        weekday: "short",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+
+    // Log the formatted date to see if it matches the aria-label format
+    console.log("Formatted today date:", formattedToday);
+
+    // Get the selected date's aria-label
+    const selectedDateLabel = $(this).attr("aria-label");
+    console.log("Selected date aria-label:", selectedDateLabel);
+
+    // Check if the selected date is today by comparing aria-label with formattedToday
+    const isTodaySelected = (selectedDateLabel === formattedToday);
+    console.log("Is today selected:", isTodaySelected);
+
+    if (isTodaySelected) {
+        console.log("Today selected - setting default time to '12:00 PM - 6:00 PM'");
+
+        // Set the default value to "12:00 PM - 6:00 PM"
+        $(".Zapiet-Select__Value").text("12:00 PM - 6:00 PM");
+
+        // Add the selected class to the "12:00 PM" option
+        $("li[aria-label='12:00 PM']").addClass('Zapiet-Select__Option--selected');
+        
+        // Listen for the timepicker opening
+        window.ZapietEvent.listen('delivery.timepicker.opened', function() {
+            const currentDatetime = new Date();
+            const todaySixAM = new Date();
+            todaySixAM.setHours(6, 0, 0, 0);  // Set today at 6 AM
+
+            if (currentDatetime.getTime() > todaySixAM.getTime()) {
+                $(".picker__list-item[aria-label='9:00 AM']").hide();
+                console.log("Hiding 9:00 AM slot as it’s past 6 AM");
+            } else {
+                console.log("It’s not yet 6 AM - 9:00 AM slot remains visible");
+            }
+        });
+
+    } else {
+        console.log("Different date selected - resetting time to 'Choose time'");
+
+        // Reset value if it's not today
+        $(".Zapiet-Select__Value").text("Choose time");
+        $("li.picker__list-item").removeClass('Zapiet-Select__Option--selected');
+    }
+});
+
+$(".picker__day").on('click', function() {
+    // Get today's date and format it to match the aria-label format (with commas)
+    const today = new Date();
+
+const formattedToday = today.toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+});
+
+// Fix the format to match 'Fri, 15 November, 2024'
+const formattedTodayWithCommas = formattedToday.replace(" ", ", ").replace(/(\s)(\w+)(\s\d{4})$/, ", $2$3");
+
+console.log("Formatted today date:", formattedTodayWithCommas);
+
+
+    // Get the selected date's aria-label
+    const selectedDateLabel = $(this).attr("aria-label");
+    console.log("Selected date aria-label:", selectedDateLabel);
+
+    // Check if the selected date is today by comparing aria-label with formattedToday
+    const isTodaySelected = (selectedDateLabel === formattedTodayWithCommas);
+    console.log("Is today selected:", isTodaySelected);
+
+    if (isTodaySelected) {
+        console.log("Today selected - setting default time to '12:00 PM - 6:00 PM'");
+
+        // Set the default value to "12:00 PM - 6:00 PM"
+        $(".Zapiet-Select__Value").text("12:00 PM - 6:00 PM");
+
+        // Add the selected class to the "12:00 PM" option
+        $("li[aria-label='12:00 PM']").addClass('Zapiet-Select__Option--selected');
+        
+        // Listen for the timepicker opening
+        window.ZapietEvent.listen('delivery.timepicker.opened', function() {
+            const currentDatetime = new Date();
+            const todaySixAM = new Date();
+            todaySixAM.setHours(6, 0, 0, 0);  // Set today at 6 AM
+
+            if (currentDatetime.getTime() > todaySixAM.getTime()) {
+                $(".picker__list-item[aria-label='9:00 AM']").hide();
+                console.log("Hiding 9:00 AM slot as it’s past 6 AM");
+            } else {
+                console.log("It’s not yet 6 AM - 9:00 AM slot remains visible");
+            }
+        });
+
+    } else {
+        console.log("Different date selected - resetting time to 'Choose time'");
+
+        // Reset value if it's not today
+        $(".Zapiet-Select__Value").text("Choose time");
+        $("li.picker__list-item").removeClass('Zapiet-Select__Option--selected');
+    }
+});
+
+    
+            // Disable Same Day Delivery After 12pm or 10am
+            {% comment %} var sameDayCutoff = '12pm'; {% endcomment %}
+            {% comment %} {% if section.blocks.size > 0 %}
+              {% for block in section.blocks %}
+                {% if block.settings.same_day_choice == '10am' %}
+                  // Loop and get block product ids
+                  {% if block.settings.trigger != blank and block.settings.trigger == "products" %}
+                    var selectedProductIds = [];
+                    {% for product in block.settings.trigger_products %}
+                      {% for eachVariant in product.variants %}
+                        selectedProductIds.push(`{{eachVariant.id}}`);
+                      {% endfor %}
+                    {% endfor %}
+                  {% elsif block.settings.trigger != blank and block.settings.trigger == "collections" %}
+                    var selectedCollectionIds = [];
+                    {% for collection in block.settings.trigger_collections %}
+                      selectedCollectionIds.push(`{{collection.id}}`);
+                    {% endfor %}
+                  {% elsif block.settings.trigger != blank and block.settings.trigger == "tags" %}
+                    {% assign selectedTags = block.settings.trigger_tags | split: ", " %}
+                    var selectedTags = [];
+                    {% for tag in selectedTags %}
+                      selectedTags.push(`{{tag}}`);
+                    {% endfor %}
+                  {% elsif block.settings.trigger != blank and block.settings.trigger == "types" %}
+                    {% assign selectedTypes = block.settings.trigger_types | split: ", " %}
+                    var selectedTypes = [];
+                    {% for type in selectedTypes %}
+                      selectedTypes.push(`{{type}}`);
+                    {% endfor %}
+                  {% endif %}
+                  // Check if items are in cart
+                  {% if block.settings.trigger != blank and block.settings.trigger == "products" %}
+                    {% for lineItem in cart.items %}
+                      if (selectedProductIds.includes(`{{lineItem.id}}`)){
+                        sameDayCutoff = '10am';
+                      }
+                    {% endfor %}
+                  {% elsif block.settings.trigger != blank and block.settings.trigger == "collections" %}
+                    {% for lineItem in cart.items %}
+                      {% for collection in lineItem.product.collections %}
+                        if (selectedCollectionIds.includes(`{{collection.id}}`)){
+                          sameDayCutoff = '10am';
+                        }
+                      {% endfor %}
+                    {% endfor %}
+                  {% elsif block.settings.trigger != blank and block.settings.trigger == "tags" %}
+                    {% for lineItem in cart.items %}
+                      {% for tag in lineItem.product.tags %}
+                        if (selectedTags.includes(`{{ tag }}`)) {
+                          sameDayCutoff = '10am';
+                        }
+                      {% endfor %}
+                    {% endfor %}
+                  {% elsif block.settings.trigger != blank and block.settings.trigger == "types" %}
+                    {% for lineItem in cart.items %}
+                      if (selectedTypes.includes(`{{lineItem.product.type}}`)) {
+                        sameDayCutoff = '10am';
+                      }
+                    {% endfor %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            {% endif %} {% endcomment %}
+ 
+            {% comment %} window.ZapietEvent.listen('delivery.datepicker.opened', function() {
+
+              // START: Pratik Changes 11th July 2024, For Zapiet 10am Conditions
+              function getToday10AMInMillisec() {
+                  const now = new Date();
+                  now.setHours(10, 0, 0, 0);
+                  return now.getTime();
+                  }
+              const millisec10am = getToday10AMInMillisec($(".picker__day--today"));
+
+              function getToday12PMInMillisec() {
+                const now = new Date();
+                const noon = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0, 0);
+                return noon.getTime();
+                }
+              const millisec12pm = getToday12PMInMillisec($(".picker__day--today"));
+              sameDayCutoffTime = millisec12pm;
+              
+              if (sameDayCutoff == '10am')
+              {
+                sameDayCutoffTime = millisec10am;
+              }
+              
+              if (currentDatetime.getTime() > sameDayCutoffTime) {
+                $(".picker__day--today").addClass('picker__day--disabled');	
+              };
+            }); {% endcomment %}
+            //Custom time slot for same day delivery
+function handleSlotLogic() {
+    const now = new Date();
+    const hour = now.getHours();
+
+    const morningSlot = "9:00 AM";
+    const afternoonSlot = "12:00 PM";
+
+    const enteredPostcode = $('#deliveryGeoSearchField').val()?.trim();
+    const normalizedPostcode = String(enteredPostcode).trim();
+
+    {% comment %} const restrictedPostcodes = "3023,3026,3027,3028,3029,3038,3149,3150,3161,3162,3168,3169,3170,3171,3172,3173,3174,3175,3177,3802,3188,3190,3191,3192,3193,3194,3195,3196,3202,3800,3803,3804,3805,3806,3975,3976"
+        .split(",")
+        .map(pc => pc.trim()); {% endcomment %}
+    const rawRestrictedPostcodes = `{{ section.settings.restricted_postcodes | escape }}`;
+    const restrictedPostcodes = rawRestrictedPostcodes
+        .split(",")
+        .map(pc => pc.trim())
+        .filter(pc => pc.length > 0);
+
+    // Clear any existing logic
+    $(".picker__list-item").hide().removeClass("is-selected");
+    $(".picker__day--today").removeClass("picker__day--disabled");
+    //put dates as a condition aswell
+    if (hour < 9) {
+        // Show only morning slot
+        $(`.picker__list-item[aria-label='${morningSlot}']`).show().addClass("is-selected");
+
+        // Re-hide afternoon slot in case Zapiet re-rendered it
+        // $(".picker__day").on('click',function(){
+        //  $(`.picker__list-item[aria-label='${afternoonSlot}']`).hide();
+        // console.log(" Re-hid afternoon slot");
+        // }
+        setTimeout(() => {
+            $(`.picker__list-item[aria-label='${afternoonSlot}']`).hide();
+            console.log("Re-hid afternoon slot");
+        }, 3000); //3 sec timeout set because timeslot panel take atleat 3 sec to render component
+
+    } else if (hour >= 9 && hour < 12) {
+        if (restrictedPostcodes.includes(normalizedPostcode)) {
+            $(".picker__day--today").addClass("picker__day--disabled");
+            console.log("Restricted postcode: disabling today");
+        } else {
+            $(`.picker__list-item[aria-label='${afternoonSlot}']`).show().addClass("is-selected");
+            console.log("Allowed postcode: showing 12:00 PM slot");
+        }
+
+    } else {
+        $(".picker__day--today").addClass("picker__day--disabled");
+        console.log("After 12pm: disabling today");
+    }
+}
+
+// Run once when picker opens
+window.ZapietEvent.listen('delivery.datepicker.opened', function () {
+    setTimeout(handleSlotLogic, 300);
+});
+
+// Run again every time date is changed
+window.ZapietEvent.listen('delivery.datepicker.date.changed', function () {
+    setTimeout(handleSlotLogic, 300);
+});
+
+          // Custom slots for same day delivery
+          window.ZapietEvent.listen('delivery.datepicker.opened', function () {
+            // Simulated time for testing (7:00 AM)
+            const now = new Date();
+            // now.setHours(7, 0, 0, 0);
+            const hour = now.getHours();
+          
+            console.log("Simulated Hour:", hour);
+          
+            const morningSlot = "9:00 AM";
+            const afternoonSlot = "12:00 PM";
+          
+            //Corrected: hide actual time slot elements
+            $(".picker__list-item").hide().removeClass("is-selected");
+          
+            if (hour < 9) {
+              // 12:00 AM – 8:59 AM → Show both slots
+              console.log("morning condition");
+              $(`.picker__list-item[aria-label='${morningSlot}']`).show().addClass("is-selected");
+              $(`.picker__list-item[aria-label='${afternoonSlot}']`).show();
+          
+            } else if (hour >= 9 && hour < 12) {
+              // 9:00 AM – 11:59 AM → Show only afternoon
+              console.log("Afternoon condition");
+              $(`.picker__list-item[aria-label='${afternoonSlot}']`).show().addClass("is-selected");
+            } else {
+              // After 12 PM → disable today
+              $(".picker__day--today").addClass("picker__day--disabled");
+            }
+          });
+
+
+          //END
+          {% comment %}
+              var sameDayCutoffTime = $(".picker__day--today").data("pick") + (12 * 60 * 60 * 1000);
+              if (sameDayCutoff == '10am')
+              {
+                sameDayCutoffTime = $(".picker__day--today").data("pick") + (10 * 60 * 60 * 1000);
+              }
+              if (currentDatetime.getTime() > sameDayCutoffTime) {
+                $(".picker__day--today").addClass('picker__day--disabled');	
+              };
+            });
+      {% endcomment %}
+          
+        {% else %}
+            $(".picker__day--today").addClass('picker__day--disabled'); // Disable Same Day Delivery
+        {% endif %}
+        
+        // Today Text Color and Backgroud Color
+        if (!$(".picker__day--today").hasClass('picker__day--disabled')){
+          $(".picker__day--today").css('color', `{{ section.settings.same_day_text_color }}`);
+          $(".picker__day--today").css('background-color',`{{ section.settings.same_day_background_color }}`);    
+        }
+      });
+      
+      window.ZapietEvent.listen('pickup.datepicker.rendered', function() {
+        // Apply Customisation Conditions
+        // Condition - Trigger
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            var triggerSatisfied = false;
+            // Prepare Trigger
+            // Trigger - Prepare Selecetd Products
+            {% if block.settings.trigger != blank and block.settings.trigger == "products" %}
+              var selectedProductIds = [];
+              {% for product in block.settings.trigger_products %}
+                {% for eachVariant in product.variants %}
+                  selectedProductIds.push(`{{eachVariant.id}}`);
+                {% endfor %}
+              {% endfor %}
+            // Trigger - Prepare Selecetd Collections
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "collections" %}
+              var selectedCollectionIds = [];
+              {% for collection in block.settings.trigger_collections %}
+                selectedCollectionIds.push(`{{collection.id}}`);
+              {% endfor %}
+            // Trigger - Prepare Entered Tags
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "tags" %}
+              {% assign selectedTags = block.settings.trigger_tags | split: ", " %}
+              var selectedTags = [];
+              {% for tag in selectedTags %}
+                selectedTags.push(`{{tag}}`);
+              {% endfor %}
+            // Trigger - Prepare Entered Product Types
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "types" %}
+              {% assign selectedTypes = block.settings.trigger_types | split: ", " %}
+              var selectedTypes = [];
+              {% for type in selectedTypes %}
+                selectedTypes.push(`{{type}}`);
+              {% endfor %}
+            {% endif %}
+        
+            // Check if Cart Items Satisfy the Trigger
+            {% if block.settings.trigger != blank and block.settings.trigger == "products" %}
+              {% for lineItem in cart.items %}
+                if (selectedProductIds.includes(`{{lineItem.id}}`)){
+                  triggerSatisfied = true;
+                }
+              {% endfor %}
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "collections" %}
+              {% for lineItem in cart.items %}
+                {% for collection in lineItem.product.collections %}
+                  if (selectedCollectionIds.includes(`{{collection.id}}`)){
+                    triggerSatisfied = true;
+                  }
+                {% endfor %}
+              {% endfor %}
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "tags" %}
+              {% for lineItem in cart.items %}
+                {% for tag in lineItem.product.tags %}
+                  if (selectedTags.includes(`{{ tag }}`)) {
+                    triggerSatisfied = true;
+                  }
+                {% endfor %}
+              {% endfor %}
+            {% elsif block.settings.trigger != blank and block.settings.trigger == "types" %}
+              {% for lineItem in cart.items %}
+                if (selectedTypes.includes(`{{lineItem.product.type}}`)) {
+                  triggerSatisfied = true;
+                }
+              {% endfor %}
+            {% endif %}
+            
+            // Action
+            if (triggerSatisfied) {
+              // Action - Prepare Dates
+              var prepareDate = null;
+              {% if block.settings.half_day_preparation %}
+                prepareDate = new Date().getTime() + 43200000;
+              {% elsif block.settings.six_hour_preparation %}
+                prepareDate = new Date().getTime() + 21600000;
+              {% elsif block.settings.nine_hour_preparation %}
+                prepareDate = new Date().getTime() + 32400000;
+              {% elsif block.settings.one_day_preparation %}
+                prepareDate = new Date().getTime() + 86400000;
+              {% elsif block.settings.two_days_preparation %}
+                prepareDate = new Date().getTime() + 172800000;
+              {% endif %} 
+              {% if block.settings.date_options != blank and block.settings.date_options == "date_range_option" %}
+                var dateRanges = [];
+                {% if block.settings.enable_date_rannge_1 %}
+                  {% if block.settings.date_rannge_from_1 != blank and block.settings.date_rannge_to_1 != blank %}
+                    var fromDate = new Date(`{{block.settings.date_rannge_from_1}}`).getTime();
+                    var toDate = new Date(`{{block.settings.date_rannge_to_1}}`).getTime();
+                      dateRanges.push([fromDate, toDate]);
+                  {% endif %}
+                {% endif %}
+                {% if block.settings.enable_date_rannge_2 %}
+                  {% if block.settings.date_rannge_from_2 != blank and block.settings.date_rannge_to_2 != blank %}
+                    var fromDate = new Date(`{{block.settings.date_rannge_from_2}}`).getTime();
+                    var toDate = new Date(`{{block.settings.date_rannge_to_2}}`).getTime();
+                      dateRanges.push([fromDate, toDate]);
+                  {% endif %}
+                {% endif %}
+                {% if block.settings.enable_date_rannge_3 %}
+                  {% if block.settings.date_rannge_from_3 != blank and block.settings.date_rannge_to_3 != blank %}
+                    var fromDate = new Date(`{{block.settings.date_rannge_from_3}}`).getTime();
+                    var toDate = new Date(`{{block.settings.date_rannge_to_3}}`).getTime();
+                      dateRanges.push([fromDate, toDate]);
+                  {% endif %}
+                {% endif %}
+              {% elsif block.settings.date_options != blank and block.settings.date_options == "specific_dates_option" %}
+                var specificDates = [];
+                  {% if block.settings.specific_date != empty %}
+                  {% assign specificDates = block.settings.specific_date | split: ", " %}
+                  {% for date in specificDates %}
+                    var specificDate = new Date (`{{date}}`).getTime();
+                    specificDates.push(specificDate);
+                  {% endfor %}
+                  {% endif %}
+              {% endif %}
+
+
+    
+              // Action - Disable Dates
+            
+            //Pratik changes 10th July, 2024 START - Fixed again on 15th July 2024
+              function convertDateToMillisec1(dateStr) {
+                    const date = new Date(dateStr);
+                    if (isNaN(date.getTime())) {
+                        throw new Error("Invalid date format");
+                    }
+                    return date.getTime();
+                }
+
+              // Pratik -15th July Added this to convert a date to date format
+                function convertToDate(dateStr) {
+                    const date = new Date(dateStr);
+                    if (isNaN(date)) {
+                        throw new Error("Invalid date format");
+                    }
+                    return date;
+                }
+
+              {% if block.settings.half_day_preparation or block.settings.six_hour_preparation or block.settings.nine_hour_preparation or block.settings.one_day_preparation or block.settings.two_days_preparation %}
+              $(document).ready(function() {
+                setTimeout(() => {
+                  const now = new Date();
+                  let adjustedPrepareDate = now.getTime();
+          
+                  {% if block.settings.half_day_preparation %}
+                      adjustedPrepareDate += 43200000; // Add 12 hours
+                  {% elsif block.settings.six_hour_preparation %}
+                      adjustedPrepareDate += 21600000; // Add 6 hours
+                  {% elsif block.settings.nine_hour_preparation %}
+                      adjustedPrepareDate += 32400000; // Add 9 hours
+                  {% elsif block.settings.one_day_preparation %}
+                      adjustedPrepareDate += 86400000; // Add 24 hours
+                      if (now.getHours() >= 12) {
+                          adjustedPrepareDate += 86400000; // Add another 24 hours if past noon
+                      }
+                  {% elsif block.settings.two_days_preparation %}
+                      adjustedPrepareDate += 172800000; // Add 48 hours
+                  {% endif %}
+          
+                  console.log("Global Adjusted Preparation Cutoff:", new Date(adjustedPrepareDate));
+          
+                  $(".picker__day").each(function() {
+                      const dateStr = $(this).attr("aria-label");
+                      if (!dateStr) return; // Skip if there's no valid date string
+          
+                      // Parse date from aria-label and normalize it to remove time
+                      const cellDate = new Date(dateStr);
+                      cellDate.setHours(0, 0, 0, 0); // Reset time to midnight
+                      const cellMillis = cellDate.getTime();
+                      if (isNaN(cellMillis)) return; // Skip if the date is invalid
+          
+                      console.log("Checking Date:", cellDate, "vs Cutoff:", new Date(adjustedPrepareDate));
+          
+                      // Compare the cell's date to the adjusted preparation cutoff
+                      if (cellMillis < adjustedPrepareDate) {
+                          if (!$(this).hasClass('picker__day--disabled')) {
+                              $(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled test');
+                          }
+                      } else {
+                          // Remove class if date is now allowed
+                          $(this).removeClass('Zapiet-Calendar__Date--disabled picker__day--disabled test');
+                      }
+                  });
+                }, 50); // Ensure it runs after the calendar is fully rendered
+              });
+          {% endif %}
+        
+        {% comment %}
+              {% if block.settings.half_day_preparation or block.settings.six_hour_preparation or block.settings.nine_hour_preparation or block.settings.one_day_preparation or block.settings.two_days_preparation  %}
+                $(".picker__day").filter(function() {
+                  const millisec1 = convertDateToMillisec1($(this).attr("aria-label"));
+                  if ( millisec1 < prepareDate){
+                    //$(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled');
+                    $(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled');
+                  }
+                });
+                {% endif %}
+              // END
+              
+              
+              {% if block.settings.half_day_preparation or block.settings.six_hour_preparation or block.settings.nine_hour_preparation or block.settings.one_day_preparation or block.settings.two_days_preparation  %}
+                $(".picker__day").filter(function() {
+                  if (parseInt($(this).attr("data-pick")) < prepareDate){
+                    $(this).addClass('picker__day--disabled');
+                  }
+                });
+              {% endif %}
+            {% endcomment %}
+        
+              {% if block.settings.actions != blank and block.settings.actions == "within" %}
+                {% if block.settings.date_options == "date_range_option" %}
+                  dateRanges.forEach(function(dateRange){
+                    $(".picker__day").filter(function() {
+                      // Pratik 19th July, change to disable dates within a range
+                      const date = convertDateToMillisec1($(this).attr("aria-label"));
+                      if (date >= dateRange[0] && date <= dateRange[1]){
+                        $(this).addClass('picker__day--disabled');
+                      }
+                      else {
+                        $(this).removeClass('picker__day--disabled');
+                      }
+                      {% comment %}}
+                      dateRanges.forEach(function(dateRange){
+                          $(".picker__day").filter(function() {
+                          if (parseInt($(this).attr("data-pick")) >= dateRange[0] && parseInt($(this).attr("data-pick")) <= dateRange[1]){
+                        $(this).addClass('picker__day--disabled');
+                      }
+                    });
+                  });
+                      {% endcomment %}
+                    });
+                  });
+                  
+                {% elsif block.settings.date_options == "specific_dates_option" %}
+                  specificDates.forEach(function(specificDate){
+                    $(".picker__day").filter(function() {
+                      if (parseInt($(this).attr("data-pick")) == specificDate){
+                        $(this).addClass('picker__day--disabled');
+                      }
+                    });
+                  });
+                {% endif %}
+             {% elsif block.settings.actions != blank and block.settings.actions == "outside" %}
+                {% if block.settings.date_options == "date_range_option" %}
+                  
+                  setTimeout(function () {
+        dateRanges.forEach(function (dateRange) {
+          // Convert range start and end to Date objects
+          const startDate = new Date(dateRange[0]);
+          const endDate = new Date(dateRange[1]);
+
+          console.log("Disabling dates outside:", startDate, "to", endDate);
+
+          $(".picker__day").each(function () {
+            const dateStr = $(this).attr("aria-label");
+            if (!dateStr) return; // Skip if aria-label is missing
+
+            const date = convertToDate(dateStr); // Convert aria-label to Date object
+
+            // Debugging logs
+            console.log("Checking:", dateStr, "Converted:", date);
+
+            // Force-disable 09 June 2025
+            const forceDisableDate = new Date("2025-06-09"); // YYYY-MM-DD
+
+            if (date instanceof Date && !isNaN(date.getTime())) {
+              if (date.toDateString() === forceDisableDate.toDateString()) {
+                $(this).addClass("picker__day--disabled");
+                console.log("Force-disabled specific date:", date);
+                return;
+              }
+
+              // Disable outside date range
+              if (date < startDate || date > endDate) {
+                $(this).addClass("picker__day--disabled");
+                console.log("Disabled:", date);
+              } else {
+                $(this).removeClass("picker__day--disabled");
+              }
+            } else {
+              console.warn("Invalid date format:", dateStr);
+            }
+          });
+        });
+        }, 100);
+
+                  // Pratik -15th July 2024, added the following lines to fix the date range dates diasable function
+                  {% comment %}
+                  dateRanges.forEach(function(dateRange){
+                    $(".picker__day").filter(function() {
+                      const date = convertToDate($(this).attr("aria-label"));
+                      if (date > dateRange[0] || date < dateRange[1]){
+                        $(this).addClass('Zapiet-Calendar__Date--disabled picker__day--disabled makakaa');
+                        console.log("HIIII");
+                      }
+                      else {
+                        $(this).removeClass('Zapiet-Calendar__Date--disabled picker__day--disabled');
+                      }
+                    });
+                  });
+                  {% endcomment %}
+                  //END: Pratik - 15th July 2024
+
+                  {% comment %}
+                    dateRanges.forEach(function(dateRange){
+                    $(".picker__day").filter(function() {
+                      if (parseInt($(this).attr("data-pick")) < dateRange[0] || parseInt($(this).attr("data-pick")) > dateRange[1]){
+                        $(this).addClass('picker__day--disabled');
+                      }
+                    });
+                  });
+                  {% endcomment %}
+                  
+                {% elsif block.settings.date_options == "specific_dates_option" %}
+                    $(".picker__day").addClass('picker__day--disabled');
+                  specificDates.forEach(function(specificDate){
+                    $(".picker__day").filter(function() {
+                      if (parseInt($(this).attr("data-pick")) == specificDate){
+                        $(this).removeClass('picker__day--disabled');
+                      }
+                    });
+                  });
+                {% endif %}
+              {% endif %}
+
+            // Addded this 06/09/2024 - Pratick, to automatically stop weekend order after Friday 12pm
+
+             {% if block.settings.cutoff_fridaytosunday == true %}
+              $(document).ready(function() {
+                  const currentDate = new Date();
+                  const currentDay = currentDate.getDay();  // 6 for Saturday
+                  const currentHour = currentDate.getHours();  // 12 pm = 12
+              
+                  console.log("Current Day:", currentDay);
+                  console.log("Current Hour:", currentHour);
+                  
+                  // Calculate the upcoming Saturday and Sunday
+                  const upcomingSaturday = new Date(currentDate);
+                  const upcomingSunday = new Date(currentDate);
+                  //const upcomingFriday = new Date(currentDate);
+                  
+                  // Set the dates to the upcoming Saturday and Sunday
+                  //upcomingFriday.setDate(currentDate.getDate() + (5 - currentDay));
+                  upcomingSaturday.setDate(currentDate.getDate() + (6 - currentDay));
+                  upcomingSunday.setDate(currentDate.getDate() + (7 - currentDay));
+
+                  
+                  $(".picker__day").filter(function() {
+                      const date = convertToDate($(this).attr("aria-label"));
+                      
+                      console.log("Checking date:", date);
+                      
+                      // Check if today is Saturday
+                      if (currentDay === 6  || currentDay === 7) {
+                          // Disable the upcoming Saturday and Sunday
+                          if (date.toDateString() === upcomingSaturday.toDateString() || date.toDateString() === upcomingSunday.toDateString()) {
+                              $(this).addClass('picker__day--disabled');
+                              console.log("Disabling:", date.toDateString());
+                          }
+                      } 
+                      else {
+                          // Check if today is Friday and after 12 pm
+                          if (currentDay === 5 && currentHour >= 12) {
+                              // Disable only the upcoming Saturday and Sunday
+                              if (date.toDateString() === upcomingSaturday.toDateString() || date.toDateString() === upcomingSunday.toDateString()) {
+                                  $(this).addClass('picker__day--disabled');
+                                  console.log("Disabling:", date.toDateString());
+                              }
+                              else {
+                                console.log("Disable for monday");
+                              }
+                          } 
+                          else {
+                            console.log("Nothing to disable");
+                          }
+                      }
+                  });
+                  });
+                  {% endif %}
+            }        
+          {% endfor %}
+        {% endif %} 
+    
+        // Sat and Sun Text Color and Background Color
+        $('.picker__day').each(function(i, day) {
+          if (!$(day).hasClass('picker__day--disabled')){
+            $(day).css('color', 'black');
+          }
+          if ($(day).attr('aria-label').includes('Sat') || $(day).attr('aria-label').includes('Sun')){
+            if (!$(day).hasClass('picker__day--disabled')){
+              $(day).css('color', `{{ section.settings.weekend_text_color }}`);
+              $(day).css('background-color', `{{ section.settings.weekend_background_color }}`);
+            }
+          }
+        });
+        const currentDatetime = new Date();
+        // Enable or Disable Same Day Delivery
+        {% if section.settings.enable_same_day_delivery %}
+            // Disable Same Day Delivery if Postcode Entered Not In Postcode Settings
+            var sameDayPostcodes = [{{ section.settings.same_day_delivery_postcode }}];
+            //Comment by shikhar on 14-09-2023
+            // if (!sameDayPostcodes.includes(parseInt($('#deliveryGeoSearchField').val()))){
+            //     $(".picker__day--today").addClass('picker__day--disabled');
+            // }
+    
+            // Disable Same Day Morning Delivery After 6am	
+            // $(".picker__day").on('click',function(){	
+            //   if ($(this).hasClass("picker__day--today")) {	
+            //     window.ZapietEvent.listen('delivery.timepicker.opened', function() {	
+            //       var sameDaySixAM = $(".picker__day--today").data("pick") + (6 * 60 * 60 * 1000);
+            //       if (currentDatetime.getTime() > sameDaySixAM) {	
+            //         $(`.picker__list-item[aria-label='9:00 AM']`).hide();	
+            //       }	
+            //     });	
+            //   } else {	
+            //     window.ZapietEvent.listen('delivery.timepicker.opened', function() {	
+            //       //$(`.picker__list-item[aria-label='9:00 AM']`).show();
+            //       $(`.picker__list-item[aria-label='9:00 AM']`).hide();
+            //     });	
+            //   };	
+            // });
+    
+            // Disable Same Day Delivery After 12pm
+            // window.ZapietEvent.listen('delivery.datepicker.opened', function() {
+            //   {% comment %}
+            //   //Pratik changes 10th July, 2024 START
+            //   function convertDateToMillisec(dateStr) {
+            //         const date = new Date(dateStr);
+            //         if (isNaN(date.getTime())) {
+            //             throw new Error("Invalid date format");
+            //         }
+            //         return date.getTime();
+            //     }
+    
+            //   {% if block.settings.half_day_preparation or block.settings.six_hour_preparation or block.settings.nine_hour_preparation or block.settings.one_day_preparation or block.settings.two_days_preparation  %}
+            //     $(".picker__day").filter(function() {
+            //       const millisec = convertDateToMillisec($(this).attr("aria-label"));
+            //       if ( millisec < prepareDate){
+            //         $(this).addClass('picker__day--disabled');
+            //       }
+            //     });
+            //   {% endif %}
+            //   // END
+            //   {% endcomment %}
+            //   var sameDayNineAM = $(".picker__day--today").data("pick") + (12 * 60 * 60 * 1000);
+            //   if (currentDatetime.getTime() > sameDayNineAM) {	
+            //     $(".picker__day--today").addClass('picker__day--disabled');	
+            //   };
+            // });
+          
+      
+        {% else %}
+            $(".picker__day--today").addClass('picker__day--disabled'); // Disable Same Day Delivery
+        {% endif %} 
+        
+        // Today Text Color and Backgroud Color
+        if (!$(".picker__day--today").hasClass('picker__day--disabled')){
+          $(".picker__day--today").css('color', `{{ section.settings.same_day_text_color }}`);
+          $(".picker__day--today").css('background-color',`{{ section.settings.same_day_background_color }}`);     
+        }
+       
+      });
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Zapiet Conditions",
+  "class": "zapiet-conditions",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "textarea",
+      "id": "disable_delivery_dates",
+      "label": "Disable Delivery on Specific Date (YYYY-MM-DD, Seperate with Comma)"
+    },
+    {
+      "type": "header",
+      "content": "Priority Delivery"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_priority_delivery_surcharge",
+      "default": false,
+      "label": "Enable Priority Delivery Surcharge"
+    },
+    {
+      "type": "textarea",
+      "id": "priority_delivery_postcode",
+      "label": "Priority Delivery Postcode"
+    },
+    {
+      "type": "textarea",
+      "id": "disable_priority_delivery_dates",
+      "label": "Priority Delivery Dates (Disable)"
+    },
+    {
+      "type": "header",
+      "content": "Same Day Delivery"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_same_day_delivery",
+      "default": true,
+      "label": "Enable Same Day Delivery"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_same_day_delivery_surcharge",
+      "default": false,
+      "label": "Enable Same Day Delivery Surcharge"
+    },
+    {
+      "type": "textarea",
+      "id": "same_day_delivery_postcode",
+      "label": "Same Day Postcode"
+    },
+        {
+      "type": "textarea",
+      "id": "restricted_postcodes",
+      "label": "Restricted Postcodes (9am-12pm slot)",
+      "default": "3023,3026,3027,3028,3029,3038,3149,3150,3161,3162,3168,3169,3170,3171,3172,3173,3174,3175,3177,3802,3188,3190,3191,3192,3193,3194,3195,3196,3202,3800,3803,3804,3805,3806,3975,3976"
+    },
+    {
+      "type": "color",
+      "id": "same_day_text_color",
+      "label": "Same Day Text Color",
+      "default": "#FFA500"
+    },
+    {
+      "type": "color",
+      "id": "same_day_background_color",
+      "label": "Same Day Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Weekend Delivery"
+    },
+    {
+      "type": "color",
+      "id": "weekend_text_color",
+      "label": "Weekend Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "weekend_background_color",
+      "label": "Weekend Background Color",
+      "default": "#FFA500"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_weekend_delivery_surcharge",
+      "default": false,
+      "label": "Enable Weekend Delivery Surcharge"
+    },
+    {
+      "type": "textarea",
+      "id": "weekend_delivery_surcharge_exclude_dates",
+      "label": "Exclude Specific Date (YYYY-MM-DD, Seperate with Comma)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Condition",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "header",
+          "content": "Trigger"
+        },
+        {
+          "type": "select",
+          "id": "trigger",
+          "label": "Trigger Options",
+          "options": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "products",
+              "label": "Products"
+            },
+            {
+              "value": "collections",
+              "label": "Collections"
+            },
+            {
+              "value": "tags",
+              "label": "Tags"
+            },
+            {
+              "value": "types",
+              "label": "Product Types"
+            }
+          ],
+          "default": ""
+        },
+        {
+          "type": "product_list",
+          "id": "trigger_products",
+          "label": "Select Products"
+        },
+        {
+          "type": "collection_list",
+          "id": "trigger_collections",
+          "label": "Select Collections"
+        },
+        {
+          "type": "textarea",
+          "id": "trigger_tags",
+          "label": "Tags (Seperate with Comma)"
+        },
+        {
+          "type": "textarea",
+          "id": "trigger_types",
+          "label": "Product Types (Seperate with Comma)"
+        },
+        {
+          "type": "header",
+          "content": "Same Day"
+        },
+        {
+          "type": "select",
+          "id": "same_day_choice",
+          "label": "Same Day Choice",
+          "options": [
+            {
+              "value": "12pm",
+              "label": "12pm"
+            },
+            {
+              "value": "10am",
+              "label": "10am"
+            }
+          ],
+          "default": "12pm"
+        },
+        {
+          "type": "checkbox",
+          "id": "cutoff_fridaytosunday",
+          "label": "Cut off Friday to Sunday",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Disable Dates"
+        },
+        {
+          "type": "checkbox",
+          "id": "six_hour_preparation",
+          "label": "6 Hours Preparation (3 PM)",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "nine_hour_preparation",
+          "label": "9 Hours Preparation (6 PM)",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "half_day_preparation",
+          "label": "12 Hours Preparation",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "one_day_preparation",
+          "label": "24 Hours Preparation",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "two_days_preparation",
+          "label": "48 Hours Preparation",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "actions",
+          "label": "Actions",
+          "options": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "within",
+              "label": "Disable Dates Within Specified Range or Dates"
+            },
+            {
+              "value": "outside",
+              "label": "Disable Dates Outside Specified Range or Dates"
+            }
+          ],
+          "default": ""
+        },
+        {
+          "type": "select",
+          "id": "date_options",
+          "label": "Date Options",
+          "options": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "date_range_option",
+              "label": "Date Range"
+            },
+            {
+              "value": "specific_dates_option",
+              "label": "Specific Dates"
+            }
+          ],
+          "default": ""
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_date_rannge_1",
+          "label": "Enable Date Range 1",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "date_rannge_from_1",
+          "label": "From (YYYY/MM/DD)"
+        },
+        {
+          "type": "text",
+          "id": "date_rannge_to_1",
+          "label": "To (YYYY/MM/DD)"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_date_rannge_2",
+          "label": "Enable Date Range 2",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "date_rannge_from_2",
+          "label": "From (YYYY/MM/DD)"
+        },
+        {
+          "type": "text",
+          "id": "date_rannge_to_2",
+          "label": "To (YYYY/MM/DD)"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_date_rannge_3",
+          "label": "Enable Date Range 3",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "date_rannge_from_3",
+          "label": "From (YYYY/MM/DD)"
+        },
+        {
+          "type": "text",
+          "id": "date_rannge_to_3",
+          "label": "To (YYYY/MM/DD)"
+        },
+        {
+          "type": "textarea",
+          "id": "specific_date",
+          "label": "Specific Dates (YYYY-MM-DD, Seperate with Comma)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zapiet Conditions",
+      "category": "Advanced layout",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

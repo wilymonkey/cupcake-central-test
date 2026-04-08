@@ -1,0 +1,85 @@
+{% comment %}
+  Accepts all settings from the section file.
+{% endcomment %}
+
+<div class="section-{{ section_id }}-padding overflow-hidden" style="background-color: {{ background_color }};">
+  <div class="d-sm:max-w-7xl mx-auto px-10">
+    {%- comment -%}
+      Main container: A column on mobile, switching to a row on desktop (md).
+    {%- endcomment -%}
+    <div class="flex flex-col d-sm:flex-row d-sm:items-center d-sm:justify-center d-sm:gap-16">
+      {%- comment -%}
+        Content Column: Given a specific width of 1/2 on desktop.
+      {%- endcomment -%}
+      <div class="order-last d-sm:order-none flex-shrink-0 text-center pt-8 d-sm:pt-0 d-sm:w-3/5 d-sm:mr-60 mx-auto">
+        {% if heading != blank %}
+          <h1 class="text-3xl font-bold mx-auto d-sm:text-4xl" style="color: {{ heading_color }};">{{ heading }}</h1>
+        {% endif %}
+        {% if subheading != blank %}
+          <p class="mt-4 text-bold text-lg" style="color: {{ subheading_color }};">
+            {{ subheading }}
+          </p>
+        {% endif %}
+
+        <div class="mt-8 mx-auto">
+          {% form 'customer', class: 'newsletter-form' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="flex flex-col gap-4 mx-auto w-full">
+              <input
+                type="email"
+                name="contact[email]"
+                placeholder="Enter Mail Address"
+                class="w-full px-4 py-3 text-center rounded-lg border-none! newsletter-input-{{ section_id }}"
+                style="background-color: {{ input_background_color }}; color: {{ input_text_color }};"
+              >
+              <button
+                type="submit"
+                class="w-full px-6 py-3 font-bold uppercase rounded-lg"
+                style="background-color: {{ button_background_color }}; color: {{ button_text_color }};"
+              >
+                {{ button_text }}
+              </button>
+            </div>
+          {% endform %}
+        </div>
+
+        <div class="mt-10 flex justify-center items-center gap-4">
+          {% if facebook_link != blank %}
+            <a href="{{ facebook_link }}" class="p-5 border-2 rounded-full" style="border-color: {{ social_icon_color }};">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: {{ social_icon_color }};"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          {% endif %}
+          {% if instagram_link != blank %}
+            <a href="{{ instagram_link }}" class="p-5 border-2 rounded-full" style="border-color: {{ social_icon_color }};">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: {{ social_icon_color }};"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+          {% endif %}
+          {% if youtube_link != blank %}
+            <a href="{{ youtube_link }}" class="p-5 border-2 rounded-full" style="border-color: {{ social_icon_color }};">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: {{ social_icon_color }};"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      {%- comment -%}
+        Image Column: Given a specific width of 1/2 on desktop.
+      {%- endcomment -%}
+      <div class="order-first d-sm:order-none flex-shrink-0 d-sm:w-2/3 pt-8 d-sm:pt-0">
+        {% if image != blank %}
+          <img
+            src="{{ image | image_url: width: 1200 }}"
+            alt="{{ image.alt | escape }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            class="w-full h-auto rounded-3xl"
+          >
+        {% else %}
+          <div class="flex items-center justify-center aspect-square bg-gray-100/50 rounded-lg">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,207 @@
+<div
+  class="pl-40 py-[25px] md:pb-[0px] m-xs:py-[30px] d-sm:py-6"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="px-[6px] py-5 md:pb-2 d-sm:pt-12 border-none!">
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+      <div class="mb-3 text-center">
+        {% if section.settings.heading != blank %}
+          <div class="text-[24px] d-sm:text-[36px] d-sm:leading-[33px]! font-black leading-[22px]! tracking-normal! text-dark-shade-brown">{{ section.settings.heading }}</div>
+        {% endif %}
+        <div class="max-w-[352px] md:max-w-[880px] d-sm:max-w-[600px] mx-auto py-5 text-center px-[24px] d-sm:px-0 text-[14px]! font-[500] leading-[18px]! d-sm:py-5 md:pt-3 md:pb-1 d-lg:pt-4 d-lg:pb-1 d-sm:text-[24px] d-sm:leading-[34px]">
+        {% if section.settings.subheading != blank %}
+          <div class="text-[14px]! d-sm:text-[16px]! font-[500] leading-[18px]! d-sm:leading-[23px]! tracking-[0.3px] text-espresso">
+            {{ section.settings.subheading }}
+          </div>
+        {% endif %}
+        </div>
+        <div class="flex justify-center space-around max-w-[352px] md:max-w-[880px] d-sm:max-w-[600px] mx-auto md:block md:space-y-4 mb-4 md:mb-6">
+          {% for block in section.blocks %}
+            {% if block.type == 'collection_tab' %}
+              {% assign collection = collections[block.settings.collection] %}
+              {% if collection %}
+                <button
+                  class="category-tab cursor-pointer text-medium-dark-red text-[14px] d-sm:text-[22px] d-sm:leading-[33px]! p-2 text-lg font-bold transition-colors duration-300 {% if forloop.first %} active text-red-700 border-b-2 underline font-[900]! {% else %} text-dark-shade-brown font-[900]! {% endif %}"
+                  data-target-category="{{ collection.handle }}"
+                  data-image-url="{{ block.settings.category_image | image_url: width: 1000 }}"
+                >
+                  {{ block.settings.tab_title | default: collection.title }}
+                </button>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="md:grid md:justify-center md:items-start md:gap-[40px] d-lg:gap-[60px] grid-cols-2 gap-20">
+        <div class="main-category-image-container relative w-full aspect-square md:aspect-auto md:h-[459px] d-lg:h-[513px] overflow-hidden rounded-lg shadow-xl">
+          {% comment %} Get first collection tab image or placeholder {% endcomment %}
+          {% assign first_tab = section.blocks[0] %}
+          {% if first_tab.settings.category_image != blank %}
+            <img 
+              id="active-category-image"
+              src="{{ first_tab.settings.category_image | image_url: width: 1000 }}" 
+              alt="{{ first_tab.settings.tab_title }}" 
+              class="w-full h-full object-cover transition-opacity duration-500 hover-scale-smooth"
+            >
+          {% else %}
+            {{ 'image-placeholder' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+
+        {% comment %} Product cards container {% endcomment %}
+        <div class="pb-8 -mb-4 md:mb-8 d-sm:mb-0 d-sm:pb-0 overflow-x-auto custom-scrollbar md:h-[459px] d-lg:h-[513px] ">
+          <div class="inline-flex gap-[12px] md:gap-[24px] d-sm:gap-[32px] d-lg:gap-[32px] md:w-full d-lg:max-w-[1905px] md:h-full! d-lg:justify-center">
+          
+          {% for block in section.blocks %}
+            {% if block.type == 'collection_tab' %}
+              {% assign collection = collections[block.settings.collection] %}
+              {% if collection %}
+                <div 
+                  id="category-{{ collection.handle }}" 
+                  class="category-cards inline-flex gap-[12px] md:gap-[24px] d-sm:gap-[32px] d-lg:gap-[32px] md:w-full d-lg:max-w-[1905px] md:h-full! d-lg:justify-start"
+                  {% unless forloop.first %}style="display: none;"{% endunless %}
+                >
+                  {% for product in collection.products limit: block.settings.product_limit %}
+                    {% render 'our-christmas-gifting-collection', product: product, button_text: block.settings.button_text %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our Christmas Gifting",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Header / Title"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Hello</p>"
+    },
+    {
+      "type": "header",
+      "content": "Style Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "info": "Leave empty to use collection title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "category_image",
+          "label": "Category Main Image"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "range",
+          "id": "product_limit",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "label": "Products to show",
+          "default": 6
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Christmas Gifting - Tabs",
+      "blocks": [
+        {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "For Her",
+            "button_text": "Shop Now"
+          }
+        },
+        {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "For Him", 
+            "button_text": "Shop Now"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.category-tab');
+    const mainImage = document.getElementById('active-category-image');
+    const cardContainers = document.querySelectorAll('.category-cards');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        const targetHandle = this.getAttribute('data-target-category');
+        const newImageUrl = this.getAttribute('data-image-url');
+        
+        // Update active tab style
+        tabs.forEach(t => {
+          t.classList.remove('active', 'text-medium-dark-red', 'underline', 'border-red-700');
+          t.classList.add('text-dark-shade-brown', 'hover:underline');
+        });
+        this.classList.add('active', 'text-medium-dark-red', 'underline', 'border-red-700');
+        this.classList.remove('text-dark-shade-brown', 'hover:underline');
+
+        // Change the main image
+        if (mainImage) {
+            mainImage.src = newImageUrl;
+            mainImage.alt = this.textContent.trim();
+        }
+
+        // Toggle product card containers
+        cardContainers.forEach(container => {
+          if (container.id === 'category-' + targetHandle) {
+            container.style.display = 'inline-flex';
+          } else {
+            container.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

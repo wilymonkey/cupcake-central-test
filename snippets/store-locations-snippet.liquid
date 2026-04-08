@@ -1,0 +1,215 @@
+{% comment %}
+  Accepts:
+  - heading, subheading, default_image, locations, section_id
+{% endcomment %}
+
+<div class="section-{{ section_id }}-padding d-lg:pt-[48px]! bg-[#FFFAF2]">
+  <div class="max-w-7xl md:max-w-[120rem] d-lg:max-w-[1920px] mx-auto px-[15px]">
+    <div class="flex flex-col md:flex-row d-sm:gap-12 mt-12" id="store-locations-{{ section_id }}">
+      {%- comment -%} --- Image Column --- {%- endcomment -%}
+      <div class="w-full d-sm:w-1/2 order-first d-sm:order-none mr-32 d-lg:mr-0">
+        {%- comment -%}
+          FIX: Container now uses aspect-ratio and responsive rounding.
+        {%- endcomment -%}
+        <div class="image-container relative rounded-[12px] d-sm:rounded-[16px] overflow-hidden aspect-[8/5] transition-all duration-500 ease-in-out">
+          {%- if default_image != blank -%}
+            <img
+              src="{{ default_image | image_url: width: 1600 }}"
+              alt="{{ default_image.alt | escape }}"
+              class="store-image default-image absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500"
+              height=""
+              width=""
+            >
+          {%- else -%}
+            <div class="store-image default-image absolute inset-0 w-full h-full flex items-center justify-center bg-gray-100 opacity-100 transition-opacity duration-500">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+
+          {%- for block in locations -%}
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 1600 }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                class="store-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                data-location-id="{{ block.id }}"
+                height=""
+                width=""
+              >
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} --- Accordion Column --- {%- endcomment -%}
+      <div class="w-full d-sm:w-1/2 pt-[36px] md:pt-0">
+        {% if heading != blank or subheading != blank %}
+          <div class="mb-[24px] text-left">
+            {% if heading != blank %}
+              <div class="text-[24px] d-sm:text-[36px] d-sm:leading-[33px]! font-[700] leading-[22px]! tracking-normal! text-espresso">
+                {{ heading }}
+              </div>
+            {% endif %}
+            {% if subheading != blank %}
+              <div class="d-sm:max-w-[1184px] mx-auto text-left d-sm:px-0 text-[14px]! font-[500] leading-[18px]! d-lg:text-[20px]! d-lg:leading-[28px]! d-lg:tracking-[0.4px]!">
+                <div class="mt-5 tracking-[0.80px] text-espresso">
+                  {{ subheading }}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="space-y-4">
+          {% for block in locations %}
+            <div
+              class="location-accordion rounded-[4px] overflow-hidden border-[1px] border-espresso bg-[#FFFAF2] transition-all duration-300 ease-in-out"
+              style=""
+            >
+              <button
+                class="location-toggle flex justify-between items-center w-full py-[12px]! px-[20px] text-left font-bold text-espresso"
+                data-target-id="{{ block.id }}"
+              >
+                <div class="text-[18px] leading-[20px]! tracking-[0.25px] font-[700]">{{ block.settings.title }}</div>
+                <span class="plus-icon transition-transform duration-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-chevron-down-icon lucide-chevron-down"
+                  >
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="location-content max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out">
+                <div class="">
+                  {% comment %} <div class="w-11/12 mx-auto h-0 border-t-2 border-popsugar">&nbsp;</div> {% endcomment %}
+                  <div class="pt-3 px-[20px]!">
+                    <div class="min-h-[125px]">
+                      <div class=" text-espresso text-[14px] leading-[18px] tracking-[0.3px] font-[500] w-full">
+                        {{ block.settings.address }}
+                      </div>
+                      {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+                        <a
+                          href="{{ block.settings.button_link }}"
+                          class="inline-block mt-4! p-[12px] text-[18px] leading-[18px]! tracking-[0.75px] font-bold bg-popsugar hover:bg-[#c5497a] text-white rounded-[4px]"
+                        >
+                          {{ block.settings.button_text }}
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="w-full px-[15px]! pb-[32px]">
+                    <div class="grid grid-cols-2 gap-x-[30px]! d-lg:gap-x-[80px]! text-sm text-espresso">
+                      <div class="flex flex-col gap-y-4">
+                        <div class="text-[14px] leading-[18px]!">
+                          <strong>Monday</strong><br>
+                          {{ block.settings.hours_monday }}
+                        </div>
+                        <div class="text-[14px] leading-[18px]!">
+                          <strong>Tuesday</strong><br>
+                          {{ block.settings.hours_tuesday }}
+                        </div>
+                        <div class="text-[14px] leading-[18px]!">
+                          <strong>Wednesday</strong><br>
+                          {{ block.settings.hours_wednesday }}
+                        </div>
+                        <div class="text-[14px] leading-[18px]!">
+                          <strong>Thursday</strong><br>
+                          {{ block.settings.hours_thursday }}
+                        </div>
+                      </div>
+
+                      <div class="flex flex-col gap-y-4">
+                        <div class="text-[14px] leading-[18px]!">
+                          <strong>Friday</strong><br>
+                          {{ block.settings.hours_friday }}
+                        </div>
+                        <div class="text-[14px] leading-[18px]!">
+                          <strong>Saturday</strong><br>
+                          {{ block.settings.hours_saturday }}
+                        </div>
+                        <div class="text-[14px] leading-[18px]!">
+                          <strong>Sunday</strong><br>
+                          {{ block.settings.hours_sunday }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const container = document.getElementById('store-locations-{{ section_id }}');
+      if (!container) return;
+
+      const imageContainer = container.querySelector('.image-container');
+      const toggles = container.querySelectorAll('.location-toggle');
+      const allImages = container.querySelectorAll('.store-image');
+      const defaultImage = container.querySelector('.default-image');
+
+      function swapImage(targetImage) {
+        allImages.forEach((img) => img.classList.replace('opacity-100', 'opacity-0'));
+        if (targetImage) {
+          targetImage.classList.replace('opacity-0', 'opacity-100');
+        } else if (defaultImage) {
+          defaultImage.classList.replace('opacity-0', 'opacity-100');
+        }
+      }
+
+      toggles.forEach((toggle) => {
+        toggle.addEventListener('click', function () {
+          const targetId = this.dataset.targetId;
+          const content = this.nextElementSibling;
+          const parentAccordion = this.parentElement;
+          const targetImage = container.querySelector(`.store-image[data-location-id="${targetId}"]`);
+          const isOpening = !content.style.maxHeight || content.style.maxHeight === '0px';
+
+          // Close all other accordions
+          container.querySelectorAll('.location-accordion').forEach((acc) => {
+            if (acc !== parentAccordion) {
+              acc.querySelector('.location-content').style.maxHeight = null;
+              acc.querySelector('.location-toggle').classList.remove('text-popsugar', 'bg-white');
+              acc.querySelector('.plus-icon').classList.remove('rotate-180');
+              acc.classList.remove('border-popsugar', 'bg-white', 'shadow-lg');
+            }
+          });
+
+          // Toggle the clicked accordion
+          if (isOpening) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            toggle.classList.add('text-popsugar', 'bg-white');
+            toggle.querySelector('.plus-icon').classList.add('rotate-180');
+            parentAccordion.classList.add('border-popsugar', 'bg-white', 'shadow-lg');
+            // FIX: Change aspect ratio
+            imageContainer.classList.remove('aspect-[8/5]');
+            imageContainer.classList.add('aspect-[20/17]');
+            swapImage(targetImage);
+          } else {
+            content.style.maxHeight = null;
+            toggle.classList.remove('text-popsugar', 'bg-white');
+            toggle.querySelector('.plus-icon').classList.remove('rotate-180');
+            parentAccordion.classList.remove('border-popsugar', 'bg-white', 'shadow-lg');
+            // FIX: Revert to default aspect ratio
+            imageContainer.classList.remove('aspect-[20/17]');
+            imageContainer.classList.add('aspect-[8/5]');
+            swapImage(defaultImage);
+          }
+        });
+      });
+    });
+  </script>
+</div>

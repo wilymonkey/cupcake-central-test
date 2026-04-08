@@ -1,0 +1,337 @@
+{{ 'wholesale-flavours-carousel.css' | asset_url | stylesheet_tag }}
+
+
+<div class="flavours-carousel-container">
+  <div class="carousel-festive-container">
+    <h1 class="carousel-festive-container-header1">PRODUCT CATEGORIES</h1>
+    
+    <!-- carousel-festive Wrapper -->
+    <div class="carousel-festive-wrapper">
+      <!-- Left Arrow -->
+      <button class="nav-btn left-btn">&lt;</button>
+      
+      <!-- carousel-festive -->
+      <div class="carousel-festive">
+            <div class="card" data-details="A chocolate base dolloped with chocolate buttercream and decorated with white chocolate to resemble a chocolate pudding, topped with a holly leaf sugar decoration." data-alt-img="christmas_pudding_alt.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_650.png?v=1736123319" alt="christmas pudding">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_656.png?v=1736123319" alt="Christmas Pudding" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Xmas.png?v=1732075452" alt="Christmas Pudding Panel" class="details-panel1">
+            </div>
+            <div class="card" data-details="A lightly spiced vanilla base with chocolate and vanilla buttercream, garnished with a raspberry lolly, red sprinkle ball and house made gingerbread man." data-alt-img="gingerbread_man.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_651.png?v=1736123319" alt="Gingerbread Man">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_657.png?v=1736123319" alt="Gingerbread Man" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Ginger.png?v=1732075452" alt="Gingerbread Man Panel" class="details-panel1">
+            </div>
+            
+             <div class="card" data-details="A vegan and gluten free chocolate base with green and white buttercream frosting, sprinkled with gold balls and topped with an edible red bow sprinkle." data-alt-img="chocolate_wreath.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_652.png?v=1736123319" alt="Chocolate Wreath">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_658.png?v=1736123319" alt="Chocolate Wreath" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Wreath.png?v=1732075452" alt="Chocolate Wreath Panel" class="details-panel1">
+            </div>
+            <div class="card" data-details="A vegan and gluten free chocolate base with vegan chocolate buttercream frosting, dipped in vegan chocolate topping and decorated with edible red sprinkles and green fondant holly leaves" data-alt-img="chocolate_pudding.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_653.png?v=1736123318" alt="Chocolate Pudding">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_659.png?v=1736123319" alt="Chocolate Pudding" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Pudding.png?v=1732075452" alt="Chocolate Pudding Panel" class="details-panel1">
+            </div>
+        <div class="card" data-details="A vanilla base with pink vanilla buttercream frosting, topped with a gold fondant snowflake and edible letter to Santa." data-alt-img="letter_to_santa.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_654.png?v=1736123319" alt="Letter to Santa">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_660.png?v=1736123319" alt="Letter to Santa" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Letter.png?v=1732075452" alt="Letter to Santa Panel" class="details-panel1">
+            </div>
+            <div class="card" data-details="A vegan Biscoff vanilla base topped with a swirl of vanilla buttercream and drizzled with lashings of Biscoff spread." data-alt-img="biscoff.jpg">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_655.png?v=1736123319" alt="Biscoff">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Group_661.png?v=1736123319" alt="Biscoff" class="active-image">
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/BISCOFF_3456938e-a1a5-4370-998d-0b5b32a8a0fe.png?v=1732075452" alt="Biscoff Panel" class="details-panel1">
+            </div>
+        </div>
+
+      <button class="nav-btn right-btn">&gt;</button>
+    </div>
+    
+</div>
+
+    <!-- Dots Indicator -->
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <!-- Details Panel -->
+  <div class="card-container">
+  <div id="product-grid-container" class="product-grid hidden"></div>
+  </div>
+
+  
+  <div class="card-container hidden">
+      <div class="cutout"></div>
+      <!-- Left: Image -->
+      <div class="details-panel">
+        <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Santa.png?v=1732075452" alt="Chocolate Pudding Details" class="details-image">
+      </div>
+    
+      <!-- Right: Title and Description -->
+      <div class="details-content">
+        <h2 class="card-title">Santa Claus</h2>
+        <p class="card-details">
+          A vanilla base with red vanilla buttercream frosting, topped with a chocolate coated North Pole pretzel stick and decorated with a Santa face, edible fondant star and white sprinkles.
+        </p>
+        <button class="order-now" href="#christmas-collection-block">ORDER NOW</button>
+      </div>  
+    </div>
+  </div>
+
+<script>
+
+  
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('.carousel-festive');
+  const cards = document.querySelectorAll('.card');
+  const dotsContainer = document.querySelector('.dots');
+  const leftBtn = document.querySelector('.left-btn');
+  const rightBtn = document.querySelector('.right-btn');
+  const detailsPanel = document.querySelector('.details-panel'); // Refined selection
+  const detailsPanelImage = detailsPanel.querySelector('img'); // Refined selection
+  const cardTitle = document.querySelector('.card-title');
+  const cardDetails = document.querySelector('.card-details');
+  let currentIndex = 0;
+
+  const productGridContainer = document.getElementById('product-grid-container');
+
+  // Function to generate product grid HTML
+  function generateProductGrid(products) {
+    return products
+      .map(product => {
+        return `
+        <div class="product-card">
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.title}" />
+            ${product.badge ? `<span class="badge ${product.badge}">${product.badgeText}</span>` : ''}
+          </div>
+          <h3 class="product-title">${product.title}</h3>
+        </div>`;
+      })
+      .join('');
+  }
+
+  // Array of products for each card (example data)
+  const cardProducts = [
+    [
+      //{ image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-RED-VELVET_2x_fb9cc749-5763-4fd5-b790-90af63f7c951.png?v=1733975991', title: 'Red Velvet - Cupcake', badge: 'vegan', badgeText: 'Vegan' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-RED-VELVET.webp?v=1719623658', title: 'Red Velvet' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-VANILLA.webp?v=1719623603', title: 'Vanilla Vanilla' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CLASSIC-INDIVIDUAL-CUT-MC-DFC_9b8170fc-71f9-41f1-a777-e8ec68396d42.jpg?v=1695627442', title: "Devil's Food Chocolate" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-LEMON.jpg?v=1719988362', title: 'Lemon' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-COOKIES_CREAM.webp?v=1719623682', title: 'Cookies & Cream' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-BDAY_1.webp?v=1719623496', title: "Birthday Cake" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-RWC.webp?v=1719574706', title: 'Raspberry White Chocolate' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-CARAMEL.webp?v=1719574598', title: "Salted Caramel" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-CHOC_V.webp?v=1719623700', title: 'Vegan Chocolate' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-BISCOFF_V.webp?v=1719623459', title: "Biscoff" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/SPR23-INDIVIDUAL-CUT-CC-BERRY.webp?v=1693189936', title: 'Blueberry' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_NEW-RANGE24_CC-COFFEE_V.jpg?v=1725583135', title: "Coffee" },
+    ],
+    [
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/BDAY_1.jpg?v=1721181273', title: 'Birthday Cake' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/C_C_1.jpg?v=1736136927', title: 'Cookies & Cream' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CHOC_CHIP_1.jpg?v=1736136927', title: "Chocolate Chip" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/RED_VELVET_1.jpg?v=1736136927', title: 'Red Velvet' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/RWC_1.jpg?v=1736136927', title: 'Raspberry White Chocolate' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/T_CHOC_1.jpg?v=1736136926', title: "Triple Chocloate Chip" },
+    ],
+    [
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/DSC08832.jpg?v=1736137442', title: 'Cocolate Mud Cake' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/DSC08829.jpg?v=1736137441', title: 'Tiramisu' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/DSC08821.jpg?v=1736137440', title: "Lemon" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/DSC08834.jpg?v=1736137443', title: 'Biscoff' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/DSC08828.jpg?v=1736137441', title: 'Red Velvet' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/DSC08826.jpg?v=1736137441', title: "Matcha" },
+    ],
+    [
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_SLICES24_LEMON-5.jpg?v=1736141663', title: 'Lemon' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_SLICES24_RWC-5.jpg?v=1736141663', title: 'Raspberry White Chocolate Blondie' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_SLICES24_FUDGY_BROWNIE-5.jpg?v=1736141662', title: "Fudgy Brownie" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_SLICES24_CORNFLAKE-5.jpg?v=1736141663', title: 'Cornflake' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_SLICES24_RV-5.jpg?v=1736141662', title: 'Red Velvet' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_SLICES24_BISCOFF-5.jpg?v=1736141662', title: 'Biscoff' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/PRODUCT-SLICES-INDIV-BROWNIE-NONVEGAN.jpg?v=1736139411', title: 'Vegan Brownie' },
+    ],
+    [
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_CHOCOLATECAKE-3.jpg?v=1726792114', title: 'Chocolate' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_HAZELNUTCAKE-3.jpg?v=1726792334', title: 'Nutella Hazelnut' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_LEMONCAKE-3.jpg?v=1726793335', title: "Lemon" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_VANILACAKE-3.jpg?v=1726792457', title: 'Vanilla' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_BLACKFORESTCAKE-3.jpg?v=1726792540', title: 'Black Forest' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_NEPOLEONCAKE-3.jpg?v=1726793419', title: 'Neapolitan' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_RWCCAKE-3.jpg?v=1726792747', title: "Raspberry White Chocolate" },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_BLUEBERRYCAKE-1.jpg?v=1726792821', title: 'Blueberry' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_CARROTCAKE-3.jpg?v=1726795234', title: 'Carrot' },
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_CAKES_BISCOFF_CAKE-4.jpg?v=1725583137', title: 'Biscoff' },
+    ],
+    [
+      { image: 'https://cdn.shopify.com/s/files/1/1848/3097/files/CC_-Scone_7.jpg?v=1736140238', title: 'Scones' },
+    ],
+    // Add more product arrays for other cards
+  ];
+
+  // Function to render products
+  function renderProducts(products) {
+    productGridContainer.innerHTML = generateProductGrid(products);
+    productGridContainer.classList.remove('hidden'); // Show the product grid
+  }
+
+  // Display the first set of products on page load
+  renderProducts(cardProducts[0]);
+
+  // Card click event
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      const products = cardProducts[index]; // Get products for the clicked card
+      if (products) {
+        renderProducts(products);
+      }
+    });
+  });
+  
+  // Create dots dynamically
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    cards.forEach((_, index) => {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dotsContainer.appendChild(dot);
+
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+  }
+
+  // Initialize the first card as active and update the image
+function initializeActiveCard() {
+  const activeCard = cards[currentIndex];
+  activeCard.classList.add('active'); // Mark the first card as active
+
+  // Update the details panel image
+  const detailsImage = activeCard.querySelector('.details-panel1');
+  const detailsImageSrc = detailsImage ? detailsImage.src : '';
+  detailsPanelImage.src = detailsImageSrc;
+
+  // Display the appropriate image for the active card
+  const defaultImage = activeCard.querySelector('img:not(.active-image):not(.details-image)');
+  const activeImage = activeCard.querySelector('.active-image');
+  if (defaultImage) defaultImage.style.display = 'none';
+  if (activeImage) activeImage.style.display = 'block';
+
+  // Update the details panel title and details
+  cardTitle.textContent = activeCard.querySelector('.active-image').alt;
+  cardDetails.textContent = activeCard.getAttribute('data-details');
+
+  // Show the details panel
+  detailsPanel.classList.add('show');
+}
+
+// Initialize the first card as active
+initializeActiveCard();
+
+
+  createDots();
+  const dots = document.querySelectorAll('.dot');
+
+  // Update carousel
+  function updateCarousel() {
+    const activeCard = cards[currentIndex];
+    const carouselWidth = carousel.offsetWidth;
+    const cardWidth = activeCard.offsetWidth;
+    const scrollLeft = activeCard.offsetLeft - (carouselWidth / 2 - cardWidth / 2);
+
+    // Smooth scrolling to center the active card
+    carousel.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+
+    // Remove active class from all cards and dots
+    cards.forEach(card => {
+      card.classList.remove('active');
+
+      // Reset images to default for non-active cards
+      const defaultImage = card.querySelector('img:not(.active-image):not(.details-image)');
+      const activeImage = card.querySelector('.active-image');
+      if (defaultImage) defaultImage.style.display = 'block';
+      if (activeImage) activeImage.style.display = 'none';
+    });
+
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    // Add active class to the current card and dot
+    activeCard.classList.add('active');
+    dots[currentIndex].classList.add('active');
+
+    // Swap images for the active card
+    const defaultImage = activeCard.querySelector('img:not(.active-image):not(.details-image)');
+    const activeImage = activeCard.querySelector('.active-image');
+    if (defaultImage) defaultImage.style.display = 'none';
+    if (activeImage) activeImage.style.display = 'block';
+
+    // Update details panel
+    const detailsImage = activeCard.querySelector('.details-panel1');
+    const detailsImageSrc = detailsImage ? detailsImage.src : '';
+    detailsPanelImage.src = detailsImageSrc; // Update the details panel image
+    if (detailsPanelImage) detailsPanelImage.style.display = 'block';
+
+    cardTitle.textContent = activeCard.querySelector('.active-image').alt;
+    cardDetails.textContent = activeCard.getAttribute('data-details');
+
+    // Show details panel
+    detailsPanel.classList.add('show');
+  }
+
+  // Card click
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      currentIndex = index;
+      updateCarousel();
+    });
+  });
+
+  // Navigation Buttons
+  leftBtn.addEventListener('click', () => {
+    if (currentIndex > 0) currentIndex--;
+    updateCarousel();
+  });
+
+  rightBtn.addEventListener('click', () => {
+    if (currentIndex < cards.length - 1) currentIndex++;
+    updateCarousel();
+  });
+
+  document.querySelectorAll('.order-now, .smooth-scroll-button').forEach(button => {
+    button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+            const offsetTop = targetSection.offsetTop - 220; // Subtract 80px for the margin
+            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+        }
+    });
+});
+
+});
+
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Wholesale Fs Carousel",
+    "settings": [],
+    "presets": [
+    {
+      "name": "Wholesale Flavours Carousel"
+    }
+  ]
+  }
+{% endschema %}

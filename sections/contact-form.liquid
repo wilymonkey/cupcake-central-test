@@ -1,0 +1,389 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+<div class="background-container">
+  <div class="left-div">
+    <div>
+      <h1 class="left-div-heading1">{{ section.settings.heading_leftside }}</h1>
+    </div>
+    <div class="left-div-heading2">
+      {{ section.settings.subheading_leftside }}
+    </div>
+    <div>
+      <h1 class="left-div-heading3">OFFICE HOURS</h1>
+    </div>
+    <div class="left-div-heading4">
+      <div class="icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/OPENING_TIME.png?v=1722924587" alt="Opening hour clock" height="40px" width="40px"></div>
+      <div class="opening-hours">
+        <div>Mon - Fri: 9:00am to 4:00pm</div>
+        <div>Sat: 9:00am to 2:00pm</div>
+        <div>Sun: Closed</div>
+      </div>
+    </div>
+    <div class="left-div-heading4">
+      <div class="icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/EMAIL_34e13414-aad2-4a85-95d7-fbf15d85cc24.png?v=1722924587" alt="Opening hour clock" height="40px" width="40px"></div>
+      <div class="email-span">{{ section.settings.email }}</div>
+    </div>
+    <div class="left-div-heading4">
+      <div class="icon"><img src="https://cdn.shopify.com/s/files/1/1848/3097/files/PHONE.png?v=1722924587" alt="Opening hour clock" height="40px" width="40px"></div>
+        <div class="phone-span">{{ section.settings.phone }}</div>
+    </div>
+  </div>
+  <div class="right-div">
+     <div class="contact page-width--narrow section-{{ section.id }}-padding">
+       <div class="inner-form">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="form-heading1 title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- else -%}
+      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
+    {%- endif -%}
+    {% if section.settings.description != blank %}
+      <hr style="background-color: white;">
+      <p class="form-heading2">{{ section.settings.description }}</p>
+    {% endif %}
+    {%- liquid
+      assign contact_form_class = 'isolate'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+      endif
+    -%}
+    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {% render 'icon-success' %}
+          {{ 'templates.contact.form.post_success' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {% render 'icon-error' %}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+      <div class="contact__fields">
+          <input
+            class="field__input-form"
+            autocomplete="firstname"
+            type="text"
+            id="ContactForm-firstname"
+            name="contact[{{ 'templates.contact.form.firstname' | t }}]"
+            value="{% if form.firstname %}{{ form.firstname }}{% elsif customer %}{{ customer.firstname }}{% endif %}"
+            placeholder="First Name"
+          >
+        <input
+            class="field__input-form"
+            autocomplete="lastname"
+            type="text"
+            id="ContactForm-lastname"
+            name="contact[{{ 'templates.contact.form.lastname' | t }}]"
+            value="{% if form.lastname %}{{ form.lastname }}{% elsif customer %}{{ customer.lastname }}{% endif %}"
+            placeholder="Last Name"
+          >
+      </div>
+      <div class="contact__fields">
+          <input
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="field__input-form"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %}
+            placeholder="{{ 'templates.contact.form.email' | t }}"
+          >
+          {%- if form.errors contains 'email' -%}
+            <small class="contact__field-error" id="ContactForm-email-error">
+              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+              <span class="form__message">
+                {%- render 'icon-error' -%}
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </span>
+            </small>
+          {%- endif -%}
+        <input
+          type="tel"
+          id="ContactForm-phone"
+          class="field__input-form"
+          autocomplete="tel"
+          name="contact[{{ 'templates.contact.form.phone' | t }}]"
+          pattern="[0-9\-]*"
+          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          placeholder="Phone"
+        >
+      </div>
+      <div class="field-textarea">
+        <textarea
+          id="ContactForm-body"
+          class="field__input-formtextarea"
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+          placeholder="Message"
+        >
+          {{- form.body -}}
+        </textarea>
+      </div>
+      <div class="contact-row">
+      <div class="contact-row-text">{{ section.settings.contact_text }}</div>
+      <div class="contact__button">
+        <button type="submit" class="submit-form">
+          {{ 'templates.contact.form.send' | t }}
+        </button>
+      </div>
+      </div>
+    {%- endform -%}
+  </div>
+     </div>
+  </div>
+</div>
+<div class="background-container2">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+    <div class="store-div">
+    <div class="store-image">
+      <img 
+        class="store-image-src" 
+        src="{{ block.settings.image | img_url: 'master' }}" 
+        alt="Opening hour clock" 
+        height="300px" 
+        width="350px"></div>
+    <div class="store-details-container">
+      <div class="store-details-container1">
+      <div class="store-name">{{ block.settings.store_name }}</div>
+      </div>
+      <div class="store-details-container2">
+        <div class="store-details-container1-left">
+          <div class="store-address">{{ block.settings.store_address }}</div>
+        </div>
+        <div class="store-details-container2-right">
+            <div class="store-timings">
+              <div> <span  style="font-size: 12px; font-weight: bold;">{{ block.settings.store_open_day1 }} </span><span style="font-size: 12px; text-align: right;"> {{ block.settings.store_open_time1 }} </span></div>
+              <div> <span  style="font-size: 12px; font-weight: bold;">{{ block.settings.store_open_day2 }} </span><span style="font-size: 12px; text-align: right;"> {{ block.settings.store_open_time2 }} </span></div>
+              <div> <span  style="font-size: 12px; font-weight: bold;">{{ block.settings.store_open_day3 }} </span><span style="font-size: 12px; text-align: right;"> {{ block.settings.store_open_time3 }} </span></div>
+            </div>
+        </div>
+      </div>
+      <div class="store-details-container3">
+        <button class="direction-button" data-link="{{ block.settings.link }}" style="cursor: pointer; font-family: Poppins;">GET DIRECTIONS</button>
+      </div>
+  </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  <script>
+   $(document).ready(function() {
+    $(".direction-button").on('click', function() {
+        const link = $(this).data('link');
+        if (link) {
+            window.open(link, '_blank');
+        }
+    });
+});
+  </script>
+
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading_leftside",
+      "default": "Get in touch with our team",
+      "label": "Heading Left Side"
+    },
+    {
+      "type": "text",
+      "id": "subheading_leftside",
+      "default": "Get in touch with our team",
+      "label": "Sub Heading Left Side"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "default": "service@cupcakecentral.com",
+      "label": "Email"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "default": "(03) 9077 4542",
+      "label": "Phone"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "CONTACT CUPCAKE CENTRAL",
+      "label": "Form heading"
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "default": "Text",
+      "label": "Contact Text"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "default": "Description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+     {
+       "type": "text",
+       "name": "Stores",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image",
+           "info":"Size : 300px X 350px"
+         },
+         {
+           "type": "text",
+           "id": "store_name",
+           "label": "Store Name",
+           "default": "Store Name"
+         },
+         {
+           "type": "text",
+           "id": "store_address",
+           "label": "Store Address",
+           "default": "Store Address"
+         },
+         {
+           "type": "text",
+           "id": "store_open_day1",
+           "label": "Store Open Days 1",
+           "default": "Store Open Days 1"
+         },
+         {
+           "type": "text",
+           "id": "store_open_time1",
+           "label": "Store Open Time 1",
+           "default": "Store Open Time 1"
+         },
+         {
+           "type": "text",
+           "id": "store_open_day2",
+           "label": "Store Open Days 2",
+           "default": "Store Open Days 2"
+         },
+         {
+           "type": "text",
+           "id": "store_open_time2",
+           "label": "Store Open Time 2",
+           "default": "Store Open Time 2"
+         },
+         {
+           "type": "text",
+           "id": "store_open_day3",
+           "label": "Store Open Days 3",
+           "default": "Store Open Days 3"
+         },
+         {
+           "type": "text",
+           "id": "store_open_time3",
+           "label": "Store Open Time 3",
+           "default": "Store Open Time 3"
+         },
+         {
+           "type": "text",
+           "id": "store_open_day4",
+           "label": "Store Open Days 4",
+           "default": "Store Open Days 4"
+         },
+         {
+           "type": "text",
+           "id": "store_open_time4",
+           "label": "Store Open Time 4",
+           "default": "Store Open Time 4"
+         },
+         {
+           "type": "url",
+           "id": "link",
+           "label": "Link"
+         }
+       ]
+     }
+   ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

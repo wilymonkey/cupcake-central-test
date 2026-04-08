@@ -1,0 +1,128 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "welcome_popup_3qHGaG": {
+      "type": "welcome_popup",
+      "disabled": true,
+      "settings": {
+        "enable": true,
+        "show_onall_page": false,
+        "newsletter_time": 5,
+        "bgcolor": "#f2f2f2",
+        "textcolor": "#000000",
+        "image_position": "right",
+        "maintitle": "UNLOCK 10% OFF YOUR FIRST ORDER",
+        "subtitle": "Let Cupcake Central sweeten up your day, with a Giftbox delivered to your door.",
+        "show_social": false
+      }
+    },
+    "71cb3d78-4537-4bf2-8a2d-8789a79ad9b6": {
+      "type": "scrolling-text",
+      "disabled": true,
+      "settings": {
+        "animation_duration": 120
+      }
+    },
+    "72095804-90ea-4672-a534-740800aa1479": {
+      "type": "featured-socials",
+      "blocks": {
+        "sections--16304008528060__72095804-90ea-4672-a534-740800aa1479-image_with_text-1": {
+          "type": "image_with_text",
+          "settings": {
+            "text": "Facebook",
+            "link": "https://www.facebook.com/cupcakecentral/"
+          }
+        },
+        "sections--16304008528060__72095804-90ea-4672-a534-740800aa1479-image_with_text-2": {
+          "type": "image_with_text",
+          "settings": {
+            "text": "Instagram",
+            "link": "https://www.instagram.com/cupcakecentral"
+          }
+        },
+        "sections--16304008528060__72095804-90ea-4672-a534-740800aa1479-image_with_text-3": {
+          "type": "image_with_text",
+          "settings": {
+            "text": "Tiktok",
+            "link": "https://www.tiktok.com/@cupcakecentral"
+          }
+        },
+        "sections--16304008528060__72095804-90ea-4672-a534-740800aa1479-image_with_text-4": {
+          "type": "image_with_text",
+          "settings": {
+            "text": "Youtube",
+            "link": "https://www.youtube.com/channel/UC1PQnlMKcUpdlyFkyKzAFvg"
+          }
+        }
+      },
+      "block_order": [
+        "sections--16304008528060__72095804-90ea-4672-a534-740800aa1479-image_with_text-1",
+        "sections--16304008528060__72095804-90ea-4672-a534-740800aa1479-image_with_text-2",
+        "sections--16304008528060__72095804-90ea-4672-a534-740800aa1479-image_with_text-3",
+        "sections--16304008528060__72095804-90ea-4672-a534-740800aa1479-image_with_text-4"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-0": {
+          "type": "link_list",
+          "settings": {
+            "heading": "SHOP BY PRODUCTS",
+            "menu": ""
+          }
+        },
+        "footer-1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "SHOP BY OCCASION",
+            "menu": ""
+          }
+        },
+        "aef94cb4-7a5d-46db-b693-91cb311018cf": {
+          "type": "link_list",
+          "settings": {
+            "heading": "CUSTOMER CARE",
+            "menu": ""
+          }
+        }
+      },
+      "block_order": [
+        "footer-0",
+        "footer-1",
+        "aef94cb4-7a5d-46db-b693-91cb311018cf"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Hot Bakes, Fresh Takes",
+        "newsletter_subheading": "Sign up to our email list and receive the latest fresh deals, limited drops, and treats you won’t want to miss.",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    }
+  },
+  "order": [
+    "welcome_popup_3qHGaG",
+    "71cb3d78-4537-4bf2-8a2d-8789a79ad9b6",
+    "72095804-90ea-4672-a534-740800aa1479",
+    "footer"
+  ]
+}

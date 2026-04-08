@@ -1,0 +1,98 @@
+{% schema %}
+{
+  "name": "Donation Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "donation_text",
+      "label": "Donation Text",
+      "default": "WITH EVERY ORDER PLACED, WE DONATE A SCHOOL MEAL TO A CHILD IN NEED."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#cbd64b"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Donation Banner"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="donation-banner" style="background-color: {{ section.settings.bg_color }};">
+  <div class="donation-container">
+    <div class="donation-image">
+      {% if section.settings.banner_image %}
+        <img src="{{ section.settings.banner_image | img_url: '600x' }}" alt="Donation Image">
+      {% endif %}
+    </div>
+    <div class="donation-text">
+      <h2>{{ section.settings.donation_text }}</h2>
+    </div>
+  </div>
+</section>
+
+<style>
+.donation-banner {
+  padding: 50px 20px;
+}
+.donation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+  gap: 100px;
+  height: 200px
+}
+.donation-image img {
+    max-width: 424px;
+    margin-bottom: 107px;
+}
+.donation-text h2 {
+  color: #1e0e62;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+  .donation-image img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.donation-image img:hover {
+  transform: translateY(-15px) scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .donation-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .donation-text{
+      margin-top: -155px;
+  }
+
+  .donation-text h2 {
+  color: #1e0e62;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+  .donation-image img {
+    max-width: 300px;
+    margin-bottom: 0px;
+}
+  .donation-image {
+     margin-top: -130px;
+  }
+}
+</style>

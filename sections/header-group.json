@@ -1,0 +1,292 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "vertical_announcement_bar_eQNyim": {
+      "type": "vertical-announcement-bar",
+      "blocks": {
+        "announcement_8wxXGh": {
+          "type": "announcement",
+          "settings": {
+            "text": "MELBOURNE’S BEST CAKES DELIVERED TO YOUR DOOR"
+          }
+        },
+        "announcement_pGgHt3": {
+          "type": "announcement",
+          "settings": {
+            "text": "URGENT ORDER? CALL US ON 9077 4542"
+          }
+        },
+        "announcement_DmNx3r": {
+          "type": "announcement",
+          "settings": {
+            "text": "FREE DELIVERY ON ALL ORDERS OVER $40"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_8wxXGh",
+        "announcement_pGgHt3",
+        "announcement_DmNx3r"
+      ],
+      "name": "Vertical Announcement Bar",
+      "settings": {
+        "background_color": "#1b9a8e",
+        "text_color": "#ffffff",
+        "transition_speed": 3
+      }
+    },
+    "announcement_bar_ek7FxX": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_TxQm9N": {
+          "type": "announcement",
+          "settings": {
+            "text": "MELBOURNE’S BEST CAKES DELIVERED TO YOUR DOOR",
+            "link": "shopify://collections/gift-box",
+            "font_weight": 800
+          }
+        },
+        "announcement_jQcDwf": {
+          "type": "announcement",
+          "settings": {
+            "text": "URGENT ORDER? CALL US ON 9077 4542",
+            "link": "",
+            "font_weight": 800
+          }
+        },
+        "announcement_WyEwbC": {
+          "type": "announcement",
+          "settings": {
+            "text": "FREE DELIVERY ON ALL ORDERS OVER $40",
+            "link": "",
+            "font_weight": 800
+          }
+        }
+      },
+      "block_order": [
+        "announcement_TxQm9N",
+        "announcement_jQcDwf",
+        "announcement_WyEwbC"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-5",
+        "show_line_separator": false,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 8,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "593b57d4-7c12-48d9-a102-502d8617740c": {
+      "type": "scrolling-announcement-bar",
+      "blocks": {
+        "67916f01-2120-40ed-8644-9e69e7b1f35c": {
+          "type": "announcement_item",
+          "settings": {
+            "title": "MELBOURNE’S BEST CAKES DELIVERED TO YOUR DOOR"
+          }
+        },
+        "95dd11d9-f2f3-496e-9573-223c06a5acdc": {
+          "type": "announcement_item",
+          "settings": {
+            "title": "URGENT ORDER? CALL US ON 9077 4542"
+          }
+        },
+        "f4b6193f-3926-4478-a07e-fa69a55c4e4b": {
+          "type": "announcement_item",
+          "settings": {
+            "title": "FREE DELIVERY ON ALL ORDERS OVER $40"
+          }
+        },
+        "d7af14a7-3ca2-4c65-a096-aa737b864219": {
+          "type": "announcement_item",
+          "disabled": true,
+          "settings": {
+            "title": "AUSTRALIA WIDE DELIVERY"
+          }
+        },
+        "20abf6a0-eefa-4589-9556-c0fd9a56c684": {
+          "type": "announcement_item",
+          "disabled": true,
+          "settings": {
+            "title": "PRIORITY DELIVERY"
+          }
+        }
+      },
+      "block_order": [
+        "67916f01-2120-40ed-8644-9e69e7b1f35c",
+        "95dd11d9-f2f3-496e-9573-223c06a5acdc",
+        "f4b6193f-3926-4478-a07e-fa69a55c4e4b",
+        "d7af14a7-3ca2-4c65-a096-aa737b864219",
+        "20abf6a0-eefa-4589-9556-c0fd9a56c684"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-5",
+        "animation_duration": 90
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "hf003_main_menu_item_kzFJbB": {
+          "type": "hf003-main-menu-item",
+          "settings": {
+            "menu": "",
+            "show_dropdown": false,
+            "image_title1": "",
+            "image_title1_link": "",
+            "image_title2": "",
+            "image_title2_link": ""
+          }
+        },
+        "hf003_main_menu_item_XCVVDA": {
+          "type": "hf003-main-menu-item",
+          "disabled": true,
+          "settings": {
+            "menu": "",
+            "show_dropdown": true,
+            "image_title1": "A SWEET RAINBOW",
+            "image_title1_link": "shopify://collections/pride",
+            "image_title2": "TO CELEBRATE PRIDE MONTH",
+            "image_title2_link": "shopify://collections/pride"
+          }
+        },
+        "hf003_main_menu_item_wHtCbK": {
+          "type": "hf003-main-menu-item",
+          "settings": {
+            "menu": "",
+            "show_dropdown": true,
+            "image_title1": "",
+            "image_title1_link": "",
+            "image_title2": "",
+            "image_title2_link": ""
+          }
+        },
+        "hf003_main_menu_item_7AVh4Y": {
+          "type": "hf003-main-menu-item",
+          "settings": {
+            "menu": "",
+            "show_dropdown": true,
+            "image_title1": "",
+            "image_title1_link": "shopify://collections/cake-range",
+            "image_title2": "",
+            "image_title2_link": "shopify://collections/cake-toppers"
+          }
+        },
+        "hf003_main_menu_item_kPPXda": {
+          "type": "hf003-main-menu-item",
+          "settings": {
+            "menu": "",
+            "show_dropdown": true,
+            "image_title1": "",
+            "image_title1_link": "",
+            "image_title2": "",
+            "image_title2_link": ""
+          }
+        },
+        "hf003_main_menu_item_kBTfzb": {
+          "type": "hf003-main-menu-item",
+          "settings": {
+            "menu": "",
+            "show_dropdown": false,
+            "image_title1": "",
+            "image_title1_link": "",
+            "image_title2": "",
+            "image_title2_link": ""
+          }
+        },
+        "hf003_main_menu_item_ikhhjM": {
+          "type": "hf003-main-menu-item",
+          "settings": {
+            "menu": "",
+            "show_dropdown": false,
+            "image_title1": "",
+            "image_title1_link": "",
+            "image_title2": "",
+            "image_title2_link": ""
+          }
+        },
+        "hf003_main_menu_item_bWpE7h": {
+          "type": "hf003-main-menu-item",
+          "settings": {
+            "menu": "",
+            "show_dropdown": true,
+            "image_title1": "",
+            "image_title1_link": "shopify://collections/custom-shortbread",
+            "image_title2": "",
+            "image_title2_link": "shopify://collections/custom"
+          }
+        },
+        "hf003_main_menu_item_LXGaD8": {
+          "type": "hf003-main-menu-item",
+          "settings": {
+            "menu": "",
+            "show_dropdown": false,
+            "image_title1": "",
+            "image_title1_link": "",
+            "image_title2": "",
+            "image_title2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "hf003_main_menu_item_kzFJbB",
+        "hf003_main_menu_item_XCVVDA",
+        "hf003_main_menu_item_wHtCbK",
+        "hf003_main_menu_item_7AVh4Y",
+        "hf003_main_menu_item_kPPXda",
+        "hf003_main_menu_item_kBTfzb",
+        "hf003_main_menu_item_ikhhjM",
+        "hf003_main_menu_item_bWpE7h",
+        "hf003_main_menu_item_LXGaD8"
+      ],
+      "custom_css": [
+        ".list-menu li a:hover {color: white; text-decoration-line: white; text-decoration: underline;}",
+        ".mega-menu summary:hover {color: white; text-decoration-line: white; text-decoration: underline;}",
+        ".mega-menu__list li:hover {color: black !important;}",
+        ".featured-menu li a:hover {color: black !important;}",
+        ".mega-menu__list ul li a:hover {color: black !important;}",
+        ".hf003-list-title {text-decoration: none !important; pointer-events: none !important;}"
+      ],
+      "settings": {
+        "logo_position": "top-left",
+        "menu": "",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "always",
+        "show_line_separator": false,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "bannerlink1": "shopify://collections/cake-range",
+        "bannertext1": "Celebration Cakes",
+        "bannerlink2": "shopify://collections/best-sellers",
+        "bannertext2": "Best Sellers"
+      }
+    }
+  },
+  "order": [
+    "vertical_announcement_bar_eQNyim",
+    "announcement_bar_ek7FxX",
+    "593b57d4-7c12-48d9-a102-502d8617740c",
+    "header"
+  ]
+}

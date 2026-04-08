@@ -1,0 +1,122 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "collection-tailwind",
+      "settings": {
+        "background_color": "#fffaf2",
+        "show_collection_image": true,
+        "banner_heading_color": "#ffffff",
+        "banner_subheading_color": "#ffffff",
+        "products_per_page": 16,
+        "enable_filtering": true,
+        "enable_sorting": true
+      }
+    },
+    "bento_grid_RyApW9": {
+      "type": "bento-grid",
+      "name": "Bento Grid",
+      "settings": {
+        "image": "shopify://shop_images/customboxes-croppedin.gif",
+        "heading": "CHOOSE YOUR FLAVOURS",
+        "text": "<p>Big meeting? Milestone birthday? Just looking for a reason to celebrate? Customise your order for corporate events, thoughtful gifts or everyday treats. Baked fresh in Melbourne and delivered your way.</p>",
+        "button_text": "CUSTOMISE NOW",
+        "button_link": "shopify://collections/cupcake",
+        "background_color": "#ffca99",
+        "image_style": "filled",
+        "image_orientation": "landscape",
+        "text_alignment": "center",
+        "image_position": "left"
+      }
+    },
+    "trustmarker_section_GXXcza": {
+      "type": "trustmarker-section",
+      "blocks": {
+        "trust_marker_CfgjW6": {
+          "type": "trust_marker",
+          "settings": {
+            "icon": "heart",
+            "title": "BAKED FRESH",
+            "subtitle": "Daily from our kitchen"
+          }
+        },
+        "trust_marker_iVicAf": {
+          "type": "trust_marker",
+          "settings": {
+            "icon": "smile",
+            "title": "200K+ ORDERS",
+            "subtitle": "Cupcakes baked each year"
+          }
+        },
+        "trust_marker_9VQgy4": {
+          "type": "trust_marker",
+          "settings": {
+            "icon": "cake",
+            "title": "1 MILLION+",
+            "subtitle": "Cupcakes baked each year"
+          }
+        },
+        "trust_marker_BtkVqQ": {
+          "type": "trust_marker",
+          "settings": {
+            "icon": "star",
+            "title": "4.9 STAR",
+            "subtitle": "Google rating by the public"
+          }
+        }
+      },
+      "block_order": [
+        "trust_marker_CfgjW6",
+        "trust_marker_iVicAf",
+        "trust_marker_9VQgy4",
+        "trust_marker_BtkVqQ"
+      ],
+      "name": "Trustmarker Section",
+      "settings": {
+        "background_color": "#26a69a",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "product_promo_qHVzAg": {
+      "type": "product-promo",
+      "custom_css": [],
+      "name": "Product Promo",
+      "settings": {
+        "heading": "YOU MAY ALSO LOVE",
+        "subheading": "<p>Bakery faves. Discover your next favourite treat we know you'll love.</p>",
+        "products_to_show": [
+          "10-mini-cupcakes-gift-box",
+          "12-assorted-cookie-gift-box",
+          "8-biscoff-brownie-gift-box-n",
+          "12-red-velvet-brownie-gift-box",
+          "12-triple-chocolate-chip-cookie-gift-box",
+          "6-chocolate-cupcake-gift-box-gf",
+          "12-vegan-cupcakes",
+          "12-assorted-brownie-and-slice-gift-box",
+          "30-mini-cupcakes-gift-box",
+          "6-cookie-assorted-gift-box",
+          "black-forest-cake",
+          "biscoff-cake-vegan"
+        ],
+        "background_color": "#fff2df",
+        "heading_color": "#39211b",
+        "subheading_color": "#39211b"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "bento_grid_RyApW9",
+    "trustmarker_section_GXXcza",
+    "product_promo_qHVzAg"
+  ]
+}

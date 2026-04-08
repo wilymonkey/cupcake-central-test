@@ -1,0 +1,340 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "main {background-color: #9d1819 !important;}"
+      ],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "banner_slideshow_6tDFmM": {
+      "type": "banner-slideshow",
+      "blocks": {
+        "slide_image_LhLhFq": {
+          "type": "slide_image",
+          "settings": {
+            "enable_video": false,
+            "desktop_video_link": "",
+            "mobile_video_link": "",
+            "image": "shopify://shop_images/Group_482.png",
+            "mobile_image": "shopify://shop_images/CC_LNY25_WEB_MOBILE_BANNER.jpg",
+            "link": "",
+            "is_datetime_enabled": false,
+            "start_time": "20/01/2020 09:00:00",
+            "end_time": "20/01/2050 09:00:00"
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_LhLhFq"
+      ],
+      "custom_css": [
+        ".banner-slider-section {height: 800px;}",
+        ".carousel {height: 80%;}",
+        ".carousel .btn {display: none;}"
+      ],
+      "settings": {
+        "slider_delay": 2000
+      }
+    },
+    "image_banner_377YhD": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_dgVwzF": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_e3KDh9": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "buttons_9JHFGG": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_dgVwzF",
+        "text_e3KDh9",
+        "buttons_9JHFGG"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".buttons-container {display: none;}",
+        ".banner__box {display: none;}",
+        "a {cursor: default;}",
+        ".media > *:not(.zoom):not(.deferred-media__poster-button),.media model-viewer {display: block; background-color: #fff; width: 100%; height: auto !important; object-fit: cover; position: relative;}",
+        ".banner__media {background-color: #f8f0e4;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Group_482.png",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "hero_banner_section_christmas_imYrwC": {
+      "type": "hero-banner-section-christmas",
+      "custom_css": [
+        "#ws-delivery-block-input {display: none;}",
+        "#ws-delivery-block-inner-right {width: 41%;}",
+        ".ws-delivery-block {background: linear-gradient(to left, #ffdd7c, #f0deae); width: 75%; border-radius: 20px; margin-top: -32rem !important;}",
+        "#ws-delivery-block-right-content h1 {font-size: 2.3vh; color: #932425;}",
+        "#ws-delivery-block-inner-left {width: 55%;}",
+        ".second_line {color: #932425 !important;}",
+        "@media (max-width: 767px) {.ws-delivery-block {margin-top: -40rem !important; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#fbdd89",
+        "title_color": "#952121",
+        "description_color": "#000000",
+        "image_position": "left",
+        "desktop_image": "shopify://shop_images/Delivery_Box_2x_b07dff15-2c52-434c-8f84-eec1c95fbac0.png",
+        "title-line1": "IN-STORE & DELIVERING UNTIL FEB 9TH",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "Welcome in the Lunar New Year with some treats that'll bring joy to all! Featuring four cupcake flavours beautifully decorated with classic Lunar New Year elements, these cupcake gift boxes are just what you need for a sweet start to the Year of the Snake!",
+        "button-text": "",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "featured_product_CkQ4rW": {
+      "type": "featured-product",
+      "blocks": {
+        "title_3VcYfp": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "rating_dm4xy8": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price_FJiVxh": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_HYiTXm": {
+          "type": "text",
+          "settings": {
+            "text": "Celebrate the Lunar New Year with a gift that'll bring joy to all!",
+            "text_style": "body"
+          }
+        },
+        "text_YakaLC": {
+          "type": "text",
+          "settings": {
+            "text": "With each gift box containing 12 cupcakes beautifully decorated with classic Lunar New Year elements, this is just what you need for a sweet start the Year of the Snake.",
+            "text_style": "body"
+          }
+        },
+        "quantity_selector_TDRjG8": {
+          "type": "quantity_selector",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_3VcYfp",
+        "rating_dm4xy8",
+        "price_FJiVxh",
+        "text_HYiTXm",
+        "text_YakaLC",
+        "quantity_selector_TDRjG8"
+      ],
+      "custom_css": [
+        ".gradient {background-color: #f8f0e4 !important;}",
+        ".product-media-container {display: block; position: relative; width: 80%;}",
+        "@media screen and (min-width: 990px) {.featured-product:not(.product--no-media) > .product__info-wrapper {padding: 0 7rem; padding-top: 2rem; padding-left: 0rem; }}",
+        ".product__text {margin-bottom: 0; font-size: 13px;}",
+        ".form__label {display: none;}"
+      ],
+      "settings": {
+        "product": "lunar-new-year-cupcake-gift-box",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "flavours_carousel_7WMJCk": {
+      "type": "flavours-carousel",
+      "settings": {}
+    },
+    "hero_delivery_block_yBL9Fh": {
+      "type": "hero-delivery-block",
+      "custom_css": [
+        ".ws-delivery-block {background-color: #f8f0e4 !important; border-radius: 0px !important;}",
+        "#ws-delivery-block-right-content h1 {color: #791012 !important; font-size: 3rem;}",
+        "#ws-delivery-block-right-content p {color: #791012 !important; font-size: 12px;}",
+        "#ws-delivery-block-input {display: none;}",
+        "#ws-delivery-block-inner-left {width: 57%; padding: 3rem;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "description_color": "#000000",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/LNY_GIF_1.gif",
+        "title-line1": "PRE-ORDER NOW FOR LATER",
+        "title-line2": "",
+        "title-line3": "",
+        "paragraph-description": "All our sweet treats are made by hand in our Melbourne kitchen, so we'll need a little bit of notice to prepare your cupcakes. Order by 12pm two days before your desired delivery date to make sure that your desserts will be ready in time.",
+        "button-text": "",
+        "link": "",
+        "is-button-scroll-to-section": false,
+        "scroll-to-section-id": ""
+      }
+    },
+    "campaign_faqs_K8NQhH": {
+      "type": "campaign-faqs",
+      "blocks": {
+        "faq_entry_bTyaH7": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "When's the earliest I can receive my cupcakes?",
+            "answer": "All our desserts are made by hand in our Melbourne kitchen, so you'll need to order your Lunar New Year cupcakes by 12pm the day before your desired delivery date so we can get your cupcakes ready in time. If you need something sooner, consider our <a href=\"https://cupcakecentral.com.au/collections/cupcake-gift-boxes\" target=\"_blank\" title=\"Cupcake Gift Boxes\">cupcake gift boxes</a> or <a href=\"https://cupcakecentral.com.au/collections/mini-cupcake-gift-boxes\" target=\"_blank\" title=\"Mini Cupcake Gift Boxes\">mini cupcake gift boxes</a> instead, which are available for same day delivery as long as you order by 12pm (subject to availability)."
+          }
+        },
+        "faq_entry_i4LbD8": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I need cupcakes today?",
+            "answer": "Since our Lunar New Year cupcakes require more time to prepare, they're not available for same day delivery. We do offer same day delivery for our <a href=\"https://cupcakecentral.com.au/collections/cupcake-gift-boxes\" target=\"_blank\" title=\"Cupcake Gift Boxes\">cupcake gift boxes</a>  and <a href=\"https://cupcakecentral.com.au/collections/mini-cupcake-gift-boxes\" target=\"_blank\" title=\"Mini Cupcake Gift Boxes\">mini cupcake gift boxes</a> though (subject to availability), so just place your order by 12pm and we'll deliver them to you later today! Alternatively, you can also visit our <a href=\"https://cupcakecentral.com.au/pages/locations\" target=\"_blank\" title=\"Highpoint Store Information\">Highpoint store</a> if you'd like to browse our desserts in person and collect them on the spot."
+          }
+        },
+        "faq_entry_BdXBmU": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Do you deliver on the Australia Day public holiday?",
+            "answer": "Yes we do! Just order by 12pm two days before and we'll deliver them to you on the day."
+          }
+        },
+        "faq_entry_hRVWgd": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "When and where do you deliver to?",
+            "answer": "We deliver 7 days a week to most suburbs in Metro Melbourne. To check if your suburb falls within our delivery zone, <a href=\"https://cupcakecentral.com.au/pages/delivery-information\" target=\"_blank\">click here</a>."
+          }
+        },
+        "faq_entry_LjymWq": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I want to deliver to multiple locations?",
+            "answer": "We're happy to arrange this for you! Just give us a call at 9077 4542 or email service@cupcakecentral.com.au and our customer service team will process the order for you."
+          }
+        },
+        "faq_entry_M3pthW": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "How much will delivery cost?",
+            "answer": "We offer free weekday delivery with orders over $40. If your order value is below $40, then the delivery fee will vary between $10-$15 depending on your location. On weekends, there is a $8 flat rate for delivery. We also offer free click and collect from our Highpoint store and West Footscray office locations. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\" target=\"_blank\">click here</a>. Please note that there is a minimum order value of $35 for delivery orders, and a minimum order value of $16 for click and collect orders."
+          }
+        },
+        "faq_entry_gnHy3k": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "Can I select which flavours to include in my Lunar New Year cupcake box?",
+            "answer": "Due to a high volume of orders, we are unable to accommodate custom requests for our Lunar New Year products. If you would like to select which cupcakes flavours you receive, this is available with our <a href=\"https://cupcakecentral.com.au/collections/cupcake\">cupcakes</a> and <a href=\"https://cupcakecentral.com.au/collections/mini-cupcakes\">mini cupcakes</a>. Just add your desired flavours and quantities to your cart and we'll sort out the rest for you. Please note that minimum order values apply. For delivery orders, there is a minimum order value of $35. For click and collect orders, there is a minimum order value of $16."
+          }
+        },
+        "faq_entry_Bxz3RX": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "What if I want to order just a couple of cupcakes, instead of a whole box?",
+            "answer": "For all online orders, our Lunar New Year cupcakes are available only in boxes of 12. If you'd like to purchase smaller quantities, our Lunar New Year cupcakes are available individually at our Highpoint store. For location information, please <a href=\"https://cupcakecentral.com.au/pages/locations\">click here</a>."
+          }
+        },
+        "faq_entry_cRmMwV": {
+          "type": "faq_entry",
+          "settings": {
+            "title_id": "delivery",
+            "title": "I have another question!",
+            "answer": "You can view all our FAQs by <a href=\"https://cupcakecentral.com.au/pages/faqs\">clicking here</a>, or you can contact our customer service team by calling 9077 4542 or emailing service@cupcakecentral.com.au. Please note than our customer service hours are between 9am and 4pm Monday to Friday, and 9am to 1pm on Saturdays. If you'd like to contact us outside of these hours, please send us an email and we'll get back to you as soon as we can!"
+          }
+        }
+      },
+      "block_order": [
+        "faq_entry_bTyaH7",
+        "faq_entry_i4LbD8",
+        "faq_entry_BdXBmU",
+        "faq_entry_hRVWgd",
+        "faq_entry_LjymWq",
+        "faq_entry_M3pthW",
+        "faq_entry_gnHy3k",
+        "faq_entry_Bxz3RX",
+        "faq_entry_cRmMwV"
+      ],
+      "custom_css": [
+        ".campaign-faq {background-color: #f0deae; margin-top: -2rem;}",
+        "a:-webkit-any-link {color: #aa272a !important; text-decoration: underline !important;}",
+        ".faq-question-header {color: #aa272a;}",
+        ".faq-block-label {color: #aa272a;}",
+        ".faq-item-content {color: #aa272a;}"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "banner_slideshow_6tDFmM",
+    "image_banner_377YhD",
+    "hero_banner_section_christmas_imYrwC",
+    "featured_product_CkQ4rW",
+    "flavours_carousel_7WMJCk",
+    "hero_delivery_block_yBL9Fh",
+    "campaign_faqs_K8NQhH"
+  ]
+}

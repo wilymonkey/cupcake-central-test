@@ -1,0 +1,159 @@
+{%- style -%}
+  .vertical-announcement-bar {
+    /* --- STICKY HEADER STYLES (Robust Version) --- */
+    position: fixed; /* Changed from sticky to fixed */
+    top: 0;
+    left: 0; /* Added for full browser width */
+    z-index: 100; /* Increased z-index to be safe */
+    width: 100%;
+    /* --- End of Sticky Styles --- */
+
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    padding: 12px 0;
+    overflow: hidden;
+    height: 42px;
+    text-align: center;
+  }
+
+  .vertical-announcement-bar__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: top 0.7s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  .vertical-announcement-bar__message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    width: 100%;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 18px;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    padding: 22px 20px !important;
+  }
+  @media screen and (min-width: 1024px) {
+    .vertical-announcement-bar__message {
+        font-size: 16px;
+        padding: 0px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="vertical-announcement-bar" id="vertical-announcement-bar-{{ section.id }}" role="region" aria-label="Announcements">
+  <div class="vertical-announcement-bar__container" id="announcement-container-{{ section.id }}">
+    {%- for block in section.blocks -%}
+      <div class="vertical-announcement-bar__message" {{ block.shopify_attributes }}>
+        <p>{{ block.settings.text | escape }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('vertical-announcement-bar-{{ section.id }}');
+    const container = document.getElementById('announcement-container-{{ section.id }}');
+    if (!container || !banner) return;
+
+    // --- NEW: Pushes main content down to prevent overlap ---
+    function adjustMainContentPadding() {
+        const bannerHeight = banner.clientHeight;
+        document.body.style.paddingTop = `${bannerHeight}px`;
+    }
+    adjustMainContentPadding();
+    window.addEventListener('resize', adjustMainContentPadding);
+    // --- End of new code ---
+
+    let messages = container.querySelectorAll('.vertical-announcement-bar__message');
+    if (messages.length < 2) return;
+
+    const firstMessageClone = messages[0].cloneNode(true);
+    container.appendChild(firstMessageClone);
+
+    messages = container.querySelectorAll('.vertical-announcement-bar__message');
+    const totalMessages = messages.length;
+    let currentIndex = 0;
+    const messageHeight = messages[0].clientHeight;
+    const intervalTime = {{ section.settings.transition_speed }} * 1000;
+
+    function showNextMessage() {
+      currentIndex++;
+      container.style.top = `-${currentIndex * messageHeight}px`;
+
+      if (currentIndex === totalMessages - 1) {
+        setTimeout(() => {
+          container.style.transition = 'none';
+          currentIndex = 0;
+          container.style.top = '0px';
+
+          setTimeout(() => {
+            container.style.transition = 'top 0.7s cubic-bezier(0.86, 0, 0.07, 1)';
+          }, 50);
+        }, 700);
+      }
+    }
+
+    setInterval(showNextMessage, intervalTime);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Vertical Announcement Bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "transition_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Transition Speed",
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Announce something here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vertical Announcement Bar",
+      "blocks": [
+        { "type": "announcement", "settings": { "text": "First Announcement" } },
+        { "type": "announcement", "settings": { "text": "Second Announcement" } },
+        { "type": "announcement", "settings": { "text": "Third Announcement" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

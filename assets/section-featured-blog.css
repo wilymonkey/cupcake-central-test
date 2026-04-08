@@ -1,0 +1,125 @@
+.blog-placeholder-svg {
+  height: 100%;
+}
+
+@media screen and (min-width: 990px) {
+  .grid--1-col-desktop .article-card .card__content {
+    text-align: center;
+  }
+  .blog__post.slider__slide:first-child {
+  margin-left: 0 !important;
+}
+}
+
+.blog__title {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.blog-title-wrapper{
+  text-align: center;
+  display: block !important;
+}
+.blog__posts.articles-wrapper {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 990px) {
+  .blog__posts.articles-wrapper {
+    margin-bottom: 0;
+  }
+}
+
+.blog__posts.articles-wrapper .article {
+  scroll-snap-align: center;
+}
+
+@media screen and (max-width: 749px) {
+  .blog__post.article {
+    width: calc(100% - 3rem - var(--grid-mobile-horizontal-spacing));
+  }
+  .blog__post{
+    width:70% !important;
+  }
+  .article-link-button {
+    padding: 16px 55px;
+    font-size: 20px;
+    position: relative;
+}
+  .article-card__excerpt {
+    text-align: left;
+}
+    .article.slider__slide.blog__post{
+    width:70% !important;
+      margin:0;
+    border-radius: 0px !important;
+  }
+}
+
+.background-secondary .blog-placeholder__content {
+  background-color: rgb(var(--color-background));
+}
+
+.blog__posts .card-wrapper {
+  width: 100%;
+}
+
+.blog__button {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .blog__button {
+    margin-top: 5rem;
+  }
+}
+
+/* check for flexbox gap in older Safari versions */
+@supports not (inset: 10px) {
+  @media screen and (min-width: 750px) {
+    .blog__posts .article + .article {
+      margin-left: var(--grid-desktop-horizontal-spacing);
+    }
+  }
+}
+.blog__posts {
+  color: #444444;
+}
+
+
+.blog-card__heading {
+  color: #444444;
+}
+.featured-blog-slider-btn{
+  border-color: white !important;
+}
+.featured-blog-slider-btn svg{
+  color: white !important;
+}
+@media screen and (min-width:2000px){
+  .slider-buttons{
+    display: none;
+  }
+}
+.slider-buttons{
+  margin-top:3rem;
+}
+@media screen and (min-width:750px){
+.blog__post.slider__slide{
+  border-radius: 0px !important;
+  }
+}
+@media screen and (min-width:990px){
+  .blog-container .slider-buttons.no-js-hidden {
+    display: none;
+}
+}
+.blog__post.slider__slide{
+  padding: 2rem !important;
+  margin-right: 0;
+  margin-left: 0;
+  
+}
+.blog__posts{
+  gap: 0;
+}

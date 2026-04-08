@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "shopify": "^3.93.1"
+  },
+  "name": "cupcake-central-test",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "tailwindcss": "^4.2.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,211 @@
+{% comment %}
+  A modern, Tailwind-styled product card.
+  Accepts:
+  - card_product: The product object.
+  - section_id: The ID of the parent section.
+{% endcomment %}
+
+{%- if card_product and card_product != empty -%}
+  <div
+    class="flex-col w-[156px]! m-xs:w-[188px]! d-sm:w-[220px]! d-lg:w-[260px]! text-center bg-white rounded-[4px] shadow-sm overflow-hidden"
+    style="box-shadow: 0 8px 16px 0 rgba(219, 126, 100, 0.32);"
+  >
+    {% comment %} --- Image and Badges --- {% endcomment %}
+    <div class="relative flex-shrink-0 h-[195px] m-xs:h-[235px] d-sm:h-[275px] d-lg:h-[325px]">
+      <a href="{{ card_product.url }}">
+        <div class="overflow-hidden h-full">
+          {%- if card_product.featured_media -%}
+            <img
+              srcset="
+                {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+              "
+              src="{{ card_product.featured_media | image_url: width: 720 }}"
+              sizes="(min-width: 750px) calc(100vw / 4), calc(100vw / 2)"
+              alt="{{ card_product.featured_media.alt | escape }}"
+              class="object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105 aspect-4/5"
+              loading="lazy"
+              width="{{ card_product.featured_media.width }}"
+              height="{{ card_product.featured_media.height }}"
+            >
+          {%- else -%}
+            {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+          {%- endif -%}
+        </div>
+      </a>
+
+      {% comment %} --- This block handles all your existing badge logic --- {% endcomment %}
+      <div class="absolute top-3 left-3">
+        {% if card_product.tags contains 'Vegan' %}
+          <div class="flex items-center justify-center text-white bg-[#70bf1c] w-12 h-12 rounded-full mb-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-8 h-8"
+            >
+              <path d="M16 8q6 0 6-6-6 0-6 6"/><path d="M17.41 3.59a10 10 0 1 0 3 3"/><path d="M2 2a26.6 26.6 0 0 1 10 20c.9-6.82 1.5-9.5 4-14"/>
+            </svg>
+          </div>
+        {% endif %}
+
+        {% comment %} {% if card_product.tags contains 'Nut Free' %}
+          <div class="flex items-center justify-center text-sm font-semibold text-white bg-[#743f06] w-12 h-12 rounded-full mb-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-8 h-8"
+            >
+              <path d="M12 4V2"/><path d="M5 10v4a7.004 7.004 0 0 0 5.277 6.787c.412.104.802.292 1.102.592L12 22l.621-.621c.3-.3.69-.488 1.102-.592a7.01 7.01 0 0 0 4.125-2.939"/><path d="M19 10v3.343"/><path d="M12 12c-1.349-.573-1.905-1.005-2.5-2-.546.902-1.048 1.353-2.5 2-1.018-.644-1.46-1.08-2-2-1.028.71-1.69.918-3 1 1.081-1.048 1.757-2.03 2-3 .194-.776.84-1.551 1.79-2.21m11.654 5.997c.887-.457 1.28-.891 1.556-1.787 1.032.916 1.683 1.157 3 1-1.297-1.036-1.758-2.03-2-3-.5-2-4-4-8-4-.74 0-1.461.068-2.15.192"/><line x1="2" x2="22" y1="2" y2="22"/>
+            </svg>
+          </div>
+        {% endif %} {% endcomment %}
+        {% if card_product.tags contains 'Gluten Free' %}
+          <div class="flex items-center justify-center text-sm font-semibold text-white bg-[#743f06] w-12 h-12 rounded-full mb-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-8 h-8"
+            >
+              <path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/>
+            </svg>
+          </div>
+        {% endif %}
+        {% comment %} {% if card_product.tags contains 'Egg Free' %}
+          <div class="flex items-center justify-center text-sm font-semibold text-espresso bg-[#ffffff] w-12 h-12 rounded-full mb-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-8 h-8"
+            >
+              <path d="m2 2 20 20"/><path d="M20 14.347V14c0-6-4-12-8-12-1.078 0-2.157.436-3.157 1.19"/><path d="M6.206 6.21C4.871 8.4 4 11.2 4 14a8 8 0 0 0 14.568 4.568"/>
+            </svg>
+          </div>
+        {% endif %} {% endcomment %}
+
+        {% comment %} {% if card_product.tags contains 'Dairy Free' %}
+          <div class="flex items-center justify-center text-sm font-semibold text-espresso bg-[#ffffff] w-12 h-12 rounded-full mb-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-8 h8"
+            >
+              <path d="M8 2h8"/><path d="M9 2v1.343M15 2v2.789a4 4 0 0 0 .672 2.219l.656.984a4 4 0 0 1 .672 2.22v1.131M7.8 7.8l-.128.192A4 4 0 0 0 7 10.212V20a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-3"/><path d="M7 15a6.47 6.47 0 0 1 5 0 6.472 6.472 0 0 0 3.435.435"/><line x1="2" x2="22" y1="2" y2="22"/>
+            </svg>
+            <span></span>
+          </div>
+        {% endif %} {% endcomment %}
+      </div>
+    </div>
+
+    {% comment %} --- Content Below Image --- {% endcomment %}
+    <div class="flex flex-col h-[91px] m-xs:h-[130px] m-sm:h-[140px] d-sm:h-[150px] py-[10px] m-xs:pb-[0px] px-[4px]">
+      <p class="text-[12px] m-xs:text-[16px] tracking-[0.225px] leading-[14px] m-xs:leading-[18px] min-h-[3.5rem] font-[700] text-espresso text-center flex items-center justify-center">
+        <a href="{{ card_product.url }}" class="hover:underline">
+          {{ card_product.title | escape }}
+        </a>
+      </p>
+
+      <div class="mt-auto">
+        {% comment %}
+          <div class="mt-1">
+            {% render 'price', product: card_product, price_class: 'text-base', show_compare_at_price: true %}
+          </div>
+        {% endcomment %}
+
+        <div class="pt-[8px] m-xs:pt-[14px] md:pt-[0px] pb-[10px] m-xs:pb-[16px]">
+          {%- liquid
+            assign has_only_default_variant = true
+            if card_product.variants.size > 1 or card_product.options_with_values.size > 1
+              assign has_only_default_variant = false
+            endif
+          -%}
+
+            <product-form
+              class="flex justify-center items-center"
+            >
+            {%- if has_only_default_variant -%}
+              {%- form 'product',
+                card_product,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input type="hidden" name="id" value="{{ card_product.selected_or_first_available_variant.id }}">
+                <button
+                  type="submit"
+                  name="add"
+                  class="w-[116px] m-xs:w-[132px] d-sm:w-[156px] d-sm:h-[50px] px-[8px] m-xs:p-[12px] d-sm:p-[16px]! py-[8px] text-[10px] leading-[10px]! tracking-[0.5px]! m-xs:text-[18px] m-xs:leading-[18px] d-sm:leading-[18px]! m-xs:tracking-[0.75px] font-[800] uppercase transition-colors border-[1px] m-xs:border-[1.5px] d-sm:border-[2px] rounded-[2px] m-xs:rounded-[4px] d-sm:rounded-[6px] border-popsugar bg-white text-popsugar d-sm:border-popsugar d-sm:text-popsugar d-sm:bg-white d-sm:hover:bg-popsugar d-sm:hover:text-white"
+                  {% if card_product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  <span>
+                    {%- if card_product.selected_or_first_available_variant.available -%}
+                      {{ card_product.price | money }}
+                    {%- else -%}
+                      Sold out
+                    {%- endif -%}
+                  </span>
+                </button>
+              {%- endform -%}
+            {%- else -%}
+              <a
+                href="{{ card_product.url }}"
+                class="block text-nowrap whitespace-nowrap w-[116px] m-xs:w-[132px] d-sm:w-[156px] d-sm:h-[50px] px-[8px] m-xs:p-[12px] d-sm:p-[16px]! py-[8px] text-[10px] leading-[10px]! tracking-[0.5px]! m-xs:text-[18px] m-xs:leading-[18px] d-sm:leading-[18px]! m-xs:tracking-[0.75px] font-[800] uppercase transition-colors border-[1px] m-xs:border-[1.5px] d-sm:border-[2px] rounded-[2px] m-xs:rounded-[4px] d-sm:rounded-[6px] border-popsugar bg-white text-popsugar d-sm:border-popsugar d-sm:text-popsugar d-sm:bg-white d-sm:hover:bg-popsugar d-sm:hover:text-white"
+              >
+                From {{ card_product.price | money }}
+              </a>
+            {%- endif -%}
+          </product-form>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- else -%}
+  {% comment %} Placeholder Card {% endcomment %}
+  <div class="flex flex-col w-[220px] h-[467px] overflow-hidden text-center bg-white rounded-lg shadow-sm">
+    <div class="h-[275px] bg-gray-200"></div>
+    <div class="flex flex-col flex-grow p-4">
+      <div class="w-3/4 h-6 mx-auto bg-gray-200 rounded"></div>
+      <div class="flex-grow"></div>
+      <div class="w-1/2 h-5 mx-auto bg-gray-200 rounded"></div>
+      <div class="w-full h-12 mt-4 bg-gray-200 rounded-lg"></div>
+    </div>
+  </div>
+{%- endif -%}

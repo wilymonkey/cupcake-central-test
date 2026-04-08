@@ -1,0 +1,225 @@
+<style>
+    .product-tabs-descriptions {
+      padding: 5rem;
+      background-color: white;
+      border-radius: 25px;
+      border: 1px solid #707070;
+      transition: all 0.3s ease-in-out;
+  }
+
+  .product-description-tab {
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid #707070;
+      transition: all 0.3s ease-in-out;
+  }
+
+  .outer-div-product-description-tab {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #444;
+      padding: 0 2% 1%;
+    display:flex;
+  }
+
+  .outer-div-product-description-tab.product-description-active {
+      border-bottom: 3px solid #1B9A8E;
+      color: #1B9A8E;
+  }
+
+  .outer-div-product-description-tab:hover {
+      cursor: pointer;
+  }
+
+  .product-tab {
+      transition: all 1s ease-in;
+  }
+
+  .product-tab-content {
+    padding-top: 1rem;
+      color: #444;
+  }
+  .bottom-icon{
+    margin-left:0.5rem;
+  }
+    .bottom-icon svg{
+      width:15px;
+    }
+
+  .allergens-tab-content, .ingredients-tab-content, .storage-tab-content{
+      max-height: 0;
+      /* transition: max-height 0.3s ease-out; */
+      overflow: hidden;
+  }
+
+  .allergens-tab-content.active, .ingredients-tab-content.active, .storage-tab-content.active {
+      max-height: 1000px;
+      /* transition: max-height 1s ease-in; */
+  }
+    @media screen and (min-width:750px){
+      .bottom-icon{
+        margin-left:1rem;
+      }
+    }
+</style>
+{% assign allergens_description = product.description
+  | split: '<!-- allergen -->'
+  | last
+  | split: '<!-- allergen-end -->'
+  | first
+%}
+{% assign ingredients_description = product.description
+  | split: '<!-- ingredient -->'
+  | last
+  | split: '<!-- ingredient-end -->'
+  | first
+%}
+{% assign storage_description = product.description
+  | split: '<!-- storage -->'
+  | last
+  | split: '<!-- storage-end -->'
+  | first
+%}
+
+<div class="product-tabs-descriptions {{ gallery_tabs }}">
+  <div class="information-grid">
+    <div class="product-tab">
+      <div class="product-description-tab">
+        <!-- Tab Headers -->
+        {% if allergens_description != '' %}
+          <div class="outer-div-product-description-tab allergens-tab" data-target="allergens">
+            ALLERGENS
+            <span class="bottom-icon-black-allergens bottom-icon">
+              {% render 'icon-caret' %}
+            </span>
+          </div>
+        {% endif %}
+        {% if ingredients_description != '' %}
+          <div class="outer-div-product-description-tab ingredients-tab" data-target="ingredients">
+            INGREDIENTS
+            <span class="bottom-icon-black-ingredients bottom-icon">
+              {% render 'icon-caret' %}
+            </span>
+          </div>
+        {% endif %}
+        {% if storage_description != '' %}
+          <div class="outer-div-product-description-tab storage-tab" data-target="storage">
+            STORAGE
+            <span class="bottom-icon-black-storage bottom-icon">
+              {% render 'icon-caret' %}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Tab Content -->
+      {% assign use_metafields_info = false %}
+      {% assign metafields_info_enabled = product.metafields.custom.product_additional_info.value.enable
+        | metafield_text
+      %}
+      {% if metafields_info_enabled == 'true' %}
+        {% assign use_metafields_info = true %}
+      {% endif %}
+      <div class="product-tab-content">
+        <div class="allergens-tab-content">
+          {% if use_metafields_info == true %}
+            {{ product.metafields.custom.product_additional_info.value.allergens | metafield_tag }}
+            {{ product.metafields.custom.product_additional_info.value.flavours | metafield_tag }}
+          {% else %}
+            {% comment %}
+            Edited by Pratik 23/09/2024 for showing no data if no metafields added for allergens
+            {{ allergens_description }}
+            {% endcomment %}
+          {% endif %}
+        </div>
+        <div class="ingredients-tab-content">
+          {% if use_metafields_info == true %}
+            {{ product.metafields.custom.product_additional_info.value.ingredients | metafield_tag }}
+          {% else %}
+            {% comment %}
+            Edited by Pratik 23/09/2024 for showing no data if no metafields added for allergens
+            {{ ingredients_description }}
+            {% endcomment %}
+          {% endif %}
+        </div>
+        <div class="storage-tab-content">
+          {% if use_metafields_info == true %}
+            {{ product.metafields.custom.product_additional_info.value.storage | metafield_tag }}
+          {% else %}
+            {% comment %}
+            Edited by Pratik 23/09/2024 for showing no data if no metafields added for allergens
+            {{ storage_description }}
+            {% endcomment %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    function showTabContent(tab) {
+      var tabContents = document.querySelectorAll('.product-tab-content div');
+      var icons = document.querySelectorAll('.product-description-tab .bottom-icon');
+
+      // Hide all tab contents and reset icons
+      tabContents.forEach(function (content) {
+        content.style.display = 'none';
+      });
+
+      icons.forEach(function (icon) {
+        if (icon.classList.contains('bottom-icon-black')) {
+          icon.style.display = 'block';
+        } else {
+          icon.style.display = 'none';
+        }
+      });
+
+      // Show current tab content and adjust icons
+      var contentClass = tab.dataset.target + '-tab-content';
+      var currentContent = document.querySelector('.' + contentClass);
+      if (currentContent) {
+        currentContent.style.display = 'block';
+      }
+
+      var blackIcon = tab.querySelector('.bottom-icon-black');
+      var greenIcon = tab.querySelector('.bottom-icon-green');
+      if (blackIcon && greenIcon) {
+        blackIcon.style.display = 'none';
+        greenIcon.style.display = 'block';
+      }
+    }
+
+  function activateTab(tab) {
+      var tabs = document.querySelectorAll('.product-description-tab > div');
+      var tabContents = document.querySelectorAll('.product-tab-content > div');
+
+      tabs.forEach(function (t) {
+          t.classList.remove('product-description-active');
+      });
+      tab.classList.add('product-description-active');
+
+      tabContents.forEach(function (content) {
+          content.classList.remove('active');
+      });
+
+      var contentClass = tab.dataset.target + '-tab-content';
+      var currentContent = document.querySelector('.' + contentClass);
+      if (currentContent) {
+          currentContent.classList.add('active');
+      }
+  }
+
+    // Event listeners for tabs
+    var tabs = document.querySelectorAll('.product-description-tab > div');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activateTab(tab);
+      });
+    });
+
+    // Initialize default active tab
+    activateTab(document.querySelector('.allergens-tab'));
+  });
+</script>

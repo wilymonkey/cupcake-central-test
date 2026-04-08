@@ -1,0 +1,123 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "delivery_search_block_ixzwwF": {
+      "type": "delivery-search-block",
+      "settings": {
+        "image1": "shopify://shop_images/Map.png",
+        "image2": "shopify://shop_images/Fast_Delivery_blck_94baa6ee-8cff-4a48-b65c-6f51325c5143.png",
+        "title-line1": "Yes we deliver",
+        "title-line2": "to your area",
+        "paragraph-description1": "free delivery on orders over $40(T&C) apply",
+        "paragraph-description2": "We deliver 7 days a week",
+        "paragraph-description3": "Call us if you're not in the sweet zoon. Give us a call on 9077 4522"
+      }
+    },
+    "hero_delivery_block_hJ6eHP": {
+      "type": "hero-delivery-block",
+      "settings": {
+        "bg_color": "#7764a4",
+        "image_position": "left",
+        "desktop_image": "shopify://shop_images/Map.png",
+        "mobile_image": "shopify://shop_images/Map.png",
+        "title-line1": "deliveried to",
+        "title-line2": "multiple",
+        "title-line3": "addresses!",
+        "paragraph-description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "button-text": "enquire now"
+      }
+    },
+    "hero_delivery_block_qUwEGY": {
+      "type": "hero-delivery-block",
+      "settings": {
+        "bg_color": "#f283b4",
+        "image_position": "right",
+        "desktop_image": "shopify://shop_images/Wholesale-Pic_ea2c394d-4688-4c76-a6ac-ba1cac5862e5.png",
+        "mobile_image": "shopify://shop_images/Wholesale-Pic_ea2c394d-4688-4c76-a6ac-ba1cac5862e5.png",
+        "title-line1": "sweet for",
+        "title-line2": "business",
+        "title-line3": "",
+        "paragraph-description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "button-text": "enquire now"
+      }
+    },
+    "valid_post_codes_MRT8i4": {
+      "type": "valid-post-codes",
+      "settings": {}
+    },
+    "faq_block_EPddUP": {
+      "type": "faq-block",
+      "settings": {}
+    },
+    "partners_gfUMT3": {
+      "type": "partners",
+      "blocks": {
+        "partner_block_CgjJMW": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Brand_-_Poked_b8cd3de2-b99d-4d72-b329-0f674e518fc9.png",
+            "mobile_image": "shopify://shop_images/Brand_-_Poked_b8cd3de2-b99d-4d72-b329-0f674e518fc9.png",
+            "link": ""
+          }
+        },
+        "partner_block_qNzDTV": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Brand_-_Doughville_cc2f508e-83de-4250-8176-ff5b46d8753f.png",
+            "mobile_image": "shopify://shop_images/Brand_-_Doughville_cc2f508e-83de-4250-8176-ff5b46d8753f.png",
+            "link": ""
+          }
+        },
+        "partner_block_96TTXJ": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Brand_-_BBT_Club_a2dad57b-10a1-4d2e-98e5-0a8d02850d29.png",
+            "mobile_image": "shopify://shop_images/Brand_-_BBT_Club_a2dad57b-10a1-4d2e-98e5-0a8d02850d29.png",
+            "link": ""
+          }
+        },
+        "partner_block_c7enLE": {
+          "type": "partner-block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Brand_-_Grazeland_9196b0c5-ccba-47db-95fa-7c54a41471fc.png",
+            "mobile_image": "shopify://shop_images/Brand_-_Grazeland_9196b0c5-ccba-47db-95fa-7c54a41471fc.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "partner_block_CgjJMW",
+        "partner_block_qNzDTV",
+        "partner_block_96TTXJ",
+        "partner_block_c7enLE"
+      ],
+      "settings": {
+        "header_title": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "delivery_search_block_ixzwwF",
+    "hero_delivery_block_hJ6eHP",
+    "hero_delivery_block_qUwEGY",
+    "valid_post_codes_MRT8i4",
+    "faq_block_EPddUP",
+    "partners_gfUMT3"
+  ]
+}

@@ -1,0 +1,63 @@
+{%- render 'product-promo-snippet',
+  heading: section.settings.heading,
+  subheading: section.settings.subheading,
+  heading_color: section.settings.heading_color,
+  subheading_color: section.settings.subheading_color,
+  products_to_show: section.settings.products_to_show,
+  background_color: section.settings.background_color,
+  section_id: section.id
+-%}
+
+{% schema %}
+{
+  "name": "Product Promo",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Header / Title"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>In rhoncus felis sed sodales fermentum. Pellentesque eget odio vitae turpis malesuada feugiat at in risus.</p>"
+    },
+    {
+      "type": "product_list",
+      "id": "products_to_show",
+      "label": "Products to display",
+      "limit": 12
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#212121"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#424242"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Promo"
+    }
+  ]
+}
+{% endschema %}

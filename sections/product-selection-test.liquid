@@ -1,0 +1,225 @@
+<div x-data="cupcakeBuilder" class="builder">
+
+  <div class="left">
+    <h3>1. Pick your cupcakes</h3>
+
+    <template x-for="cake in cupcakes" :key="cake.id">
+      <div class="item">
+
+        <img :src="cake.image" class="cake-img" width="50px" height="50px">
+
+        <p x-text="cake.name"></p>
+
+        <div class="qty">
+          <button @click="remove(cake)">-</button>
+          <span x-text="cake.qty"></span>
+          <button @click="add(cake)">+</button>
+        </div>
+
+      </div>
+    </template>
+  </div>
+
+  <div class="right">
+
+    <h3>
+      2. Gift box preview 
+      <span x-text="totalQty + ' / ' + max"></span>
+    </h3>
+
+    <div class="preview-box">
+      <template x-for="(cake, index) in previewList" :key="index">
+        <img :src="cake.image" class="preview-item" width="50px" height="50px">
+      </template>
+    </div>
+
+
+    <!-- ADDONS -->
+    <h3>3. Add-ons</h3>
+
+    <div class="addons">
+      <label>
+        <input type="checkbox" x-model="addons.card">
+        Free Card
+      </label>
+
+      <label>
+        <input type="checkbox" x-model="addons.candle">
+        Candle (+$3)
+      </label>
+    </div>
+
+
+    <!-- PRICE -->
+    <h2>$<span x-text="totalPrice"></span></h2>
+
+    <button 
+      :disabled="totalQty !== max"
+      @click="addToCart()"
+      class="add-btn"
+    >
+      Add to Cart
+    </button>
+
+  </div>
+
+</div>
+
+<style>
+.builder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 20px;
+}
+
+.item {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cake-img {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.qty {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.preview-box {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.preview-item {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-btn:disabled {
+  background: gray;
+}
+</style>
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+    if (!window._cupcakeLoaded) {
+        window._cupcakeLoaded = true;
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('cupcakeBuilder', () => ({
+                max: 12,
+
+                cupcakes: [
+                    {
+                        id: 1,
+                        name: "cake1",
+                        price: 1.00,
+                        image: "{{ collections['cupcakes'].products[0].featured_image | image_url: width: 200 }}",
+                        qty: 0
+                    },
+                    {
+                        id: 2,
+                        name: "cake2",
+                        price: 2.00,
+                        image: "{{ collections['cupcakes'].products[1].featured_image | image_url: width: 200 }}",
+                        qty: 0
+                    },
+                    {
+                        id: 3,
+                        name: "cake3",
+                        price: 3.00,
+                        image: "{{ collections['cupcakes'].products[2].featured_image | image_url: width: 200 }}",
+                        qty: 0
+                    },
+                ],
+
+                addons: {
+                    candle: false,
+                    card: false
+                },
+				
+				get totalQty() {
+                    return this.cupcakes.reduce((sum, c) => sum + c.qty, 0);
+                },
+
+                get totalPrice() {
+                    let total = this.cupcakes.reduce((sum, c) => sum + c.qty * c.price, 0);
+
+                    if (this.addons.candle) total += 3;
+
+                    return total.toFixed(2);
+                },
+
+                get previewList() {
+                    let list = [];
+                    this.cupcakes.forEach(c => {
+                        for (let i = 0; i < c.qty; i++) {
+                        list.push(c);
+                        }
+                    });
+                    return list;
+                },
+
+                add(cake) {
+                    if (this.totalQty >= this.max) return;
+                    cake.qty++;
+                },
+
+                remove(cake) {
+                    if (cake.qty > 0) cake.qty--;
+                },
+
+                async addToCart() {
+                    let items = [];
+
+                    this.cupcakes.forEach(c => {
+                        if (c.qty > 0) {
+                            items.push({
+                                id: c.id,
+                                quantity: c.qty
+                            });
+                        }
+                    });
+
+                    await fetch('/cart/add.js', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ items })
+                    });
+
+                    window.location.href = '/cart';
+                }
+
+            }))
+        })
+    }
+</script>
+
+
+{% schema %}
+{
+  "name": "Cupcake Builder",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cupcake Builder"
+    }
+  ]
+}
+{% endschema %}

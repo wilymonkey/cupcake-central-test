@@ -1,0 +1,127 @@
+{{ 'component-scrolling-announcement-bar.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* Applying the animation to the items */
+  .topbar .animation-translate {
+    animation: scroll {{section.settings.animation_duration}}s linear infinite;
+  }
+</style>
+
+<div class="topbar js-sticky-topbar">
+  <div class="relative py-2 lg:py-3 bg-pink color-{{section.settings.color_scheme}} ">
+    <div class="relative flex mx-auto overflow-hidden flex-nowrap">
+      <div class="relative flex animation-translate">
+        {% assign num = 5 %}
+        {% for i in (1..num) %}
+          {% for block in section.blocks %}
+            <p class="mx-4 whitespace-nowrap text-xs font-bold flex-items-center text-custom-1 h-fit text-white">
+              <span class="inline-block relative w-[18px] aspect-[1/1] mr-2">
+                <picture>
+                  <source sizes="(min-width: 0rem) 100vw" srcset="">
+                  <source
+                    media="(min-resolution: 200dpi), (-webkit-min-device-pixel-ratio: 2)"
+                    sizes="(min-width: 0rem) 100vw"
+                    srcset=""
+                  >
+                  <img
+                    class="fit opacity-0 [&amp;[src]]:opacity-100 object-cover lazy entered loaded"
+                    loading="lazy"
+                    alt="Topbar icon"
+                    data-ll-status="loaded"
+                    src="{{ block.settings.icon | image_url: width: 36 }}"
+                  >
+                </picture>
+              </span>
+              {{ block.settings.title }}
+            </p>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %}Added by Pratik for Halloween{% endcomment %}
+<script>
+  if (window.location.href === "https://cupcakecentral.com.au/pages/halloween-latest") {
+    const elements = document.querySelectorAll('.color-scheme-2');
+    elements.forEach(element => {
+        element.style.backgroundColor = '#f4812a';
+    });
+}
+
+</script>
+
+{% schema %}
+{
+  "name": "Scrolling Announce Bar",
+  "max_blocks": 5,
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__1.content",
+      "info": "t:sections.announcement-bar.settings.header__1.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__2.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__3.content",
+      "info": "t:sections.announcement-bar.settings.header__3.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__4.content",
+      "info": "t:sections.announcement-bar.settings.header__4.info"
+    },
+    {
+      "type": "number",
+      "id": "animation_duration",
+      "default": 120,
+      "label": "Animation Duration (0 - 1000)",
+      "info": "The speed increases the smaller the number you input."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement_item",
+      "name": "Announcement Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "ANNOUNCEMENT",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Announcement Bar",
+      "blocks": [
+        {
+          "type": "announcement_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

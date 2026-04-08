@@ -1,0 +1,107 @@
+{{ 'countdown-timer.css' | asset_url | stylesheet_tag }}
+
+<div class="main-countdown-container">
+<div class="countdown-timer-main-main-container">
+<div class="countdown-timer">
+    <div class="time-unit">
+      <div class="label">DAYS</div>
+      <div class="number" id="days">00</div> 
+    </div>
+    <div class="colon">:</div>
+    <div class="time-unit">
+      <div class="label">HOURS</div>
+      <div class="number" id="hours">00</div>
+    </div>
+    <div class="colon">:</div>
+    <div class="time-unit">
+      <div class="label">MINUTES</div>
+      <div class="number" id="minutes">00</div>
+    </div>
+    <div class="colon">:</div>
+    <div class="time-unit">
+      <div class="label">SECONDS</div>
+      <div class="number" id="seconds">00</div>
+    </div>
+  </div>
+  <div class="countdown-timer-text">
+    UNTIL VALENTINE'S DAY
+  </div>
+  <div class="order-now-button-container">
+  <button class="order-now2" data-target="ordernow-block-valentines">ORDER NOW</button>
+  </div>
+</div>
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+console.log("Script loaded");
+// Set the static end date in UTC+10 (AEST) timezone
+
+const endDateUTC = new Date("February 14, 2025 00:00:01").getTime();
+
+function updateCountdown() {
+    // Get the current time in UTC
+    const now = new Date().getTime();
+    //console.log("Current Time (UTC):", new Date(now).toISOString());
+
+    // Calculate the distance between now and the countdown end date
+    const distance = endDateUTC - now;
+    //console.log("Time Remaining (ms):", distance);
+
+    if (distance < 0) {
+        // Stop the timer if the countdown is finished
+        document.querySelector('.countdown-timer').innerHTML = "<span>Countdown Ended</span>";
+        clearInterval(interval);
+        return;
+    }
+
+    // Calculate days, hours, minutes, and seconds remaining
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Log each time unit for debugging
+    //console.log("Days:", days, "Hours:", hours, "Minutes:", minutes, "Seconds:", seconds);
+
+    // Update the DOM elements with the calculated time
+    document.getElementById('days').innerText = days.toString().padStart(2, '0');
+    document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+}
+
+// Update countdown every second
+const interval = setInterval(updateCountdown, 1000);
+updateCountdown();
+
+document.querySelectorAll('.order-now2, .smooth-scroll-button').forEach(button => {
+    button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("data-target"); // Use 'data-target' attribute
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+            // Calculate the exact scroll position accounting for any fixed headers
+            const offsetTop = targetSection.getBoundingClientRect().top + window.scrollY - 220; // Adjust -220 as needed
+            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+        }
+    });
+});
+
+});
+
+</script>
+{% schema %}
+  {
+    "name": "Countdown Timer",
+    "class": "countdown-timer-main",
+    "settings": [],
+    "presets": [
+     {
+       "name": "Countdown Timer"
+     }
+   ]
+  }
+{% endschema %}

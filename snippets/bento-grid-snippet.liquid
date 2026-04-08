@@ -1,0 +1,79 @@
+{%- liquid
+  comment
+    Conditionally set alignment classes based on the passed variable.
+  endcomment
+  case text_alignment
+    when 'left'
+      assign alignment_class = 'items-start text-left'
+    when 'center'
+      assign alignment_class = 'items-center text-center'
+    when 'right'
+      assign alignment_class = 'items-end text-right'
+  endcase
+
+  comment
+    Set the order class for the image on desktop view.
+  endcomment
+  if image_position == 'right'
+    assign image_order_class = 'md:order-last'
+  endif
+
+  comment
+    Set the aspect ratio class based on the image orientation setting.
+  endcomment
+  case image_orientation
+    when 'portrait'
+      assign aspect_ratio_class = 'aspect-[20/17]'
+    when 'landscape'
+      assign aspect_ratio_class = 'aspect-[400/250]'
+  endcase
+
+  comment
+    Conditionally add padding and rounding for the 'framed' image style.
+  endcomment
+  if image_style == 'framed'
+    assign image_padding_class = 'p-[12px] md:p-[24px] d-sm:p-[48px]'
+    assign image_rounding_class = 'rounded-[8px] d-sm:rounded-[12px] d-lg:rounded-[16px]'
+  endif
+-%}
+
+<div data-aos="zoom-in" class="w-full" style="background-color: {{ background_color }};">
+  <div class="flex flex-col t-md:flex-row d-sm:gap-12 h-full mx-auto d-lg:max-w-[1920px]">
+    <div class="w-full md:w-[512px] d-sm:w-[640px] d-lg:w-[960px]! {{ image_order_class }} {{ image_padding_class }}">
+      <div class="overflow-hidden {{ aspect_ratio_class }} ">
+        {% if image != blank %}
+          <img
+            src="{{ image | image_url: width: 1200 }}"
+            alt="{{ image.alt | escape }}"
+            width=""
+            height=""
+            class="object-cover h-full aspect-[8/5] {{ image_rounding_class }}"
+          >
+        {% else %}
+          <div class="flex items-center justify-center h-full bg-gray-100">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="w-full px-[25px] md:w-[512px] d-sm:w-[640px] flex flex-col justify-center gap-4 mx-auto {{ alignment_class }}">
+      <div class="py-[24px] md:pb-[10px]">
+      {% if heading != blank %}
+        <div class="text-[24px] d-sm:text-[36px] md:w-[368px] d-sm:w-[544px] d-lg:w-[816px] leading-[22px]! d-sm:leading-[33px]! font-[900]! tracking-normal! text-espresso">{{ heading }}</div>
+      {% endif %}
+      {% if text != blank %}
+        <div class="text-[14px] mt-[12px] md:w-[368px] d-sm:w-[540px] d-lg:w-[816px] d-sm:text-[16px] leading-[18px]! d-sm:leading-[23px]! tracking-[0.3px]! font-[500]! text-espresso">{{ text }}</div>
+      {% endif %}
+      </div>
+      {% if button_text != blank and button_link != blank %}
+        <a
+          href="{{ button_link }}"
+          class="inline-block mb-[35px] p-[16px] py-5 d-lg:px-[32px] d-lg:py-[24px] bg-popsugar hover:bg-[#c5497a] text-white text-[18px] d-sm:text-[18px] d-lg:text-[24px] leading-[18px]! d-lg:leading-[24px]! d-lg:tracking-[1px] font-extrabold uppercase rounded-[6px]"
+        >
+          {{ button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+{{ 'section-featured-socials.css' | asset_url | stylesheet_tag }}
+
+<div class="featured-socials-container">
+  {% for block in section.blocks %}
+  <a href="{{ block.settings.link }}" class="featured-socials-block-link">
+    {% comment %}PRATIK : START HALLOWEEN{% endcomment %}
+    <div class="featured-socials-block">
+      {%- if request.path == '/pages/halloween-latest' -%}
+        <img src="{{ block.settings.image1 | img_url: 'master' }}" alt="{{ block.settings.text }}" class="featured-socials-block-image">
+        <span class="featured-socials-block-text1">{{ block.settings.text }}</span>
+      {% else %}
+        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.text }}" class="featured-socials-block-image">
+        <span class="featured-socials-block-text">{{ block.settings.text }}</span>
+      {% endif %}
+      {% comment %}END HALLOWEEN{% endcomment %}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+<script>
+      {% comment %}PRATIK : START HALLOWEEN{% endcomment %}
+  if (window.location.href === "https://cupcakecentral.com.au/pages/halloween-latest") {
+    const elements= document.querySelectorAll('.featured-socials-container');
+    
+    elements.forEach(element => {
+        element.style.background = 'black';
+    });
+}
+      {% comment %}PRATIK : END HALLOWEEN{% endcomment %}
+
+</script>
+{% schema %}
+{
+  "name": "Featured Socials",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image_with_text",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image Halloween"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Socials",
+      "blocks": [
+        {"type": "image_with_text"},
+        {"type": "image_with_text"},
+        {"type": "image_with_text"},
+        {"type": "image_with_text"}
+      ]
+    }
+  ],
+  "max_blocks": 4
+}
+{% endschema %}

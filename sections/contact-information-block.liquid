@@ -1,0 +1,654 @@
+<style>
+  .contact-information-block {
+    position: relative;
+    border-radius: 10px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    background-color: {{ section.settings.bg_color }};
+    color: #fff;
+  }
+  
+  #contact-information-block-inner-left {
+      width: 40%;
+      padding: 7rem 2rem;
+  }
+  
+  .contact-information-block-inner-right {
+      width: 60%;
+      padding: 7rem;
+      background-color: {{ section.settings.right_bg_color }};
+      border-radius: 15px;
+      margin: 1.5rem 0;
+  }
+  
+  #contact-information-block-left-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+  }
+  
+  #contact-information-block-left-content h1 {
+      color:white;
+      margin: 0;
+      padding: 0;
+      font: normal normal 800 64px/95px Poppins;
+      font-size: calc(100vw * (50/1920));
+      line-height: 1;
+      letter-spacing: 0px;
+  }
+  
+  #contact-information-block-left-content h2 {
+      color:white;
+      margin: 0;
+      padding: 0;
+      font: normal normal normal 100px/100px Tenstars;
+      font-size: calc(100vw * (60/1920));
+      line-height: calc(100vw * (90/1920));
+      letter-spacing: 0px;
+      color: #F283B4;
+      margin-top: calc(100vw * ( -13 / 1920));
+  }
+  
+  #contact-information-block-left-content p {
+      color:white;
+      margin: 2rem 0;
+      padding: 0;
+      font: normal normal normal 24px/35px Poppins;
+      font-size: calc(100vw * (14/1920));
+      line-height: calc(100vw * (25/1920));
+      letter-spacing: 0px;
+      padding-top: 1rem;
+  }
+
+  #contact-information-block-right-content h1 {
+      color:white;
+      margin: 0;
+      padding: 0;
+      font: normal normal 800 64px/95px Poppins;
+      font-size: calc(100vw * (50/1920));
+      line-height: 1;
+      letter-spacing: 0px;
+  }
+  
+  #contact-information-block-right-content p {
+      color:white;
+      margin: 2rem 0;
+      padding: 0;
+      font: normal normal normal 24px/35px Poppins;
+      font-size: calc(100vw * (14/1920));
+      line-height: calc(100vw * (25/1920));
+      letter-spacing: 0px;
+      padding-top: 1rem;
+  }
+  
+  #contact-information-block-input {
+      gap: 16px;
+      height: calc(100vw * (60/1920));
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 1rem;
+  }
+  
+  #contact-information-block-input form input {
+      height: 100%;
+      background: #F0F0F0 0% 0% no-repeat padding-box;
+      border: 1px solid #686868;
+      border-radius: 5px;
+      width: calc(100vw * (360/1920));
+      padding: 0 23px;
+      font: normal normal normal 18px/27px Poppins;
+      font-size: calc(100vw * (18/1920));
+      line-height: calc(100vw * (27/1920));
+  }
+  
+  #contact-information-block-input button {
+      height: 100%;
+      width: calc(100vw * (180/1920));
+      font: normal normal bold 18px/27px Poppins;
+      font-size: calc(100vw * (18/1920));
+      font-weight: bold;
+      line-height: calc(100vw * (27/1920));
+      letter-spacing: 0px;
+      background-color: #fff;
+      color: #686868;
+      border: none;
+      border-radius: 5px;
+  }
+#contact-information-block-right-content input[type="email"] {
+    border-radius: 3px;
+    height: 4rem;
+    width: 49.6%;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: none;
+}
+  #contact-information-block-right-content input[type="tel"] {
+    border-radius: 3px;
+    height: 4rem;
+    width: 49.6%;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: none;
+}
+  .contact-information-block-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .delivery-image {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 4rem;
+  }
+
+  .contact-item-block {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .contact-sub-item {
+    width: 100%;
+    margin: 2rem;
+    text-align: center;
+  }
+
+  .contact-sub-content {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #686868;
+    margin: -1rem 0;
+  }
+
+  .sub-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  #contact-information-block-right-content input[type="text"] {
+    border-radius: 3px;
+    height: 4rem;
+    width: 49.6%;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: none;
+  }
+
+  #contact-information-block-right-content input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+  }
+
+  .selection-block {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .selection-block-item {
+    color: #000;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-information-btn button {
+      width: calc(100vw * (180/1920));
+      aspect-ratio: 3/1;
+      font: normal normal bold 18px/27px Poppins;
+      font-size: calc(100vw * (18/1920));
+      font-weight: bold;
+      line-height: calc(100vw * (27/1920));
+      letter-spacing: 0px;
+      background-color: #fff;
+      color: #686868;
+      border: none;
+      border-radius: 5px;
+      float: right;
+  }
+  
+  @media (max-width: 850px) {
+      .contact-information-block {
+        display: block !important;
+      }
+
+    #contact-information-block-inner-left {
+      width: 100%;
+      padding: 2rem;
+    }
+    
+    .contact-information-block-inner-right {
+        width: 100%;
+        padding: 2rem;
+        display: inline-block;
+    }
+
+    #contact-information-block-right-content input[type="text"] {
+      width: 49.3%;
+    }
+
+    #contact-information-block-left-content h1 {
+        font-size: 5rem;
+    }
+    
+    #contact-information-block-left-content h2 {
+        font-size: 5rem;
+    }
+    
+    #contact-information-block-left-content p {
+        font-size: 1.5rem;
+        line-height: 100%;
+        padding-top: 0.5rem;
+    }
+  
+    #contact-information-block-right-content h1 {
+        font-size: 5rem;
+    }
+    
+    #contact-information-block-right-content p {
+        font-size: 1.5rem;
+        line-height: 100%;
+        padding-top: 0.5rem;
+    }
+
+    .contact-information-block-content {
+      margin-bottom: 2rem;
+    }
+
+    .text-input-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-information-btn button {
+      width: 20%;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+     .selection-block {
+        display: block;
+      }
+  }
+</style>
+<div class="page-width flex-centered contact-information-block">
+    <div id="contact-information-block-inner-left">
+        <div id="contact-information-block-left-content">
+            <h1 class="uppercase">{{ section.settings.title-line1 }}</h1>
+            <h1 class="uppercase" style="color: #f283b4">{{ section.settings.title-line2 }}</h1>
+            <p>{{ section.settings.paragraph-description }}</p>
+            <div class="contact-information-block-content">
+              <img
+                class="delivery-image"
+                src="{{ section.settings.image1 | img_url: 'master' }}"
+                alt="delivery Image"
+              >
+              <span>
+                {{ section.settings.phone }}
+              </span>
+            </div>
+            <div class="contact-information-block-content">
+              <img
+                class="delivery-image"
+                src="{{ section.settings.image2 | img_url: 'master' }}"
+                alt="delivery Image"
+              >
+              <span>
+                {{ section.settings.email }}
+              </span>
+            </div>
+            <div class="contact-information-block-content">
+              <img
+                class="delivery-image"
+                src="{{ section.settings.image3 | img_url: 'master' }}"
+                alt="delivery Image"
+              >
+              <span>
+                {{ section.settings.address }}
+              </span>
+            </div>
+          <div class="contact-item-block">
+            <div class="contact-sub-item">
+              <a href="{{ section.settings.sub_link1 }}" style="text-decoration: none;">
+                <img src="{{ section.settings.sub_image1 | img_url: 'master'  }}" class="sub-image"/>
+                <div class="contact-sub-content">
+                    <p class="uppercase">{{ section.settings.sub-title1 }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="contact-sub-item">
+              <a href="{{ section.settings.sub_link2 }}" style="text-decoration: none;">
+                <img src="{{ section.settings.sub_image2 | img_url: 'master'  }}" class="sub-image"/>
+                <div class="contact-sub-content">
+                    <p class="uppercase">{{ section.settings.sub-title2 }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="contact-sub-item">
+              <a href="{{ section.settings.sub_link3 }}" style="text-decoration: none;">
+                <img src="{{ section.settings.sub_image3 | img_url: 'master'  }}" class="sub-image"/>
+                <div class="contact-sub-content">
+                    <p class="uppercase">{{ section.settings.sub-title3 }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="contact-sub-item">
+              <a href="{{ section.settings.sub_link4 }}" style="text-decoration: none;">
+                <img src="{{ section.settings.sub_image4 | img_url: 'master'  }}" class="sub-image"/>
+                <div class="contact-sub-content">
+                    <p class="uppercase">{{ section.settings.sub-title4 }}</p>
+                </div>
+              </a>
+            </div>
+        </div>
+        </div>
+    </div>
+  {% comment %}
+  // Start: Pratik 19th July to add Slack Integration with Powerful form Builer
+  // Added the following coed after the comment
+    <div class="contact-information-block-inner-right">
+      	{% form 'contact', id: 'ContactForm' %}
+      <div class="wholesaleform-errors">
+        {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {% render 'icon-success' %}
+          {{ 'templates.contact.form.post_success' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {% render 'icon-error' %}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+      </div>
+        <div id="contact-information-block-right-content">
+            <h1 class="uppercase">{{ section.settings.title-line4 }}</h1>
+            <p>{{ section.settings.paragraph-description2 }}</p>
+            <input
+                class=""
+                type="text"
+                id="ContactForm-businessname"
+                placeholder="Business Name"
+                 name="contact[{{ 'templates.contact.form.businessname' | t }}]"
+            value="{% if form.businessname %}{{ form.businessname }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                style="width: 100%" required
+            >
+            <div class="text-input-group">
+                <input
+                  class=""
+                  type="text"
+                  id="ContactForm-firstname"
+                  placeholder="First Name"
+                  name="contact[{{ 'templates.contact.form.firstname' | t }}]" required
+                >
+                <input
+                  class=""
+                  type="text"
+                  id="ContactForm-lastname"
+                  placeholder="Last Name"
+                  name="contact[{{ 'templates.contact.form.lastname' | t }}]" required
+                >
+            </div>
+            <div class="text-input-group">
+                <input
+                  class=""
+                  type="email"
+                  id="ContactForm-email"
+                  placeholder="Email"
+                   name="contact[email]" spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %} required
+                >
+                <input
+                  class=""
+                  type="tel"
+                  id="ContactForm-phone"
+                  placeholder="Phone"
+                  name="contact[{{ 'templates.contact.form.phone' | t }}]"
+          pattern="[0-9\-]*"
+          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" required
+                >
+            </div>
+            <h1 style="font-size: 2.5rem; padding: 1rem 0;">Which of our products are you interested in?</h1>
+            <div class="selection-block">
+              <div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="cupcakes"  name="contact[{{ 'templates.contact.form.products' | t }}]" value="cupcakes">
+                  <label for="cupcakes">Cupcakes</label><br>
+                </div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="minicupcakes" name="contact[{{ 'templates.contact.form.products' | t }}]" value="minicupcakes">
+                  <label for=minicupcakes">Mini Cupcakes</label><br>
+                </div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="cakes" name="contact[{{ 'templates.contact.form.products' | t }}]" value="cakes">
+                  <label for="cakes">Cakes</label><br>
+                </div>
+              </div>
+              <div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="vegancakes" name="contact[{{ 'templates.contact.form.products' | t }}]" value="vegancakes">
+                  <label for="vegancakes">Vegan Cakes</label><br>
+                </div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="glutenfreecakes" name="contact[{{ 'templates.contact.form.products' | t }}]"" value="glutenfreecakes">
+                  <label for="glutenfreecakes">Gluten Free Cakes</label><br>
+                </div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="nyccookies" name="contact[{{ 'templates.contact.form.products' | t }}]" value="nyccookies">
+                  <label for="nyccookies">NYC Cookies</label><br>
+                </div>
+              </div>
+              <div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="brownineslices" name="contact[{{ 'templates.contact.form.products' | t }}]" value="brownineslices">
+                  <label for="brownineslices">Brownie Slices</label><br>
+                </div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="customcupcakes" name="contact[customcupcakes]" value="customcupcakes">
+                  <label for="customcupcakes">Custom Cupcakes</label><br>
+                </div>
+                <div class="selection-block-item">
+                  <input type="checkbox" id="customcookies"  name="contact[{{ 'templates.contact.form.products' | t }}]" value="customcookies">
+                  <label for="customcookies">Custom Cookies</label><br>
+                </div>
+              </div>
+            </div>
+            <textarea
+              class=""
+              type="text"
+              id="ContactForm-body"
+              
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+              placeholder="Tell us about your business"
+              style="height: 12rem; width: 100%;padding: 1rem; border-radius: 5px;" required
+            ></textarea>
+          <div class="contact-information-btn">
+            <button type="submit" class="uppercase">{{ section.settings.button-text }}</button>
+          </div>
+        </div>
+    </div>
+  {% endform %}
+  // End: Pratik 19th July
+  {% endcomment %}
+  <div class="globo-formbuilder" data-id="MTIyMjM4"></div>
+</div>
+
+{% comment %}
+Contact Us Form End Here
+{% endcomment %}
+
+
+{% schema %}
+    {
+      "name": "Contact Information Block",
+      "tag": "section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "bg_color",
+          "label": "Background Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image3"
+        },
+        {
+          "type": "text",
+          "id": "title-line1",
+          "label": "Title Line 1"
+        },
+        {
+          "type": "text",
+          "id": "title-line2",
+          "label": "Title Line 2"
+        },
+        {
+          "type": "text",
+          "id": "title-line3",
+          "label": "Title Line 3"
+        },
+        {
+          "type": "text",
+          "id": "paragraph-description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": "Address"
+        },
+        {
+          "type": "url",
+          "id": "link1",
+          "label": "Sub Link1"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub_image1",
+          "label": "Subu Image1"
+        },
+        {
+          "type": "text",
+          "id": "sub-title1",
+          "label": "Sub Title 1"
+        },
+        {
+          "type": "url",
+          "id": "link2",
+          "label": "Sub Link2"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub_image2",
+          "label": "Subu Image2"
+        },
+        {
+          "type": "text",
+          "id": "sub-title2",
+          "label": "Sub Title 2"
+        },
+        {
+          "type": "url",
+          "id": "link3",
+          "label": "Sub Link3"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub_image3",
+          "label": "Subu Image3"
+        },
+        {
+          "type": "text",
+          "id": "sub-title3",
+          "label": "Sub Title 3"
+        },
+        {
+          "type": "url",
+          "id": "link4",
+          "label": "Sub Link4"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub_image4",
+          "label": "Subu Image4"
+        },
+        {
+          "type": "text",
+          "id": "sub-title4",
+          "label": "Sub Title 4"
+        },
+        {
+          "type": "text",
+          "id": "right_bg_color",
+          "label": "Right Background Color"
+        },
+        {
+          "type": "text",
+          "id": "title-line4",
+          "label": "Right Title"
+        },
+        {
+          "type": "text",
+          "id": "paragraph-description2",
+          "label": "Right Description"
+        },
+        {
+          "type": "text",
+          "id": "button-text",
+          "label": "Button Text"
+        }
+   ],
+   "presets": [
+        {
+          "name": "Contact Information Block"
+        }
+      ]
+    }
+   {% endschema %}
+   

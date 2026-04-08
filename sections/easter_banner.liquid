@@ -1,0 +1,138 @@
+{% schema %}
+{
+  "name": "Easter Banner Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Easter Banner Image"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.easter-banner-image {
+  padding: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.easter-banner-image__desktop {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+
+.easter-banner-image__mobile {
+  display: none;
+}
+
+.easter-banner-image__button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+    height: 49px;
+  background-color: #ffb2cd;
+  border-radius: 50%;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+  font-size: 3rem;
+}
+
+.easter-banner-image__button:hover {
+  background-color: #ffb2cd;
+    color: #fff;
+    font-size: 1.9rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px !important;
+    cursor: pointer;
+    font-family: Poppins !important;
+    width: 7rem !important;
+}
+
+  
+@media screen and (max-width: 767px) {
+.easter-banner-image {
+  padding: 0px;
+  width: 100%;
+  position: relative;
+}
+  .easter-banner-image__desktop {
+    display: none;
+  }
+  
+  .easter-banner-image__mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+
+<div class="easter-banner-image">
+  {% if section.settings.desktop_image %}
+    {{ section.settings.desktop_image | image_url: width: 2000 | image_tag: 
+      class: 'easter-banner-image__desktop', 
+      loading: 'lazy'
+    }}
+  {% endif %}
+  
+  {% if section.settings.mobile_image %}
+    {{ section.settings.mobile_image | image_url: width: 800 | image_tag: 
+      class: 'easter-banner-image__mobile', 
+      loading: 'lazy'
+    }}
+  {% endif %}
+
+
+    <a class="easter-banner-image__button" data-target="ordernow-block-valentines">
+     ↓
+    </a>
+</div>
+
+<script>
+  document.querySelectorAll('.easter-banner-image__button, .smooth-scroll-button').forEach(button => {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        const offsetTop = targetSection.getBoundingClientRect().top + window.scrollY - 220; // Adjust -220 if needed
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+

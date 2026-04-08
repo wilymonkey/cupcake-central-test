@@ -1,0 +1,174 @@
+{{ 'welcome_popup.css' | asset_url | stylesheet_tag }}
+
+<div id="welcome-popup" class="welcome-popup">
+  <div class="welcome-popup-main-container">
+    <button id="close-popup" class="close-popup">&times;</button>
+    <div class="welcome-popup-image-container">
+      <img class= "welcome_popup_image" src="{{ section.settings.image | img_url: 'master' }}" width="100" height="100">
+    </div>
+    <div class="welcome-popup-text-container">
+  <h3 class="popup-title">{{ section.settings.maintitle }}</h3>
+  {%- form 'customer', class: 'welcome-form' -%}
+  <div class="welcome-popup-content">
+    <input type="hidden" name="contact[tags]" value="welcome10">
+    <input
+      type="email"
+      name="contact[email]"
+      class="welcome-popup-field-input"
+      value="{{ form.email }}"
+      aria-required="true"
+      autocorrect="off"
+      autocapitalize="off"
+      autocomplete="email"
+      placeholder="{{ 'newsletter.label' | t }}"
+      required
+    >
+    <button
+      type="submit"
+      class="newsletter__button"
+      id="Subscribe"
+      aria-label="{{ 'newsletter.button_label' | t }}"
+    >
+      CONTINUE
+    </button>
+  </div>
+  {% endform %}
+  <p class="popup-subtitle">{{ section.settings.subtitle }}</p>
+</div>
+
+    </div>
+      
+    
+  </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var popup = document.getElementById('welcome-popup');
+    var closeBtn = document.getElementById('close-popup');
+    var subscribeBtn = document.getElementById('Subscribe');
+    var form = document.querySelector('.welcome-form');  // Target the form directly
+    
+    // Check if the 'dontShowPopup' flag is in localStorage before showing the popup
+    if (!localStorage.getItem('dontShowPopup')) {
+      // Timeout to show popup after a specific time set in the schema (in seconds)
+      setTimeout(function() {
+        popup.style.display = 'flex';
+      }, {{ section.settings.newsletter_time }} * 1000);  // Use the timeout value from the schema
+    }
+
+    // Close button click event
+    closeBtn.addEventListener('click', function() {
+      localStorage.setItem('dontShowPopup', true);
+      popup.style.display = 'none';
+    });
+
+    // Subscribe button click event
+    subscribeBtn.addEventListener('click', function() {
+      localStorage.setItem('dontShowPopup', true);
+      popup.style.display = 'none';
+    });
+
+    // Form submission event
+    form.addEventListener('submit', function(event) {
+      // Prevent the default form submission to handle popup hiding
+      event.preventDefault();
+
+      // Set the flag to prevent showing the popup again
+      localStorage.setItem('dontShowPopup', true);
+
+      // Optionally submit the form or redirect as needed (e.g., trigger the form submit programmatically)
+      form.submit();  // Submit the form after hiding the popup
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+   "name": "Newsletter Popup",
+  "class": "newsletter-popup",
+  "settings": [
+ {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Enabled?",
+      "default": true
+    },
+ {
+      "type": "checkbox",
+      "id": "show_onall_page",
+      "label": "Show on all pages?",
+      "default": false
+    },
+ {
+      "type": "range",
+      "id": "newsletter_time",
+      "label": "Set Timeout",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    },
+ {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Left/Right Image Size: 500px X 500px, Cover Image Size: 750px X 500px"
+    },
+ {
+      "type": "color",
+      "id": "bgcolor",
+      "label": "Background Color",
+      "default": "#f2f2f2"
+    },
+ {
+      "type": "color",
+      "id": "textcolor",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+ {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+  {
+          "value": "cover",
+          "label": "Cover"
+        }
+      ]
+    },
+ {
+      "type": "text",
+      "id": "maintitle",
+      "label": "Main Title",
+      "default": "SUBSCRIBE AND GET DISCOUNT!"
+    },
+ {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Title",
+      "default": "Subscribe to the newsletter to receive updates about new products."
+    },
+ {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show Social Icons",
+      "default": true
+    }
+  ],
+    "presets": [
+        {
+            "name": "Welcome Popup"
+        }
+    ]
+}
+{% endschema %}

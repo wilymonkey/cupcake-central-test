@@ -1,0 +1,698 @@
+{% schema %}
+{
+  "name": "Collection Grid",
+  "class": "custom-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_first_word",
+      "label": "First Word",
+      "default": "OUR"
+    },
+    {
+      "type": "text",
+      "id": "title_second_word",
+      "label": "Second Word",
+      "default": "PRODUCTS"
+    },
+    {
+      "type": "richtext",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "<p>This International Women's Day, a portion of the proceeds from all IWD products will be donated to the IWDA. So gather together, enjoy some sweet treats and join us in promoting gender equality for all.</p>"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Grid"
+    }
+  ]
+}
+{% endschema %}
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<div class="products-showcase__header">
+    <div class="products-showcase__title">
+      <span class="products-showcase__title-first">{{ section.settings.title_first_word }}</span>
+      <span class="products-showcase__title-second">{{ section.settings.title_second_word }}</span>
+    </div>
+    <div class="products-showcase__description">
+      {{ section.settings.section_description }}
+    </div>
+  </div>
+{% if section.settings.collection.products.size > 0 %}
+  <div class="collection-grid">
+    {% for product in section.settings.collection.products %}
+      <div class="product-item" id="ordernow-block-valentines">
+        <div class="product-image-wrapper">
+          <a href="{{ product.url }}" class="product-image">
+            <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
+            <img class="hover-image" src="{{ product.images[1] | img_url: 'large' }}" alt="{{ product.title }}">
+            <div class="overlay">View Product</div>
+          </a>
+
+          <!-- Product Badges (Top Left) -->
+          <div class="product-badges">
+            {% if product.tags contains 'Vegan' %}
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Vegan_Badge.svg?v=1704236905" alt="Vegan" class="badge">
+            {% endif %}
+            {% if product.tags contains 'National Shipping' %}
+              <img src="https://cdn.shopify.com/s/files/1/1848/3097/files/Aus_Wide_Badge.svg?v=1704236905" alt="Aus_Wide" class="badge">
+            {% endif %}
+            
+          </div>
+        </div>
+        
+        <div class="product-info">
+          <a href="{{ product.url }}" class="product-image">
+          <h3 class="product-title">{{ product.title }}</h3>
+          </a>
+          <p class="product-price">{{ product.price | money }}</p>
+        </div>
+        <div class="product-action-container">
+          <div class="product-actions">
+            {%- liquid
+              assign product_form_id = 'quick-add-' | append: section.id | append: product.id
+              assign qty_rules = false
+            %}
+            
+            {% if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1 %}
+              {% assign qty_rules = true %}
+            {% endif %}
+
+                    <quantity-input class="quantity">
+                      <button class="quantity__button no-js-hidden" name="minus" type="button">
+                        <span class="visually-hidden">
+                          {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                        </span>
+                        {% render 'icon-minus' %}
+                      </button>
+                      <input
+                        class="quantity__input"
+                        type="number"
+                        name="quantity"
+                        id="Quantity-{{ section.id }}"
+                        data-cart-quantity="{{ cart_qty }}"
+                        data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                        min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                        {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                          data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                          max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                        {% endif %}
+                        step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                        value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                        form="{{ product_form_id }}"
+                      >
+                      <button class="quantity__button no-js-hidden" name="plus" type="button">
+                        <span class="visually-hidden">
+                          {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                        </span>
+                        {% render 'icon-plus' %}
+                      </button>
+                    </quantity-input>
+            {%- if product.variants.size > 1 or qty_rules -%}
+              <a href="{{ product.url }}" class="order-now">
+                <button class="quick-add__submit button button--full-width button--secondary">
+                  ORDER NOW
+                </button>
+              </a>
+            {%- else -%}
+              <div class="product-form-iwd">
+              <product-form data-section-id="{{ section.id }}">
+                {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                  
+                  <button id="{{ product_form_id }}-submit" type="submit" name="add" class="quick-add__submit button button--full-width button--secondary" aria-haspopup="dialog" aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}" aria-live="polite" data-sold-out-message="true" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                    <span>
+                      {%- if product.selected_or_first_available_variant.available -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {%- else -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
+                    </span>
+                    <span class="sold-out-message hidden">
+                      {{ 'products.product.sold_out' | t }}
+                    </span>
+                    {%- render 'loading-spinner' -%}
+                  </button>
+                {%- endform -%}
+              </product-form>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No products found.</p>
+{% endif %}
+
+<style>
+  .custom-collection {
+    background-color: #f6c549;
+    margin: 40px;
+    border-radius: 30px;
+}
+.products-showcase__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  padding: 3rem
+}
+
+.products-showcase__title {
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+}
+
+.products-showcase__title-first {
+  font-family: Beefcakes-Regular;
+  font-size: 3vw;
+  color: #FFFFFF;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.products-showcase__title-second {
+  font-family: Beefcakes-Regular;
+  font-size: 3vw;
+  color: #F75533;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.products-showcase__description {
+  max-width: 50%;
+  margin-left: auto;
+  color: #fff;
+  text-align: right;
+}
+  .collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 54px;
+  width: 100%;
+  max-width: 100%;
+}
+
+  .product-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+ 
+
+  .product-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.product-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease-in-out;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.product-image .hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.product-image:hover .hover-image {
+  opacity: 1;
+}
+
+.product-image:hover .default-image {
+  opacity: 0;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.product-image:hover .overlay {
+  opacity: 1;
+}
+
+  .product-info {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .product-action-container {
+    display: flex;
+    flex-direction: column;
+        padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+  }
+
+  .product-title {
+    font-weight: bold;
+    margin-top: 10px;
+    width: 70%;
+    font-size: 2rem; /* Changed from vw to rem */
+  }
+
+  .product-price {
+    color: #555;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.4rem; /* Changed from vw to rem */
+  }
+
+  .product-form-iwd {
+    width: 70%;
+  }
+
+  .vegan-tag {
+    color: green;
+    font-weight: bold;
+  }
+
+  .product-actions {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .quantity-selector {
+    height: 50px;
+    width: 30%;
+    text-align: center;
+  }
+
+  .quantity__button {
+    border-radius: 30px !important;
+  }
+
+  .button:after {
+    border-radius: 30px;
+  }
+
+  .quantity {
+    display: block;
+    background: white;
+    border: 1px solid #686868;
+    border-radius: 30px !important;
+    position: relative;
+    color: rgba(var(--color-foreground));
+    width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width)* 2);
+    display: flex;
+    min-height: calc((var(--inputs-border-width)* 2) + 4.5rem);
+  }
+
+
+  quantity-input.quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid #686868 !important;
+  border-radius: 30px !important;
+  overflow: hidden;
+  height: 44px;
+}
+
+  .quantity:after {
+    box-shadow: none !important;
+  }
+
+quantity-input.quantity > * {
+  border: none !important;
+}
+
+
+  .add-to-cart {
+    background-color: #82b1ff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    height: 50px;
+    width: 70%;
+  }
+
+  .add-to-cart:hover {
+    background-color: #5595ff;
+  }
+
+  .product-image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.product-badges {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+  .quick-add__submit {
+    border-radius: 30px;  
+  }
+  
+.badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: white;
+  padding: 0px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+  /* Tablet and Mobile Adjustments */
+  @media (max-width: 1024px) {
+    .custom-collection {
+    background-color: #f6c549;
+    margin: 0px;
+    border-radius: 15px;
+      margin-top: 0px;
+}
+    .collection-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet */
+      padding-left: 5vw; /* Reduced padding for tablets */
+      padding-right: 5vw;
+    }
+
+    .product-item {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid #00000029;
+      border-radius: 30px;
+    }
+  }
+
+  @media (max-width: 883px) {
+    .custom-collection {
+    background-color: #f6c549;
+    margin: 0px;
+}
+    .collection-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller tablets */
+      padding-left: 3vw; /* Further reduced padding for smaller screens */
+      padding-right: 3vw;
+    }
+
+    .product-item {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid #00000029;
+      border-radius: 30px;
+    }
+
+    .product-title, .product-price {
+      font-size: 1rem;
+    }
+
+    .button {
+      min-width: 2rem;
+      font-size: 1rem;
+      min-height: 2rem;
+    }
+    .badge {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: white;
+        padding: 0px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+  }
+
+  @media (max-width: 600px) {
+    .products-showcase__title-first {
+      font-family: Beefcakes-Regular;
+      font-size: 4rem !important;
+      color: #FFFFFF;
+      font-weight: bold;
+      margin-right: 0.5rem;
+}
+
+.products-showcase__title-second {
+  font-family: Beefcakes-Regular;
+  font-size: 4rem !important;
+  color: #F75533;
+  font-weight: bold;
+}
+    .custom-collection {
+    background-color: #f6c549;
+    margin: 0px;
+    border-radius: 15px;
+}
+    .products-showcase__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      width: 84%;
+      display: flex;
+      align-items: center;
+      padding: 3rem;
+      margin: auto;
+    }
+    .products-showcase__description {
+      max-width: 100%; 
+      color: #fff;
+      text-align: center;
+    }
+    
+    .collection-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+      padding-left: 2vw; /* Minimal padding for mobile */
+      padding-right: 2vw;
+      gap: 10px; /* Reduced gap for mobile */
+    }
+
+    .product-item {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid #00000029;
+      border-radius: 30px;
+    }
+
+    .product-title {
+      font-size: 1.8rem;
+      width: 100%;
+    }
+
+    .product-price {
+      font-size: 1.4rem;
+      text-align: left;
+    }
+
+    .button {
+      min-width: 2rem;
+      font-size: 1.2rem;
+      min-height: 2rem;
+    }
+    .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  }
+
+  @media (max-width: 480px) {
+    
+      .products-showcase__title-first {
+        font-family: Beefcakes-Regular;
+  font-size: 30px;
+  color: #FFFFFF;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.products-showcase__title-second {
+  font-family: Beefcakes-Regular;
+  font-size: 30px;
+  color: #F75533;
+  font-weight: bold;
+}
+    p {
+      margin: 0px;
+    }
+    
+    .custom-collection {
+    background-color: #f6c549;
+    margin: 0px;
+    border-radius: 15px;
+}
+        .products-showcase__header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 0rem;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding: 1rem;
+    }
+    .collection-grid {
+      grid-template-columns: repeat(2, 1fr); /* 1 column on very small devices */
+      padding-left: 1vw; /* Minimal padding for very small screens */
+      padding-right: 1vw;
+      gap: 10px; /* Reduced gap for very small screens */
+    }
+    .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+    .product-item {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid #00000029;
+      border-radius: 30px;
+    }
+    .product-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.3s ease-in-out;
+      border-radius: 30px;
+    }
+
+.product-image .hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 7px;
+}
+
+.product-image:hover .hover-image {
+  opacity: 1;
+}
+
+.product-image:hover .default-image {
+  opacity: 0;
+}
+
+.overlay {
+  display: none;
+}
+
+
+    .product-title {
+      width: 100%;
+      text-align: center;
+      font-size: 1.4rem;
+      capitalise
+    }
+
+.product-price {
+      width: 100%;
+      text-align: center;
+      font-size: 1.4rem;
+      capitalise
+    }
+    .quantity {
+        display: none !important;
+        }
+    .button {
+      min-width: 2rem;
+      font-size: 1rem;
+      min-height: 2rem;
+    }
+    .add-to-cart {
+      width: 100%;
+  }
+    .product-actions {
+    justify-content: center;
+  }
+    .badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      padding: 0px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+      var quantity = this.previousElementSibling.value;
+      var variantId = this.dataset.id;
+      
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: variantId,
+          quantity: quantity
+        })
+      }).then(response => response.json())
+        .then(data => alert('Added to cart!'))
+        .catch(error => console.error('Error:', error));
+    });
+  });
+</script>

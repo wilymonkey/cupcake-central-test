@@ -1,0 +1,209 @@
+{%- comment -%}
+  This snippet has been updated to render a carousel of slides.
+{%- endcomment -%}
+
+<style>
+  .hero-carousel .hero-slide {
+    display: none;
+  }
+  .hero-carousel .hero-slide.is-selected {
+    display: block;
+  }
+</style>
+
+<div class="hero-carousel relative h-[680px] md:h-[480px] d-sm:h-[599px] d-lg:h-[900px] overflow-hidden">
+  <div class="hero-slides">
+    {%- for block in blocks -%}
+      <div class="hero-slide absolute inset-0 w-full h-full" {{ block.shopify_attributes }}>
+        {% comment %} BACKGROUND LAYER {% endcomment %}
+        <div class="absolute inset-0 z-0 w-full h-full">
+          {% if block.settings.background_type == 'video' %}
+            {% if block.settings.background_video != blank or block.settings.background_video_mobile != blank %}
+              {%- assign desktop_video_asset = block.settings.background_video -%}
+              {%- assign mobile_video_asset = block.settings.background_video_mobile | default: desktop_video_asset -%}
+
+              <video class="object-cover w-full h-full md:hidden" autoplay loop muted playsinline {% if block.settings.poster_image != blank %}poster="{{ block.settings.poster_image | image_url }}"{% endif %}>
+                {% for source in mobile_video_asset.sources %}
+                  <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                {% endfor %}
+              </video>
+              <video class="hidden object-cover w-full h-full md:block!" autoplay loop muted playsinline {% if block.settings.poster_image != blank %}poster="{{ block.settings.poster_image | image_url }}"{% endif %}>
+                {% for source in desktop_video_asset.sources %}
+                  <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                {% endfor %}
+              </video>
+            {% else %}
+              <div class="video w-full h-full display-block!" style="background-color: #1B9A8E;"></div>
+            {% endif %}
+
+          {% elsif block.settings.background_type == 'image' %}
+            {% if block.settings.background_image != blank or block.settings.background_image_mobile != blank %}
+              {%- assign desktop_image_asset = block.settings.background_image -%}
+              {%- assign mobile_image_asset = block.settings.background_image_mobile | default: desktop_image_asset -%}
+
+              <div class="w-full h-full bg-cover bg-center md:hidden" style="background-image: url('{{ mobile_image_asset | image_url }}');">&nbsp;</div>
+              <div class="hidden w-full h-full bg-cover bg-center md:block!" style="background-image: url('{{ desktop_image_asset | image_url }}');">&nbsp;</div>
+            {% else %}
+              <div class="image w-full h-full block!" style="background-color: #1B9A8E;">&nbsp;</div>
+            {% endif %}
+          {% endif %}
+        </div>
+
+        {% comment %} CONTENT OVERLAY {% endcomment %}
+        <div class="relative h-full d-sm:h-auto z-2 flex flex-col pt-[36px] d-lg:pt-[75px] md:pt-[40px]! md:px-[30px] px-[20px] py-[32px] d-sm:pt-[45px] d-sm:px-[48px] d-lg:py-[80px]! d-lg:px-[72px]">
+          <div class="flex-1 rounded-2xl flex flex-col h-full gap-6 text-center px-[16] {{ block.settings.desktop_text_alignment }} {{ block.settings.mobile_text_alignment }}">
+            <div class="flex flex-col gap-[12px] md:gap-[12px] d-sm:gap-[10px] d-lg:gap-[24px] md:pb-[2px] d-sm:pb-[10px] d-lg:pb-[38px] w-full md:max-w-[293px] d-sm:max-w-[460px] d-lg:max-w-[544px]">
+              {% if block.settings.heading != blank %}
+                <div class="self-stretch font-sans! font-black text-[48px]! leading-[44px]! tracking-[0.325px] text-shadow-[0px_8px_16px_10px_#00000029] md:text-[36px]! md:leading-[33px]! d-sm:text-[48px]! d-sm:leading-[44px]! t-md:leading-[44px]! d-sm:tracking-[0.5px] d-lg:text-[72px]! d-lg:leading-[66px]!" style="color: {{ block.settings.heading_color }};">
+                  {{ block.settings.heading }}
+                </div>
+              {% endif %}
+              {% if block.settings.subheading != blank %}
+                <div class="self-stretch text-[24px] font-bold text-shadow-[0px_8px_16px_10px_#00000029] leading-[24px]! t-md:leading-[26px]! tracking-wide t-md:text-[24px]! d-sm:text-[24px]! d-sm:leading-[26px]! d-lg:text-[36px]! d-lg:leading-[40px]!" style="color: {{ block.settings.subheading_color }};">
+                  {{ block.settings.subheading }}
+                </div>
+              {% endif %}
+            </div>
+
+            {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+              <a href="{{ block.settings.button_link }}" class="flex items-center justify-center p-[16px]! d-sm:p-[16px] mx-auto md:m-0 d-lg:py-[24px]! d-lg:px-[32px]! no-underline rounded-[6px] md:rounded-[4px] d-sm:rounded-[6px] d-lg:rounded-[8px]" style="background-color: {{ block.settings.button_background }};">
+                <div class="text-[18px] d-sm:text-[18px] font-extrabold d-sm:font-bold leading-[18px]! d-sm:leading-[18px]! d-lg:text-[24px] d-lg:leading-[24px]! d-lg:tracking-[1px] tracking-[0.75px] d-sm:tracking-[1px]! text-center uppercase" style="color: {{ block.settings.button_text_color }};">
+                  {{ block.settings.button_text }}
+                </div>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if blocks.size > 1 -%}
+    {% comment %}
+      CHANGE: The chevron buttons are now visible from the d-sm breakpoint up.
+      The 'hidden' class was replaced with 'hidden d-sm:flex'.
+    {% endcomment %}
+    <button class="hero-carousel-prev absolute top-1/2 left-2 -translate-y-1/2 z-2 p-2  bg-opacity-50 rounded-full text-[#FFFAF2] flex items-center justify-center">
+      <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button class="hero-carousel-next absolute top-1/2 right-2 -translate-y-1/2 z-2 p-2  bg-opacity-50 rounded-full text-[#FFFAF2] flex items-center justify-center">
+      <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
+
+    <div class="hero-carousel-dots absolute bottom-8 left-1/2 -translate-x-1/2 z-2 flex space-x-2">
+      {%- for block in blocks -%}
+        <button class="hero-carousel-dot w-3 h-3 bg-[#FFFAF2] rounded-full opacity-50 border-[0.5px]! stroke-espresso" data-index="{{ forloop.index0 }}"></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('.hero-carousel');
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.hero-slide');
+  const prevButton = carousel.querySelector('.hero-carousel-prev');
+  const nextButton = carousel.querySelector('.hero-carousel-next');
+  const dots = carousel.querySelectorAll('.hero-carousel-dot');
+  let currentIndex = 0;
+  let autoplayInterval;
+
+  const autoplayEnabled = {{ autoplay | json }};
+  const slideInterval = {{ slide_interval | times: 2000 | json }};
+
+  // --- CHANGE: Variables for swipe gesture ---
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 50; // Minimum distance for a swipe
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-selected', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('opacity-100', i === index);
+      dot.classList.toggle('opacity-50', i !== index);
+    });
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const newIndex = (currentIndex + 1) % slides.length;
+    showSlide(newIndex);
+  }
+
+  function prevSlide() {
+    const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(newIndex);
+  }
+
+  function startAutoplay() {
+    if (autoplayEnabled && slides.length > 1) {
+      autoplayInterval = setInterval(nextSlide, slideInterval);
+    }
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  // --- CHANGE: Functions to handle swipe gestures ---
+  function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }
+
+  function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipeGesture();
+  }
+
+  function handleSwipeGesture() {
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swiped left
+      nextSlide();
+      stopAutoplay();
+      startAutoplay();
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      // Swiped right
+      prevSlide();
+      stopAutoplay();
+      startAutoplay();
+    }
+  }
+
+  if (slides.length > 1) {
+    prevButton.addEventListener('click', () => {
+      prevSlide();
+      stopAutoplay();
+      startAutoplay(); // Restart autoplay timer on manual navigation
+    });
+
+    nextButton.addEventListener('click', () => {
+      nextSlide();
+      stopAutoplay();
+      startAutoplay();
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.dataset.index, 10);
+        showSlide(index);
+        stopAutoplay();
+        startAutoplay();
+      });
+    });
+    
+    // --- CHANGE: Add event listeners for swipe gestures ---
+    carousel.addEventListener('touchstart', handleTouchStart, false);
+    carousel.addEventListener('touchend', handleTouchEnd, false);
+
+    showSlide(0);
+    startAutoplay();
+  } else if (slides.length === 1) {
+    showSlide(0);
+  }
+});
+</script>

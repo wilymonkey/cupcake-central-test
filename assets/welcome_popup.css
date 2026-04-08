@@ -1,0 +1,223 @@
+
+.welcome-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 467px;
+  max-width: 700px;
+  background: #faf5f2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  justify-content: center;
+  z-index: 999999;
+  overflow: auto;
+  object-fit: cover;
+}
+
+.welcome-popup-main-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.welcome_popup_image {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  object-fit: cover;
+}
+
+img {
+    outline: none !important;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #1b9a8f;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+}
+
+.welcome-popup-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 2;
+  max-width: 60%;
+  padding:20px;
+  background-image: url("https://cdn.shopify.com/s/files/1/1848/3097/files/Mask_Group_32_2x_a031e535-8db1-44d5-823f-0d3fe51d0deb.png?v=1722406575");
+  background-size: cover;
+}
+
+.popup-title {
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 38px;
+  margin-top: 0px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  font-color: #444444;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 15px;
+}
+
+.popup-subtitle {
+  line-height: 23px;
+  color: #3b3b3b;
+  text-align: center;
+  font-size: 14px;
+}
+
+.welcome-popup-content {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-popup-content h2 {
+  margin-bottom: 10px;
+}
+
+.welcome-popup-content form {
+  margin-top: 10px;
+}
+
+.welcome-popup-content input[type="email"] {
+  background: #fff;
+  padding-left: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9e9e9;
+  color: #666;
+  font-size: 1.4rem;
+  font-family: inherit;
+  width: 100%;
+  box-shadow: none;
+  height: 55px;
+  box-sizing: border-box;
+}
+
+.field__label {
+  left: 15px;
+}
+
+.newsletter__button {
+  margin-top: 10px;
+  width: 100%;
+  height: 55px;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: bold;
+  background: #f283b4;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.welcome-form {
+  position: relative;
+}
+
+.welcome-popup-content button {
+  padding: 10px;
+  background: #f283b4;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.welcome-popup-content #close-popup {
+  margin-top: 10px;
+  background: #ccc;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 15px;
+  margin-left: 3px;
+}
+
+.welcome-popup-image-container {
+    display: flex;
+    flex: 1;
+    max-width: 40%;
+  }
+
+@media screen and (max-width: 768px) {
+.welcome-popup {
+    width: 83%;
+    max-width: 90%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.popup-title {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.welcome-popup-image-container {
+    display: none;
+  }
+
+.welcome_popup_image {
+  display: none;
+}
+  .checkbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-left: 3px;
+}
+  .popup-subtitle {
+  line-height: 23px;
+  color: #3b3b3b;
+  text-align: center;
+}
+  .close-popup {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  background-color: unset;
+  border: none;
+  color: black;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+}
+  
+  .welcome-popup-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 2;
+  padding: 20px;
+  max-width: 500px;
+  background-image: url("https://cdn.shopify.com/s/files/1/1848/3097/files/Mask_Group_32_2x_a031e535-8db1-44d5-823f-0d3fe51d0deb.png?v=1722406575");
+  background-size: cover;
+}
+}
+

@@ -1,0 +1,46 @@
+.infinite-scroll-section .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.infinite-scroll-section .infinite-scroll-background {
+    background-color: #ff69b4; /* Pink background inferred from bg-pink */
+    padding-top: 2rem; /* py-2 */
+    padding-bottom: 2rem; /* py-2 */
+}
+
+@media screen and (min-width: 1024px) { /* lg: prefix usually means large screen */
+    .infinite-scroll-section .infinite-scroll-background {
+        padding-top: 3rem; /* lg:py-3 */
+        padding-bottom: 3rem; /* lg:py-3 */
+    }
+}
+
+.infinite-scroll-section .infinite-scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.infinite-scroll-section .infinite-scroll-content {
+    display: flex;
+    animation: scrollText 40s linear infinite;
+}
+
+.infinite-scroll-section .infinite-scroll-text {
+    font-size: 7rem; /* Increased font size */
+    color: transparent;
+    -webkit-text-stroke: 1px black; /* Black text border */
+    background-clip: text;
+    font-weight: bold;
+    margin-left: 8rem;
+    margin-right: 2rem;
+    white-space: nowrap;
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
