@@ -1,29 +1,231 @@
-<div class="bg-orange-100 p-8 h-full">
-  <h2>{{ section.settings.heading }}</h2>
-  <p>{{ section.settings.text }}</p>
+<div class="flex flex-col space-x-4 bg-orange-100 p-8">
+    <!--Breadcrumbs, not functional -->
+    <div>
+        <nav class="flex space-x-2 uppercase items-center font-bold">
+            <a class="text-sm">Cakes:</a>
+            <a class="text-sm">Pick your own cupcake</a>
+            <div>></div>
+            <a class="text-sm">{{ section.settings.box_quantity }} assorted cupcake gift box</a>
+        </nav>
+    </div>
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 py-4 gap-4">
+
+            <!-- CUPCAKE SELECTION -->
+
+            <div class="flex flex-col rounded-2xl bg-white border-zinc-400 !border-1 p-8">
+                <h5>1. PICK YOUR CUPCAKES</h5>
+                <hr class="!my-4">
+                <div class="grid grid-cols-3 gap-4">
+                    {% for block in section.blocks %}
+                    {% if block.type == 'flavour' %}
+                    <div class="flex flex-col items-stretch gap-2">
+                        <img class="" width="256" height="256" src="{{ block.settings.image | prepend: 'cupcakes/' | asset_url  }}" alt="{{ block.settings.title | append: ' cupcake' }}">
+                        <div class="font-bold uppercase text-[1rem] text-center">
+                            {{ block.settings.title }}
+                        </div>
+                        <div class="h-1 grow"> </div>
+                        <div class="flex !border-1 border-zinc-400 rounded-md p-2 items-center">
+                            <button class="px-2">-</button>
+                            <div class="grow w-1 px-4 text-center font-bold text-lg" id="">?</div>
+                            <button class="px-2">+</button>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- USER FEEDBACK -->
+
+            <div class="flex flex-col gap-4 bg-white rounded-2xl border-zinc-400 !border-1 p-8">
+                <h5 class="flex">
+                    <div>2. GIFT BOX PREVIEW</div>
+                    <div class="grow w-1"> </div>
+                    <div class="flex gap-2">
+                        <span id="current-total">?</span><span>/</span><span>{{ section.settings.box_quantity }}</span>
+                    </div>
+                </h5>
+                <div class="relative">
+                    <img class="w-full" width="256" height="256" src="{{ 'cupcakes/EmptyBox.png' | asset_url }}" alt="Empty gift box">
+                </div>
+                <h5>3. PICK YOUR ADDONS</h5>
+                <div class="grid grid-cols-3 mx-auto max-w-sm">
+                    {% for block in section.blocks %}
+                    {% if block.type == 'addon' %}
+                    <div class="flex flex-col items-center gap-2">
+                        <img class="" width="128" height="128" src="{{ block.settings.image | prepend: 'cupcakes/' | asset_url  }}" alt="{{ block.settings.title | append: ' addon' }}">
+                        <span>{{ block.settings.name }}</span>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="h-1 grow"> </div>
+                <hr class="!my-4">
+                <div class="flex justify-end gap-4 items-center">
+                    <h5 class="!text-teal-500">{{ section.settings.box_price | money }}</h5>
+                    <button class="bg-teal-500 text-lg text-white p-4 rounded-md font-bold">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="h-16"> </div>
+
+        <!-- RECOMMENDATIONS -->
+
+        <h5 class="text-center w-full !text-zinc-700 mb-4">YOU MAY ALSO LIKE</h5>
+        <div class="flex gap-2 overflow-x-auto">
+            {% for block in section.blocks %}
+            {% if block.type == 'recommended' %}
+            <div class="!border-1 border-zinc-400 rounded-2xl p-4 max-w-xs flex flex-col gap-4 bg-white">
+                <img class="" width="256" height="256" src="{{ block.settings.image | prepend: 'cupcakes/' | asset_url  }}" alt="{{ block.settings.title | append: ' recommended' }}">
+                <div class="uppercase font-bold text-xl">{{ block.settings.title }}</div>
+                <div class="uppercase font-bold text-xl">{{ block.settings.price | money }}</div>
+                <a href="{{ block.settings.url }}" class="bg-white border-zinc-400 !border-1 text-xs p-4 rounded-md font-bold max-w-32">SHOP NOW</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="h-16"> </div>
+
+        <!-- REVIEWS -->
+
+        <h5 class="text-center w-full !text-zinc-700 mb-8">REVIEWS</h5>
+        {% render 'build-your-own-box-reviews' %}
+    </div>
 </div>
 
 {% schema %}
+
 {
   "name": "Build Your Own Box",
   "settings": [
     {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Hello world"
+      "type": "number",
+      "id": "box_quantity",
+      "default": 12,
+      "label": "Box Quantity"
     },
     {
-      "type": "textarea",
-      "id": "text",
-      "label": "Text",
-      "default": "Your content here"
+      "type": "number",
+      "id": "box_price",
+      "default": 5200,
+      "label": "Box Price"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "flavour",
+      "name": "Flavour",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+        },
+        {
+          "type": "text",
+          "id": "image",
+          "label": "Using workaround: use asset name"
+        },
+        {
+          "type": "number",
+          "id": "avail",
+          "label": "Availability",
+          "default": 5
+        }
+      ]
+    },
+    {
+      "type": "addon",
+      "name": "Addon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+        },
+        {
+          "type": "text",
+          "id": "image",
+          "label": "Using workaround: use asset name"
+        },
+        {
+          "type": "number",
+          "id": "price",
+          "label": "Price",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "recommended",
+      "name": "Recommended",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+        },
+        {
+          "type": "text",
+          "id": "image",
+          "label": "Using workaround: use asset name"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link to the product page"
+        },
+        {
+          "type": "number",
+          "id": "price",
+          "label": "Price",
+          "default": 5200
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Build Your Own Box"
+      "name": "Default",
+      "blocks": [
+        {
+          "type": "flavour",
+          "settings": {
+            "title": "Red Velvet",
+            "image": "RedVelvet.png",
+            "avail": 5
+          }
+        },
+        {
+          "type": "addon",
+          "settings": {
+            "title": "Card",
+            "image": "Card.png",
+            "price": 0
+          }
+        },
+        {
+          "type": "addon",
+          "settings": {
+            "title": "Candles",
+            "image": "Candles.png",
+            "price": 300
+          }
+        },
+        {
+          "type": "addon",
+          "settings": {
+            "title": "Letters",
+            "image": "Letters.png",
+            "price": 500
+          }
+        },
+      ]
     }
   ]
 }
+
 {% endschema %}
