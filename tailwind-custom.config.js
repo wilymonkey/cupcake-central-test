@@ -1,5 +1,5 @@
 module.exports = {
-  content: [],
+  content: ["./sections/build-your-own-box.liquid"],
   theme: {
     extend: {},
   },

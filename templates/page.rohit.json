@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "build-your-own-box": {
+      "type": "build-your-own-box",
+      "disabled": false
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -39,10 +43,7 @@
           }
         }
       },
-      "block_order": [
-        "column_tCTBEz",
-        "column_TRTyJJ"
-      ],
+      "block_order": ["column_tCTBEz", "column_TRTyJJ"],
       "disabled": true,
       "settings": {
         "title": "",
@@ -69,6 +70,7 @@
     }
   },
   "order": [
+    "build-your-own-box",
     "main",
     "multicolumn_PRFyHd",
     "1736462285417644d5"
