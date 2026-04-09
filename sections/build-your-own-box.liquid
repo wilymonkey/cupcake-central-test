@@ -22,20 +22,21 @@
                 <div class="grid grid-cols-3 gap-4">
                     {% for cupcake in metaobjects.cupcake.values %}
                     {% if cupcake.stock > 0 %}
+                    {% assign id = cupcake.name | sha256 | truncate: 8 %}
                     <div class="flex flex-col items-stretch gap-2" id="{{ cupcake.id }}">
-                        <img class="" width="256" height="256" src="{{ cupcake.image | image_url  }}" alt="{{ cupcake.name }} cupcake">
+                        <img data-cupcake-image="{{ id }}" class="h-full w-full aspect-square" width="256" height="256" src="{{ cupcake.image | image_url  }}" alt="{{ cupcake.name }} cupcake">
                         <div class="font-bold uppercase text-[1rem] text-center">
                             {{ cupcake.name }}
                         </div>
                         <div class="h-1 grow"> </div>
                         <div class="flex !border-1 border-zinc-400 rounded-md p-2 items-center"
-                            data-cupcake-id="{{ cupcake.name | sha256 | truncate: 8 }}"
+                            data-cupcake-id="{{ id }}"
                             data-cupcake-stock="{{ cupcake.stock }}"
                             data-cupcake-image="{{ cupcake.image | image_url }}"
                         >
-                            <button data-action="decrement" class="px-2">-</button>
-                            <div data-role="quantity" class="grow w-1 px-4 text-center font-bold text-lg"></div>
-                            <button data-action="increment" class="px-2">+</button>
+                            <button data-action="decrement" class="px-2 disabled:opacity-50">-</button>
+                            <div data-role="count" class="grow w-1 px-4 text-center font-bold text-lg"> </div>
+                            <button data-action="increment" class="px-2 font-bold !text-teal-500 disabled:text-[unset] disabled:opacity-50">+</button>
                         </div>
                     </div>
                     {% endif %}
@@ -55,8 +56,12 @@
                         <span>{{ section.settings.box_quantity }}</span>
                     </div>
                 </h5>
+                <div class="hidden">
+                    <img class="w-full aspect-square" id="empty-cupcake-image" width="48" height="48" src="{{ 'cupcakes/EmptyCupcake.png' | asset_url  }}" alt="empty cupcake wrapper">
+                </div>
                 <div class="relative">
                     <img class="w-full" width="256" height="256" src="{{ 'cupcakes/EmptyBox.png' | asset_url }}" alt="Empty gift box">
+                    <div class="absolute top-0 right-0 aspect-[2/1] grid !mt-30 !mb-30 ml-12 mr-12" id="cupcake-preview" style="grid-template-columns: repeat({{ section.settings.box_cupcakes_per_rows }}, 1fr)"></div>
                 </div>
 
                 <!-- ADDONS -->
@@ -131,13 +136,19 @@
          "type":"number",
          "id":"box_quantity",
          "default":12,
-         "label":"Box Quantity"
+         "label":"Box quantity"
+      },
+      {
+         "type":"number",
+         "id":"box_cupcakes_per_rows",
+         "default":6,
+         "label":"Cupcakes per row of the box"
       },
       {
          "type":"number",
          "id":"box_price",
          "default":5200,
-         "label":"Box Price"
+         "label":"Box price"
       }
    ]
 }

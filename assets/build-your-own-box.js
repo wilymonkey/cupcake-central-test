@@ -1,9 +1,17 @@
 let dataRaw = {
   addons: new Set(),
-  cupcakes: [],
+  cupcakes: new Map(),
   maxCupcakes: 0,
   basePrice: 0,
   totalPrice: 0,
+
+  cupcakeLength() {
+    let length = 0;
+    for (const [_, amount] of this.cupcakes.entries()) {
+      length += amount;
+    }
+    return length;
+  },
 };
 
 const handler = {
@@ -21,7 +29,8 @@ function onPropertyChange(property, oldValue, newValue) {
       recalculateTotalPrice();
       break;
     case "cupcakes":
-      updateCupcakeCounter();
+      updateCupcakeCounters();
+      rerenderCupcakePreview();
       break;
     case "maxCupcakes":
       cullCupcakes();
@@ -37,8 +46,31 @@ function onPropertyChange(property, oldValue, newValue) {
 
 const data = new Proxy(dataRaw, handler);
 
-function updateCupcakeCounter() {
-  document.querySelector("#cupcake-counter").textContent = data.cupcakes.length;
+function updateCupcakeCounters() {
+  const cupcakeCounter = document.querySelector("#cupcake-counter");
+  cupcakeCounter.textContent = data.cupcakeLength();
+  cupcakeElements.forEach(function (e) {
+    const cupcakeId = e.getAttribute("data-cupcake-id");
+    const count = data.cupcakes.get(cupcakeId) || 0;
+    const counter = e.querySelector('[data-role="count"]');
+    counter.textContent = count;
+  });
+}
+
+function rerenderCupcakePreview() {
+  const cupcakePreview = document.querySelector("#cupcake-preview");
+  cupcakePreview.innerHTML = "";
+  for (const [id, value] of data.cupcakes.entries()) {
+    const image = document.querySelector(`[data-cupcake-image="${id}"]`);
+    for (let i = 0; i < value; i++) {
+      cupcakePreview.appendChild(image.cloneNode(true));
+    }
+  }
+  const emptyCount = data.maxCupcakes - data.cupcakeLength();
+  const emptyImage = document.querySelector(`#empty-cupcake-image`);
+  for (let i = 0; i < emptyCount; i++) {
+    cupcakePreview.appendChild(emptyImage.cloneNode(true));
+  }
 }
 
 function cullCupcakes() {
@@ -71,8 +103,8 @@ function updateTotalView() {
 const addonElements = document.querySelectorAll("[data-addon-id]");
 addonElements.forEach(function (element) {
   element.addEventListener("change", function () {
-    const addonId = this.getAttribute("data-addon-id"); // ← use the real ID
-    const currentAddons = new Set(data.addons); // copy the current Set
+    const addonId = this.getAttribute("data-addon-id");
+    const currentAddons = new Set(data.addons);
 
     if (this.checked) {
       currentAddons.add(addonId);
@@ -80,28 +112,41 @@ addonElements.forEach(function (element) {
       currentAddons.delete(addonId);
     }
 
-    data.addons = currentAddons; // ← this triggers the Proxy set trap
+    data.addons = currentAddons;
   });
 });
 
 const cupcakeElements = document.querySelectorAll("[data-cupcake-id]");
-cupcakeElements.forEach(function (e) {
-  e.addEventListener("click", function () {
-    const stock = e.getAttribute("data-cupcake-stock");
-    const minusBtn = container.querySelector('[data-action="decrement"]');
-    const plusBtn = container.querySelector('[data-action="increment"]');
+cupcakeElements.forEach(function (element) {
+  // Capture cupcake stock so that it doesn't change from underneath
+  // the user (if it even can).
+  const stock = parseInt(element.getAttribute("data-cupcake-stock"));
+  const cupcakeId = element.getAttribute("data-cupcake-id");
+  const minusBtn = element.querySelector('[data-action="decrement"]');
+  const plusBtn = element.querySelector('[data-action="increment"]');
+  const counter = element.querySelector('[data-role="count"]');
 
-    if (e.target.dataset.action === "increment") {
-      const cupcakeId = e.getAttribute("data-cupcake-id");
-      const currentCupcakes = new Set(data.cupcakes);
-      currentCupcakes.add(cupcakeId);
+  element.addEventListener("click", function (event) {
+    const prevCount = data.cupcakes.get(cupcakeId) || 0;
+
+    if (event.target.dataset.action === "increment") {
+      const currentCupcakes = new Map(data.cupcakes);
+      currentCupcakes.set(cupcakeId, prevCount + 1);
       data.cupcakes = currentCupcakes;
-    } else if (e.target.dataset.action === "decrement") {
-      const cupcakeId = e.getAttribute("data-cupcake-id");
-      const currentCupcakes = new Set(data.cupcakes);
-      currentCupcakes.delete(cupcakeId);
+    } else if (event.target.dataset.action === "decrement") {
+      const currentCupcakes = new Map(data.cupcakes);
+      if (prevCount > 0) {
+        currentCupcakes.set(cupcakeId, prevCount - 1);
+      }
       data.cupcakes = currentCupcakes;
     }
+
+    const count = data.cupcakes.get(cupcakeId) || 0;
+    plusBtn.disabled =
+      count >= stock || data.cupcakeLength() >= data.maxCupcakes;
+    minusBtn.disabled = count < 1;
+
+    counter.innerHTML = count;
   });
 });
 
