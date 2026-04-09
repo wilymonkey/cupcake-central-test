@@ -99,133 +99,133 @@
 {% schema %}
 
 {
-  "name": "Build Your Own Box",
-  "settings": [
-    {
-      "type": "number",
-      "id": "box_quantity",
-      "default": 12,
-      "label": "Box Quantity"
-    },
-    {
-      "type": "number",
-      "id": "box_price",
-      "default": 5200,
-      "label": "Box Price"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "flavour",
-      "name": "Flavour",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-        },
-        {
-          "type": "text",
-          "id": "image",
-          "label": "Using workaround: use asset name"
-        },
-        {
-          "type": "number",
-          "id": "avail",
-          "label": "Availability",
-          "default": 5
-        }
-      ]
-    },
-    {
-      "type": "addon",
-      "name": "Addon",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-        },
-        {
-          "type": "text",
-          "id": "image",
-          "label": "Using workaround: use asset name"
-        },
-        {
-          "type": "number",
-          "id": "price",
-          "label": "Price",
-          "default": 0
-        }
-      ]
-    },
-    {
-      "type": "recommended",
-      "name": "Recommended",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-        },
-        {
-          "type": "text",
-          "id": "image",
-          "label": "Using workaround: use asset name"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Link to the product page"
-        },
-        {
-          "type": "number",
-          "id": "price",
-          "label": "Price",
-          "default": 5200
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Default",
-      "blocks": [
-        {
-          "type": "flavour",
-          "settings": {
-            "title": "Red Velvet",
-            "image": "RedVelvet.png",
-            "avail": 5
-          }
-        },
-        {
-          "type": "addon",
-          "settings": {
-            "title": "Card",
-            "image": "Card.png",
-            "price": 0
-          }
-        },
-        {
-          "type": "addon",
-          "settings": {
-            "title": "Candles",
-            "image": "Candles.png",
-            "price": 300
-          }
-        },
-        {
-          "type": "addon",
-          "settings": {
-            "title": "Letters",
-            "image": "Letters.png",
-            "price": 500
-          }
-        },
-      ]
-    }
-  ]
+   "name":"Build Your Own Box",
+   "settings":[
+      {
+         "type":"number",
+         "id":"box_quantity",
+         "default":12,
+         "label":"Box Quantity"
+      },
+      {
+         "type":"number",
+         "id":"box_price",
+         "default":5200,
+         "label":"Box Price"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"flavour",
+         "name":"Flavour",
+         "settings":[
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title"
+            },
+            {
+               "type":"text",
+               "id":"image",
+               "label":"Using workaround: use asset name"
+            },
+            {
+               "type":"number",
+               "id":"avail",
+               "label":"Availability",
+               "default":5
+            }
+         ]
+      },
+      {
+         "type":"addon",
+         "name":"Addon",
+         "settings":[
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title"
+            },
+            {
+               "type":"text",
+               "id":"image",
+               "label":"Using workaround: use asset name"
+            },
+            {
+               "type":"number",
+               "id":"price",
+               "label":"Price",
+               "default":0
+            }
+         ]
+      },
+      {
+         "type":"recommended",
+         "name":"Recommended",
+         "settings":[
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title"
+            },
+            {
+               "type":"text",
+               "id":"image",
+               "label":"Using workaround: use asset name"
+            },
+            {
+               "type":"url",
+               "id":"url",
+               "label":"Link to the product page"
+            },
+            {
+               "type":"number",
+               "id":"price",
+               "label":"Price",
+               "default":5200
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Default",
+         "blocks":[
+            {
+               "type":"flavour",
+               "settings":{
+                  "title":"Red Velvet",
+                  "image":"RedVelvet.png",
+                  "avail":5
+               }
+            },
+            {
+               "type":"addon",
+               "settings":{
+                  "title":"Card",
+                  "image":"Card.png",
+                  "price":0
+               }
+            },
+            {
+               "type":"addon",
+               "settings":{
+                  "title":"Candles",
+                  "image":"Candles.png",
+                  "price":300
+               }
+            },
+            {
+               "type":"addon",
+               "settings":{
+                  "title":"Letters",
+                  "image":"Letters.png",
+                  "price":500
+               }
+            }
+         ]
+      }
+   ]
 }
 
 {% endschema %}
