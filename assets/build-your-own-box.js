@@ -16,6 +16,11 @@ let dataRaw = {
   variant() {
     return "cupcake-box-" + this.maxCupcakes; // Replace this with variant id.
   },
+
+  reset() {
+    this.addons = new Set();
+    this.cupcakes = new Map();
+  },
 };
 
 function measureCupcakeLength(cupcakes) {
@@ -46,6 +51,7 @@ function onPropertyChange(property, oldValue, newValue) {
       rerenderCupcakePreview();
       saveToLocalStorage();
       checkBoxIsValid();
+      canReset();
       const wasMax = measureCupcakeLength(oldValue) == data.maxCupcakes;
       const isMax = measureCupcakeLength(newValue) == data.maxCupcakes;
       if (isMax || wasMax) {
@@ -219,6 +225,18 @@ function clickAllCakeBtns() {
 }
 
 // ===================================
+// RESET
+// ===================================
+
+const resetBtn = document.querySelector("#reset-gift-box");
+resetBtn.addEventListener("click", function () {
+  data.reset();
+});
+function canReset() {
+  resetBtn.disabled = data.cupcakeLength() === 0;
+}
+
+// ===================================
 // ADD TO CART
 // ===================================
 
@@ -240,8 +258,8 @@ addToCartBtn.addEventListener("click", async function () {
     const name = element.getAttribute("data-addon-name");
     dataToCart.properties.set("Addon: " + name, true);
   }
-  console.log(dataToCart);
   try {
+    data.reset();
     const response = await fetch("/cart/add.js", {
       method: "POST",
       headers: {
