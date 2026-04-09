@@ -4,8 +4,8 @@
 
 - Level: Mid-Senior	Submission
 - Estimated Time: Within 48 hours  (2 - 6 Hours	Test Type)
-- Wireframe link: https://xd.adobe.com/view/c71a2b8c-11f6-44cf-a614-4bef49b9c844-9249/  
-- Wireframe link: https://xd.adobe.com/view/ac53c40a-4a95-48ab-9d9c-2e5484a4cde2-f900/ 
+- [Wireframe link](https://xd.adobe.com/view/c71a2b8c-11f6-44cf-a614-4bef49b9c844-9249/)
+- [Wireframe link](https://xd.adobe.com/view/ac53c40a-4a95-48ab-9d9c-2e5484a4cde2-f900/)
 
 ### 2. Task Requirements
 
@@ -23,8 +23,8 @@ Complete all the following requirements. Refer to the CCdev-test_2026 file for f
 - Flavor selections passed to cart as Shopify line-item properties
 
 #### Logic requirements
-- + buttons must disable automatically when total reaches 12
-- - buttons must disable individually when the flavor count is at 0
+- \+ buttons must disable automatically when total reaches 12
+- \- buttons must disable individually when the flavor count is at 0
 - Reset / start over clears all selections without a page reload
 - No page reloads at any point - all state handled in JavaScript
  

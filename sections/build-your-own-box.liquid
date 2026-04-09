@@ -1,4 +1,7 @@
-<div class="flex flex-col space-x-4 bg-orange-100 p-8">
+<div class="flex flex-col space-x-4 bg-orange-100 p-8"
+    data-box-quantity="{{ section.settings.box_quantity }}"
+    data-box-price="{{ section.settings.box_price }}"
+>
     <!--Breadcrumbs, not functional -->
     <div>
         <nav class="flex space-x-2 uppercase items-center font-bold">
@@ -17,18 +20,22 @@
                 <h5>1. PICK YOUR CUPCAKES</h5>
                 <hr class="!my-4">
                 <div class="grid grid-cols-3 gap-4">
-                    {% for block in section.blocks %}
-                    {% if block.type == 'flavour' %}
-                    <div class="flex flex-col items-stretch gap-2">
-                        <img class="" width="256" height="256" src="{{ block.settings.image | prepend: 'cupcakes/' | asset_url  }}" alt="{{ block.settings.title | append: ' cupcake' }}">
+                    {% for cupcake in metaobjects.cupcake.values %}
+                    {% if cupcake.stock > 0 %}
+                    <div class="flex flex-col items-stretch gap-2" id="{{ cupcake.id }}">
+                        <img class="" width="256" height="256" src="{{ cupcake.image | image_url  }}" alt="{{ cupcake.name }} cupcake">
                         <div class="font-bold uppercase text-[1rem] text-center">
-                            {{ block.settings.title }}
+                            {{ cupcake.name }}
                         </div>
                         <div class="h-1 grow"> </div>
-                        <div class="flex !border-1 border-zinc-400 rounded-md p-2 items-center">
-                            <button class="px-2">-</button>
-                            <div class="grow w-1 px-4 text-center font-bold text-lg" id="">?</div>
-                            <button class="px-2">+</button>
+                        <div class="flex !border-1 border-zinc-400 rounded-md p-2 items-center"
+                            data-cupcake-id="{{ cupcake.name | sha256 | truncate: 8 }}"
+                            data-cupcake-stock="{{ cupcake.stock }}"
+                            data-cupcake-image="{{ cupcake.image | image_url }}"
+                        >
+                            <button data-action="decrement" class="px-2">-</button>
+                            <div data-role="quantity" class="grow w-1 px-4 text-center font-bold text-lg"></div>
+                            <button data-action="increment" class="px-2">+</button>
                         </div>
                     </div>
                     {% endif %}
@@ -43,27 +50,46 @@
                     <div>2. GIFT BOX PREVIEW</div>
                     <div class="grow w-1"> </div>
                     <div class="flex gap-2">
-                        <span id="current-total">?</span><span>/</span><span>{{ section.settings.box_quantity }}</span>
+                        <span id="cupcake-counter"></span>
+                        <span>/</span>
+                        <span>{{ section.settings.box_quantity }}</span>
                     </div>
                 </h5>
                 <div class="relative">
                     <img class="w-full" width="256" height="256" src="{{ 'cupcakes/EmptyBox.png' | asset_url }}" alt="Empty gift box">
                 </div>
+
+                <!-- ADDONS -->
+
                 <h5>3. PICK YOUR ADDONS</h5>
                 <div class="grid grid-cols-3 mx-auto max-w-sm">
-                    {% for block in section.blocks %}
-                    {% if block.type == 'addon' %}
-                    <div class="flex flex-col items-center gap-2">
-                        <img class="" width="128" height="128" src="{{ block.settings.image | prepend: 'cupcakes/' | asset_url  }}" alt="{{ block.settings.title | append: ' addon' }}">
-                        <span>{{ block.settings.name }}</span>
-                    </div>
-                    {% endif %}
+                    {% for addon in metaobjects.addon.values %}
+                    <label class="flex flex-col items-center gap-2 cursor-pointer relative">
+                        <input
+                            data-addon-id="{{ addon.name | sha256 | truncate: 8 }}"
+                            data-addon-price="{{ addon.price }}"
+                            data-addon-name="{{ addon.name }}"
+                            class="peer hidden" type="checkbox" name="addons"
+                            value="{{ addon.name }}"
+                        >
+                        <img class="peer-checked:ring-3 peer-checked:-ring-offset-1 peer-checked:ring-teal-500 rounded-full" width="128" height="128" src="{{ addon.image | image_url  }}" alt="{{ addon.name }} addon">
+                        <svg class="peer-checked:!block absolute hidden bottom-6 right-0 size-12 stroke-teal-500 fill-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-lg font-bold">
+                            {% if addon.price == 0 %}
+                                FREE
+                            {% else %}
+                                {{ addon.price | money }}
+                            {% endif %}
+                        </span>
+                    </label>
                     {% endfor %}
                 </div>
                 <div class="h-1 grow"> </div>
                 <hr class="!my-4">
                 <div class="flex justify-end gap-4 items-center">
-                    <h5 class="!text-teal-500">{{ section.settings.box_price | money }}</h5>
+                    <h5 class="!text-teal-500" id="total-price"></h5>
                     <button class="bg-teal-500 text-lg text-white p-4 rounded-md font-bold">ADD TO CART</button>
                 </div>
             </div>
@@ -75,15 +101,13 @@
 
         <h5 class="text-center w-full !text-zinc-700 mb-4">YOU MAY ALSO LIKE</h5>
         <div class="flex gap-2 overflow-x-auto">
-            {% for block in section.blocks %}
-            {% if block.type == 'recommended' %}
+            {% for recommend in metaobjects.recommendation.values %}
             <div class="!border-1 border-zinc-400 rounded-2xl p-4 max-w-xs flex flex-col gap-4 bg-white">
-                <img class="" width="256" height="256" src="{{ block.settings.image | prepend: 'cupcakes/' | asset_url  }}" alt="{{ block.settings.title | append: ' recommended' }}">
-                <div class="uppercase font-bold text-xl">{{ block.settings.title }}</div>
-                <div class="uppercase font-bold text-xl">{{ block.settings.price | money }}</div>
-                <a href="{{ block.settings.url }}" class="bg-white border-zinc-400 !border-1 text-xs p-4 rounded-md font-bold max-w-32">SHOP NOW</a>
+                <img class="" width="256" height="256" src="{{ recommend.image | image_url  }}" alt="{{ recommend.title }} recommended">
+                <div class="uppercase font-bold text-xl">{{ recommend.title }}</div>
+                <div class="uppercase font-bold text-xl">{{ recommend.price | money }}</div>
+                <a href="{{ recommend.url }}" class="bg-white border-zinc-400 !border-1 text-xs p-4 rounded-md font-bold max-w-32">SHOP NOW</a>
             </div>
-            {% endif %}
             {% endfor %}
         </div>
 
@@ -95,6 +119,8 @@
         {% render 'build-your-own-box-reviews' %}
     </div>
 </div>
+
+<script src="{{ 'build-your-own-box.js' | asset_url }}" defer></script>
 
 {% schema %}
 
@@ -112,118 +138,6 @@
          "id":"box_price",
          "default":5200,
          "label":"Box Price"
-      }
-   ],
-   "blocks":[
-      {
-         "type":"flavour",
-         "name":"Flavour",
-         "settings":[
-            {
-               "type":"text",
-               "id":"title",
-               "label":"Title"
-            },
-            {
-               "type":"text",
-               "id":"image",
-               "label":"Using workaround: use asset name"
-            },
-            {
-               "type":"number",
-               "id":"avail",
-               "label":"Availability",
-               "default":5
-            }
-         ]
-      },
-      {
-         "type":"addon",
-         "name":"Addon",
-         "settings":[
-            {
-               "type":"text",
-               "id":"title",
-               "label":"Title"
-            },
-            {
-               "type":"text",
-               "id":"image",
-               "label":"Using workaround: use asset name"
-            },
-            {
-               "type":"number",
-               "id":"price",
-               "label":"Price",
-               "default":0
-            }
-         ]
-      },
-      {
-         "type":"recommended",
-         "name":"Recommended",
-         "settings":[
-            {
-               "type":"text",
-               "id":"title",
-               "label":"Title"
-            },
-            {
-               "type":"text",
-               "id":"image",
-               "label":"Using workaround: use asset name"
-            },
-            {
-               "type":"url",
-               "id":"url",
-               "label":"Link to the product page"
-            },
-            {
-               "type":"number",
-               "id":"price",
-               "label":"Price",
-               "default":5200
-            }
-         ]
-      }
-   ],
-   "presets":[
-      {
-         "name":"Default",
-         "blocks":[
-            {
-               "type":"flavour",
-               "settings":{
-                  "title":"Red Velvet",
-                  "image":"RedVelvet.png",
-                  "avail":5
-               }
-            },
-            {
-               "type":"addon",
-               "settings":{
-                  "title":"Card",
-                  "image":"Card.png",
-                  "price":0
-               }
-            },
-            {
-               "type":"addon",
-               "settings":{
-                  "title":"Candles",
-                  "image":"Candles.png",
-                  "price":300
-               }
-            },
-            {
-               "type":"addon",
-               "settings":{
-                  "title":"Letters",
-                  "image":"Letters.png",
-                  "price":500
-               }
-            }
-         ]
       }
    ]
 }
