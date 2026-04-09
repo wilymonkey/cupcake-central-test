@@ -12,6 +12,10 @@ let dataRaw = {
     }
     return length;
   },
+
+  name() {
+    return "cupcake-box-" + this.maxCupcakes;
+  },
 };
 
 const handler = {
@@ -27,10 +31,12 @@ function onPropertyChange(property, oldValue, newValue) {
   switch (property) {
     case "addons":
       recalculateTotalPrice();
+      saveToLocalStorage();
       break;
     case "cupcakes":
       updateCupcakeCounters();
       rerenderCupcakePreview();
+      saveToLocalStorage();
       break;
     case "maxCupcakes":
       cullCupcakes();
@@ -45,6 +51,23 @@ function onPropertyChange(property, oldValue, newValue) {
 }
 
 const data = new Proxy(dataRaw, handler);
+
+function saveToLocalStorage() {
+  const dataToStore = {
+    addons: Array.from(dataRaw.addons),
+    cupcakes: Array.from(dataRaw.cupcakes.entries()),
+  };
+  localStorage.setItem(data.name(), JSON.stringify(dataToStore));
+}
+
+function getFromLocalStorage() {
+  const stored = localStorage.getItem(data.name());
+  if (stored) {
+    const dataToLoad = JSON.parse(stored);
+    data.addons = new Set(dataToLoad.addons);
+    data.cupcakes = new Map(dataToLoad.cupcakes);
+  }
+}
 
 function updateCupcakeCounters() {
   const cupcakeCounter = document.querySelector("#cupcake-counter");
@@ -152,6 +175,7 @@ cupcakeElements.forEach(function (element) {
 
 document.addEventListener("DOMContentLoaded", function () {
   readBoxLayout();
+  getFromLocalStorage();
 });
 
 function readBoxLayout() {

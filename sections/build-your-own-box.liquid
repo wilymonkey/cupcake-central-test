@@ -60,8 +60,8 @@
                     <img class="w-full aspect-square" id="empty-cupcake-image" width="48" height="48" src="{{ 'cupcakes/EmptyCupcake.png' | asset_url  }}" alt="empty cupcake wrapper">
                 </div>
                 <div class="relative">
-                    <img class="w-full" width="256" height="256" src="{{ 'cupcakes/EmptyBox.png' | asset_url }}" alt="Empty gift box">
-                    <div class="absolute top-0 right-0 aspect-[2/1] grid !mt-30 !mb-30 ml-12 mr-12" id="cupcake-preview" style="grid-template-columns: repeat({{ section.settings.box_cupcakes_per_rows }}, 1fr)"></div>
+                    <div class="bg-zinc-100 w-full h-150 rounded-2xl !border-1 border-zinc-300"> </div>
+                    <div class="absolute top-0 right-0 h-100 w-full grid mx-12 !my-auto" id="cupcake-preview" style="grid-template-columns: repeat({{ section.settings.box_cupcakes_per_rows }}, 1fr)"></div>
                 </div>
 
                 <!-- ADDONS -->
