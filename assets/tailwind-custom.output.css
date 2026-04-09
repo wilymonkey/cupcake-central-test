@@ -272,6 +272,9 @@
   .top-3 {
     top: calc(var(--spacing) * 3);
   }
+  .top-50 {
+    top: calc(var(--spacing) * 50);
+  }
   .right-0 {
     right: calc(var(--spacing) * 0);
   }
@@ -301,6 +304,12 @@
   }
   .left-4 {
     left: calc(var(--spacing) * 4);
+  }
+  .left-6 {
+    left: calc(var(--spacing) * 6);
+  }
+  .left-12 {
+    left: calc(var(--spacing) * 12);
   }
   .isolate {
     isolation: isolate;
@@ -350,6 +359,9 @@
   .m-7 {
     margin: calc(var(--spacing) * 7);
   }
+  .\!mx-12 {
+    margin-inline: calc(var(--spacing) * 12) !important;
+  }
   .mx-4 {
     margin-inline: calc(var(--spacing) * 4);
   }
@@ -370,6 +382,9 @@
   }
   .my-5\! {
     margin-block: calc(var(--spacing) * 5) !important;
+  }
+  .my-50 {
+    margin-block: calc(var(--spacing) * 50);
   }
   .my-\[20px\] {
     margin-block: 20px;
@@ -622,8 +637,14 @@
   .h-24 {
     height: calc(var(--spacing) * 24);
   }
+  .h-50 {
+    height: calc(var(--spacing) * 50);
+  }
   .h-56 {
     height: calc(var(--spacing) * 56);
+  }
+  .h-58 {
+    height: calc(var(--spacing) * 58);
   }
   .h-64 {
     height: calc(var(--spacing) * 64);
@@ -939,6 +960,9 @@
   .justify-start {
     justify-content: flex-start;
   }
+  .\!gap-0 {
+    gap: calc(var(--spacing) * 0) !important;
+  }
   .gap-0 {
     gap: calc(var(--spacing) * 0);
   }
@@ -1136,6 +1160,10 @@
     border-style: var(--tw-border-style);
     border-width: 2px;
   }
+  .border-4 {
+    border-style: var(--tw-border-style);
+    border-width: 4px;
+  }
   .border-\[0\.5px\]\! {
     border-style: var(--tw-border-style) !important;
     border-width: 0.5px !important;
@@ -1193,6 +1221,9 @@
   }
   .border-red-700 {
     border-color: var(--color-red-700);
+  }
+  .border-teal-500 {
+    border-color: var(--color-teal-500);
   }
   .border-transparent {
     border-color: transparent;
@@ -1376,6 +1407,9 @@
   }
   .px-11 {
     padding-inline: calc(var(--spacing) * 11);
+  }
+  .px-12 {
+    padding-inline: calc(var(--spacing) * 12);
   }
   .px-\[2rem\] {
     padding-inline: 2rem;
@@ -2246,6 +2280,11 @@
   .disabled\:cursor-not-allowed {
     &:disabled {
       cursor: not-allowed;
+    }
+  }
+  .disabled\:bg-zinc-400 {
+    &:disabled {
+      background-color: var(--color-zinc-400);
     }
   }
   .disabled\:text-\[unset\] {

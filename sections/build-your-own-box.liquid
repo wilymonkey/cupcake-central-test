@@ -24,8 +24,10 @@
                     {% if cupcake.stock > 0 %}
                     {% assign id = cupcake.name | sha256 | truncate: 8 %}
                     <div class="flex flex-col items-stretch gap-2" id="{{ cupcake.id }}">
-                        <img data-cupcake-image="{{ id }}" class="h-full w-full aspect-square" width="256" height="256" src="{{ cupcake.image | image_url  }}" alt="{{ cupcake.name }} cupcake">
-                        <div class="font-bold uppercase text-[1rem] text-center">
+                        <img data-cupcake-image="{{ id }}" class="w-full aspect-square" width="256" height="256" src="{{ cupcake.image | image_url  }}" alt="{{ cupcake.name }} cupcake">
+                        <div class="font-bold uppercase text-[1rem] text-center"
+                            data-cupcake-name="{{ id }}"
+                        >
                             {{ cupcake.name }}
                         </div>
                         <div class="h-1 grow"> </div>
@@ -34,9 +36,9 @@
                             data-cupcake-stock="{{ cupcake.stock }}"
                             data-cupcake-image="{{ cupcake.image | image_url }}"
                         >
-                            <button data-action="decrement" class="px-2 disabled:opacity-50">-</button>
+                            <button data-action="decrement" class="px-2 disabled:opacity-50" disabled>-</button>
                             <div data-role="count" class="grow w-1 px-4 text-center font-bold text-lg"> </div>
-                            <button data-action="increment" class="px-2 font-bold !text-teal-500 disabled:text-[unset] disabled:opacity-50">+</button>
+                            <button data-action="increment" class="px-2 font-bold !text-teal-500 disabled:text-[unset] disabled:opacity-50" disabled>+</button>
                         </div>
                     </div>
                     {% endif %}
@@ -61,7 +63,9 @@
                 </div>
                 <div class="relative">
                     <div class="bg-zinc-100 w-full h-150 rounded-2xl !border-1 border-zinc-300"> </div>
-                    <div class="absolute top-0 right-0 h-100 w-full grid mx-12 !my-auto" id="cupcake-preview" style="grid-template-columns: repeat({{ section.settings.box_cupcakes_per_rows }}, 1fr)"></div>
+                    <div class="absolute inset-0 px-12 flex items-center">
+                        <div class="h-58 aspect-[2/1] px-4 grid border-4 !gap-0 bg-white border-teal-500 items-center" id="cupcake-preview" style="grid-template-columns: repeat({{ section.settings.box_cupcakes_per_rows }}, 1fr)"></div>
+                    </div>
                 </div>
 
                 <!-- ADDONS -->
@@ -95,7 +99,7 @@
                 <hr class="!my-4">
                 <div class="flex justify-end gap-4 items-center">
                     <h5 class="!text-teal-500" id="total-price"></h5>
-                    <button class="bg-teal-500 text-lg text-white p-4 rounded-md font-bold">ADD TO CART</button>
+                    <button id="add-to-cart" class="bg-teal-500 disabled:bg-zinc-400 text-lg text-white p-4 rounded-md font-bold" disabled>ADD TO CART</button>
                 </div>
             </div>
         </div>
