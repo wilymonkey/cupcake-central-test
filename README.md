@@ -78,7 +78,7 @@ In terms of the properties themselves:
 
  
 
-### Q3 - Shopify data structure: How did you store the cupcake flavor data in Shopify? Why did you choose that approach (metafields, metaobjects, JSON, or other)?
+#### Q3 - Shopify data structure: How did you store the cupcake flavor data in Shopify? Why did you choose that approach (metafields, metaobjects, JSON, or other)?
 
 I decided to go with Metaobjects because:
 - It can be reused across the site and changes are easy to do in one centralised location.
@@ -86,7 +86,7 @@ I decided to go with Metaobjects because:
 - Linking to actual products would be easy.
 - Note: I also added a dummy stock variable which should be replaced with a link to the actual product (which I couldn’t do due to a lack of access to the products page).
 
-### Q4 - Scalability: If the client wanted to change this to "Build Your Own 6" or "Build Your Own 24", what would need to change in your code? How many minutes would that take?
+#### Q4 - Scalability: If the client wanted to change this to "Build Your Own 6" or "Build Your Own 24", what would need to change in your code? How many minutes would that take?
 
 They’d need to change the Box Quantity and Cupcakes per row of the box setting in the Theme Editor template. So less than 30 seconds and wouldn’t need to code.
  
