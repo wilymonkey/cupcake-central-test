@@ -14,12 +14,13 @@ let dataRaw = {
   },
 
   variant() {
-    return "cupcake-box-" + this.maxCupcakes; // Replace this with variant id.
+    return "000000" + this.maxCupcakes; // Replace this with variant id.
   },
 
   reset() {
     this.addons = new Set();
     this.cupcakes = new Map();
+    refreshButtons();
   },
 };
 
@@ -49,14 +50,16 @@ function onPropertyChange(property, oldValue, newValue) {
     case "cupcakes":
       updateCupcakeCounters();
       rerenderCupcakePreview();
-      saveToLocalStorage();
       checkBoxIsValid();
       canReset();
       const wasMax = measureCupcakeLength(oldValue) == data.maxCupcakes;
       const isMax = measureCupcakeLength(newValue) == data.maxCupcakes;
       if (isMax || wasMax) {
+        // Only click all the buttons like this in this limited circumstance.
+        // Not on every click.
         clickAllCakeBtns();
       }
+      saveToLocalStorage();
       break;
     case "maxCupcakes":
       cullCupcakes();
@@ -90,11 +93,18 @@ function getFromLocalStorage() {
     const dataToLoad = JSON.parse(stored);
     data.addons = new Set(dataToLoad.addons);
     data.cupcakes = new Map(dataToLoad.cupcakes);
-    recheckAddons();
-    cupcakeElements.forEach(function (element) {
-      element.click();
-    });
+  } else {
+    data.cupcakes = new Map();
+    data.addons = new Set();
   }
+  refreshButtons();
+}
+
+function refreshButtons() {
+  recheckAddons();
+  cupcakeElements.forEach(function (element) {
+    element.click();
+  });
 }
 
 // ===================================
@@ -112,13 +122,17 @@ function recalculateTotalPrice() {
   data.totalPrice = total;
 }
 
-function updateTotalView() {
+function formatMoney(price) {
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "AUD",
   });
-  document.querySelector("#total-price").textContent = formatter.format(
-    data.totalPrice / 100,
+  return formatter.format(price / 100);
+}
+
+function updateTotalView() {
+  document.querySelector("#total-price").textContent = formatMoney(
+    data.totalPrice,
   );
 }
 
@@ -141,13 +155,12 @@ addonElements.forEach(function (element) {
     data.addons = currentAddons;
   });
 });
+
 // Needed to restore state from storage.
 function recheckAddons() {
-  data.addons.forEach(function (addonId) {
-    const addonElement = document.querySelector(`[data-addon-id="${addonId}"]`);
-    if (addonElement) {
-      addonElement.checked = true;
-    }
+  addonElements.forEach(function (element) {
+    const addonId = element.getAttribute("data-addon-id");
+    element.checked = data.addons.has(addonId);
   });
 }
 
@@ -242,22 +255,32 @@ function canReset() {
 
 const addToCartBtn = document.querySelector("#add-to-cart");
 addToCartBtn.addEventListener("click", async function () {
-  const dataToCart = {
+  let dataToCart = {
     id: data.variant(),
     quantity: 1,
-    properties: new Map(),
+    properties: {},
   };
   for (const [id, value] of data.cupcakes.entries()) {
     const name = document.querySelector(
       `[data-cupcake-name="${id}"]`,
     ).innerText;
-    dataToCart.properties.set(name, value);
+    dataToCart.properties[name] = `${value}`;
   }
   for (const addonId of data.addons) {
     const element = document.querySelector(`[data-addon-id="${addonId}"]`);
     const name = element.getAttribute("data-addon-name");
-    dataToCart.properties.set("Addon: " + name, true);
+    const price = formatMoney(
+      parseInt(element.getAttribute("data-addon-price")),
+    );
+    dataToCart.properties["Addon: " + name] = price;
   }
+  const jsonData = JSON.stringify({
+    items: [dataToCart],
+  });
+  console.log("=============================");
+  console.log("DATA TO CART");
+  console.log(jsonData);
+  console.log("=============================");
   try {
     data.reset();
     const response = await fetch("/cart/add.js", {
@@ -265,9 +288,7 @@ addToCartBtn.addEventListener("click", async function () {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        items: [dataToCart],
-      }),
+      body: jsonData,
     });
     if (response.status === 200) {
       console.log("Success, added box to cart!");
