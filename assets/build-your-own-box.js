@@ -250,6 +250,37 @@ function canReset() {
 }
 
 // ===================================
+// DRAG AND DROP
+// ===================================
+const cupcakeImages = document.querySelectorAll("[data-cupcake-image]");
+cupcakeImages.forEach((cupcakeImage) => {
+  cupcakeImage.addEventListener("dragstart", dragStart);
+});
+
+const cupcakePreview = document.querySelector("#cupcake-preview");
+cupcakePreview.addEventListener("dragover", allowDrop);
+cupcakePreview.addEventListener("drop", drop);
+
+function dragStart(event) {
+  const id = event.currentTarget.dataset.cupcakeImage;
+  event.dataTransfer.setData("text/plain", id);
+}
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+function drop(event) {
+  event.preventDefault();
+  const cupcakeId = event.dataTransfer.getData("text/plain");
+  const element = document.querySelector(`[data-cupcake-id="${cupcakeId}"]`);
+  if (element) {
+    const plusBtn = element.querySelector('[data-action="increment"]');
+    if (plusBtn) plusBtn.click();
+  }
+}
+
+// ===================================
 // ADD TO CART
 // ===================================
 
